@@ -10,12 +10,13 @@
   <style>
     /* ===== Reset & Base ===== */
     *, *::before, *::after { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
       font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f2f2f3;
       color: #333;
-      min-height: 100vh;
+      overflow: visible;
+      height: auto;
     }
     /* ===== Header ===== */
     header {
@@ -311,10 +312,6 @@
       <button class="league-tab" data-league="Elite">Elite</button>
     </nav>
     <div class="division-pills" id="divisionPills"></div>
-    <div class="standings-container" id="standingsContainer">
-      <div class="section-title">Standings</div>
-      <div id="standingsContent" class="placeholder-msg">Loading...</div>
-    </div>
     <div class="bracket-container" id="bracketContainer">
       <div class="section-title">Bracket</div>
       <div id="bracketContent" class="placeholder-msg">Loading...</div>
@@ -322,6 +319,10 @@
     <div class="schedule-container" id="scheduleContainer">
       <div class="section-title">Schedule</div>
       <div id="scheduleContent" class="placeholder-msg">Loading...</div>
+    </div>
+    <div class="standings-container" id="standingsContainer">
+      <div class="section-title">Standings</div>
+      <div id="standingsContent" class="placeholder-msg">Loading...</div>
     </div>
   </div>
 
