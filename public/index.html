@@ -229,6 +229,7 @@
     /* ===== Series Status ===== */
     .series-status { text-align: center; font-size: 0.72rem; color: #999; padding: 0.2rem 0 0; border-top: 1px solid #eee; margin-top: 0.3rem; }
     .series-status.series-final { color: #2ecc71; font-weight: 600; }
+    .series-note { text-align: center; font-size: 0.7rem; font-style: italic; color: #999; padding: 0.15rem 0 0; }
     /* ===== Loading Overlay ===== */
     .loading-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -1232,6 +1233,12 @@
         if (round.note) {
           html += '<div class="matchup-label">' + round.note + '</div>';
         }
+
+        // Series note from admin
+        if (bsMatchup && bsMatchup.seriesNote) {
+          html += '<div class="series-note">' + bsMatchup.seriesNote + '</div>';
+        }
+
         html += '</div>';
       });
 

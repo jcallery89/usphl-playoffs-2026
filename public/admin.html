@@ -196,6 +196,42 @@
     .game-list .if-necessary { color: #bbb; font-style: italic; }
     .game-winner { color: #2ecc71; font-weight: 600; }
 
+    /* Series note */
+    .series-note-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0 0.5rem;
+    }
+    .series-note-row input {
+      flex: 1;
+      padding: 0.3rem 0.5rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: #555;
+    }
+    .series-note-row input:focus { outline: none; border-color: #c91417; }
+    .series-note-row button {
+      padding: 0.3rem 0.5rem;
+      font-family: inherit;
+      font-size: 0.72rem;
+      background: #6c757d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .series-note-row button:hover { background: #5a6268; }
+    .series-note-row .save-msg {
+      font-size: 0.75rem;
+      color: #2ecc71;
+      display: none;
+    }
+
     /* Advance button */
     .advance-section {
       margin-top: 1rem;
@@ -511,6 +547,15 @@
             });
             html += '</div>';
           }
+
+          // Series note
+          var noteId = 'seriesNote_' + roundIdx + '_' + mIdx;
+          var noteMsgId = 'seriesNoteMsg_' + roundIdx + '_' + mIdx;
+          html += '<div class="series-note-row">';
+          html += '<input type="text" id="' + noteId + '" placeholder="Series note (e.g. \'Home ice at Rink X\')" value="' + (m.seriesNote || '').replace(/"/g, '&quot;') + '">';
+          html += '<button onclick="saveSeriesNote(\'' + league + '\',\'' + division + '\',' + roundIdx + ',' + mIdx + ')">Save Note</button>';
+          html += '<span class="save-msg" id="' + noteMsgId + '">Saved!</span>';
+          html += '</div>';
         });
 
         html += '</div>';
@@ -630,6 +675,17 @@
       } catch(e) {
         alert('Failed to save: ' + e.message);
       }
+    }
+
+    async function saveSeriesNote(league, division, roundIdx, matchupIdx) {
+      var noteId = 'seriesNote_' + roundIdx + '_' + matchupIdx;
+      var msgId = 'seriesNoteMsg_' + roundIdx + '_' + matchupIdx;
+      var val = document.getElementById(noteId).value.trim();
+      bracketState[league][division].rounds[roundIdx].matchups[matchupIdx].seriesNote = val || null;
+      await saveBracketState();
+      var msg = document.getElementById(msgId);
+      msg.style.display = 'inline';
+      setTimeout(function() { msg.style.display = 'none'; }, 2000);
     }
 
     async function doRefresh() {
