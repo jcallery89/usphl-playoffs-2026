@@ -365,8 +365,8 @@
           if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
           return r.json();
         }).catch(function(e){
-          console.warn('bracket-state API not available, trying fallback:', e.message);
-          return null;
+          console.warn('bracket-state API not available, trying static fallback:', e.message);
+          return fetch(API_BASE + '/data/bracket-state-initial.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
         })
       ]);
 
@@ -727,6 +727,18 @@
     if (f.indexOf('bo7') !== -1) return 4;
     if (f.indexOf('single') !== -1) return 1;
     return 2; // Bo3 default
+  }
+
+  // Get a specific matchup from BRACKET_STATE by round/matchup index
+  function getBracketStateMatchup(league, division, roundIdx, matchupIdx) {
+    if (!BRACKET_STATE) return null;
+    var bs = BRACKET_STATE[league];
+    if (!bs) return null;
+    var divData = bs[division];
+    if (!divData || !divData.rounds || !divData.rounds[roundIdx]) return null;
+    var matchups = divData.rounds[roundIdx].matchups;
+    if (!matchups || !matchups[matchupIdx]) return null;
+    return matchups[matchupIdx];
   }
 
   // Get series data for a specific matchup from BRACKET_STATE
@@ -1107,25 +1119,43 @@
       }
 
       // Matchups
-      round.matchups.forEach(function(matchup) {
+      round.matchups.forEach(function(matchup, matchupIdx) {
         var homeSeed = matchup[0];
         var awaySeed = matchup[1];
         var homeName = null, awayName = null;
         var homeLabel, awayLabel;
 
-        if (typeof homeSeed === "number") {
-          var homeTeam = findTeamBySeed(data, homeSeed);
-          homeName = homeTeam ? homeTeam.name : null;
-          homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + teamNameHTML(homeName || "TBD", leagueForMap);
+        // Check BRACKET_STATE for actual matchup data (especially for Round 2+)
+        var bsMatchup = getBracketStateMatchup(currentLeague, divisionName, roundIdx, matchupIdx);
+
+        if (bsMatchup && bsMatchup.homeTeamName && bsMatchup.homeTeamName !== 'TBD') {
+          // Use BRACKET_STATE data (has actual team assignments)
+          homeName = bsMatchup.homeTeamName;
+          awayName = bsMatchup.awayTeamName;
+          var hSeed = bsMatchup.homeSeed;
+          var aSeed = bsMatchup.awaySeed;
+          homeLabel = (hSeed ? '<span class="matchup-seed">#' + hSeed + '</span> ' : '') + teamNameHTML(homeName, leagueForMap);
+          awayLabel = (aSeed ? '<span class="matchup-seed">#' + aSeed + '</span> ' : '') + teamNameHTML(awayName || 'TBD', leagueForMap);
+        } else if (bsMatchup && bsMatchup.homeTeamName === 'TBD') {
+          // BRACKET_STATE says TBD — show TBD
+          homeLabel = 'TBD';
+          awayLabel = 'TBD';
         } else {
-          homeLabel = String(homeSeed);
-        }
-        if (typeof awaySeed === "number") {
-          var awayTeam = findTeamBySeed(data, awaySeed);
-          awayName = awayTeam ? awayTeam.name : null;
-          awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + teamNameHTML(awayName || "TBD", leagueForMap);
-        } else {
-          awayLabel = String(awaySeed);
+          // Fallback to config seed resolution (Round 1 only)
+          if (typeof homeSeed === "number") {
+            var homeTeam = findTeamBySeed(data, homeSeed);
+            homeName = homeTeam ? homeTeam.name : null;
+            homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + teamNameHTML(homeName || "TBD", leagueForMap);
+          } else {
+            homeLabel = String(homeSeed);
+          }
+          if (typeof awaySeed === "number") {
+            var awayTeam = findTeamBySeed(data, awaySeed);
+            awayName = awayTeam ? awayTeam.name : null;
+            awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + teamNameHTML(awayName || "TBD", leagueForMap);
+          } else {
+            awayLabel = String(awaySeed);
+          }
         }
 
         // Look up series data
