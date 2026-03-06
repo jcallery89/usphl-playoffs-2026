@@ -45,10 +45,22 @@ async function handleGet(req, res) {
       NCDC: ncdcGames || [],
     };
 
-    // Update series records from live data
+    // Update series records from live data (also auto-advances completed rounds)
     bracketState = updateBracketWithGames(bracketState, allGames);
 
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
+    // If auto-advance happened, persist the updated state back to KV
+    // so that future reads don't need to re-compute and admin sees it too
+    if (bracketState._autoAdvanced) {
+      delete bracketState._autoAdvanced;
+      bracketState._updatedBy = 'auto-advance';
+      kvSet(BRACKET_KEY, bracketState).catch(err =>
+        console.error('Failed to persist auto-advanced state:', err)
+      );
+    } else {
+      delete bracketState._autoAdvanced;
+    }
+
+    res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate=60');
     return res.status(200).json(bracketState);
   } catch (err) {
     console.error('Bracket state GET error:', err);
