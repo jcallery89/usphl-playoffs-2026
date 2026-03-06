@@ -1334,26 +1334,52 @@
   }
 
   function renderDineenBracket() {
-    var dc = LEAGUE_DATA.ncdc.dineenCup;
-    var html = '<div class="bracket-section-title">Dineen Cup -- Modified Double Elimination</div>';
+    var dc = (BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['Dineen Cup']) || LEAGUE_DATA.ncdc.dineenCup;
+    var html = '';
+
+    // Format info
+    if (dc.formatInfo) {
+      html += '<div class="schedule-format-info">' + dc.formatInfo + '</div>';
+    }
+
     html += '<div class="bracket">';
 
-    html += '<div class="round"><div class="round-title">Opening Round</div>';
-    html += '<div class="matchup"><div class="matchup-team home">Atlantic Champ</div><div class="matchup-vs">vs</div><div class="matchup-team away">Mountain Champ</div><div class="matchup-label">Game 1</div></div>';
-    html += '<div class="matchup"><div class="matchup-team home">NE Champ</div><div class="matchup-vs">vs</div><div class="matchup-team away">Idaho Falls</div><div class="matchup-label">Game 2</div></div></div>';
+    // Group games into rounds for visual bracket display
+    var rounds = [
+      { title: 'Opening Round — Apr 24', games: [0, 1] },
+      { title: 'Day 2 — Apr 25', games: [2, 3] },
+      { title: 'Day 3 — Apr 26', games: [4] },
+      { title: 'Finals — Apr 27–28', games: [5, 6] },
+    ];
 
-    html += '<div class="round"><div class="round-title">Day 2</div>';
-    html += '<div class="matchup"><div class="matchup-team home">0-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">0-1 Team</div><div class="matchup-label">Game 3 (Elimination)</div></div>';
-    html += '<div class="matchup"><div class="matchup-team home">1-0 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">1-0 Team</div><div class="matchup-label">Game 4</div></div></div>';
-
-    html += '<div class="round"><div class="round-title">Day 3</div>';
-    html += '<div class="matchup"><div class="matchup-team home">1-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">1-1 Team</div><div class="matchup-label">Game 5 (Elimination)</div></div></div>';
-
-    html += '<div class="round"><div class="round-title">Finals</div>';
-    html += '<div class="matchup"><div class="matchup-team home">Last 1-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">2-0 Team</div><div class="matchup-label">Game 6 -- Final</div></div>';
-    html += '<div class="matchup" style="opacity:0.6;"><div class="matchup-team home">TBD</div><div class="matchup-vs">vs</div><div class="matchup-team away">TBD</div><div class="matchup-label"><span class="if-necessary">Game 7 -- If Necessary</span></div></div></div>';
+    rounds.forEach(function(round) {
+      html += '<div class="round"><div class="round-title">' + round.title + '</div>';
+      round.games.forEach(function(gi) {
+        var g = dc.schedule[gi];
+        if (!g) return;
+        var parts = g.matchup.split(' vs');
+        var home = (parts[0] || '').trim();
+        var away = (parts[1] || '').trim().replace(/^\.?\s*/, '');
+        var isIfNecessary = (g.note || '').toLowerCase().indexOf('if necessary') !== -1;
+        html += '<div class="matchup"' + (isIfNecessary ? ' style="opacity:0.6;"' : '') + '>';
+        html += '<div class="matchup-team home"><span>' + home + '</span></div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away"><span>' + away + '</span></div>';
+        html += '<div class="matchup-label">Game ' + g.game + ' — ' + g.time;
+        if (g.note) html += ' (' + g.note + ')';
+        html += '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
 
     html += '</div>';
+
+    // Mountain note
+    if (dc.mountainNote) {
+      html += '<div class="round-schedule-note" style="margin-top:0.75rem;">' + dc.mountainNote + '</div>';
+    }
+
     bracketContent.innerHTML = html;
   }
 
@@ -1486,11 +1512,15 @@
   }
 
   function renderDineenSchedule() {
-    var dc = LEAGUE_DATA.ncdc.dineenCup;
+    var dc = (BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['Dineen Cup']) || LEAGUE_DATA.ncdc.dineenCup;
     var html = '<div class="dineen-schedule">';
-    html += '<div class="schedule-info"><p><strong>' + dc.name + '</strong> &mdash; ' + dc.dates + '</p>';
-    html += '<p>Format: ' + dc.format + '</p></div>';
-    dc.schedule.forEach(function(g) {
+    html += '<div class="schedule-info">';
+    html += '<p><strong>' + dc.name + '</strong> &mdash; ' + (dc.dates || '') + '</p>';
+    if (dc.location) html += '<p>' + dc.location + '</p>';
+    if (dc.timezone) html += '<p>All times ' + dc.timezone + '</p>';
+    html += '<p>Format: Double Elimination</p>';
+    html += '</div>';
+    (dc.schedule || []).forEach(function(g) {
       html += '<div class="dineen-game">';
       html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
       html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
@@ -1498,6 +1528,9 @@
       if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
       html += '</div>';
     });
+    if (dc.mountainNote) {
+      html += '<div class="round-schedule-note" style="margin-top:0.75rem;">' + dc.mountainNote + '</div>';
+    }
     html += '</div>';
     scheduleContent.innerHTML = html;
   }
