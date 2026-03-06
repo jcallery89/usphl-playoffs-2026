@@ -1,0 +1,1143 @@
+{
+  "Premier": {
+    "Atlantic": {
+      "1": {
+        "name": "West Chester Wolves",
+        "gp": 44,
+        "pts": 74,
+        "row": 35,
+        "l": 6,
+        "pctg": 0.841
+      },
+      "2": {
+        "name": "Red Bank Generals",
+        "gp": 44,
+        "pts": 70,
+        "row": 32,
+        "l": 8,
+        "pctg": 0.795
+      },
+      "3": {
+        "name": "Connecticut Junior Rangers",
+        "gp": 43,
+        "pts": 64,
+        "row": 26,
+        "l": 10,
+        "pctg": 0.744
+      },
+      "4": {
+        "name": "P.A.L. Jr Islanders",
+        "gp": 44,
+        "pts": 62,
+        "row": 23,
+        "l": 11,
+        "pctg": 0.705
+      },
+      "5": {
+        "name": "Wilkes-Barre Scranton Knights",
+        "gp": 44,
+        "pts": 53,
+        "row": 22,
+        "l": 16,
+        "pctg": 0.602
+      },
+      "6": {
+        "name": "Mercer Chiefs",
+        "gp": 43,
+        "pts": 50,
+        "row": 23,
+        "l": 17,
+        "pctg": 0.581
+      },
+      "7": {
+        "name": "Rockets Hockey Club",
+        "gp": 43,
+        "pts": 33,
+        "row": 15,
+        "l": 26,
+        "pctg": 0.384
+      },
+      "8": {
+        "name": "Hershey Cubs",
+        "gp": 44,
+        "pts": 29,
+        "row": 12,
+        "l": 28,
+        "pctg": 0.33
+      },
+      "elim_9": {
+        "name": "Jersey Hitmen",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 18,
+        "row": 6,
+        "l": 35,
+        "pctg": 0.205
+      },
+      "elim_10": {
+        "name": "New Jersey Renegades",
+        "eliminated": true,
+        "gp": 43,
+        "pts": 12,
+        "row": 2,
+        "l": 35,
+        "pctg": 0.14
+      }
+    },
+    "Florida": {
+      "1": {
+        "name": "Coral Springs Jr. Cats",
+        "gp": 43,
+        "pts": 58,
+        "row": 26,
+        "l": 14,
+        "pctg": 0.674
+      },
+      "2": {
+        "name": "Florida Eels",
+        "gp": 44,
+        "pts": 54,
+        "row": 22,
+        "l": 16,
+        "pctg": 0.614
+      },
+      "3": {
+        "name": "Tampa Bay Juniors",
+        "gp": 43,
+        "pts": 51,
+        "row": 24,
+        "l": 17,
+        "pctg": 0.593
+      },
+      "4": {
+        "name": "Florida Junior Blades",
+        "gp": 44,
+        "pts": 28,
+        "row": 11,
+        "l": 28,
+        "pctg": 0.318
+      },
+      "5": {
+        "name": "Typhoon Hockey Club",
+        "gp": 44,
+        "pts": 24,
+        "row": 9,
+        "l": 31,
+        "pctg": 0.273
+      },
+      "elim_6": {
+        "name": "Bold City Battalion",
+        "eliminated": true,
+        "gp": 6,
+        "pts": 0,
+        "row": 0,
+        "l": 6,
+        "pctg": 0
+      }
+    },
+    "Great Lakes": {
+      "1": {
+        "name": "Toledo Cherokee",
+        "gp": 44,
+        "pts": 75,
+        "row": 35,
+        "l": 6,
+        "pctg": 0.852
+      },
+      "2": {
+        "name": "Metro Jets",
+        "gp": 44,
+        "pts": 73,
+        "row": 35,
+        "l": 7,
+        "pctg": 0.83
+      },
+      "3": {
+        "name": "Red River Spartans",
+        "gp": 44,
+        "pts": 70,
+        "row": 33,
+        "l": 9,
+        "pctg": 0.795
+      },
+      "4": {
+        "name": "Columbus Mavericks",
+        "gp": 44,
+        "pts": 64,
+        "row": 31,
+        "l": 12,
+        "pctg": 0.727
+      },
+      "5": {
+        "name": "Battle Creek Kernels",
+        "gp": 44,
+        "pts": 31,
+        "row": 13,
+        "l": 28,
+        "pctg": 0.352
+      },
+      "6": {
+        "name": "Fresh Coast Freeze",
+        "gp": 44,
+        "pts": 27,
+        "row": 10,
+        "l": 28,
+        "pctg": 0.307
+      },
+      "elim_7": {
+        "name": "Cincinnati Cyclones",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 24,
+        "row": 9,
+        "l": 31,
+        "pctg": 0.273
+      },
+      "elim_8": {
+        "name": "Bearcat Hockey Club",
+        "eliminated": true,
+        "gp": 43,
+        "pts": 12,
+        "row": 4,
+        "l": 36,
+        "pctg": 0.14
+      }
+    },
+    "Midwest": {
+      "1": {
+        "name": "Fort Wayne Spacemen",
+        "gp": 44,
+        "pts": 66,
+        "row": 30,
+        "l": 11,
+        "pctg": 0.75
+      },
+      "2": {
+        "name": "Chicago T-Rex",
+        "gp": 44,
+        "pts": 42,
+        "row": 18,
+        "l": 22,
+        "pctg": 0.477
+      },
+      "3": {
+        "name": "MJDP",
+        "gp": 44,
+        "pts": 41,
+        "row": 16,
+        "l": 23,
+        "pctg": 0.466
+      },
+      "4": {
+        "name": "Chicago Cougars",
+        "gp": 44,
+        "pts": 38,
+        "row": 16,
+        "l": 23,
+        "pctg": 0.432
+      },
+      "5": {
+        "name": "Chicago Crush",
+        "gp": 44,
+        "pts": 21,
+        "row": 6,
+        "l": 32,
+        "pctg": 0.239
+      }
+    },
+    "New England": {
+      "1": {
+        "name": "Northern Cyclones",
+        "gp": 44,
+        "pts": 76,
+        "row": 35,
+        "l": 5,
+        "pctg": 0.864
+      },
+      "2": {
+        "name": "Islanders Hockey Club",
+        "gp": 44,
+        "pts": 67,
+        "row": 28,
+        "l": 9,
+        "pctg": 0.761
+      },
+      "3": {
+        "name": "South Shore Kings",
+        "gp": 44,
+        "pts": 60,
+        "row": 25,
+        "l": 12,
+        "pctg": 0.682
+      },
+      "4": {
+        "name": "Utica Jr Comets",
+        "gp": 44,
+        "pts": 53,
+        "row": 25,
+        "l": 16,
+        "pctg": 0.602
+      },
+      "5": {
+        "name": "Boston Jr. Rangers",
+        "gp": 44,
+        "pts": 49,
+        "row": 21,
+        "l": 19,
+        "pctg": 0.557
+      },
+      "6": {
+        "name": "Worcester Railers JHC",
+        "gp": 44,
+        "pts": 49,
+        "row": 19,
+        "l": 18,
+        "pctg": 0.557
+      },
+      "7": {
+        "name": "Springfield Pics",
+        "gp": 44,
+        "pts": 22,
+        "row": 9,
+        "l": 33,
+        "pctg": 0.25
+      },
+      "elim_8": {
+        "name": "Thunder Hockey Club",
+        "eliminated": true,
+        "gp": 25,
+        "pts": 2,
+        "row": 1,
+        "l": 24,
+        "pctg": 0.04
+      }
+    },
+    "North": {
+      "1": {
+        "name": "Minnesota Squatch",
+        "gp": 43,
+        "pts": 76,
+        "row": 33,
+        "l": 4,
+        "pctg": 0.884
+      },
+      "2": {
+        "name": "Wisconsin Rapids Riverkings",
+        "gp": 43,
+        "pts": 65,
+        "row": 30,
+        "l": 10,
+        "pctg": 0.756
+      },
+      "3": {
+        "name": "Northwest Express",
+        "gp": 43,
+        "pts": 63,
+        "row": 29,
+        "l": 10,
+        "pctg": 0.733
+      },
+      "4": {
+        "name": "Minnesota Blue Ox",
+        "gp": 43,
+        "pts": 55,
+        "row": 24,
+        "l": 14,
+        "pctg": 0.64
+      },
+      "5": {
+        "name": "Steele County Blades",
+        "gp": 43,
+        "pts": 39,
+        "row": 16,
+        "l": 22,
+        "pctg": 0.453
+      },
+      "6": {
+        "name": "Minnesota Mullets",
+        "gp": 43,
+        "pts": 23,
+        "row": 7,
+        "l": 31,
+        "pctg": 0.267
+      },
+      "7": {
+        "name": "Hudson Havoc",
+        "gp": 43,
+        "pts": 11,
+        "row": 4,
+        "l": 36,
+        "pctg": 0.128
+      },
+      "elim_8": {
+        "name": "Minnesota Outlaws",
+        "eliminated": true,
+        "gp": 15,
+        "pts": 2,
+        "row": 1,
+        "l": 14,
+        "pctg": 0.067
+      }
+    },
+    "Northwest": {
+      "PNW_1": {
+        "name": "Seattle Totems",
+        "pod": "PNW",
+        "gp": 44,
+        "pts": 71,
+        "row": 34,
+        "l": 8,
+        "pctg": 0.807
+      },
+      "PNW_2": {
+        "name": "Bremerton Sockeyes",
+        "pod": "PNW",
+        "gp": 44,
+        "pts": 44,
+        "row": 21,
+        "l": 22,
+        "pctg": 0.5
+      },
+      "MTN_1": {
+        "name": "Vernal Oilers",
+        "pod": "MTN",
+        "gp": 44,
+        "pts": 84,
+        "row": 38,
+        "l": 2,
+        "pctg": 0.955
+      },
+      "MTN_2": {
+        "name": "McCall Smokejumpers",
+        "pod": "MTN",
+        "gp": 46,
+        "pts": 51,
+        "row": 24,
+        "l": 19,
+        "pctg": 0.554
+      },
+      "elim_5": {
+        "name": "Iron County Yeti",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 35,
+        "row": 14,
+        "l": 26,
+        "pctg": 0.398
+      },
+      "elim_6": {
+        "name": "Colorado Fighting Elk",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 1,
+        "row": 0,
+        "l": 43,
+        "pctg": 0.011
+      },
+      "elim_7": {
+        "name": "Rogue Valley Royals",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 9,
+        "row": 3,
+        "l": 39,
+        "pctg": 0.102
+      }
+    },
+    "Pacific": {
+      "1": {
+        "name": "Fresno Monsters",
+        "gp": 46,
+        "pts": 75,
+        "row": 34,
+        "l": 8,
+        "pctg": 0.815
+      },
+      "2": {
+        "name": "Henderson Force",
+        "gp": 46,
+        "pts": 74,
+        "row": 34,
+        "l": 8,
+        "pctg": 0.804
+      },
+      "3": {
+        "name": "Ontario Jr Reign",
+        "gp": 46,
+        "pts": 72,
+        "row": 33,
+        "l": 9,
+        "pctg": 0.783
+      },
+      "4": {
+        "name": "Ventura Vikings",
+        "gp": 46,
+        "pts": 55,
+        "row": 25,
+        "l": 17,
+        "pctg": 0.598
+      },
+      "elim_5": {
+        "name": "Long Beach Bombers",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 35,
+        "row": 15,
+        "l": 27,
+        "pctg": 0.38
+      },
+      "elim_6": {
+        "name": "San Diego Sabers",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 28,
+        "row": 12,
+        "l": 31,
+        "pctg": 0.304
+      },
+      "elim_7": {
+        "name": "Lake Tahoe Lakers",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 19,
+        "row": 8,
+        "l": 36,
+        "pctg": 0.207
+      }
+    },
+    "Southeast": {
+      "1": {
+        "name": "Hampton Roads Whalers",
+        "gp": 42,
+        "pts": 69,
+        "row": 31,
+        "l": 7,
+        "pctg": 0.821
+      },
+      "2": {
+        "name": "Potomac Patriots",
+        "gp": 44,
+        "pts": 67,
+        "row": 29,
+        "l": 10,
+        "pctg": 0.761
+      },
+      "3": {
+        "name": "Charlotte Rush",
+        "gp": 44,
+        "pts": 50,
+        "row": 22,
+        "l": 17,
+        "pctg": 0.568
+      },
+      "4": {
+        "name": "Charleston Colonials",
+        "gp": 44,
+        "pts": 41,
+        "row": 17,
+        "l": 22,
+        "pctg": 0.466
+      },
+      "5": {
+        "name": "Carolina Junior Hurricanes",
+        "gp": 42,
+        "pts": 31,
+        "row": 11,
+        "l": 24,
+        "pctg": 0.369
+      }
+    },
+    "St. Lawrence": {
+      "1": {
+        "name": "Hawkesbury Knights",
+        "gp": 44,
+        "pts": 68,
+        "row": 31,
+        "l": 10,
+        "pctg": 0.773
+      },
+      "2": {
+        "name": "Montreal Black Vees",
+        "gp": 43,
+        "pts": 59,
+        "row": 24,
+        "l": 12,
+        "pctg": 0.686
+      },
+      "3": {
+        "name": "Somang Hockey",
+        "gp": 44,
+        "pts": 57,
+        "row": 23,
+        "l": 13,
+        "pctg": 0.648
+      },
+      "4": {
+        "name": "St-Lazare Avalanche",
+        "gp": 44,
+        "pts": 51,
+        "row": 18,
+        "l": 17,
+        "pctg": 0.58
+      },
+      "5": {
+        "name": "Universel College Gatineau",
+        "gp": 44,
+        "pts": 50,
+        "row": 21,
+        "l": 17,
+        "pctg": 0.568
+      },
+      "6": {
+        "name": "Universel Sherbrooke",
+        "gp": 44,
+        "pts": 39,
+        "row": 16,
+        "l": 23,
+        "pctg": 0.443
+      },
+      "7": {
+        "name": "New York Dynamo",
+        "gp": 44,
+        "pts": 38,
+        "row": 16,
+        "l": 24,
+        "pctg": 0.432
+      },
+      "8": {
+        "name": "Kingston Wranglers",
+        "gp": 43,
+        "pts": 17,
+        "row": 7,
+        "l": 33,
+        "pctg": 0.198
+      },
+      "elim_9": {
+        "name": "Ottawa Valley Centennials",
+        "eliminated": true,
+        "gp": 44,
+        "pts": 13,
+        "row": 4,
+        "l": 36,
+        "pctg": 0.148
+      }
+    }
+  },
+  "Elite": {
+    "Atlantic": {
+      "1": {
+        "name": "Wilkes-Barre Scranton Knights",
+        "gp": 44,
+        "pts": 64,
+        "row": 28,
+        "l": 11,
+        "pctg": 0.727
+      },
+      "2": {
+        "name": "Hershey Cubs",
+        "gp": 43,
+        "pts": 51,
+        "row": 22,
+        "l": 14,
+        "pctg": 0.593
+      },
+      "3": {
+        "name": "Connecticut Junior Rangers",
+        "gp": 42,
+        "pts": 39,
+        "row": 17,
+        "l": 22,
+        "pctg": 0.464
+      },
+      "4": {
+        "name": "Red Bank Generals",
+        "gp": 44,
+        "pts": 39,
+        "row": 13,
+        "l": 22,
+        "pctg": 0.443
+      },
+      "5": {
+        "name": "P.A.L. Jr Islanders",
+        "gp": 43,
+        "pts": 36,
+        "row": 13,
+        "l": 23,
+        "pctg": 0.419
+      },
+      "6": {
+        "name": "Atlanta Mad Hatters",
+        "gp": 43,
+        "pts": 25,
+        "row": 8,
+        "l": 30,
+        "pctg": 0.291
+      }
+    },
+    "Florida": {
+      "1": {
+        "name": "Tampa Bay Juniors",
+        "gp": 42,
+        "pts": 68,
+        "row": 29,
+        "l": 7,
+        "pctg": 0.81
+      },
+      "2": {
+        "name": "Coral Springs Jr. Cats",
+        "gp": 42,
+        "pts": 55,
+        "row": 24,
+        "l": 12,
+        "pctg": 0.655
+      },
+      "3": {
+        "name": "Florida Junior Blades",
+        "gp": 43,
+        "pts": 48,
+        "row": 18,
+        "l": 17,
+        "pctg": 0.558
+      },
+      "4": {
+        "name": "Florida Eels",
+        "gp": 43,
+        "pts": 42,
+        "row": 17,
+        "l": 21,
+        "pctg": 0.488
+      },
+      "5": {
+        "name": "Typhoon Hockey Club",
+        "gp": 43,
+        "pts": 14,
+        "row": 5,
+        "l": 34,
+        "pctg": 0.163
+      },
+      "elim_6": {
+        "name": "Bold City Battalion",
+        "eliminated": true,
+        "gp": 3,
+        "pts": 0,
+        "row": 0,
+        "l": 3,
+        "pctg": 0
+      }
+    },
+    "Midwest": {
+      "1": {
+        "name": "Chicago Crush",
+        "gp": 44,
+        "pts": 80,
+        "row": 33,
+        "l": 3,
+        "pctg": 0.909
+      },
+      "2": {
+        "name": "Fort Wayne Spacemen",
+        "gp": 44,
+        "pts": 58,
+        "row": 26,
+        "l": 13,
+        "pctg": 0.659
+      },
+      "3": {
+        "name": "Metro Jets Elite",
+        "gp": 44,
+        "pts": 57,
+        "row": 19,
+        "l": 14,
+        "pctg": 0.648
+      },
+      "4": {
+        "name": "Chicago T-Rex",
+        "gp": 43,
+        "pts": 21,
+        "row": 9,
+        "l": 32,
+        "pctg": 0.244
+      },
+      "5": {
+        "name": "Chicago Cougars",
+        "gp": 44,
+        "pts": 10,
+        "row": 5,
+        "l": 39,
+        "pctg": 0.114
+      }
+    },
+    "New England": {
+      "1": {
+        "name": "Northern Cyclones",
+        "gp": 44,
+        "pts": 77,
+        "row": 33,
+        "l": 4,
+        "pctg": 0.875
+      },
+      "2": {
+        "name": "Montreal Knights",
+        "gp": 42,
+        "pts": 71,
+        "row": 31,
+        "l": 6,
+        "pctg": 0.845
+      },
+      "3": {
+        "name": "Islanders Hockey Club",
+        "gp": 44,
+        "pts": 42,
+        "row": 18,
+        "l": 22,
+        "pctg": 0.477
+      },
+      "4": {
+        "name": "South Shore Kings",
+        "gp": 44,
+        "pts": 28,
+        "row": 10,
+        "l": 28,
+        "pctg": 0.318
+      },
+      "5": {
+        "name": "Springfield Pics",
+        "gp": 43,
+        "pts": 26,
+        "row": 11,
+        "l": 29,
+        "pctg": 0.302
+      }
+    },
+    "Southeast": {
+      "1": {
+        "name": "Carolina Junior Hurricanes",
+        "gp": 42,
+        "pts": 74,
+        "row": 29,
+        "l": 5,
+        "pctg": 0.881
+      },
+      "2": {
+        "name": "Hampton Roads Whalers",
+        "gp": 42,
+        "pts": 71,
+        "row": 31,
+        "l": 5,
+        "pctg": 0.845
+      },
+      "3": {
+        "name": "Charlotte Rush",
+        "gp": 44,
+        "pts": 48,
+        "row": 18,
+        "l": 18,
+        "pctg": 0.545
+      },
+      "4": {
+        "name": "Potomac Patriots",
+        "gp": 44,
+        "pts": 33,
+        "row": 11,
+        "l": 25,
+        "pctg": 0.375
+      },
+      "5": {
+        "name": "Charleston Colonials",
+        "gp": 44,
+        "pts": 22,
+        "row": 9,
+        "l": 32,
+        "pctg": 0.25
+      }
+    }
+  },
+  "NCDC": {
+    "Atlantic": {
+      "1": {
+        "name": "P.A.L. Junior Islanders",
+        "gp": 46,
+        "pts": 67,
+        "row": 28,
+        "l": 11,
+        "pctg": 0.728
+      },
+      "2": {
+        "name": "Jersey Hitmen",
+        "gp": 48,
+        "pts": 64,
+        "row": 28,
+        "l": 14,
+        "pctg": 0.667
+      },
+      "3": {
+        "name": "Rockets Hockey Club",
+        "gp": 47,
+        "pts": 59,
+        "row": 23,
+        "l": 16,
+        "pctg": 0.628
+      },
+      "4": {
+        "name": "Mercer Chiefs",
+        "gp": 46,
+        "pts": 51,
+        "row": 17,
+        "l": 19,
+        "pctg": 0.554
+      },
+      "5": {
+        "name": "Connecticut Junior Rangers",
+        "gp": 45,
+        "pts": 44,
+        "row": 18,
+        "l": 22,
+        "pctg": 0.489
+      },
+      "elim_6": {
+        "name": "Wilkes-Barre Scranton Knights",
+        "eliminated": true,
+        "gp": 48,
+        "pts": 46,
+        "row": 14,
+        "l": 22,
+        "pctg": 0.479
+      },
+      "elim_7": {
+        "name": "West Chester Wolves",
+        "eliminated": true,
+        "gp": 48,
+        "pts": 43,
+        "row": 16,
+        "l": 23,
+        "pctg": 0.448
+      }
+    },
+    "NE Central": {
+      "1": {
+        "name": "Utica Jr Comets",
+        "gp": 50,
+        "pts": 83,
+        "row": 38,
+        "l": 6,
+        "pctg": 0.83
+      },
+      "2": {
+        "name": "Boston Jr. Rangers",
+        "gp": 47,
+        "pts": 67,
+        "row": 24,
+        "l": 11,
+        "pctg": 0.713
+      },
+      "3": {
+        "name": "Worcester Railers JHC",
+        "gp": 47,
+        "pts": 59,
+        "row": 25,
+        "l": 17,
+        "pctg": 0.628
+      },
+      "4": {
+        "name": "Boston Junior Bruins",
+        "gp": 50,
+        "pts": 60,
+        "row": 19,
+        "l": 14,
+        "pctg": 0.6
+      },
+      "elim_5": {
+        "name": "Springfield Pics",
+        "eliminated": true,
+        "gp": 47,
+        "pts": 38,
+        "row": 13,
+        "l": 26,
+        "pctg": 0.404
+      },
+      "elim_6": {
+        "name": "New York Dynamo",
+        "eliminated": true,
+        "gp": 48,
+        "pts": 38,
+        "row": 13,
+        "l": 28,
+        "pctg": 0.396
+      }
+    },
+    "NE East": {
+      "1": {
+        "name": "South Shore Kings",
+        "gp": 48,
+        "pts": 83,
+        "row": 36,
+        "l": 5,
+        "pctg": 0.865
+      },
+      "2": {
+        "name": "Islanders Hockey Club",
+        "gp": 48,
+        "pts": 72,
+        "row": 23,
+        "l": 10,
+        "pctg": 0.75
+      },
+      "3": {
+        "name": "Northern Cyclones",
+        "gp": 48,
+        "pts": 62,
+        "row": 16,
+        "l": 13,
+        "pctg": 0.646
+      },
+      "4": {
+        "name": "Thunder Hockey Club",
+        "gp": 47,
+        "pts": 40,
+        "row": 11,
+        "l": 24,
+        "pctg": 0.426
+      },
+      "elim_5": {
+        "name": "Boston Dogs",
+        "eliminated": true,
+        "gp": 48,
+        "pts": 37,
+        "row": 14,
+        "l": 26,
+        "pctg": 0.385
+      },
+      "elim_6": {
+        "name": "Universel Academy",
+        "eliminated": true,
+        "gp": 47,
+        "pts": 31,
+        "row": 10,
+        "l": 28,
+        "pctg": 0.33
+      }
+    },
+    "NE North": {
+      "1": {
+        "name": "Lewiston MAINEiacs",
+        "gp": 51,
+        "pts": 78,
+        "row": 31,
+        "l": 9,
+        "pctg": 0.765
+      },
+      "2": {
+        "name": "Universel Quebec",
+        "gp": 55,
+        "pts": 54,
+        "row": 20,
+        "l": 27,
+        "pctg": 0.491
+      },
+      "3": {
+        "name": "Woodstock NB Slammers",
+        "gp": 53,
+        "pts": 51,
+        "row": 19,
+        "l": 24,
+        "pctg": 0.481
+      },
+      "4": {
+        "name": "CT Chiefs North",
+        "gp": 53,
+        "pts": 42,
+        "row": 15,
+        "l": 30,
+        "pctg": 0.396
+      },
+      "elim_5": {
+        "name": "Northern Maine Pioneers",
+        "eliminated": true,
+        "gp": 51,
+        "pts": 36,
+        "row": 11,
+        "l": 32,
+        "pctg": 0.353
+      },
+      "elim_6": {
+        "name": "St. Stephen County Moose",
+        "eliminated": true,
+        "gp": 49,
+        "pts": 25,
+        "row": 8,
+        "l": 34,
+        "pctg": 0.255
+      },
+      "elim_7": {
+        "name": "New England Wolves",
+        "eliminated": true,
+        "gp": 17,
+        "pts": 20,
+        "row": 8,
+        "l": 7,
+        "pctg": 0.588
+      }
+    },
+    "Mountain": {
+      "1": {
+        "name": "Ogden Mustangs",
+        "gp": 46,
+        "pts": 72,
+        "row": 31,
+        "l": 9,
+        "pctg": 0.783
+      },
+      "2": {
+        "name": "Idaho Falls Spud Kings",
+        "gp": 44,
+        "pts": 68,
+        "row": 26,
+        "l": 8,
+        "pctg": 0.773
+      },
+      "3": {
+        "name": "Grand Junction River Hawks",
+        "gp": 48,
+        "pts": 58,
+        "row": 22,
+        "l": 18,
+        "pctg": 0.604
+      },
+      "4": {
+        "name": "Utah Outliers",
+        "gp": 46,
+        "pts": 54,
+        "row": 23,
+        "l": 16,
+        "pctg": 0.587
+      },
+      "elim_5": {
+        "name": "Pueblo Bulls",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 45,
+        "row": 18,
+        "l": 22,
+        "pctg": 0.489
+      },
+      "elim_6": {
+        "name": "Rock Springs Miners",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 33,
+        "row": 14,
+        "l": 28,
+        "pctg": 0.359
+      },
+      "elim_7": {
+        "name": "Casper Warbirds",
+        "eliminated": true,
+        "gp": 46,
+        "pts": 15,
+        "row": 4,
+        "l": 37,
+        "pctg": 0.163
+      }
+    }
+  }
+}

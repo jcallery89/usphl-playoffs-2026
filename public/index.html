@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025-26 USPHL Playoffs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f2f3;
+      color: #333;
+      min-height: 100vh;
+    }
+    /* ===== Header ===== */
+    header {
+      background: #fff;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      border-bottom: 3px solid #c91417;
+      position: relative;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #1a1a2e;
+    }
+    /* ===== Main Content Wrapper ===== */
+    .content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    /* ===== League Tabs ===== */
+    .league-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0;
+    }
+    .league-tab {
+      background: #fff;
+      color: #555;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      padding: 0.55rem 1.6rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .league-tab:hover { border-color: #c91417; color: #c91417; }
+    .league-tab.active {
+      background: #c91417;
+      border-color: #c91417;
+      color: #fff;
+    }
+    /* ===== Division Pills ===== */
+    .division-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0 1rem;
+      overflow-x: auto;
+    }
+    .division-pill {
+      background: #fff;
+      color: #666;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 0.3rem 1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .division-pill:hover {
+      border-color: #c91417;
+      color: #c91417;
+    }
+    .division-pill.active {
+      background: #c91417;
+      border-color: #c91417;
+      color: #fff;
+    }
+    /* ===== Section Containers ===== */
+    .standings-container, .bracket-container, .schedule-container {
+      margin-bottom: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0.5rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #c91417;
+      color: #1a1a2e;
+    }
+    .placeholder-msg { color: #999; font-style: italic; padding: 1rem 0; }
+    /* ===== Tables ===== */
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    table.data-table thead th {
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: #fff;
+      background: #1a1a2e;
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+    }
+    table.data-table thead th:first-child { border-radius: 4px 0 0 0; }
+    table.data-table thead th:last-child { border-radius: 0 4px 0 0; }
+    table.data-table tbody tr { border-bottom: 1px solid #eee; }
+    table.data-table tbody tr:nth-child(odd) { background: #fff; }
+    table.data-table tbody tr:nth-child(even) { background: #f8f8f9; }
+    table.data-table tbody tr:hover { background: #f0f0f2; }
+    table.data-table tbody td { padding: 0.55rem 0.75rem; color: #444; }
+    table.data-table tbody tr.qualified { border-left: 3px solid #2ecc71; }
+    table.data-table tbody tr.eliminated { opacity: 0.4; }
+    .bracket-container { }
+    .if-necessary { font-style: italic; opacity: 0.6; }
+    /* ===== Print ===== */
+    @media print {
+      body { background: #fff; color: #000; }
+      header { box-shadow: none; }
+      .league-tabs, .division-pills { display: none; }
+      .standings-container, .bracket-container, .schedule-container { box-shadow: none; }
+      .loading-overlay { display: none !important; }
+    }
+    /* ===== Bracket Layout ===== */
+    .bracket {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      min-height: 200px;
+      align-items: stretch;
+    }
+    .round {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      min-width: 220px;
+      gap: 0.75rem;
+    }
+    .round-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #c91417;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .matchup {
+      background: #f8f8f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      position: relative;
+    }
+    .matchup-team {
+      padding: 0.35rem 0;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #333;
+    }
+    .matchup-team.home { border-left: 3px solid #2ecc71; padding-left: 0.5rem; }
+    .matchup-seed { color: #999; font-size: 0.75rem; margin-right: 0.4rem; }
+    .matchup-vs { text-align: center; font-size: 0.65rem; color: #aaa; text-transform: uppercase; padding: 0.1rem 0; }
+    .matchup-bye { color: #999; font-style: italic; font-size: 0.8rem; padding: 0.35rem 0; }
+    .matchup-label { font-size: 0.7rem; color: #999; text-align: center; margin-top: 0.25rem; }
+    .series-label { font-size: 0.65rem; color: #c91417; text-align: center; opacity: 0.8; }
+    .pod-label { font-size: 0.8rem; color: #c91417; font-weight: 600; text-align: center; margin: 0.5rem 0 0.25rem; }
+    .bracket-bye-entry {
+      background: #fafafa;
+      border: 1px dashed #ddd;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+    .bracket-bye-entry .matchup-team { justify-content: center; }
+    .bracket-bye-tag { font-size: 0.65rem; color: #2ecc71; font-weight: 600; text-transform: uppercase; margin-left: 0.3rem; }
+    .dineen-schedule { max-width: 700px; }
+    .dineen-game { display: flex; gap: 1rem; padding: 0.6rem 0.75rem; border-bottom: 1px solid #eee; align-items: center; }
+    .dineen-game-num { font-weight: 700; color: #c91417; min-width: 60px; }
+    .dineen-game-date { color: #777; min-width: 140px; font-size: 0.85rem; }
+    .dineen-game-matchup { flex: 1; font-size: 0.9rem; color: #333; }
+    .dineen-game-note { font-size: 0.75rem; color: #999; font-style: italic; }
+    .ne-divisions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .ne-division-card { background: #f8f8f9; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+    .ne-division-card h3 { margin: 0 0 0.75rem; font-size: 0.95rem; color: #c91417; }
+    .bracket-section-title { font-size: 0.95rem; font-weight: 600; color: #c91417; margin: 1.5rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid rgba(201, 20, 23, 0.25); }
+    .pod-brackets { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 1rem; }
+    .pod-bracket-section { flex: 1; min-width: 250px; }
+    .schedule-info { background: #f8f8f9; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    .schedule-info p { margin: 0.3rem 0; font-size: 0.88rem; color: #555; }
+    .schedule-round-label { color: #c91417; font-weight: 600; }
+    /* ===== Team Logo ===== */
+    .team-logo { width: 20px; height: 20px; vertical-align: middle; margin-right: 6px; object-fit: contain; }
+    /* ===== Team Link ===== */
+    .team-link { color: #333; text-decoration: none; }
+    .team-link:hover { text-decoration: underline; color: #c91417; }
+    /* ===== Series Wins Badge ===== */
+    .series-wins { font-size: 0.8rem; font-weight: 700; min-width: 16px; text-align: center; padding: 0 4px; color: #555; }
+    .series-wins.leading { color: #2ecc71; }
+    /* ===== Series Status ===== */
+    .series-status { text-align: center; font-size: 0.72rem; color: #999; padding: 0.2rem 0 0; border-top: 1px solid #eee; margin-top: 0.3rem; }
+    .series-status.series-final { color: #2ecc71; font-weight: 600; }
+    /* ===== Loading Overlay ===== */
+    .loading-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(242,242,243,0.92);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.3s;
+    }
+    .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+    .loading-spinner { width: 40px; height: 40px; border: 4px solid rgba(201,20,23,0.2); border-top-color: #c91417; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { margin-top: 1rem; color: #777; font-size: 0.9rem; }
+    /* ===== Error ===== */
+    .error-msg { background: rgba(201,20,23,0.08); border: 1px solid rgba(201,20,23,0.3); border-radius: 8px; padding: 1rem; text-align: center; color: #c91417; margin: 2rem 0; }
+    /* ===== Last Updated ===== */
+    .last-updated { font-size: 0.7rem; color: #999; margin-top: 0.35rem; }
+    /* ===== Game Result Rows ===== */
+    .game-result { display: flex; gap: 0.75rem; padding: 0.4rem 0.75rem; border-bottom: 1px solid #eee; font-size: 0.84rem; align-items: center; }
+    .game-result:nth-child(odd) { background: #fafafa; }
+    .game-date { color: #777; min-width: 90px; font-size: 0.78rem; }
+    .game-teams { flex: 1; color: #333; }
+    .game-score { font-weight: 600; min-width: 50px; text-align: center; color: #333; }
+    .game-status { font-size: 0.72rem; color: #999; min-width: 50px; }
+    .game-status.final { color: #2ecc71; }
+    .game-winner { color: #2ecc71; }
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.2rem; }
+      .league-tab { padding: 0.45rem 1rem; font-size: 0.85rem; }
+      .division-pills { flex-wrap: wrap; justify-content: center; }
+      table.data-table { font-size: 0.78rem; }
+      table.data-table thead th, table.data-table tbody td { padding: 0.4rem 0.5rem; }
+      .team-logo { width: 16px; height: 16px; margin-right: 4px; }
+      .standings-container, .bracket-container, .schedule-container { padding: 0.75rem; border-radius: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading playoff data...</div>
+  </div>
+  <header>
+    <h1>2025-26 USPHL Playoffs</h1>
+    <div class="last-updated" id="lastUpdated"></div>
+  </header>
+  <div class="content-wrap">
+    <nav class="league-tabs">
+      <button class="league-tab active" data-league="NCDC">NCDC</button>
+      <button class="league-tab" data-league="Premier">Premier</button>
+      <button class="league-tab" data-league="Elite">Elite</button>
+    </nav>
+    <div class="division-pills" id="divisionPills"></div>
+    <div class="standings-container" id="standingsContainer">
+      <div class="section-title">Standings</div>
+      <div id="standingsContent" class="placeholder-msg">Loading...</div>
+    </div>
+    <div class="bracket-container" id="bracketContainer">
+      <div class="section-title">Bracket</div>
+      <div id="bracketContent" class="placeholder-msg">Loading...</div>
+    </div>
+    <div class="schedule-container" id="scheduleContainer">
+      <div class="section-title">Schedule</div>
+      <div id="scheduleContent" class="placeholder-msg">Loading...</div>
+    </div>
+  </div>
+
+  <!-- ===== RENDERING LOGIC ===== -->
+  <script>
+  // ===========================================================================
+  // CONFIGURATION & STATE
+  // ===========================================================================
+  const API_BASE = '';
+  let LEAGUE_DATA = null;
+  let BRACKET_STATE = null;
+  let TEAM_MAP = {};
+  let TEAM_MAPPINGS = null;
+  let INITIAL_SEEDS = null;
+  let BRACKET_CONFIG = null;
+  let isLoading = true;
+  let lastUpdated = null;
+
+  // ---- Division definitions per league ----
+  const DIVISIONS = {
+    NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup"],
+    Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence"],
+    Elite: ["Atlantic","Florida","Midwest","New England","Southeast"]
+  };
+
+  let currentLeague = "NCDC";
+  let currentDivision = "Atlantic";
+
+  // ---- DOM References ----
+  const tabButtons = document.querySelectorAll(".league-tab");
+  const pillContainer = document.getElementById("divisionPills");
+  const standingsContent = document.getElementById("standingsContent");
+  const bracketContent = document.getElementById("bracketContent");
+  const scheduleContent = document.getElementById("scheduleContent");
+
+  // ===========================================================================
+  // LOADING / ERROR UI
+  // ===========================================================================
+  function showLoading(show) {
+    var el = document.getElementById("loadingOverlay");
+    if (show) { el.classList.remove("hidden"); }
+    else { el.classList.add("hidden"); }
+  }
+
+  function showError(msg) {
+    showLoading(false);
+    standingsContent.innerHTML = '<div class="error-msg">' + msg + '</div>';
+    bracketContent.innerHTML = '';
+    scheduleContent.innerHTML = '';
+  }
+
+  function updateLastUpdatedUI() {
+    var el = document.getElementById("lastUpdated");
+    if (lastUpdated) {
+      el.textContent = "Last updated: " + lastUpdated.toLocaleString();
+    }
+  }
+
+  // ===========================================================================
+  // DATA LOADING
+  // ===========================================================================
+  async function loadData() {
+    showLoading(true);
+    try {
+      // Load team mappings, initial seeds, bracket config, and bracket state in parallel
+      var results = await Promise.all([
+        fetch(API_BASE + '/data/team-mappings.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/initial-seeds.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/bracket-config.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/api/bracket-state').then(function(r){
+          if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
+          return r.json();
+        }).catch(function(e){
+          console.warn('bracket-state API not available, trying fallback:', e.message);
+          return null;
+        })
+      ]);
+
+      TEAM_MAPPINGS = results[0];
+      INITIAL_SEEDS = results[1];
+      BRACKET_CONFIG = results[2];
+      BRACKET_STATE = results[3];
+
+      // Build team map for logo/link lookups
+      buildTeamMap();
+
+      // Build LEAGUE_DATA from state for backward compatibility
+      LEAGUE_DATA = buildLeagueDataFromState();
+
+      if (BRACKET_STATE && BRACKET_STATE._lastUpdated) {
+        lastUpdated = new Date(BRACKET_STATE._lastUpdated);
+      } else {
+        lastUpdated = new Date();
+      }
+      updateLastUpdatedUI();
+
+      isLoading = false;
+      showLoading(false);
+      renderAll();
+    } catch(err) {
+      console.error('Failed to load data:', err);
+      showError('Unable to load playoff data. Please refresh the page.');
+    }
+  }
+
+  // ===========================================================================
+  // BUILD TEAM MAP (name -> {logo_url, profile_url, team_id})
+  // ===========================================================================
+  function buildTeamMap() {
+    TEAM_MAP = {};
+    if (!TEAM_MAPPINGS) return;
+    var leagues = Object.keys(TEAM_MAPPINGS);
+    for (var li = 0; li < leagues.length; li++) {
+      var leagueName = leagues[li];
+      var divisions = Object.keys(TEAM_MAPPINGS[leagueName]);
+      for (var di = 0; di < divisions.length; di++) {
+        var divName = divisions[di];
+        var teams = Object.keys(TEAM_MAPPINGS[leagueName][divName]);
+        for (var ti = 0; ti < teams.length; ti++) {
+          var teamName = teams[ti];
+          var info = TEAM_MAPPINGS[leagueName][divName][teamName];
+          // Use compound key league:teamName so same name in different leagues resolves
+          var key = leagueName + ':' + teamName;
+          TEAM_MAP[key] = {
+            team_id: info.team_id,
+            logo_url: info.logo_url,
+            logo_file: info.logo_file,
+            profile_url: info.profile_url
+          };
+          // Also store by team name alone (last-write wins, used as fallback)
+          if (!TEAM_MAP[teamName]) {
+            TEAM_MAP[teamName] = TEAM_MAP[key];
+          }
+        }
+      }
+    }
+  }
+
+  // Helper: get team info from TEAM_MAP
+  function getTeamInfo(teamName, leagueName) {
+    if (!teamName) return null;
+    // Try league-specific key first
+    if (leagueName) {
+      var key = leagueName + ':' + teamName;
+      if (TEAM_MAP[key]) return TEAM_MAP[key];
+    }
+    // Fallback to name-only
+    return TEAM_MAP[teamName] || null;
+  }
+
+  // Helper: get current league name for TEAM_MAP lookups
+  function getLeagueForMap() {
+    if (currentLeague === 'Premier') return 'Premier';
+    if (currentLeague === 'Elite') return 'Elite';
+    return 'NCDC';
+  }
+
+  // Helper: get the NCDC division key in TEAM_MAPPINGS for a given display division
+  function getNcdcMappingDiv(divisionName) {
+    if (divisionName === 'NE Central') return 'NE Central';
+    if (divisionName === 'NE East') return 'NE East';
+    if (divisionName === 'NE North') return 'NE North';
+    return divisionName;
+  }
+
+  // Helper: build logo+link HTML for a team name
+  function teamNameHTML(name, leagueName) {
+    if (!name) return 'TBD';
+    var info = getTeamInfo(name, leagueName);
+    var html = '';
+    if (info && info.logo_url) {
+      html += '<img src="' + info.logo_url + '" class="team-logo" onerror="this.style.display=\'none\'" alt="">';
+    }
+    if (info && info.profile_url) {
+      html += '<a href="' + info.profile_url + '" target="_blank" class="team-link">' + name + '</a>';
+    } else {
+      html += name;
+    }
+    return html;
+  }
+
+  // ===========================================================================
+  // BUILD LEAGUE_DATA FROM STATE (backward compatibility bridge)
+  // ===========================================================================
+  function buildLeagueDataFromState() {
+    // If we have no initial seeds or bracket config, return null
+    if (!INITIAL_SEEDS || !BRACKET_CONFIG) return null;
+
+    var data = {
+      premier: {},
+      elite: {},
+      ncdc: {
+        conferences: {},
+        dineenCup: null
+      }
+    };
+
+    // --- Premier ---
+    buildLeagueFromSeeds(data, 'premier', 'Premier');
+    // --- Elite ---
+    buildLeagueFromSeeds(data, 'elite', 'Elite');
+    // --- NCDC ---
+    buildNCDC(data);
+
+    return data;
+  }
+
+  function buildLeagueFromSeeds(data, dataKey, seedsKey) {
+    var seeds = INITIAL_SEEDS[seedsKey];
+    var config = BRACKET_CONFIG[seedsKey];
+    if (!seeds || !config) return;
+
+    var divisions = Object.keys(seeds);
+    for (var di = 0; di < divisions.length; di++) {
+      var divName = divisions[di];
+      var divSeeds = seeds[divName];
+      var divConfig = config[divName];
+      if (!divConfig) continue;
+
+      var qualifyCount = divConfig.qualifyCount || 0;
+      var playoffFormat = divConfig.playoffFormat || {};
+
+      // Check if this is the Northwest pod-based division
+      if (divName === 'Northwest') {
+        data[dataKey][divName] = buildNorthwestDiv(divSeeds, divConfig);
+        continue;
+      }
+
+      // Standard division
+      var teams = [];
+      var eliminated = [];
+      var seedKeys = Object.keys(divSeeds);
+
+      for (var si = 0; si < seedKeys.length; si++) {
+        var key = seedKeys[si];
+        var entry = divSeeds[key];
+        var isElim = key.indexOf('elim_') === 0;
+        var seedNum = isElim ? parseInt(key.replace('elim_', ''), 10) : parseInt(key, 10);
+
+        var teamObj = {
+          seed: seedNum,
+          name: entry.name,
+          gp: entry.gp || 0,
+          pts: entry.pts || 0,
+          row: entry.row || 0,
+          l: entry.l || 0,
+          t: 0,
+          otw: 0, otl: 0, sow: 0, sol: 0,
+          pctg: entry.pctg || 0
+        };
+
+        if (isElim || entry.eliminated) {
+          eliminated.push(teamObj);
+        } else {
+          teams.push(teamObj);
+        }
+      }
+
+      // Sort teams by seed
+      teams.sort(function(a, b) { return a.seed - b.seed; });
+      eliminated.sort(function(a, b) { return a.seed - b.seed; });
+
+      data[dataKey][divName] = {
+        teams: teams,
+        eliminated: eliminated,
+        qualifyCount: qualifyCount,
+        playoffFormat: playoffFormat
+      };
+    }
+  }
+
+  function buildNorthwestDiv(divSeeds, divConfig) {
+    var pods = { PNW: { teams: [] }, MTN: { teams: [] } };
+    var eliminated = [];
+    var seedKeys = Object.keys(divSeeds);
+
+    for (var si = 0; si < seedKeys.length; si++) {
+      var key = seedKeys[si];
+      var entry = divSeeds[key];
+      var isElim = key.indexOf('elim_') === 0;
+
+      if (isElim) {
+        eliminated.push({
+          seed: parseInt(key.replace('elim_', ''), 10),
+          name: entry.name,
+          gp: entry.gp || 0, pts: entry.pts || 0, row: entry.row || 0, l: entry.l || 0,
+          t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: entry.pctg || 0
+        });
+      } else if (key.indexOf('PNW_') === 0) {
+        var pnwSeed = parseInt(key.replace('PNW_', ''), 10);
+        pods.PNW.teams.push({
+          seed: pnwSeed, name: entry.name,
+          gp: entry.gp || 0, pts: entry.pts || 0, row: entry.row || 0, l: entry.l || 0,
+          t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: entry.pctg || 0
+        });
+      } else if (key.indexOf('MTN_') === 0) {
+        var mtnSeed = parseInt(key.replace('MTN_', ''), 10);
+        pods.MTN.teams.push({
+          seed: mtnSeed, name: entry.name,
+          gp: entry.gp || 0, pts: entry.pts || 0, row: entry.row || 0, l: entry.l || 0,
+          t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: entry.pctg || 0
+        });
+      }
+    }
+
+    pods.PNW.teams.sort(function(a,b){ return a.seed - b.seed; });
+    pods.MTN.teams.sort(function(a,b){ return a.seed - b.seed; });
+    eliminated.sort(function(a,b){ return a.seed - b.seed; });
+
+    return {
+      pods: pods,
+      eliminated: eliminated,
+      qualifyCount: divConfig.qualifyCount || 4,
+      playoffFormat: divConfig.playoffFormat || {}
+    };
+  }
+
+  function buildNCDC(data) {
+    var seeds = INITIAL_SEEDS['NCDC'];
+    var config = BRACKET_CONFIG['NCDC'];
+    if (!seeds || !config) return;
+
+    // Build standard NCDC divisions: Atlantic, Mountain
+    var standardDivs = ['Atlantic', 'Mountain'];
+    for (var i = 0; i < standardDivs.length; i++) {
+      var divName = standardDivs[i];
+      if (!seeds[divName] || !config[divName]) continue;
+      var teams = [];
+      var eliminated = [];
+      var seedKeys = Object.keys(seeds[divName]);
+      for (var si = 0; si < seedKeys.length; si++) {
+        var key = seedKeys[si];
+        var entry = seeds[divName][key];
+        var isElim = key.indexOf('elim_') === 0;
+        var seedNum = isElim ? parseInt(key.replace('elim_', ''), 10) : parseInt(key, 10);
+        var teamObj = {
+          seed: seedNum, name: entry.name,
+          gp: entry.gp || 0, pts: entry.pts || 0, row: entry.row || 0, l: entry.l || 0,
+          t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: entry.pctg || 0
+        };
+        if (isElim || entry.eliminated) eliminated.push(teamObj);
+        else teams.push(teamObj);
+      }
+      teams.sort(function(a,b){ return a.seed - b.seed; });
+      eliminated.sort(function(a,b){ return a.seed - b.seed; });
+      data.ncdc.conferences[divName] = {
+        teams: teams,
+        eliminated: eliminated,
+        qualifyCount: config[divName].qualifyCount || 0,
+        playoffFormat: config[divName].playoffFormat || {}
+      };
+    }
+
+    // NE Conference: Central, East, North divisions
+    var neDivNames = { 'NE Central': 'Central', 'NE East': 'East', 'NE North': 'North' };
+    var neConf = {
+      divisions: {},
+      conferenceRounds: config['NCDC'] ? null : null
+    };
+
+    var neKeys = Object.keys(neDivNames);
+    for (var ni = 0; ni < neKeys.length; ni++) {
+      var neSeedKey = neKeys[ni];
+      var neDispName = neDivNames[neSeedKey];
+      if (!seeds[neSeedKey] || !config[neSeedKey]) continue;
+      var neTeams = [];
+      var neElim = [];
+      var neSeedKeys = Object.keys(seeds[neSeedKey]);
+      for (var nsi = 0; nsi < neSeedKeys.length; nsi++) {
+        var nk = neSeedKeys[nsi];
+        var ne = seeds[neSeedKey][nk];
+        var neIsElim = nk.indexOf('elim_') === 0;
+        var neSeedNum = neIsElim ? parseInt(nk.replace('elim_', ''), 10) : parseInt(nk, 10);
+        var neTeamObj = {
+          seed: neSeedNum, name: ne.name,
+          gp: ne.gp || 0, pts: ne.pts || 0, row: ne.row || 0, l: ne.l || 0,
+          t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: ne.pctg || 0
+        };
+        if (neIsElim || ne.eliminated) neElim.push(neTeamObj);
+        else neTeams.push(neTeamObj);
+      }
+      neTeams.sort(function(a,b){ return a.seed - b.seed; });
+      neElim.sort(function(a,b){ return a.seed - b.seed; });
+      neConf.divisions[neDispName] = {
+        teams: neTeams,
+        eliminated: neElim,
+        qualifyCount: config[neSeedKey].qualifyCount || 0,
+        playoffFormat: config[neSeedKey].playoffFormat || {}
+      };
+    }
+
+    // Conference rounds from bracket config
+    if (config['NE Conference'] && config['NE Conference'].conferenceRounds) {
+      neConf.conferenceRounds = config['NE Conference'].conferenceRounds;
+    } else {
+      neConf.conferenceRounds = {
+        roundRobin: { name: "Conference Round Robin", dates: "Apr 9-11", format: "Round Robin", matchups: [["Div1 Winner","Div3 Winner"],["Div3 Winner","Div2 Winner"],["Div2 Winner","Div1 Winner"]], note: "Hosted by #1 seed" },
+        conferenceFinal: { name: "Conference Final", dates: "Apr 14-16", format: "Bo3", matchups: [["RR #1","RR #2"]], note: "Hosted by #1 seed" }
+      };
+    }
+
+    data.ncdc.conferences["New England"] = neConf;
+
+    // Dineen Cup
+    if (config['Dineen Cup']) {
+      data.ncdc.dineenCup = config['Dineen Cup'];
+    } else {
+      data.ncdc.dineenCup = {
+        name: "Dineen Cup Championship", dates: "Apr 22-28",
+        teams: ["Atlantic Champion", "Mountain Champion", "New England Champion", "Idaho Falls Spud Kings"],
+        format: "Modified Double Elimination",
+        schedule: [
+          { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "Atlantic vs Mountain", note: "" },
+          { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "New England vs Idaho Falls", note: "Host auto-bid" },
+          { game: 3, date: "Apr 25", time: "2:00 PM", matchup: "0-1 vs 0-1", note: "Elimination" },
+          { game: 4, date: "Apr 25", time: "7:00 PM", matchup: "1-0 vs 1-0", note: "" },
+          { game: 5, date: "Apr 26", time: "7:00 PM", matchup: "1-1 vs 1-1", note: "Elimination" },
+          { game: 6, date: "Apr 27", time: "7:00 PM", matchup: "1-1 vs 2-0", note: "Final #1" },
+          { game: 7, date: "Apr 28", time: "7:00 PM", matchup: "2-1 vs 3-1", note: "If necessary - Final #2" }
+        ]
+      };
+    }
+  }
+
+  // ===========================================================================
+  // BRACKET STATE HELPERS
+  // ===========================================================================
+  // Helper to derive winsNeeded from format string
+  function getWinsNeededFromFormat(format) {
+    if (!format) return 2;
+    var f = format.toLowerCase();
+    if (f.indexOf('bo5') !== -1) return 3;
+    if (f.indexOf('bo7') !== -1) return 4;
+    if (f.indexOf('single') !== -1) return 1;
+    return 2; // Bo3 default
+  }
+
+  // Get series data for a specific matchup from BRACKET_STATE
+  // BRACKET_STATE keys are capitalized: Premier, Elite, NCDC
+  // Structure: BRACKET_STATE[league][division].rounds[].matchups[]
+  function getSeriesData(league, division, roundName, homeTeam, awayTeam) {
+    if (!BRACKET_STATE) return null;
+    var bs = BRACKET_STATE[league];
+    if (!bs) return null;
+    var divData = bs[division];
+    if (!divData || !divData.rounds) return null;
+    for (var ri = 0; ri < divData.rounds.length; ri++) {
+      var round = divData.rounds[ri];
+      if (round.roundName !== roundName) continue;
+      for (var mi = 0; mi < round.matchups.length; mi++) {
+        var m = round.matchups[mi];
+        if ((m.homeTeamName === homeTeam && m.awayTeamName === awayTeam) ||
+            (m.homeTeamName === awayTeam && m.awayTeamName === homeTeam)) {
+          return {
+            home: m.homeTeamName,
+            away: m.awayTeamName,
+            homeWins: m.homeWins || 0,
+            awayWins: m.awayWins || 0,
+            winsNeeded: getWinsNeededFromFormat(round.format),
+            status: m.status,
+            seriesSummary: m.seriesSummary || '',
+            games: m.games || [],
+            round: round.roundName
+          };
+        }
+      }
+    }
+    return null;
+  }
+
+  // Get all series for a division (from all rounds)
+  function getDivisionSeries(league, division) {
+    if (!BRACKET_STATE) return [];
+    var bs = BRACKET_STATE[league];
+    if (!bs) return [];
+    var divData = bs[division];
+    if (!divData || !divData.rounds) return [];
+    var seriesList = [];
+    for (var ri = 0; ri < divData.rounds.length; ri++) {
+      var round = divData.rounds[ri];
+      for (var mi = 0; mi < round.matchups.length; mi++) {
+        var m = round.matchups[mi];
+        if (m.homeTeamId && m.awayTeamId) {
+          seriesList.push({
+            home: m.homeTeamName,
+            away: m.awayTeamName,
+            homeWins: m.homeWins || 0,
+            awayWins: m.awayWins || 0,
+            winsNeeded: getWinsNeededFromFormat(round.format),
+            status: m.status,
+            seriesSummary: m.seriesSummary || '',
+            games: m.games || [],
+            round: round.roundName
+          });
+        }
+      }
+    }
+    return seriesList;
+  }
+
+  // Get all games for a division (flattened from all matchups)
+  function getDivisionGames(league, division) {
+    if (!BRACKET_STATE) return [];
+    var bs = BRACKET_STATE[league];
+    if (!bs) return [];
+    var divData = bs[division];
+    if (!divData || !divData.rounds) return [];
+    var games = [];
+    for (var ri = 0; ri < divData.rounds.length; ri++) {
+      var round = divData.rounds[ri];
+      for (var mi = 0; mi < round.matchups.length; mi++) {
+        var m = round.matchups[mi];
+        if (m.games && m.games.length > 0) {
+          for (var gi = 0; gi < m.games.length; gi++) {
+            var g = m.games[gi];
+            games.push({
+              date: g.date || '',
+              time: g.time || '',
+              home: g.home_team || m.homeTeamName,
+              away: g.away_team || m.awayTeamName,
+              homeScore: g.home_score,
+              awayScore: g.away_score,
+              status: g.result_string || 'Final',
+              round: round.roundName
+            });
+          }
+        }
+      }
+    }
+    return games;
+  }
+
+  // Build series status text
+  function seriesStatusText(series) {
+    if (!series) return '';
+    // Use seriesSummary from the bracket engine if available
+    if (series.seriesSummary && series.seriesSummary !== 'Series not started') return series.seriesSummary;
+    var hw = series.homeWins || 0;
+    var aw = series.awayWins || 0;
+    var needed = series.winsNeeded || 2;
+    if (hw >= needed) return series.home + ' wins ' + hw + '-' + aw;
+    if (aw >= needed) return series.away + ' wins ' + aw + '-' + hw;
+    if (hw === 0 && aw === 0) return '';
+    if (hw > aw) return series.home + ' leads ' + hw + '-' + aw;
+    if (aw > hw) return series.away + ' leads ' + aw + '-' + hw;
+    return 'Tied ' + hw + '-' + aw;
+  }
+
+  function isSeriesFinal(series) {
+    if (!series) return false;
+    return series.status === 'complete';
+  }
+
+  // ===========================================================================
+  // TAB SWITCHING
+  // ===========================================================================
+  tabButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var league = btn.getAttribute("data-league");
+      if (league === currentLeague) return;
+      tabButtons.forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      currentLeague = league;
+      populateDivisionPills(league);
+      currentDivision = DIVISIONS[league][0];
+      highlightActivePill();
+      renderAll();
+    });
+  });
+
+  // ===========================================================================
+  // DIVISION PILLS
+  // ===========================================================================
+  function populateDivisionPills(league) {
+    var divisions = DIVISIONS[league];
+    while (pillContainer.firstChild) { pillContainer.removeChild(pillContainer.firstChild); }
+    divisions.forEach(function(div) {
+      var pill = document.createElement("button");
+      pill.className = "division-pill";
+      pill.textContent = div;
+      pill.setAttribute("data-division", div);
+      pill.addEventListener("click", function() {
+        currentDivision = div;
+        highlightActivePill();
+        renderAll();
+      });
+      pillContainer.appendChild(pill);
+    });
+  }
+
+  function highlightActivePill() {
+    var pills = pillContainer.querySelectorAll(".division-pill");
+    pills.forEach(function(p) {
+      if (p.getAttribute("data-division") === currentDivision) p.classList.add("active");
+      else p.classList.remove("active");
+    });
+  }
+
+  // ===========================================================================
+  // DATA HELPERS
+  // ===========================================================================
+  function getDivisionData() {
+    if (!LEAGUE_DATA) return null;
+    if (currentLeague === "Premier") return LEAGUE_DATA.premier[currentDivision] || null;
+    if (currentLeague === "Elite") return LEAGUE_DATA.elite[currentDivision] || null;
+    if (currentLeague === "NCDC") {
+      if (currentDivision === "Atlantic") return LEAGUE_DATA.ncdc.conferences["Atlantic"];
+      if (currentDivision === "Mountain") return LEAGUE_DATA.ncdc.conferences["Mountain"];
+      if (currentDivision === "NE Central") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["Central"];
+      if (currentDivision === "NE East") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["East"];
+      if (currentDivision === "NE North") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["North"];
+      if (currentDivision === "NE Conference") return { _special: "ne_conference" };
+      if (currentDivision === "Dineen Cup") return { _special: "dineen_cup" };
+    }
+    return null;
+  }
+
+  function getAllTeams(data) {
+    if (!data) return [];
+    if (data.pods) {
+      var all = [];
+      Object.keys(data.pods).forEach(function(podName) {
+        data.pods[podName].teams.forEach(function(t) { all.push(Object.assign({}, t, { pod: podName })); });
+      });
+      return all;
+    }
+    return data.teams || [];
+  }
+
+  function findTeamBySeed(data, seed) {
+    if (!data) return null;
+    var teams = getAllTeams(data);
+    var eliminated = data.eliminated || [];
+    var all = teams.concat(eliminated);
+    for (var i = 0; i < all.length; i++) {
+      if (all[i].seed === seed) return all[i];
+    }
+    return null;
+  }
+
+  function getTeamLabel(data, seedOrLabel) {
+    if (typeof seedOrLabel === "number") {
+      var team = findTeamBySeed(data, seedOrLabel);
+      return team ? team.name : "Seed #" + seedOrLabel;
+    }
+    return String(seedOrLabel);
+  }
+
+  function getSeriesFormat(round, divFormat) {
+    var match = round.name.match(/\(Bo\d\)/);
+    if (match) return match[0].replace(/[()]/g, "");
+    return divFormat || "";
+  }
+
+  // ===========================================================================
+  // RENDER STANDINGS
+  // ===========================================================================
+  function renderStandings() {
+    standingsContent.className = "";
+    var data = getDivisionData();
+    if (!data) { standingsContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
+    if (data._special === "dineen_cup") { renderDineenStandings(); return; }
+    if (data._special === "ne_conference") { renderNEConferenceStandings(); return; }
+    if (data.pods) { renderPodStandings(data); return; }
+    var teams = data.teams || [];
+    var eliminated = data.eliminated || [];
+    var qualifyCount = data.qualifyCount || 0;
+    standingsContent.innerHTML = buildStandingsTable(teams, eliminated, qualifyCount);
+  }
+
+  function buildStandingsTable(teams, eliminated, qualifyCount, opts) {
+    opts = opts || {};
+    var leagueForMap = getLeagueForMap();
+    var html = '<table class="data-table"><thead><tr>';
+    html += '<th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th>';
+    html += '</tr></thead><tbody>';
+    teams.forEach(function(team) {
+      var rowClass = team.seed <= qualifyCount ? "qualified" : "";
+      html += '<tr class="' + rowClass + '">';
+      html += '<td>' + team.seed + '</td>';
+      html += '<td>' + (opts.podLabel && team.pod ? '<span style="color:#888;font-size:0.75rem;">[' + team.pod + ']</span> ' : '') + teamNameHTML(team.name, leagueForMap) + '</td>';
+      html += '<td>' + team.gp + '</td><td>' + team.pts + '</td><td>' + team.row + '</td><td>' + team.l + '</td>';
+      html += '<td>' + team.pctg.toFixed(3) + '</td></tr>';
+    });
+    eliminated.forEach(function(team) {
+      html += '<tr class="eliminated">';
+      html += '<td>' + team.seed + '</td>';
+      html += '<td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+      html += '<td>' + team.gp + '</td><td>' + team.pts + '</td><td>' + team.row + '</td><td>' + team.l + '</td>';
+      html += '<td>' + team.pctg.toFixed(3) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    return html;
+  }
+
+  function renderPodStandings(data) {
+    var leagueForMap = getLeagueForMap();
+    var html = '';
+    var podNames = Object.keys(data.pods);
+    podNames.forEach(function(podName) {
+      html += '<div class="pod-label">' + podName + ' Pod</div>';
+      html += '<table class="data-table"><thead><tr>';
+      html += '<th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th>';
+      html += '</tr></thead><tbody>';
+      data.pods[podName].teams.forEach(function(team) {
+        html += '<tr class="qualified">';
+        html += '<td>' + team.seed + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+        html += '<td>' + team.gp + '</td><td>' + team.pts + '</td><td>' + team.row + '</td><td>' + team.l + '</td>';
+        html += '<td>' + team.pctg.toFixed(3) + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    });
+    if (data.eliminated && data.eliminated.length > 0) {
+      html += '<div class="pod-label" style="color:#888;">Eliminated</div>';
+      html += '<table class="data-table"><thead><tr><th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th></tr></thead><tbody>';
+      data.eliminated.forEach(function(team) {
+        html += '<tr class="eliminated"><td>' + team.seed + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+        html += '<td>' + team.gp + '</td><td>' + team.pts + '</td><td>' + team.row + '</td><td>' + team.l + '</td>';
+        html += '<td>' + team.pctg.toFixed(3) + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    }
+    standingsContent.innerHTML = html;
+  }
+
+  function renderNEConferenceStandings() {
+    var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+    var divNames = ["Central", "East", "North"];
+    var leagueForMap = 'NCDC';
+    var html = '<div class="ne-divisions-grid">';
+    divNames.forEach(function(divName) {
+      var div = ne.divisions[divName];
+      html += '<div class="ne-division-card">';
+      html += '<h3>NE ' + divName + '</h3>';
+      html += '<table class="data-table"><thead><tr><th>Seed</th><th>Team</th><th>PTS</th><th>PTS%</th></tr></thead><tbody>';
+      div.teams.forEach(function(team) {
+        var rowClass = team.seed <= div.qualifyCount ? "qualified" : "";
+        html += '<tr class="' + rowClass + '"><td>' + team.seed + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+        html += '<td>' + team.pts + '</td><td>' + team.pctg.toFixed(3) + '</td></tr>';
+      });
+      if (div.eliminated) {
+        div.eliminated.forEach(function(team) {
+          html += '<tr class="eliminated"><td>' + team.seed + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+          html += '<td>' + team.pts + '</td><td>' + team.pctg.toFixed(3) + '</td></tr>';
+        });
+      }
+      html += '</tbody></table></div>';
+    });
+    html += '</div>';
+    standingsContent.innerHTML = html;
+  }
+
+  function renderDineenStandings() {
+    var dc = LEAGUE_DATA.ncdc.dineenCup;
+    var leagueForMap = 'NCDC';
+    var html = '<div class="schedule-info">';
+    html += '<p><strong>' + dc.name + '</strong></p>';
+    html += '<p>Dates: ' + dc.dates + '</p>';
+    html += '<p>Format: ' + dc.format + '</p></div>';
+    html += '<table class="data-table"><thead><tr><th>#</th><th>Entry</th><th>Notes</th></tr></thead><tbody>';
+    dc.teams.forEach(function(entry, idx) {
+      var note = (entry === "Idaho Falls Spud Kings") ? "Host auto-bid" : "Conference champion";
+      html += '<tr><td>' + (idx + 1) + '</td><td>' + teamNameHTML(entry, leagueForMap) + '</td>';
+      html += '<td style="color:#888;font-size:0.85rem;">' + note + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    standingsContent.innerHTML = html;
+  }
+
+  // ===========================================================================
+  // RENDER BRACKET
+  // ===========================================================================
+  function renderBracket() {
+    bracketContent.className = "";
+    var data = getDivisionData();
+    if (!data) { bracketContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
+    if (data._special === "dineen_cup") { renderDineenBracket(); return; }
+    if (data._special === "ne_conference") { renderNEConferenceBracket(); return; }
+    if (data.pods) { renderPodBracket(data); return; }
+    if (!data.playoffFormat || !data.playoffFormat.rounds) {
+      bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>';
+      return;
+    }
+    bracketContent.innerHTML = buildBracketHTML(data, data.playoffFormat, currentDivision);
+  }
+
+  function buildBracketHTML(data, format, divisionName) {
+    var rounds = format.rounds;
+    var seriesFormat = format.seriesFormat || "";
+    var leagueForMap = getLeagueForMap();
+    var html = '<div class="bracket">';
+
+    rounds.forEach(function(round, roundIdx) {
+      var roundSeriesFormat = getSeriesFormat(round, seriesFormat);
+      if (format.playInFormat && round.name.indexOf("Play-In") !== -1) {
+        roundSeriesFormat = format.playInFormat;
+      }
+      html += '<div class="round">';
+      html += '<div class="round-title">' + round.name;
+      if (roundSeriesFormat && round.name.indexOf("Bo") === -1) {
+        html += ' <span class="series-label">(' + roundSeriesFormat + ')</span>';
+      }
+      html += '</div>';
+
+      // Byes
+      if (round.byes && round.byes.length > 0) {
+        round.byes.forEach(function(byeSeed) {
+          var teamName = getTeamLabel(data, byeSeed);
+          html += '<div class="bracket-bye-entry"><div class="matchup-team">';
+          html += '<span><span class="matchup-seed">#' + byeSeed + '</span> ' + teamNameHTML(teamName, leagueForMap) + '</span>';
+          html += '<span class="bracket-bye-tag">BYE</span></div></div>';
+        });
+      }
+
+      // Matchups
+      round.matchups.forEach(function(matchup) {
+        var homeSeed = matchup[0];
+        var awaySeed = matchup[1];
+        var homeName = null, awayName = null;
+        var homeLabel, awayLabel;
+
+        if (typeof homeSeed === "number") {
+          var homeTeam = findTeamBySeed(data, homeSeed);
+          homeName = homeTeam ? homeTeam.name : null;
+          homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + teamNameHTML(homeName || "TBD", leagueForMap);
+        } else {
+          homeLabel = String(homeSeed);
+        }
+        if (typeof awaySeed === "number") {
+          var awayTeam = findTeamBySeed(data, awaySeed);
+          awayName = awayTeam ? awayTeam.name : null;
+          awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + teamNameHTML(awayName || "TBD", leagueForMap);
+        } else {
+          awayLabel = String(awaySeed);
+        }
+
+        // Look up series data
+        var series = null;
+        if (homeName && awayName && divisionName) {
+          series = getSeriesData(currentLeague, divisionName, round.name, homeName, awayName);
+        }
+
+        html += '<div class="matchup">';
+
+        // Home team with wins badge
+        html += '<div class="matchup-team home"><span>' + homeLabel + '</span>';
+        if (series) {
+          var hw = (series.home === homeName) ? series.homeWins : series.awayWins;
+          var isLeading = hw > 0;
+          html += '<span class="series-wins' + (isLeading ? ' leading' : '') + '">' + (hw || 0) + '</span>';
+        }
+        html += '</div>';
+
+        html += '<div class="matchup-vs">vs</div>';
+
+        // Away team with wins badge
+        html += '<div class="matchup-team away"><span>' + awayLabel + '</span>';
+        if (series) {
+          var aw2 = (series.away === awayName) ? series.awayWins : series.homeWins;
+          var isLeading2 = aw2 > 0;
+          html += '<span class="series-wins' + (isLeading2 ? ' leading' : '') + '">' + (aw2 || 0) + '</span>';
+        }
+        html += '</div>';
+
+        // Series status
+        if (series) {
+          var statusText = seriesStatusText(series);
+          if (statusText) {
+            var isFinal = isSeriesFinal(series);
+            html += '<div class="series-status' + (isFinal ? ' series-final' : '') + '">' + statusText + '</div>';
+          }
+        }
+
+        if (round.note) {
+          html += '<div class="matchup-label">' + round.note + '</div>';
+        }
+        html += '</div>';
+      });
+
+      html += '</div>';
+    });
+
+    html += '</div>';
+    return html;
+  }
+
+  function renderPodBracket(data) {
+    var format = data.playoffFormat;
+    var leagueForMap = getLeagueForMap();
+    if (!format || !format.rounds) { bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>'; return; }
+
+    var html = '<div class="pod-brackets">';
+
+    // PNW Pod
+    html += '<div class="pod-bracket-section"><div class="pod-label">PNW Pod</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">Pod Round <span class="series-label">(Bo3)</span></div>';
+    var pnwTeams = data.pods["PNW"].teams;
+    html += '<div class="matchup">';
+    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(pnwTeams[0].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-vs">vs</div>';
+    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(pnwTeams[1].name, leagueForMap) + '</span></div>';
+    html += '</div></div></div></div>';
+
+    // MTN Pod
+    html += '<div class="pod-bracket-section"><div class="pod-label">MTN Pod</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">Pod Round <span class="series-label">(Bo3)</span></div>';
+    var mtnTeams = data.pods["MTN"].teams;
+    html += '<div class="matchup">';
+    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(mtnTeams[0].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-vs">vs</div>';
+    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(mtnTeams[1].name, leagueForMap) + '</span></div>';
+    html += '</div></div></div></div>';
+
+    html += '</div>';
+
+    // Divisional Finals
+    html += '<div class="bracket-section-title">Divisional Finals</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">Divisional Finals <span class="series-label">(Bo3)</span></div>';
+    html += '<div class="matchup"><div class="matchup-team home">PNW Pod Winner</div>';
+    html += '<div class="matchup-vs">vs</div>';
+    html += '<div class="matchup-team away">MTN Pod Winner</div></div>';
+    html += '</div></div>';
+
+    bracketContent.innerHTML = html;
+  }
+
+  function renderNEConferenceBracket() {
+    var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+    var divNames = ["Central", "East", "North"];
+    var neDivKeys = { "Central": "NE Central", "East": "NE East", "North": "NE North" };
+    var html = '';
+
+    divNames.forEach(function(divName) {
+      var div = ne.divisions[divName];
+      html += '<div class="bracket-section-title">NE ' + divName + ' Division Playoffs</div>';
+      html += buildBracketHTML(div, div.playoffFormat, neDivKeys[divName]);
+    });
+
+    // Conference Round Robin
+    var rr = ne.conferenceRounds.roundRobin;
+    html += '<div class="bracket-section-title">' + rr.name + ' (' + rr.dates + ')</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">' + rr.format + '</div>';
+    rr.matchups.forEach(function(matchup) {
+      html += '<div class="matchup"><div class="matchup-team home">' + matchup[0] + '</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">' + matchup[1] + '</div></div>';
+    });
+    html += '</div></div>';
+    if (rr.note) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + rr.note + '</div>';
+
+    // Conference Final
+    var cf = ne.conferenceRounds.conferenceFinal;
+    html += '<div class="bracket-section-title">' + cf.name + ' (' + cf.dates + ')</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">' + cf.name + ' <span class="series-label">(' + cf.format + ')</span></div>';
+    cf.matchups.forEach(function(matchup) {
+      html += '<div class="matchup"><div class="matchup-team home">' + matchup[0] + '</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">' + matchup[1] + '</div></div>';
+    });
+    html += '</div></div>';
+    if (cf.note) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + cf.note + '</div>';
+
+    bracketContent.innerHTML = html;
+  }
+
+  function renderDineenBracket() {
+    var dc = LEAGUE_DATA.ncdc.dineenCup;
+    var html = '<div class="bracket-section-title">Dineen Cup -- Modified Double Elimination</div>';
+    html += '<div class="bracket">';
+
+    html += '<div class="round"><div class="round-title">Opening Round</div>';
+    html += '<div class="matchup"><div class="matchup-team home">Atlantic Champ</div><div class="matchup-vs">vs</div><div class="matchup-team away">Mountain Champ</div><div class="matchup-label">Game 1</div></div>';
+    html += '<div class="matchup"><div class="matchup-team home">NE Champ</div><div class="matchup-vs">vs</div><div class="matchup-team away">Idaho Falls</div><div class="matchup-label">Game 2</div></div></div>';
+
+    html += '<div class="round"><div class="round-title">Day 2</div>';
+    html += '<div class="matchup"><div class="matchup-team home">0-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">0-1 Team</div><div class="matchup-label">Game 3 (Elimination)</div></div>';
+    html += '<div class="matchup"><div class="matchup-team home">1-0 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">1-0 Team</div><div class="matchup-label">Game 4</div></div></div>';
+
+    html += '<div class="round"><div class="round-title">Day 3</div>';
+    html += '<div class="matchup"><div class="matchup-team home">1-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">1-1 Team</div><div class="matchup-label">Game 5 (Elimination)</div></div></div>';
+
+    html += '<div class="round"><div class="round-title">Finals</div>';
+    html += '<div class="matchup"><div class="matchup-team home">Last 1-1 Team</div><div class="matchup-vs">vs</div><div class="matchup-team away">2-0 Team</div><div class="matchup-label">Game 6 -- Final</div></div>';
+    html += '<div class="matchup" style="opacity:0.6;"><div class="matchup-team home">TBD</div><div class="matchup-vs">vs</div><div class="matchup-team away">TBD</div><div class="matchup-label"><span class="if-necessary">Game 7 -- If Necessary</span></div></div></div>';
+
+    html += '</div>';
+    bracketContent.innerHTML = html;
+  }
+
+  // ===========================================================================
+  // RENDER SCHEDULE
+  // ===========================================================================
+  function renderSchedule() {
+    scheduleContent.className = "";
+    var data = getDivisionData();
+    if (!data) { scheduleContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
+    if (data._special === "dineen_cup") { renderDineenSchedule(); return; }
+    if (data._special === "ne_conference") { renderNEConferenceSchedule(); return; }
+    if (!data.playoffFormat || !data.playoffFormat.rounds) {
+      scheduleContent.innerHTML = '<p class="placeholder-msg">No schedule data available.</p>';
+      return;
+    }
+
+    // Check if we have live game data from BRACKET_STATE
+    var games = getDivisionGames(currentLeague, currentDivision);
+    if (games && games.length > 0) {
+      renderLiveSchedule(data, games);
+      return;
+    }
+
+    // Fall back to generic round structure
+    var format = data.playoffFormat;
+    var rounds = format.rounds;
+    var seriesFormat = format.seriesFormat || "";
+    var leagueForMap = getLeagueForMap();
+    var html = '<table class="data-table"><thead><tr><th>Round</th><th>Format</th><th>Matchups</th><th>Notes</th></tr></thead><tbody>';
+
+    rounds.forEach(function(round) {
+      var roundFormat = getSeriesFormat(round, seriesFormat);
+      if (format.playInFormat && round.name.indexOf("Play-In") !== -1) roundFormat = format.playInFormat;
+      var matchupDescs = [];
+      if (round.byes && round.byes.length > 0) {
+        round.byes.forEach(function(byeSeed) {
+          matchupDescs.push("#" + byeSeed + " " + getTeamLabel(data, byeSeed) + " (BYE)");
+        });
+      }
+      round.matchups.forEach(function(matchup) {
+        var home = typeof matchup[0] === "number" ? "#" + matchup[0] + " " + getTeamLabel(data, matchup[0]) : String(matchup[0]);
+        var away = typeof matchup[1] === "number" ? "#" + matchup[1] + " " + getTeamLabel(data, matchup[1]) : String(matchup[1]);
+        matchupDescs.push(home + " vs " + away);
+      });
+      var notes = round.note ? [round.note] : [];
+      html += '<tr><td><span class="schedule-round-label">' + round.name + '</span></td>';
+      html += '<td>' + roundFormat + '</td>';
+      html += '<td>' + matchupDescs.join('<br>') + '</td>';
+      html += '<td style="color:#888;font-size:0.85rem;">' + (notes.length > 0 ? notes.join('; ') : 'Dates TBD') + '</td></tr>';
+    });
+
+    html += '</tbody></table>';
+    scheduleContent.innerHTML = html;
+  }
+
+  // Render schedule with actual game results from BRACKET_STATE
+  function renderLiveSchedule(data, games) {
+    var leagueForMap = getLeagueForMap();
+    var series = getDivisionSeries(currentLeague, currentDivision);
+
+    // Group games by series/round
+    var html = '';
+    if (series && series.length > 0) {
+      series.forEach(function(s) {
+        html += '<div class="bracket-section-title">' + (s.round || 'Playoffs') + ': ' + s.home + ' vs ' + s.away + '</div>';
+        var statusText = seriesStatusText(s);
+        if (statusText) {
+          var isFinal = isSeriesFinal(s);
+          html += '<div class="series-status' + (isFinal ? ' series-final' : '') + '" style="margin-bottom:0.5rem;">' + statusText + '</div>';
+        }
+        // Find games for this series
+        var seriesGames = games.filter(function(g) {
+          return (g.home === s.home && g.away === s.away) || (g.home === s.away && g.away === s.home);
+        });
+        seriesGames.sort(function(a,b) {
+          return (a.date || '').localeCompare(b.date || '');
+        });
+        if (seriesGames.length > 0) {
+          seriesGames.forEach(function(g) {
+            html += '<div class="game-result">';
+            html += '<div class="game-date">' + (g.date || '') + '</div>';
+            html += '<div class="game-teams">';
+            var homeWon = g.homeScore > g.awayScore;
+            var awayWon = g.awayScore > g.homeScore;
+            html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+            html += ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + ' - ' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ';
+            html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+            html += '</div>';
+            var statusClass = g.status === 'Final' ? ' final' : '';
+            html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
+            html += '</div>';
+          });
+        } else {
+          html += '<p class="placeholder-msg" style="padding:0.3rem 0;">No games played yet</p>';
+        }
+      });
+    } else {
+      // No series info, just list all games
+      games.sort(function(a,b) { return (a.date || '').localeCompare(b.date || ''); });
+      games.forEach(function(g) {
+        html += '<div class="game-result">';
+        html += '<div class="game-date">' + (g.date || '') + '</div>';
+        html += '<div class="game-teams">' + teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + ' - ' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ' + teamNameHTML(g.away, leagueForMap) + '</div>';
+        html += '<div class="game-status">' + (g.status || '') + '</div>';
+        html += '</div>';
+      });
+    }
+
+    scheduleContent.innerHTML = html;
+  }
+
+  function renderDineenSchedule() {
+    var dc = LEAGUE_DATA.ncdc.dineenCup;
+    var html = '<div class="dineen-schedule">';
+    html += '<div class="schedule-info"><p><strong>' + dc.name + '</strong> &mdash; ' + dc.dates + '</p>';
+    html += '<p>Format: ' + dc.format + '</p></div>';
+    dc.schedule.forEach(function(g) {
+      html += '<div class="dineen-game">';
+      html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
+      html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
+      html += '<div class="dineen-game-matchup">' + g.matchup + '</div>';
+      if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+    scheduleContent.innerHTML = html;
+  }
+
+  function renderNEConferenceSchedule() {
+    var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+    var divNames = ["Central", "East", "North"];
+    var neDivKeys = { "Central": "NE Central", "East": "NE East", "North": "NE North" };
+    var html = '';
+
+    // Check for live games for each division
+    var hasLiveGames = false;
+    divNames.forEach(function(divName) {
+      var games = getDivisionGames('NCDC', neDivKeys[divName]);
+      if (games && games.length > 0) hasLiveGames = true;
+    });
+
+    if (hasLiveGames) {
+      divNames.forEach(function(divName) {
+        var games = getDivisionGames('NCDC', neDivKeys[divName]);
+        if (games && games.length > 0) {
+          html += '<div class="bracket-section-title">NE ' + divName + '</div>';
+          var div = ne.divisions[divName];
+          var tempLeague = currentLeague;
+          var tempDiv = currentDivision;
+          currentLeague = 'NCDC';
+          currentDivision = neDivKeys[divName];
+          var series = getDivisionSeries('NCDC', neDivKeys[divName]);
+          if (series && series.length > 0) {
+            var leagueForMap = 'NCDC';
+            series.forEach(function(s) {
+              var statusText = seriesStatusText(s);
+              html += '<div style="font-size:0.85rem;color:#ccc;margin:0.5rem 0 0.25rem;">' + s.home + ' vs ' + s.away;
+              if (statusText) {
+                var isFinal = isSeriesFinal(s);
+                html += ' &mdash; <span class="' + (isFinal ? 'series-final' : '') + '" style="color:' + (isFinal ? '#2ecc71' : '#aaa') + ';">' + statusText + '</span>';
+              }
+              html += '</div>';
+              var seriesGames = games.filter(function(g) {
+                return (g.home === s.home && g.away === s.away) || (g.home === s.away && g.away === s.home);
+              });
+              seriesGames.forEach(function(g) {
+                html += '<div class="game-result"><div class="game-date">' + (g.date || '') + '</div>';
+                html += '<div class="game-teams">' + teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + '-' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ' + teamNameHTML(g.away, leagueForMap) + '</div>';
+                html += '<div class="game-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div></div>';
+              });
+            });
+          }
+          currentLeague = tempLeague;
+          currentDivision = tempDiv;
+        }
+      });
+      scheduleContent.innerHTML = html;
+      return;
+    }
+
+    // Fallback: generic round structure
+    html += '<div class="bracket-section-title">Division Playoffs</div>';
+    html += '<table class="data-table"><thead><tr><th>Division</th><th>Round</th><th>Format</th><th>Matchups</th></tr></thead><tbody>';
+    divNames.forEach(function(divName) {
+      var div = ne.divisions[divName];
+      var format = div.playoffFormat;
+      format.rounds.forEach(function(round) {
+        var roundFormat = getSeriesFormat(round, format.seriesFormat);
+        var matchupDescs = [];
+        round.matchups.forEach(function(matchup) {
+          var home = typeof matchup[0] === "number" ? "#" + matchup[0] + " " + getTeamLabel(div, matchup[0]) : String(matchup[0]);
+          var away = typeof matchup[1] === "number" ? "#" + matchup[1] + " " + getTeamLabel(div, matchup[1]) : String(matchup[1]);
+          matchupDescs.push(home + " vs " + away);
+        });
+        html += '<tr><td>NE ' + divName + '</td><td><span class="schedule-round-label">' + round.name + '</span></td>';
+        html += '<td>' + roundFormat + '</td><td>' + matchupDescs.join('<br>') + '</td></tr>';
+      });
+    });
+    html += '</tbody></table>';
+
+    var rr = ne.conferenceRounds.roundRobin;
+    html += '<div class="bracket-section-title">' + rr.name + '</div>';
+    html += '<div class="schedule-info"><p>Dates: ' + rr.dates + '</p>';
+    html += '<p>Format: ' + rr.format + ' &mdash; 3 division winners</p>';
+    if (rr.note) html += '<p>' + rr.note + '</p>';
+    html += '</div>';
+    html += '<table class="data-table"><thead><tr><th>Game</th><th>Matchup</th></tr></thead><tbody>';
+    rr.matchups.forEach(function(matchup, idx) {
+      html += '<tr><td>Game ' + (idx + 1) + '</td><td>' + matchup[0] + ' vs ' + matchup[1] + '</td></tr>';
+    });
+    html += '</tbody></table>';
+
+    var cf = ne.conferenceRounds.conferenceFinal;
+    html += '<div class="bracket-section-title">' + cf.name + '</div>';
+    html += '<div class="schedule-info"><p>Dates: ' + cf.dates + '</p>';
+    html += '<p>Format: ' + cf.format + ' &mdash; Top 2 from Round Robin</p>';
+    if (cf.note) html += '<p>' + cf.note + '</p>';
+    html += '</div>';
+
+    scheduleContent.innerHTML = html;
+  }
+
+  // ===========================================================================
+  // RENDER ALL
+  // ===========================================================================
+  function renderAll() {
+    if (!LEAGUE_DATA) return;
+    renderStandings();
+    renderBracket();
+    renderSchedule();
+  }
+
+  // ===========================================================================
+  // AUTO-REFRESH (every 5 minutes when tab is visible)
+  // ===========================================================================
+  var refreshInterval = null;
+
+  function startAutoRefresh() {
+    if (refreshInterval) clearInterval(refreshInterval);
+    refreshInterval = setInterval(function() {
+      if (document.hidden) return;
+      refreshGameData();
+    }, 5 * 60 * 1000);
+  }
+
+  async function refreshGameData() {
+    try {
+      var resp = await fetch(API_BASE + '/api/bracket-state');
+      if (!resp.ok) return;
+      var newState = await resp.json();
+      BRACKET_STATE = newState;
+      if (BRACKET_STATE._lastUpdated) {
+        lastUpdated = new Date(BRACKET_STATE._lastUpdated);
+        updateLastUpdatedUI();
+      }
+      // Re-render current view
+      renderAll();
+    } catch(e) {
+      console.warn('Auto-refresh failed:', e.message);
+    }
+  }
+
+  // ===========================================================================
+  // RESIZE OBSERVER FOR IFRAME HEIGHT
+  // ===========================================================================
+  (function() {
+    if (typeof ResizeObserver === 'undefined') return;
+    var ro = new ResizeObserver(function() {
+      var height = document.documentElement.scrollHeight;
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'resize', height: height }, '*');
+      }
+    });
+    ro.observe(document.documentElement);
+  })();
+
+  // ===========================================================================
+  // INITIALIZE
+  // ===========================================================================
+  (function init() {
+    currentLeague = "NCDC";
+    currentDivision = "Atlantic";
+    populateDivisionPills(currentLeague);
+    highlightActivePill();
+    loadData().then(function() {
+      startAutoRefresh();
+    });
+  })();
+  </script>
+</body>
+</html>

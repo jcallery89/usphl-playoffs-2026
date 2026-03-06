@@ -1,0 +1,967 @@
+{
+  "Premier": {
+    "Atlantic": {
+      "qualifyCount": 8,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                1,
+                8
+              ],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Florida": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Play-In",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Great Lakes": {
+      "qualifyCount": 6,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                "Lowest Seed"
+              ],
+              [
+                2,
+                "Second Lowest"
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Midwest": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                "R1 Winner"
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "New England": {
+      "qualifyCount": 7,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "North": {
+      "qualifyCount": 7,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Northwest": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Pod Round",
+            "matchups": [
+              [
+                "PNW1",
+                "PNW2"
+              ],
+              [
+                "MTN1",
+                "MTN2"
+              ]
+            ]
+          },
+          {
+            "name": "Divisional Finals",
+            "matchups": [
+              [
+                "Pod Winner 1",
+                "Pod Winner 2"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "Pacific": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Southeast": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Play-In",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "St. Lawrence": {
+      "qualifyCount": 8,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                1,
+                8
+              ],
+              [
+                2,
+                7
+              ],
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Finals",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    }
+  },
+  "Elite": {
+    "Atlantic": {
+      "qualifyCount": 6,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                3,
+                6
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Florida": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Play-In",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Midwest": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Round 2",
+            "matchups": [
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                "R1 Winner"
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "New England": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "playInFormat": "Single Game",
+        "rounds": [
+          {
+            "name": "Play-In",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ],
+            "note": "Single game, #4 hosts"
+          },
+          {
+            "name": "Round 1",
+            "matchups": [
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                "PI Winner"
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Southeast": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3",
+        "rounds": [
+          {
+            "name": "Play-In",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Championship",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    }
+  },
+  "NCDC": {
+    "Atlantic": {
+      "qualifyCount": 5,
+      "playoffFormat": {
+        "seriesFormat": "Bo3/Bo5",
+        "rounds": [
+          {
+            "name": "Play-In (Bo3)",
+            "matchups": [
+              [
+                4,
+                5
+              ]
+            ],
+            "byes": [
+              1,
+              2,
+              3
+            ],
+            "note": "#4 hosts"
+          },
+          {
+            "name": "Semifinals (Bo5)",
+            "matchups": [
+              [
+                1,
+                "PI Winner"
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Final (Bo5)",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "NE Central": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo5",
+        "rounds": [
+          {
+            "name": "Division Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Division Final",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "NE East": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo5",
+        "rounds": [
+          {
+            "name": "Division Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Division Final",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "NE North": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo5",
+        "rounds": [
+          {
+            "name": "Division Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Division Final",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "NE Conference": {
+      "conferenceRounds": {
+        "roundRobin": {
+          "name": "Conference Round Robin",
+          "dates": "Apr 9-11",
+          "format": "Round Robin",
+          "matchups": [
+            [
+              "Div1 Winner",
+              "Div3 Winner"
+            ],
+            [
+              "Div3 Winner",
+              "Div2 Winner"
+            ],
+            [
+              "Div2 Winner",
+              "Div1 Winner"
+            ]
+          ],
+          "note": "Hosted by #1 seed"
+        },
+        "conferenceFinal": {
+          "name": "Conference Final",
+          "dates": "Apr 14-16",
+          "format": "Bo3",
+          "matchups": [
+            [
+              "RR #1",
+              "RR #2"
+            ]
+          ],
+          "note": "Hosted by #1 seed"
+        }
+      }
+    },
+    "Mountain": {
+      "qualifyCount": 4,
+      "playoffFormat": {
+        "seriesFormat": "Bo5",
+        "rounds": [
+          {
+            "name": "Semifinals",
+            "matchups": [
+              [
+                1,
+                4
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "byes": []
+          },
+          {
+            "name": "Final",
+            "matchups": [
+              [
+                1,
+                2
+              ]
+            ],
+            "byes": []
+          }
+        ]
+      }
+    },
+    "Dineen Cup": {
+      "name": "Dineen Cup Championship",
+      "dates": "Apr 22-28",
+      "teams": [
+        "Atlantic Champion",
+        "Mountain Champion",
+        "New England Champion",
+        "Idaho Falls Spud Kings"
+      ],
+      "format": "Modified Double Elimination",
+      "schedule": [
+        {
+          "game": 1,
+          "date": "Apr 24",
+          "time": "2:00 PM",
+          "matchup": "Atlantic vs Mountain",
+          "note": ""
+        },
+        {
+          "game": 2,
+          "date": "Apr 24",
+          "time": "7:00 PM",
+          "matchup": "New England vs Idaho Falls",
+          "note": "Host auto-bid"
+        },
+        {
+          "game": 3,
+          "date": "Apr 25",
+          "time": "2:00 PM",
+          "matchup": "0-1 vs 0-1",
+          "note": "Elimination"
+        },
+        {
+          "game": 4,
+          "date": "Apr 25",
+          "time": "7:00 PM",
+          "matchup": "1-0 vs 1-0",
+          "note": ""
+        },
+        {
+          "game": 5,
+          "date": "Apr 26",
+          "time": "7:00 PM",
+          "matchup": "1-1 vs 1-1",
+          "note": "Elimination"
+        },
+        {
+          "game": 6,
+          "date": "Apr 27",
+          "time": "7:00 PM",
+          "matchup": "1-1 vs 2-0",
+          "note": "Final #1"
+        },
+        {
+          "game": 7,
+          "date": "Apr 28",
+          "time": "7:00 PM",
+          "matchup": "2-1 vs 3-1",
+          "note": "If necessary - Final #2"
+        }
+      ]
+    }
+  }
+}

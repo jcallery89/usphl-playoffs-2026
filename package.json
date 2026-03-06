@@ -1,0 +1,21 @@
+{
+  "name": "usphl-playoffs-2026",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "preview": "serve public -l 3456",
+    "build-team-map": "node scripts/build-team-map.js",
+    "init-bracket": "node scripts/init-bracket-state.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.36.3"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

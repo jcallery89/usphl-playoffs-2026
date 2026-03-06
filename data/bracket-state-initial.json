@@ -1,0 +1,2489 @@
+{
+  "_version": 1,
+  "_lastUpdated": "2026-03-06T16:22:55.633Z",
+  "_updatedBy": "system",
+  "Premier": {
+    "Atlantic": {
+      "qualifyCount": 8,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 8,
+              "homeTeamId": "491",
+              "awayTeamId": "449",
+              "homeTeamName": "West Chester Wolves",
+              "awayTeamName": "Hershey Cubs",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 7,
+              "homeTeamId": "473",
+              "awayTeamId": "475",
+              "homeTeamName": "Red Bank Generals",
+              "awayTeamName": "Rockets Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m2",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "437",
+              "awayTeamId": "459",
+              "homeTeamName": "Connecticut Junior Rangers",
+              "awayTeamName": "Mercer Chiefs",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m3",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "470",
+              "awayTeamId": "492",
+              "homeTeamName": "P.A.L. Jr Islanders",
+              "awayTeamName": "Wilkes-Barre Scranton Knights",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "491",
+              "awayTeamId": "470",
+              "homeTeamName": "West Chester Wolves",
+              "awayTeamName": "P.A.L. Jr Islanders",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "473",
+              "awayTeamId": "437",
+              "homeTeamName": "Red Bank Generals",
+              "awayTeamName": "Connecticut Junior Rangers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "491",
+              "awayTeamId": "473",
+              "homeTeamName": "West Chester Wolves",
+              "awayTeamName": "Red Bank Generals",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Florida": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Coral Springs Jr. Cats",
+              "teamId": "2284",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/8e37c6129498940365c580b93d68cd486f0c01208add453bd7e9a5c0ddb54350.png",
+              "logoFile": "Coral_Springs_Jr._Cats.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=2284&season=65"
+            },
+            {
+              "seed": 2,
+              "teamName": "Florida Eels",
+              "teamId": "441",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/19e73e216ad4189532cca95682d50fe2e3177414403e7e2942ab11110e76c70f.png",
+              "logoFile": "Florida_Eels.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=441&season=65"
+            },
+            {
+              "seed": 3,
+              "teamName": "Tampa Bay Juniors",
+              "teamId": "483",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0fe8a0f2a6f270b8fc3b875b366e64a2a992b2cc2c80eae2bd5bf2ebe3062ca2.png",
+              "logoFile": "Tampa_Bay_Juniors.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=483&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "442",
+              "awayTeamId": "471",
+              "homeTeamName": "Florida Junior Blades",
+              "awayTeamName": "Typhoon Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Semifinals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "2284",
+              "awayTeamId": "442",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Florida Junior Blades",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "441",
+              "awayTeamId": "483",
+              "homeTeamName": "Florida Eels",
+              "awayTeamName": "Tampa Bay Juniors",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "2284",
+              "awayTeamId": "441",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Florida Eels",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Great Lakes": {
+      "qualifyCount": 6,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Toledo Cherokee",
+              "teamId": "485",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/014ca1b50adfd005fd647689bed81c360f0ce3ecec0bf29a2405961bcaa120cd.png",
+              "logoFile": "Toledo_Cherokee.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=485&season=65"
+            },
+            {
+              "seed": 2,
+              "teamName": "Metro Jets",
+              "teamId": "460",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f269069892a97d5be8b84ed86531e99cda1ba7babdd760f2140405eb18e0850f.png",
+              "logoFile": "Metro_Jets.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=460&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "474",
+              "awayTeamId": "444",
+              "homeTeamName": "Red River Spartans",
+              "awayTeamName": "Fresh Coast Freeze",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "436",
+              "awayTeamId": "424",
+              "homeTeamName": "Columbus Mavericks",
+              "awayTeamName": "Battle Creek Kernels",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": null,
+              "homeTeamId": "485",
+              "awayTeamId": null,
+              "homeTeamName": "Toledo Cherokee",
+              "awayTeamName": "Lowest Seed",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": null,
+              "homeTeamId": "460",
+              "awayTeamId": null,
+              "homeTeamName": "Metro Jets",
+              "awayTeamName": "Second Lowest",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "485",
+              "awayTeamId": "460",
+              "homeTeamName": "Toledo Cherokee",
+              "awayTeamName": "Metro Jets",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Midwest": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Fort Wayne Spacemen",
+              "teamId": "443",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6d41b254505b967f6b3dee6574ffd77bbc98230ff52a41afa6858bb509c053ea.png",
+              "logoFile": "Fort_Wayne_Spacemen.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=443&season=65"
+            },
+            {
+              "seed": 2,
+              "teamName": "Chicago T-Rex",
+              "teamId": "2293",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/e0be5985f09f1f53752da4d18839dd41fc0a50c4c36ba39faa682e0637a9e210.png",
+              "logoFile": "Chicago_T-Rex.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=2293&season=65"
+            },
+            {
+              "seed": 3,
+              "teamName": "MJDP",
+              "teamId": "464",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/92e527a64061231226aa5f8c63e74dcc344bcb9d475c5278932d5384bbdb1f1f.png",
+              "logoFile": "MJDP.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=464&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "432",
+              "awayTeamId": "433",
+              "homeTeamName": "Chicago Cougars",
+              "awayTeamName": "Chicago Crush",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2293",
+              "awayTeamId": "464",
+              "homeTeamName": "Chicago T-Rex",
+              "awayTeamName": "MJDP",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 1,
+              "awaySeed": null,
+              "homeTeamId": "443",
+              "awayTeamId": null,
+              "homeTeamName": "Fort Wayne Spacemen",
+              "awayTeamName": "R1 Winner",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "443",
+              "awayTeamId": "2293",
+              "homeTeamName": "Fort Wayne Spacemen",
+              "awayTeamName": "Chicago T-Rex",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "New England": {
+      "qualifyCount": 7,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Northern Cyclones",
+              "teamId": "467",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/993a2fd49f3f1f68ed9aaad05a77b014443dc9fdbe9d4dcb8eb116de5a26bba7.png",
+              "logoFile": "25_Northern_Cyclones.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=467&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 2,
+              "awaySeed": 7,
+              "homeTeamId": "453",
+              "awayTeamId": "481",
+              "homeTeamName": "Islanders Hockey Club",
+              "awayTeamName": "Springfield Pics",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "480",
+              "awayTeamId": "494",
+              "homeTeamName": "South Shore Kings",
+              "awayTeamName": "Worcester Railers JHC",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m2",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "488",
+              "awayTeamId": "427",
+              "homeTeamName": "Utica Jr Comets",
+              "awayTeamName": "Boston Jr. Rangers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "467",
+              "awayTeamId": "488",
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "Utica Jr Comets",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "453",
+              "awayTeamId": "480",
+              "homeTeamName": "Islanders Hockey Club",
+              "awayTeamName": "South Shore Kings",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "467",
+              "awayTeamId": "453",
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "Islanders Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "North": {
+      "qualifyCount": 7,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Minnesota Squatch",
+              "teamId": "463",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f390f6947605190b5dedf72c80fa58da7a3b3927419caf1ff691d377b20d24a4.png",
+              "logoFile": "Minnesota_Squatch.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=463&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 2,
+              "awaySeed": 7,
+              "homeTeamId": "493",
+              "awayTeamId": "450",
+              "homeTeamName": "Wisconsin Rapids Riverkings",
+              "awayTeamName": "Hudson Havoc",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "468",
+              "awayTeamId": "462",
+              "homeTeamName": "Northwest Express",
+              "awayTeamName": "Minnesota Mullets",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m2",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "461",
+              "awayTeamId": "482",
+              "homeTeamName": "Minnesota Blue Ox",
+              "awayTeamName": "Steele County Blades",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "463",
+              "awayTeamId": "461",
+              "homeTeamName": "Minnesota Squatch",
+              "awayTeamName": "Minnesota Blue Ox",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "493",
+              "awayTeamId": "468",
+              "homeTeamName": "Wisconsin Rapids Riverkings",
+              "awayTeamName": "Northwest Express",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "463",
+              "awayTeamId": "493",
+              "homeTeamName": "Minnesota Squatch",
+              "awayTeamName": "Wisconsin Rapids Riverkings",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Northwest": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Pod Round",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": null,
+              "awaySeed": null,
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "PNW1",
+              "awayTeamName": "PNW2",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": null,
+              "awaySeed": null,
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "MTN1",
+              "awayTeamName": "MTN2",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Divisional Finals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": null,
+              "awaySeed": null,
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "Pod Winner 1",
+              "awayTeamName": "Pod Winner 2",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Pacific": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Semifinals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "445",
+              "awayTeamId": "489",
+              "homeTeamName": "Fresno Monsters",
+              "awayTeamName": "Ventura Vikings",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "448",
+              "awayTeamId": "469",
+              "homeTeamName": "Henderson Force",
+              "awayTeamName": "Ontario Jr Reign",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Southeast": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Hampton Roads Whalers",
+              "teamId": "446",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7ade2d6a9813b0035f4ae430dbfd5eae0b5bf37e1028d022fab6bb71f6803187.png",
+              "logoFile": "Hampton_Roads_Whalers.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=446&season=65"
+            },
+            {
+              "seed": 2,
+              "teamName": "Potomac Patriots",
+              "teamId": "472",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/29dbff05d1a40c5a826669e67ca035d9da24888a067882007b710e37a55b7eba.jpeg",
+              "logoFile": "Potomac_Patriots.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=472&season=65"
+            },
+            {
+              "seed": 3,
+              "teamName": "Charlotte Rush",
+              "teamId": "431",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fc3e27fafbf4fa392a8784006cd25f75a3272c6c4f628c6771611b249d06e476.png",
+              "logoFile": "Charlotte_Rush.png",
+              "profileUrl": "https://usphl.com/premier/game-center/teams/?team=431&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "2283",
+              "awayTeamId": "430",
+              "homeTeamName": "Charleston Colonials",
+              "awayTeamName": "Carolina Junior Hurricanes",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Semifinals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "446",
+              "awayTeamId": "2283",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Charleston Colonials",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "472",
+              "awayTeamId": "431",
+              "homeTeamName": "Potomac Patriots",
+              "awayTeamName": "Charlotte Rush",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "446",
+              "awayTeamId": "472",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Potomac Patriots",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "St. Lawrence": {
+      "qualifyCount": 8,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 8,
+              "homeTeamId": "447",
+              "awayTeamId": "456",
+              "homeTeamName": "Hawkesbury Knights",
+              "awayTeamName": "Kingston Wranglers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 7,
+              "homeTeamId": "465",
+              "awayTeamId": "2281",
+              "homeTeamName": "Montreal Black Vees",
+              "awayTeamName": "New York Dynamo",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m2",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "479",
+              "awayTeamId": "487",
+              "homeTeamName": "Somang Hockey",
+              "awayTeamName": "Universel Sherbrooke",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m3",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "2279",
+              "awayTeamId": "486",
+              "homeTeamName": "St-Lazare Avalanche",
+              "awayTeamName": "Universel College Gatineau",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "447",
+              "awayTeamId": "2279",
+              "homeTeamName": "Hawkesbury Knights",
+              "awayTeamName": "St-Lazare Avalanche",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "465",
+              "awayTeamId": "479",
+              "homeTeamName": "Montreal Black Vees",
+              "awayTeamName": "Somang Hockey",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Finals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "447",
+              "awayTeamId": "465",
+              "homeTeamName": "Hawkesbury Knights",
+              "awayTeamName": "Montreal Black Vees",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Elite": {
+    "Atlantic": {
+      "qualifyCount": 6,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Wilkes-Barre Scranton Knights",
+              "teamId": "1429",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/ddd08e891967db06ebf938f5310f499bd07488af4a1d99a667990571d4252a09.png",
+              "logoFile": "06_Wilkes-Barre_Scranton_Knights.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1429&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Hershey Cubs",
+              "teamId": "1410",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b48f204df5697bddc3aec06fd9ec7349828263dd0467dd7a5d8168053926c8e1.png",
+              "logoFile": "Hershey_Cubs.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1410&season=65&level_id=1"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 3,
+              "awaySeed": 6,
+              "homeTeamId": "1403",
+              "awayTeamId": "1396",
+              "homeTeamName": "Connecticut Junior Rangers",
+              "awayTeamName": "Atlanta Mad Hatters",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "2288",
+              "awayTeamId": "1418",
+              "homeTeamName": "Red Bank Generals",
+              "awayTeamName": "P.A.L. Jr Islanders",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "1429",
+              "awayTeamId": "2288",
+              "homeTeamName": "Wilkes-Barre Scranton Knights",
+              "awayTeamName": "Red Bank Generals",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "1410",
+              "awayTeamId": "1403",
+              "homeTeamName": "Hershey Cubs",
+              "awayTeamName": "Connecticut Junior Rangers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1429",
+              "awayTeamId": "1410",
+              "homeTeamName": "Wilkes-Barre Scranton Knights",
+              "awayTeamName": "Hershey Cubs",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Florida": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Tampa Bay Juniors",
+              "teamId": "1425",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0fe8a0f2a6f270b8fc3b875b366e64a2a992b2cc2c80eae2bd5bf2ebe3062ca2.png",
+              "logoFile": "Tampa_Bay_Juniors.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1425&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Coral Springs Jr. Cats",
+              "teamId": "2290",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/8e37c6129498940365c580b93d68cd486f0c01208add453bd7e9a5c0ddb54350.png",
+              "logoFile": "Coral_Springs_Jr._Cats.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=2290&season=65&level_id=1"
+            },
+            {
+              "seed": 3,
+              "teamName": "Florida Junior Blades",
+              "teamId": "1407",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/21cb70cb034b5878f8124560ebb40cc13bbb166e56c42676756f5b60f51b15b5.png",
+              "logoFile": "Florida_Junior_Blades.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1407&season=65&level_id=1"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "1406",
+              "awayTeamId": "1419",
+              "homeTeamName": "Florida Eels",
+              "awayTeamName": "Typhoon Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Semifinals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "1425",
+              "awayTeamId": "1406",
+              "homeTeamName": "Tampa Bay Juniors",
+              "awayTeamName": "Florida Eels",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2290",
+              "awayTeamId": "1407",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Florida Junior Blades",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1425",
+              "awayTeamId": "2290",
+              "homeTeamName": "Tampa Bay Juniors",
+              "awayTeamName": "Coral Springs Jr. Cats",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Midwest": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Chicago Crush",
+              "teamId": "1402",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1f20ce0dfe620d53d19d7e0ec40f47f501366b30df6d3b82d1fd64b89be4e1b0.png",
+              "logoFile": "Chicago_Crush.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1402&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Fort Wayne Spacemen",
+              "teamId": "1408",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6d41b254505b967f6b3dee6574ffd77bbc98230ff52a41afa6858bb509c053ea.png",
+              "logoFile": "Fort_Wayne_Spacemen.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1408&season=65&level_id=1"
+            },
+            {
+              "seed": 3,
+              "teamName": "Metro Jets Elite",
+              "teamId": "1414",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f269069892a97d5be8b84ed86531e99cda1ba7babdd760f2140405eb18e0850f.png",
+              "logoFile": "Metro_Jets.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1414&season=65&level_id=1"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "1404",
+              "awayTeamId": "1401",
+              "homeTeamName": "Chicago T-Rex",
+              "awayTeamName": "Chicago Cougars",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 2",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "1408",
+              "awayTeamId": "1414",
+              "homeTeamName": "Fort Wayne Spacemen",
+              "awayTeamName": "Metro Jets Elite",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 1,
+              "awaySeed": null,
+              "homeTeamId": "1402",
+              "awayTeamId": null,
+              "homeTeamName": "Chicago Crush",
+              "awayTeamName": "R1 Winner",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1402",
+              "awayTeamId": "1408",
+              "homeTeamName": "Chicago Crush",
+              "awayTeamName": "Fort Wayne Spacemen",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "New England": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In",
+          "format": "Single Game",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Northern Cyclones",
+              "teamId": "1417",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/993a2fd49f3f1f68ed9aaad05a77b014443dc9fdbe9d4dcb8eb116de5a26bba7.png",
+              "logoFile": "25_Northern_Cyclones.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1417&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Montreal Knights",
+              "teamId": "2291",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/bef8ac7a7ef0b8cb8b285a01fb5c53d3852e0feff864fa3b9a5a7c8c19f9139d.png",
+              "logoFile": null,
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=2291&season=65&level_id=1"
+            },
+            {
+              "seed": 3,
+              "teamName": "Islanders Hockey Club",
+              "teamId": "1411",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/de7f90cc035d831806d01757390d85e95ab7955452eae79e0c0adfe9be99948e.png",
+              "logoFile": "24_Islanders_Hockey_Club.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1411&season=65&level_id=1"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "1423",
+              "awayTeamId": "1424",
+              "homeTeamName": "South Shore Kings",
+              "awayTeamName": "Springfield Pics",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": "Single game, #4 hosts"
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Round 1",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2291",
+              "awayTeamId": "1411",
+              "homeTeamName": "Montreal Knights",
+              "awayTeamName": "Islanders Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 1,
+              "awaySeed": null,
+              "homeTeamId": "1417",
+              "awayTeamId": null,
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "PI Winner",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1417",
+              "awayTeamId": "2291",
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "Montreal Knights",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Southeast": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "Carolina Junior Hurricanes",
+              "teamId": "1399",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9d31d6116c98698859154c86f49ca59a36146d93a0a50df17234aa7a7cefc5f1.png",
+              "logoFile": "Carolina_Junior_Hurricanes.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1399&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Hampton Roads Whalers",
+              "teamId": "1409",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7ade2d6a9813b0035f4ae430dbfd5eae0b5bf37e1028d022fab6bb71f6803187.png",
+              "logoFile": "Hampton_Roads_Whalers.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1409&season=65&level_id=1"
+            },
+            {
+              "seed": 3,
+              "teamName": "Charlotte Rush",
+              "teamId": "1400",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fc3e27fafbf4fa392a8784006cd25f75a3272c6c4f628c6771611b249d06e476.png",
+              "logoFile": "Charlotte_Rush.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1400&season=65&level_id=1"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "1420",
+              "awayTeamId": "2289",
+              "homeTeamName": "Potomac Patriots",
+              "awayTeamName": "Charleston Colonials",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Semifinals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "1399",
+              "awayTeamId": "1420",
+              "homeTeamName": "Carolina Junior Hurricanes",
+              "awayTeamName": "Potomac Patriots",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "1409",
+              "awayTeamId": "1400",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Charlotte Rush",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1399",
+              "awayTeamId": "1409",
+              "homeTeamName": "Carolina Junior Hurricanes",
+              "awayTeamName": "Hampton Roads Whalers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "NCDC": {
+    "Atlantic": {
+      "qualifyCount": 5,
+      "seriesFormat": "Bo3/Bo5",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Play-In (Bo3)",
+          "format": "Bo3",
+          "byes": [
+            {
+              "seed": 1,
+              "teamName": "P.A.L. Junior Islanders",
+              "teamId": "115",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png",
+              "logoFile": "03_PAL_Junior_Islanders.png",
+              "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=115&season=65"
+            },
+            {
+              "seed": 2,
+              "teamName": "Jersey Hitmen",
+              "teamId": "111",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+              "logoFile": "05_Jersey_Hitmen.png",
+              "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+            },
+            {
+              "seed": 3,
+              "teamName": "Rockets Hockey Club",
+              "teamId": "118",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+              "logoFile": "04_Rockets_Hockey_Club.png",
+              "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+            }
+          ],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 4,
+              "awaySeed": 5,
+              "homeTeamId": "112",
+              "awayTeamId": "108",
+              "homeTeamName": "Mercer Chiefs",
+              "awayTeamName": "Connecticut Junior Rangers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": "#4 hosts"
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Semifinals (Bo5)",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": null,
+              "homeTeamId": "115",
+              "awayTeamId": null,
+              "homeTeamName": "P.A.L. Junior Islanders",
+              "awayTeamName": "PI Winner",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "111",
+              "awayTeamId": "118",
+              "homeTeamName": "Jersey Hitmen",
+              "awayTeamName": "Rockets Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Final (Bo5)",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "115",
+              "awayTeamId": "111",
+              "homeTeamName": "P.A.L. Junior Islanders",
+              "awayTeamName": "Jersey Hitmen",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "NE Central": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo5",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Division Semifinals",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "123",
+              "awayTeamId": "2270",
+              "homeTeamName": "Utica Jr Comets",
+              "awayTeamName": "Boston Junior Bruins",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "106",
+              "awayTeamId": "126",
+              "homeTeamName": "Boston Jr. Rangers",
+              "awayTeamName": "Worcester Railers JHC",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Division Final",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "123",
+              "awayTeamId": "106",
+              "homeTeamName": "Utica Jr Comets",
+              "awayTeamName": "Boston Jr. Rangers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "NE East": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo5",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Division Semifinals",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "120",
+              "awayTeamId": "121",
+              "homeTeamName": "South Shore Kings",
+              "awayTeamName": "Thunder Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "110",
+              "awayTeamId": "113",
+              "homeTeamName": "Islanders Hockey Club",
+              "awayTeamName": "Northern Cyclones",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Division Final",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "120",
+              "awayTeamId": "110",
+              "homeTeamName": "South Shore Kings",
+              "awayTeamName": "Islanders Hockey Club",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "NE North": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo5",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Division Semifinals",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "2278",
+              "awayTeamId": "2328",
+              "homeTeamName": "Lewiston MAINEiacs",
+              "awayTeamName": "CT Chiefs North",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2273",
+              "awayTeamId": "2274",
+              "homeTeamName": "Universel Quebec",
+              "awayTeamName": "Woodstock NB Slammers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Division Final",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "2278",
+              "awayTeamId": "2273",
+              "homeTeamName": "Lewiston MAINEiacs",
+              "awayTeamName": "Universel Quebec",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "NE Conference": {
+      "roundRobin": {
+        "name": "Conference Round Robin",
+        "dates": "Apr 9-11",
+        "format": "Round Robin",
+        "note": "Hosted by #1 seed",
+        "matchups": [
+          {
+            "team1": "Div1 Winner",
+            "team2": "Div3 Winner",
+            "team1Score": null,
+            "team2Score": null,
+            "status": "upcoming"
+          },
+          {
+            "team1": "Div3 Winner",
+            "team2": "Div2 Winner",
+            "team1Score": null,
+            "team2Score": null,
+            "status": "upcoming"
+          },
+          {
+            "team1": "Div2 Winner",
+            "team2": "Div1 Winner",
+            "team1Score": null,
+            "team2Score": null,
+            "status": "upcoming"
+          }
+        ],
+        "standings": []
+      },
+      "conferenceFinal": {
+        "name": "Conference Final",
+        "dates": "Apr 14-16",
+        "format": "Bo3",
+        "note": "Hosted by #1 seed",
+        "matchup": {
+          "team1": "RR #1",
+          "team2": "RR #2",
+          "team1Score": null,
+          "team2Score": null,
+          "status": "upcoming"
+        }
+      }
+    },
+    "Mountain": {
+      "qualifyCount": 4,
+      "seriesFormat": "Bo5",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Semifinals",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": 1,
+              "awaySeed": 4,
+              "homeTeamId": "114",
+              "awayTeamId": "122",
+              "homeTeamName": "Ogden Mustangs",
+              "awayTeamName": "Utah Outliers",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "109",
+              "awayTeamId": "2272",
+              "homeTeamName": "Idaho Falls Spud Kings",
+              "awayTeamName": "Grand Junction River Hawks",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Final",
+          "format": "Bo5",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "114",
+              "awayTeamId": "109",
+              "homeTeamName": "Ogden Mustangs",
+              "awayTeamName": "Idaho Falls Spud Kings",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ]
+    },
+    "Dineen Cup": {
+      "format": "double_elimination",
+      "name": "Dineen Cup Championship",
+      "dates": "Apr 22-28",
+      "teams": [
+        {
+          "slot": "Atlantic Champion",
+          "teamId": null,
+          "teamName": "Atlantic Champion"
+        },
+        {
+          "slot": "Mountain Champion",
+          "teamId": null,
+          "teamName": "Mountain Champion"
+        },
+        {
+          "slot": "New England Champion",
+          "teamId": null,
+          "teamName": "New England Champion"
+        },
+        {
+          "slot": "Idaho Falls Spud Kings",
+          "teamId": null,
+          "teamName": "Idaho Falls Spud Kings"
+        }
+      ],
+      "schedule": [
+        {
+          "game": 1,
+          "date": "Apr 24",
+          "time": "2:00 PM",
+          "matchup": "Atlantic vs Mountain",
+          "note": "",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 2,
+          "date": "Apr 24",
+          "time": "7:00 PM",
+          "matchup": "New England vs Idaho Falls",
+          "note": "Host auto-bid",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 3,
+          "date": "Apr 25",
+          "time": "2:00 PM",
+          "matchup": "0-1 vs 0-1",
+          "note": "Elimination",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 4,
+          "date": "Apr 25",
+          "time": "7:00 PM",
+          "matchup": "1-0 vs 1-0",
+          "note": "",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 5,
+          "date": "Apr 26",
+          "time": "7:00 PM",
+          "matchup": "1-1 vs 1-1",
+          "note": "Elimination",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 6,
+          "date": "Apr 27",
+          "time": "7:00 PM",
+          "matchup": "1-1 vs 2-0",
+          "note": "Final #1",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        },
+        {
+          "game": 7,
+          "date": "Apr 28",
+          "time": "7:00 PM",
+          "matchup": "2-1 vs 3-1",
+          "note": "If necessary - Final #2",
+          "homeScore": null,
+          "awayScore": null,
+          "winnerId": null,
+          "status": "upcoming"
+        }
+      ],
+      "champion": null
+    }
+  }
+}

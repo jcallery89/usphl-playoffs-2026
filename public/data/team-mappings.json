@@ -1,0 +1,1116 @@
+{
+  "NCDC": {
+    "Atlantic": {
+      "P.A.L. Junior Islanders": {
+        "team_id": "115",
+        "api_name": "P.A.L. Junior Islanders",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png",
+        "logo_file": "03_PAL_Junior_Islanders.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=115&season=65"
+      },
+      "Jersey Hitmen": {
+        "team_id": "111",
+        "api_name": "Jersey Hitmen",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "logo_file": "05_Jersey_Hitmen.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "Rockets Hockey Club": {
+        "team_id": "118",
+        "api_name": "Rockets Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "logo_file": "04_Rockets_Hockey_Club.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "Mercer Chiefs": {
+        "team_id": "112",
+        "api_name": "Mercer Chiefs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d71007943a2032623b96460b14231fbf7a6a15fbce353fcfbd7a3884def4de66.jpeg",
+        "logo_file": "02_Mercer_Chiefs.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=112&season=65"
+      },
+      "Connecticut Junior Rangers": {
+        "team_id": "108",
+        "api_name": "Connecticut Junior Rangers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "logo_file": "07_Connecticut_Junior_Rangers.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=108&season=65"
+      },
+      "Wilkes-Barre Scranton Knights": {
+        "team_id": "125",
+        "api_name": "Wilkes-Barre Scranton Knights",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/ddd08e891967db06ebf938f5310f499bd07488af4a1d99a667990571d4252a09.png",
+        "logo_file": "06_Wilkes-Barre_Scranton_Knights.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=125&season=65"
+      },
+      "West Chester Wolves": {
+        "team_id": "124",
+        "api_name": "West Chester Wolves",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "logo_file": "01_West_Chester_Wolves.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=124&season=65"
+      }
+    },
+    "NE Central": {
+      "Utica Jr Comets": {
+        "team_id": "123",
+        "api_name": "Utica Jr Comets",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2f313cb0985b26eae20b60c9f7ee47bba4497626b964a792aeef0ed5f3a90441.png",
+        "logo_file": "16_Utica_Jr_Comets.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=123&season=65"
+      },
+      "Boston Jr. Rangers": {
+        "team_id": "106",
+        "api_name": "Boston Jr. Rangers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7aaac0c71e1c4fa4809a1cbcb59aad6ac5ede0d929c74405cac936ec7b0de1d2.png",
+        "logo_file": "15_Boston_Jr_Rangers.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=106&season=65"
+      },
+      "Worcester Railers JHC": {
+        "team_id": "126",
+        "api_name": "Worcester Railers JHC",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "logo_file": "18_Worcester_Railers_JHC.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=126&season=65"
+      },
+      "Boston Junior Bruins": {
+        "team_id": "2270",
+        "api_name": "Boston Junior Bruins",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "logo_file": "19_Boston_Junior_Bruins.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "Springfield Pics": {
+        "team_id": "2292",
+        "api_name": "Springfield Pics",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "logo_file": "17_Springfield_Pics.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"
+      },
+      "New York Dynamo": {
+        "team_id": "119",
+        "api_name": "New York Dynamo",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f19fa2d858177e2db61d75c32a4e05e9cef269f07c9f0e98fdcdd234ada4691d.png",
+        "logo_file": "20_New_York_Dynamo.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=119&season=65"
+      }
+    },
+    "NE East": {
+      "South Shore Kings": {
+        "team_id": "120",
+        "api_name": "South Shore Kings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "logo_file": "22_South_Shore_Kings.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "Islanders Hockey Club": {
+        "team_id": "110",
+        "api_name": "Islanders Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "logo_file": "24_Islanders_Hockey_Club.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "Northern Cyclones": {
+        "team_id": "113",
+        "api_name": "Northern Cyclones",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/3f47340ee3433959dc0096c7ff8146ce33049533c60dfcf6d4531128a6c234be.png",
+        "logo_file": "25_Northern_Cyclones.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=113&season=65"
+      },
+      "Thunder Hockey Club": {
+        "team_id": "121",
+        "api_name": "Thunder Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1c5e398a6c902ae09b8e07fabd5d0a99fac8ec6a9c6922b6eddc6c146ae5746c.png",
+        "logo_file": "27_Thunder_Hockey_Club.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=121&season=65"
+      },
+      "Boston Dogs": {
+        "team_id": "105",
+        "api_name": "Boston Dogs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "logo_file": "26_Boston_Dogs.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "Universel Academy": {
+        "team_id": "2271",
+        "api_name": "Universel Academy ",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/78730ae10224673c49a3c2e4dfe52d6f517697ff750c0a41513b6a536002a74b.png",
+        "logo_file": "23_Universel_Academy.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2271&season=65"
+      }
+    },
+    "NE North": {
+      "Lewiston MAINEiacs": {
+        "team_id": "2278",
+        "api_name": "Lewiston MAINEiacs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/200e474503a99d96f35f46f95a51d8383974ea30ba82f967d8346664b5674fcd.png",
+        "logo_file": "21_Lewiston_MAINEiacs.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2278&season=65"
+      },
+      "Universel Quebec": {
+        "team_id": "2273",
+        "api_name": "Universel Quebec ",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/78730ae10224673c49a3c2e4dfe52d6f517697ff750c0a41513b6a536002a74b.png",
+        "logo_file": "28_Universel_Quebec.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2273&season=65"
+      },
+      "Woodstock NB Slammers": {
+        "team_id": "2274",
+        "api_name": "Woodstock Slammers",
+        "match_score": 53.33333333333333,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/90e8b2826dd2f01835027cdcc908d6613313a50cdb09090b11c7fbaf4ba32e53.png",
+        "logo_file": "32_Woodstock_NB_Slammers.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2274&season=65"
+      },
+      "CT Chiefs North": {
+        "team_id": "2328",
+        "api_name": "CT Chiefs North",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/916dea2880cc624b0c6b9da4c22d0c11f1712d12ec254dc02739d5335081e725.png",
+        "logo_file": "29_CT_Chiefs_North.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2328&season=65"
+      },
+      "Northern Maine Pioneers": {
+        "team_id": "2372",
+        "api_name": "Northern Maine Pioneers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/80a4a08eafe37fe7641336742fac233af2be70b1e7ab434df89e5affa69a7106.png",
+        "logo_file": "30_Northern_Maine_Pioneers.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2372&season=65"
+      },
+      "St. Stephen County Moose": {
+        "team_id": "2276",
+        "api_name": "St. Stephen County Moose",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9302f315484dbbbac711a65565ed723fde714558727e146eaf77ed17580fd5ea.png",
+        "logo_file": "33_St_Stephen_County_Moose.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2276&season=65"
+      },
+      "New England Wolves": {
+        "team_id": "2380",
+        "api_name": "New England Wolves",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png",
+        "logo_file": "31_New_England_Wolves.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"
+      }
+    },
+    "Mountain": {
+      "Ogden Mustangs": {
+        "team_id": "114",
+        "api_name": "Ogden Mustangs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png",
+        "logo_file": "08_Ogden_Mustangs.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=114&season=65"
+      },
+      "Idaho Falls Spud Kings": {
+        "team_id": "109",
+        "api_name": "Idaho Falls Spud Kings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f68fab118290c8a003aff32652f4c73f1ad86fec09178c69c9beeb2a01da5bcc.png",
+        "logo_file": "10_Idaho_Falls_Spud_Kings.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=109&season=65"
+      },
+      "Grand Junction River Hawks": {
+        "team_id": "2272",
+        "api_name": "Grand Junction River Hawks",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d0fdfe72c297c862227e26fe8e807919e0ca8b99f5e3cfe83371ef1e7d203042.png",
+        "logo_file": "09_Grand_Junction_River_Hawks.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=2272&season=65"
+      },
+      "Utah Outliers": {
+        "team_id": "122",
+        "api_name": "Utah Outliers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/98ff59a9b731bec20644ddb1d6b4ce14db7d2a2c840c51d96d19f58e6d2fbdad.png",
+        "logo_file": "14_Utah_Outliers.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=122&season=65"
+      },
+      "Pueblo Bulls": {
+        "team_id": "116",
+        "api_name": "Pueblo Bulls",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png",
+        "logo_file": "13_Pueblo_Bulls.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=116&season=65"
+      },
+      "Rock Springs Miners": {
+        "team_id": "117",
+        "api_name": "Rock Springs Miners",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/3612c1d242ca5a17cfbd3eddf94dc527db40db12a785112f0b1886bd24b4580e.png",
+        "logo_file": "11_Rock_Springs_Miners.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=117&season=65"
+      },
+      "Casper Warbirds": {
+        "team_id": "107",
+        "api_name": "Casper Warbirds",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1e99592475a747f0c036620f7b7e75ed3a81655d49284f1b7ab608f306a4b089.png",
+        "logo_file": "12_Casper_Warbirds.png",
+        "profile_url": "https://usphl.com/ncdc/game-center/teams/?team=107&season=65"
+      }
+    }
+  },
+  "Premier": {
+    "Atlantic": {
+      "West Chester Wolves": {
+        "team_id": "491",
+        "api_name": "West Chester Wolves",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "logo_file": "01_West_Chester_Wolves.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=491&season=65"
+      },
+      "Red Bank Generals": {
+        "team_id": "473",
+        "api_name": "Red Bank Generals",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fe63f3eb6311013dbd4bdc4fb145e78553776071ffb98a781581123e5cb86568.png",
+        "logo_file": "Red_Bank_Generals.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=473&season=65"
+      },
+      "Connecticut Junior Rangers": {
+        "team_id": "437",
+        "api_name": "Connecticut Junior Rangers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "logo_file": "07_Connecticut_Junior_Rangers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=437&season=65"
+      },
+      "P.A.L. Jr Islanders": {
+        "team_id": "470",
+        "api_name": "P.A.L. Junior Islanders",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png",
+        "logo_file": "03_PAL_Junior_Islanders.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=470&season=65"
+      },
+      "Wilkes-Barre Scranton Knights": {
+        "team_id": "492",
+        "api_name": "Wilkes-Barre Scranton Knights",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/ddd08e891967db06ebf938f5310f499bd07488af4a1d99a667990571d4252a09.png",
+        "logo_file": "06_Wilkes-Barre_Scranton_Knights.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=492&season=65"
+      },
+      "Mercer Chiefs": {
+        "team_id": "459",
+        "api_name": "Mercer Chiefs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9e5e92cb2a84c2ad9c1d602be75b7de9e57c40a5e59e035bed63e612848f454f.png",
+        "logo_file": "02_Mercer_Chiefs.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=459&season=65"
+      },
+      "Rockets Hockey Club": {
+        "team_id": "475",
+        "api_name": "Rockets Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "logo_file": "04_Rockets_Hockey_Club.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=475&season=65"
+      },
+      "Hershey Cubs": {
+        "team_id": "449",
+        "api_name": "Hershey Cubs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b48f204df5697bddc3aec06fd9ec7349828263dd0467dd7a5d8168053926c8e1.png",
+        "logo_file": "Hershey_Cubs.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=449&season=65"
+      },
+      "Jersey Hitmen": {
+        "team_id": "454",
+        "api_name": "Jersey Hitmen",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "logo_file": "05_Jersey_Hitmen.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=454&season=65"
+      },
+      "New Jersey Renegades": {
+        "team_id": "2285",
+        "api_name": "New Jersey Renegades",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fb2c1ea71a25dacbaedd2bf2300daa355b05b403382a5a685c988bd57bfd0c07.png",
+        "logo_file": "New_Jersey_Renegades.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2285&season=65"
+      }
+    },
+    "Florida": {
+      "Coral Springs Jr. Cats": {
+        "team_id": "2284",
+        "api_name": "Coral Springs Jr. Cats",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/8e37c6129498940365c580b93d68cd486f0c01208add453bd7e9a5c0ddb54350.png",
+        "logo_file": "Coral_Springs_Jr._Cats.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2284&season=65"
+      },
+      "Florida Eels": {
+        "team_id": "441",
+        "api_name": "Florida Eels",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/19e73e216ad4189532cca95682d50fe2e3177414403e7e2942ab11110e76c70f.png",
+        "logo_file": "Florida_Eels.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=441&season=65"
+      },
+      "Tampa Bay Juniors": {
+        "team_id": "483",
+        "api_name": "Tampa Bay Juniors",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0fe8a0f2a6f270b8fc3b875b366e64a2a992b2cc2c80eae2bd5bf2ebe3062ca2.png",
+        "logo_file": "Tampa_Bay_Juniors.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=483&season=65"
+      },
+      "Florida Junior Blades": {
+        "team_id": "442",
+        "api_name": "Florida Junior Blades",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/606cec2ba688b831c86d62f0636fa9eabfb3ad774ab19c8093e1354c5c1c7d7c.png",
+        "logo_file": "Florida_Junior_Blades.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=442&season=65"
+      },
+      "Typhoon Hockey Club": {
+        "team_id": "471",
+        "api_name": "Typhoon Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/af22cd51cfe73b2d016290fffdcfadc09531a910c59fed147f4efc845e4c1b33.png",
+        "logo_file": "Typhoon_Hockey_Club.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=471&season=65"
+      },
+      "Bold City Battalion": {
+        "team_id": null,
+        "api_name": null,
+        "match_score": 0,
+        "logo_url": null,
+        "logo_file": "Bold_City_Battalion.png",
+        "profile_url": null,
+        "note": "Team folded mid-season, not in API"
+      }
+    },
+    "Great Lakes": {
+      "Toledo Cherokee": {
+        "team_id": "485",
+        "api_name": "Toledo Cherokee",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/014ca1b50adfd005fd647689bed81c360f0ce3ecec0bf29a2405961bcaa120cd.png",
+        "logo_file": "Toledo_Cherokee.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=485&season=65"
+      },
+      "Metro Jets": {
+        "team_id": "460",
+        "api_name": "Metro Jets",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f269069892a97d5be8b84ed86531e99cda1ba7babdd760f2140405eb18e0850f.png",
+        "logo_file": "Metro_Jets.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=460&season=65"
+      },
+      "Red River Spartans": {
+        "team_id": "474",
+        "api_name": "Red River Spartans",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b021ca557eeb484701982ba558ea7c98f5a512a7b026a941a6aa98f0436b1076.png",
+        "logo_file": "Red_River_Spartans.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=474&season=65"
+      },
+      "Columbus Mavericks": {
+        "team_id": "436",
+        "api_name": "Columbus Mavericks",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/20d0cf4d3d7f27bc959e20d340e5933edb958658911a49eb2a7ccc41bc77b5fc.png",
+        "logo_file": "Columbus_Mavericks.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=436&season=65"
+      },
+      "Battle Creek Kernels": {
+        "team_id": "424",
+        "api_name": "Battle Creek Kernels",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/086a6b1cbaf96b8104244156adc98e15a02fde4ea0c26ba4f62f0ba461db97a6.png",
+        "logo_file": "Battle_Creek_Kernels.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=424&season=65"
+      },
+      "Fresh Coast Freeze": {
+        "team_id": "444",
+        "api_name": "Fresh Coast Freeze",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7c59c18211531584f64a9cd42fe7e937388bd30ceb77bf84acc30f459038f209.png",
+        "logo_file": "Fresh_Coast_Freeze.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=444&season=65"
+      },
+      "Cincinnati Cyclones": {
+        "team_id": "434",
+        "api_name": "Cincinnati Cyclones",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/457609e5c9f8b379c3272abf3e110e546ecf4159be19a2b46e9a289ca0cc26f1.png",
+        "logo_file": "Cincinnati_Cyclones.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=434&season=65"
+      },
+      "Bearcat Hockey Club": {
+        "team_id": "466",
+        "api_name": "Bearcat Hockey Club ",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/855044f8f323e9ff329aaf806570ed6b4841d23e3c4198c977e84ed9d85ea24e.png",
+        "logo_file": "Bearcat_Hockey_Club.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=466&season=65"
+      }
+    },
+    "Midwest": {
+      "Fort Wayne Spacemen": {
+        "team_id": "443",
+        "api_name": "Fort Wayne Spacemen",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6d41b254505b967f6b3dee6574ffd77bbc98230ff52a41afa6858bb509c053ea.png",
+        "logo_file": "Fort_Wayne_Spacemen.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=443&season=65"
+      },
+      "Chicago T-Rex": {
+        "team_id": "2293",
+        "api_name": "Chicago T-Rex",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/e0be5985f09f1f53752da4d18839dd41fc0a50c4c36ba39faa682e0637a9e210.png",
+        "logo_file": "Chicago_T-Rex.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2293&season=65"
+      },
+      "MJDP": {
+        "team_id": "464",
+        "api_name": "MJDP ",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/92e527a64061231226aa5f8c63e74dcc344bcb9d475c5278932d5384bbdb1f1f.png",
+        "logo_file": "MJDP.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=464&season=65"
+      },
+      "Chicago Cougars": {
+        "team_id": "432",
+        "api_name": "Chicago Cougars",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a0ccee93fff197bdc27ef773e8a8f1c775cb16e983dbdd4e184eadd95bf4895f.png",
+        "logo_file": "Chicago_Cougars.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=432&season=65"
+      },
+      "Chicago Crush": {
+        "team_id": "433",
+        "api_name": "Chicago Crush",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1f20ce0dfe620d53d19d7e0ec40f47f501366b30df6d3b82d1fd64b89be4e1b0.png",
+        "logo_file": "Chicago_Crush.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=433&season=65"
+      }
+    },
+    "New England": {
+      "Northern Cyclones": {
+        "team_id": "467",
+        "api_name": "Northern Cyclones",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/993a2fd49f3f1f68ed9aaad05a77b014443dc9fdbe9d4dcb8eb116de5a26bba7.png",
+        "logo_file": "25_Northern_Cyclones.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=467&season=65"
+      },
+      "Islanders Hockey Club": {
+        "team_id": "453",
+        "api_name": "Islanders Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/de7f90cc035d831806d01757390d85e95ab7955452eae79e0c0adfe9be99948e.png",
+        "logo_file": "24_Islanders_Hockey_Club.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=453&season=65"
+      },
+      "South Shore Kings": {
+        "team_id": "480",
+        "api_name": "South Shore Kings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b85f44b26919f9030d44231933569c4f86fb294a8cad3bb6f5765bdb47651be2.png",
+        "logo_file": "22_South_Shore_Kings.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=480&season=65"
+      },
+      "Utica Jr Comets": {
+        "team_id": "488",
+        "api_name": "Utica Jr Comets",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2f313cb0985b26eae20b60c9f7ee47bba4497626b964a792aeef0ed5f3a90441.png",
+        "logo_file": "16_Utica_Jr_Comets.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=488&season=65"
+      },
+      "Boston Jr. Rangers": {
+        "team_id": "427",
+        "api_name": "Boston Jr. Rangers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/24edd88607a389ad49b8fdfcbda4877107f705d23bcc6bba53e9111d2a98975c.png",
+        "logo_file": "15_Boston_Jr_Rangers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=427&season=65"
+      },
+      "Worcester Railers JHC": {
+        "team_id": "494",
+        "api_name": "Worcester Railers JHC",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "logo_file": "18_Worcester_Railers_JHC.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=494&season=65"
+      },
+      "Springfield Pics": {
+        "team_id": "481",
+        "api_name": "Springfield Pics",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "logo_file": "17_Springfield_Pics.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=481&season=65"
+      },
+      "Thunder Hockey Club": {
+        "team_id": null,
+        "api_name": null,
+        "match_score": 40,
+        "logo_url": null,
+        "logo_file": "Thunder_Hockey_Club.png",
+        "profile_url": null,
+        "note": "Team left mid-season, not in API"
+      }
+    },
+    "North": {
+      "Minnesota Squatch": {
+        "team_id": "463",
+        "api_name": "Minnesota Squatch",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f390f6947605190b5dedf72c80fa58da7a3b3927419caf1ff691d377b20d24a4.png",
+        "logo_file": "Minnesota_Squatch.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=463&season=65"
+      },
+      "Wisconsin Rapids Riverkings": {
+        "team_id": "493",
+        "api_name": "Wisconsin Rapids Riverkings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0e714fc74846cd69def3a9365b21be256a7f4263a9cfcd5c87c3d2704aa749b6.png",
+        "logo_file": "Wisconsin_Rapids_Riverkings.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=493&season=65"
+      },
+      "Northwest Express": {
+        "team_id": "468",
+        "api_name": "Northwest Express",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0d9aeefbf641f21cd7fd1403c1f5c079226ed6422162058ea9a6f42b3ec040be.png",
+        "logo_file": "Northwest_Express.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=468&season=65"
+      },
+      "Minnesota Blue Ox": {
+        "team_id": "461",
+        "api_name": "Minnesota Blue Ox",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2152c3e6b1bb3b814bc80ea666c9a740f016fa46af4f370e77a3977f4f171bf9.png",
+        "logo_file": "Minnesota_Blue_Ox.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=461&season=65"
+      },
+      "Steele County Blades": {
+        "team_id": "482",
+        "api_name": "Steele County Blades",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12f80fd5227116c08ea1056644ab740815a9f1b1117f2bd2cba2ea07b8924970.png",
+        "logo_file": "Steele_County_Blades.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=482&season=65"
+      },
+      "Minnesota Mullets": {
+        "team_id": "462",
+        "api_name": "Minnesota Mullets",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/c898466f3f5fd3b87994e1f1ceaba345b7dc245e8e99c73967587eb05dd0a210.png",
+        "logo_file": "Minnesota_Mullets.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=462&season=65"
+      },
+      "Hudson Havoc": {
+        "team_id": "450",
+        "api_name": "Hudson Havoc",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/5908a8a2a7977ed7ac61bf0b5cf7025c298516e5bcfddd158910d3379baf1cd5.png",
+        "logo_file": "Hudson_Havoc.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=450&season=65"
+      },
+      "Minnesota Outlaws": {
+        "team_id": null,
+        "api_name": null,
+        "match_score": 26.666666666666664,
+        "logo_url": null,
+        "logo_file": "Minnesota_Outlaws.png",
+        "profile_url": null,
+        "note": "Team left mid-season, not in API"
+      }
+    },
+    "Northwest": {
+      "Seattle Totems": {
+        "team_id": "478",
+        "api_name": "Seattle Totems",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d5762761b6852e66e838bff8d45b1ab6e2d66c29eeaf9029e0d831547b9b01d4.png",
+        "logo_file": "Seattle_Totems.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=478&season=65"
+      },
+      "Bremerton Sockeyes": {
+        "team_id": "428",
+        "api_name": "Bremerton Sockeyes",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/e93294f1e751ad620c9811f39438fa5f48d0c00abe7b5b3c667b09030683021d.png",
+        "logo_file": "Bremerton_Sockeyes.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=428&season=65"
+      },
+      "Vernal Oilers": {
+        "team_id": "490",
+        "api_name": "Vernal Oilers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6ddbdf5a0fcef5e7d6c38ee44015f922daf882b328f278d32cbcc5cb0d0ad614.png",
+        "logo_file": "Vernal_Oilers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=490&season=65"
+      },
+      "McCall Smokejumpers": {
+        "team_id": "423",
+        "api_name": "McCall Smokejumpers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fa4ee10c3d53e963d15967a8367eb6610038ca568be531255169ae2a9a95044a.png",
+        "logo_file": "McCall_Smokejumpers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=423&season=65"
+      },
+      "Iron County Yeti": {
+        "team_id": "451",
+        "api_name": "Iron County Yeti",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/76c593cdd77e6cac99d79d0ca589d63fbf9bca9eb5b940ae68a5fea9317bd80c.png",
+        "logo_file": "Iron_County_Yeti.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=451&season=65"
+      },
+      "Colorado Fighting Elk": {
+        "team_id": "435",
+        "api_name": "Colorado Fighting Elk",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2a477cb0aaca9b0a6c635fd29ad0f69001ba2b821a2732bc6c39fa2a71cbad4b.png",
+        "logo_file": "Colorado_Fighting_Elk.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=435&season=65"
+      },
+      "Rogue Valley Royals": {
+        "team_id": "476",
+        "api_name": "Rogue Valley Royals",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1b7a368227aeed0208c7e1419f95407ce0d3565021e7cfe50cabc61b42e14386.png",
+        "logo_file": "Rogue_Valley_Royals.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=476&season=65"
+      }
+    },
+    "Pacific": {
+      "Fresno Monsters": {
+        "team_id": "445",
+        "api_name": "Fresno Monsters",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6d2ef8c5c1c05f21aca2e6cc092496a4614272fbf18e71542d5cba3a7a193341.png",
+        "logo_file": "Fresno_Monsters.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=445&season=65"
+      },
+      "Henderson Force": {
+        "team_id": "448",
+        "api_name": "Henderson Force",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/8f04dd407d6a3f4a292eff2424a0bd2a9b0c2712a10205df396339965ded5870.png",
+        "logo_file": "Henderson_Force.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=448&season=65"
+      },
+      "Ontario Jr Reign": {
+        "team_id": "469",
+        "api_name": "Ontario Jr Reign",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7669ef7fe4f321a7b9bca85e8c8e6ff299a5c602ec81ef1c6ab3dd874d3e9699.png",
+        "logo_file": "Ontario_Jr_Reign.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=469&season=65"
+      },
+      "Ventura Vikings": {
+        "team_id": "489",
+        "api_name": "Ventura Vikings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f18de7bf327e1d067671f335b1ebcaa6881b311bdd55001b48faceb02420f2d2.png",
+        "logo_file": "Ventura_Vikings.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=489&season=65"
+      },
+      "Long Beach Bombers": {
+        "team_id": "458",
+        "api_name": "Long Beach Bombers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/acca8a5c84aaae529d8cb4377747f71f7c1cb5df0a8a5be8ff04821ac0f9510e.png",
+        "logo_file": "Long_Beach_Bombers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=458&season=65"
+      },
+      "San Diego Sabers": {
+        "team_id": "477",
+        "api_name": "San Diego Sabers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/117695037a086c357fede0cf8db1b62f45e012f6042fa2d3f25e02006000bda4.png",
+        "logo_file": "San_Diego_Sabers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=477&season=65"
+      },
+      "Lake Tahoe Lakers": {
+        "team_id": "457",
+        "api_name": "Lake Tahoe Lakers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/24a174fd991bc7ed923636cc7b129fdbeb24bfda40023246151b3b9706adceb3.png",
+        "logo_file": "Lake_Tahoe_Lakers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=457&season=65"
+      }
+    },
+    "Southeast": {
+      "Hampton Roads Whalers": {
+        "team_id": "446",
+        "api_name": "Hampton Roads Whalers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7ade2d6a9813b0035f4ae430dbfd5eae0b5bf37e1028d022fab6bb71f6803187.png",
+        "logo_file": "Hampton_Roads_Whalers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=446&season=65"
+      },
+      "Potomac Patriots": {
+        "team_id": "472",
+        "api_name": "Potomac Patriots",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/29dbff05d1a40c5a826669e67ca035d9da24888a067882007b710e37a55b7eba.jpeg",
+        "logo_file": "Potomac_Patriots.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=472&season=65"
+      },
+      "Charlotte Rush": {
+        "team_id": "431",
+        "api_name": "Charlotte Rush",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fc3e27fafbf4fa392a8784006cd25f75a3272c6c4f628c6771611b249d06e476.png",
+        "logo_file": "Charlotte_Rush.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=431&season=65"
+      },
+      "Charleston Colonials": {
+        "team_id": "2283",
+        "api_name": "Charleston Colonials",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7b5cdee6aaff98c542f0c25e072c1883b97014db6373d94aa66687a2fd3ab4c9.png",
+        "logo_file": "Charleston_Colonials.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2283&season=65"
+      },
+      "Carolina Junior Hurricanes": {
+        "team_id": "430",
+        "api_name": "Carolina Junior Hurricanes",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9d31d6116c98698859154c86f49ca59a36146d93a0a50df17234aa7a7cefc5f1.png",
+        "logo_file": "Carolina_Junior_Hurricanes.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=430&season=65"
+      }
+    },
+    "St. Lawrence": {
+      "Hawkesbury Knights": {
+        "team_id": "447",
+        "api_name": "Hawkesbury Knights",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1aa3c5c24617ac576dd32a81f58e8e95076ee92a3f90a4d8dfb34b4d5c15e9ea.png",
+        "logo_file": "Hawkesbury_Knights.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=447&season=65"
+      },
+      "Montreal Black Vees": {
+        "team_id": "465",
+        "api_name": "Montreal Black Vees",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/33cb1a0c2e4e6b6d5d502d3104164f149297a72dab75ce43946fb06e6d6950c2.png",
+        "logo_file": "Montreal_Black_Vees.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=465&season=65"
+      },
+      "Somang Hockey": {
+        "team_id": "479",
+        "api_name": "Somang Hockey",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/54dbc6e12deb85cd6afe6338314a0bc0881e198d6f383601d3d19f9f6eaa933a.png",
+        "logo_file": "Somang_Hockey.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=479&season=65"
+      },
+      "St-Lazare Avalanche": {
+        "team_id": "2279",
+        "api_name": "St-Lazare Avalanche",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/c2b688f2758b2e4ad6d9d865c26cb501f47777f538b6aa6fb3e0e9077183e21f.png",
+        "logo_file": "St-Lazare_Avalanche.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2279&season=65"
+      },
+      "Universel College Gatineau": {
+        "team_id": "486",
+        "api_name": "Universel Collège Gatineau",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b3b15b20f05c442d7ecbf70305ab7342b958ba1e1a5d14b22bd15f3f5e15c915.png",
+        "logo_file": "Universel_Coll#U00e8ge_Gatineau.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=486&season=65"
+      },
+      "Universel Sherbrooke": {
+        "team_id": "487",
+        "api_name": "Universel Sherbrooke",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/75d52290d00246f36c36bcd744fcd48b6945e8b555e336f6049bfcf5b7bcab7a.png",
+        "logo_file": "Universel_Sherbrooke.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=487&season=65"
+      },
+      "New York Dynamo": {
+        "team_id": "2281",
+        "api_name": "New York Dynamo",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f19fa2d858177e2db61d75c32a4e05e9cef269f07c9f0e98fdcdd234ada4691d.png",
+        "logo_file": "20_New_York_Dynamo.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2281&season=65"
+      },
+      "Kingston Wranglers": {
+        "team_id": "456",
+        "api_name": "Kingston Wranglers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/ebe90fcf5324eb2420b1a023e74b1b3dfaf61577d52dc14a960239b91caf17ef.png",
+        "logo_file": "Kingston_Wranglers.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=456&season=65"
+      },
+      "Ottawa Valley Centennials": {
+        "team_id": "2294",
+        "api_name": "Ottawa Valley Centennials",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fd0c55324a1b197df33abed81e46cf87c15fd98c0945f258638fe3c83f53070d.png",
+        "logo_file": "Ottawa_Valley_Centennials.png",
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2294&season=65"
+      }
+    }
+  },
+  "Elite": {
+    "Atlantic": {
+      "Wilkes-Barre Scranton Knights": {
+        "team_id": "1429",
+        "api_name": "Wilkes-Barre Scranton Knights",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/ddd08e891967db06ebf938f5310f499bd07488af4a1d99a667990571d4252a09.png",
+        "logo_file": "06_Wilkes-Barre_Scranton_Knights.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1429&season=65&level_id=1"
+      },
+      "Hershey Cubs": {
+        "team_id": "1410",
+        "api_name": "Hershey Cubs",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b48f204df5697bddc3aec06fd9ec7349828263dd0467dd7a5d8168053926c8e1.png",
+        "logo_file": "Hershey_Cubs.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1410&season=65&level_id=1"
+      },
+      "Connecticut Junior Rangers": {
+        "team_id": "1403",
+        "api_name": "Connecticut Junior Rangers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "logo_file": "07_Connecticut_Junior_Rangers.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1403&season=65&level_id=1"
+      },
+      "Red Bank Generals": {
+        "team_id": "2288",
+        "api_name": "Red Bank Generals",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d013a6d7f922cbf17706b69752a9be2e229b57b927690179b3d5f3b730c6ba23.png",
+        "logo_file": "Red_Bank_Generals.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=2288&season=65&level_id=1"
+      },
+      "P.A.L. Jr Islanders": {
+        "team_id": "1418",
+        "api_name": "P.A.L. Jr Islanders",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png",
+        "logo_file": "03_PAL_Junior_Islanders.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1418&season=65&level_id=1"
+      },
+      "Atlanta Mad Hatters": {
+        "team_id": "1396",
+        "api_name": "Atlanta Mad Hatters",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/5efe9f52f7c980d2c980966d181c9bd7663fa6f1b7d418f308776a14a7c7f880.png",
+        "logo_file": null,
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1396&season=65&level_id=1"
+      }
+    },
+    "Florida": {
+      "Tampa Bay Juniors": {
+        "team_id": "1425",
+        "api_name": "Tampa Bay Juniors",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/0fe8a0f2a6f270b8fc3b875b366e64a2a992b2cc2c80eae2bd5bf2ebe3062ca2.png",
+        "logo_file": "Tampa_Bay_Juniors.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1425&season=65&level_id=1"
+      },
+      "Coral Springs Jr. Cats": {
+        "team_id": "2290",
+        "api_name": "Coral Springs Jr. Cats",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/8e37c6129498940365c580b93d68cd486f0c01208add453bd7e9a5c0ddb54350.png",
+        "logo_file": "Coral_Springs_Jr._Cats.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=2290&season=65&level_id=1"
+      },
+      "Florida Junior Blades": {
+        "team_id": "1407",
+        "api_name": "Florida Junior Blades",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/21cb70cb034b5878f8124560ebb40cc13bbb166e56c42676756f5b60f51b15b5.png",
+        "logo_file": "Florida_Junior_Blades.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1407&season=65&level_id=1"
+      },
+      "Florida Eels": {
+        "team_id": "1406",
+        "api_name": "Florida Eels",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/19e73e216ad4189532cca95682d50fe2e3177414403e7e2942ab11110e76c70f.png",
+        "logo_file": "Florida_Eels.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1406&season=65&level_id=1"
+      },
+      "Typhoon Hockey Club": {
+        "team_id": "1419",
+        "api_name": "Typhoon Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/af22cd51cfe73b2d016290fffdcfadc09531a910c59fed147f4efc845e4c1b33.png",
+        "logo_file": "Typhoon_Hockey_Club.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1419&season=65&level_id=1"
+      },
+      "Bold City Battalion": {
+        "team_id": null,
+        "api_name": null,
+        "match_score": 0,
+        "logo_url": null,
+        "logo_file": "Bold_City_Battalion.png",
+        "profile_url": null,
+        "note": "Team folded mid-season, not in API"
+      }
+    },
+    "Midwest": {
+      "Chicago Crush": {
+        "team_id": "1402",
+        "api_name": "Chicago Crush",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1f20ce0dfe620d53d19d7e0ec40f47f501366b30df6d3b82d1fd64b89be4e1b0.png",
+        "logo_file": "Chicago_Crush.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1402&season=65&level_id=1"
+      },
+      "Fort Wayne Spacemen": {
+        "team_id": "1408",
+        "api_name": "Fort Wayne Spacemen",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/6d41b254505b967f6b3dee6574ffd77bbc98230ff52a41afa6858bb509c053ea.png",
+        "logo_file": "Fort_Wayne_Spacemen.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1408&season=65&level_id=1"
+      },
+      "Metro Jets Elite": {
+        "team_id": "1414",
+        "api_name": "Metro Jets Elite",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f269069892a97d5be8b84ed86531e99cda1ba7babdd760f2140405eb18e0850f.png",
+        "logo_file": "Metro_Jets.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1414&season=65&level_id=1"
+      },
+      "Chicago T-Rex": {
+        "team_id": "1404",
+        "api_name": "Chicago T-Rex",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/e0be5985f09f1f53752da4d18839dd41fc0a50c4c36ba39faa682e0637a9e210.png",
+        "logo_file": "Chicago_T-Rex.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1404&season=65&level_id=1"
+      },
+      "Chicago Cougars": {
+        "team_id": "1401",
+        "api_name": "Chicago Cougars",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a0ccee93fff197bdc27ef773e8a8f1c775cb16e983dbdd4e184eadd95bf4895f.png",
+        "logo_file": "Chicago_Cougars.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1401&season=65&level_id=1"
+      }
+    },
+    "New England": {
+      "Northern Cyclones": {
+        "team_id": "1417",
+        "api_name": "Northern Cyclones",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/993a2fd49f3f1f68ed9aaad05a77b014443dc9fdbe9d4dcb8eb116de5a26bba7.png",
+        "logo_file": "25_Northern_Cyclones.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1417&season=65&level_id=1"
+      },
+      "Montreal Knights": {
+        "team_id": "2291",
+        "api_name": "Montreal Knights",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/bef8ac7a7ef0b8cb8b285a01fb5c53d3852e0feff864fa3b9a5a7c8c19f9139d.png",
+        "logo_file": null,
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=2291&season=65&level_id=1"
+      },
+      "Islanders Hockey Club": {
+        "team_id": "1411",
+        "api_name": "Islanders Hockey Club",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/de7f90cc035d831806d01757390d85e95ab7955452eae79e0c0adfe9be99948e.png",
+        "logo_file": "24_Islanders_Hockey_Club.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1411&season=65&level_id=1"
+      },
+      "South Shore Kings": {
+        "team_id": "1423",
+        "api_name": "South Shore Kings",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7b77269d81a6a1e34baf26f9e023d9a1dac30256a3a4761b544b5a8848a5e8af.png",
+        "logo_file": "22_South_Shore_Kings.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1423&season=65&level_id=1"
+      },
+      "Springfield Pics": {
+        "team_id": "1424",
+        "api_name": "Springfield Pics",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "logo_file": "17_Springfield_Pics.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1424&season=65&level_id=1"
+      }
+    },
+    "Southeast": {
+      "Carolina Junior Hurricanes": {
+        "team_id": "1399",
+        "api_name": "Carolina Junior Hurricanes",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9d31d6116c98698859154c86f49ca59a36146d93a0a50df17234aa7a7cefc5f1.png",
+        "logo_file": "Carolina_Junior_Hurricanes.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1399&season=65&level_id=1"
+      },
+      "Hampton Roads Whalers": {
+        "team_id": "1409",
+        "api_name": "Hampton Roads Whalers",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7ade2d6a9813b0035f4ae430dbfd5eae0b5bf37e1028d022fab6bb71f6803187.png",
+        "logo_file": "Hampton_Roads_Whalers.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1409&season=65&level_id=1"
+      },
+      "Charlotte Rush": {
+        "team_id": "1400",
+        "api_name": "Charlotte Rush",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fc3e27fafbf4fa392a8784006cd25f75a3272c6c4f628c6771611b249d06e476.png",
+        "logo_file": "Charlotte_Rush.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1400&season=65&level_id=1"
+      },
+      "Potomac Patriots": {
+        "team_id": "1420",
+        "api_name": "Potomac Patriots",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/23833ebbb1beea296cc3f0e1f3ed1f406226c3761a5db1824e85b8e5126cabc3.png",
+        "logo_file": "Potomac_Patriots.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=1420&season=65&level_id=1"
+      },
+      "Charleston Colonials": {
+        "team_id": "2289",
+        "api_name": "Charleston Colonials",
+        "match_score": 100,
+        "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7b5cdee6aaff98c542f0c25e072c1883b97014db6373d94aa66687a2fd3ab4c9.png",
+        "logo_file": "Charleston_Colonials.png",
+        "profile_url": "https://usphl.com/elite/game-center/teams/?team=2289&season=65&level_id=1"
+      }
+    }
+  }
+}

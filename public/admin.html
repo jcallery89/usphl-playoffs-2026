@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USPHL Playoffs Admin</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      min-height: 100vh;
+    }
+    header {
+      background: #22223a;
+      text-align: center;
+      padding: 1rem;
+      border-bottom: 2px solid #e94560;
+    }
+    header h1 { margin: 0; font-size: 1.4rem; }
+    .container { max-width: 900px; margin: 0 auto; padding: 1rem; }
+
+    /* Login */
+    .login-box {
+      max-width: 350px;
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .login-box h2 { margin-top: 0; font-size: 1.1rem; }
+    .login-box input {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+      color: #eee;
+      font-size: 1rem;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      background: #e94560;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .login-box button:hover { background: #d63550; }
+    .error-msg { color: #e94560; font-size: 0.85rem; margin-top: 0.5rem; }
+
+    /* Dashboard */
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+    select, button.action-btn {
+      padding: 0.45rem 0.8rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      color: #eee;
+      font-size: 0.9rem;
+    }
+    button.action-btn {
+      background: #e94560;
+      border-color: #e94560;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button.action-btn:hover { background: #d63550; }
+    button.action-btn.secondary {
+      background: transparent;
+      border-color: #e94560;
+      color: #e94560;
+    }
+
+    /* Round display */
+    .round-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .round-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      color: #e94560;
+    }
+    .matchup-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .matchup-row:last-child { border-bottom: none; }
+    .matchup-teams { flex: 1; }
+    .matchup-teams .team-name { font-size: 0.9rem; }
+    .matchup-teams .seed { color: #888; font-size: 0.8rem; }
+    .matchup-score {
+      font-weight: 700;
+      min-width: 50px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .matchup-status {
+      min-width: 130px;
+      text-align: right;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+    .matchup-status.complete { color: #2ecc71; }
+    .matchup-status.in_progress { color: #f39c12; }
+    .matchup-actions { margin-left: 0.5rem; }
+    .matchup-actions button {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      background: #2ecc71;
+      color: #000;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .matchup-actions button:hover { background: #27ae60; }
+    .matchup-actions button.force {
+      background: #e67e22;
+    }
+
+    /* Game list */
+    .game-list {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      font-size: 0.82rem;
+      color: #aaa;
+    }
+    .game-list div { padding: 0.15rem 0; }
+    .game-winner { color: #2ecc71; font-weight: 600; }
+
+    /* Advance button */
+    .advance-section {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(46, 204, 113, 0.08);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      border-radius: 6px;
+      text-align: center;
+    }
+    .advance-section p { margin: 0 0 0.5rem; font-size: 0.9rem; }
+
+    .status-bar {
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>USPHL Playoffs Admin</h1>
+  </header>
+
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-box">
+    <h2>Admin Login</h2>
+    <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password">
+    <button onclick="doLogin()">Login</button>
+    <div id="loginError" class="error-msg hidden"></div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="container hidden">
+    <div class="controls">
+      <select id="leagueSelect" onchange="onLeagueChange()">
+        <option value="Premier">Premier</option>
+        <option value="Elite">Elite</option>
+        <option value="NCDC">NCDC</option>
+      </select>
+      <select id="divisionSelect" onchange="onDivisionChange()"></select>
+      <button class="action-btn secondary" onclick="doRefresh()">Force Refresh</button>
+      <button class="action-btn secondary" onclick="doLogout()">Logout</button>
+    </div>
+
+    <div id="bracketView"></div>
+
+    <div class="status-bar">
+      Last updated: <span id="lastUpdatedTime">—</span>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '';
+    let authToken = sessionStorage.getItem('adminToken');
+    let bracketState = null;
+
+    // ---- Auth ----
+    async function doLogin() {
+      const pw = document.getElementById('passwordInput').value;
+      const errEl = document.getElementById('loginError');
+      errEl.classList.add('hidden');
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin-auth`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: pw }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          errEl.textContent = data.error || 'Login failed';
+          errEl.classList.remove('hidden');
+          return;
+        }
+        authToken = data.token;
+        sessionStorage.setItem('adminToken', authToken);
+        showDashboard();
+      } catch(e) {
+        errEl.textContent = 'Connection error';
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function doLogout() {
+      authToken = null;
+      sessionStorage.removeItem('adminToken');
+      document.getElementById('loginScreen').classList.remove('hidden');
+      document.getElementById('dashboard').classList.add('hidden');
+    }
+
+    document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') doLogin();
+    });
+
+    // ---- Dashboard ----
+    async function showDashboard() {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+      await loadBracketState();
+    }
+
+    async function loadBracketState() {
+      try {
+        const res = await fetch(`${API_BASE}/api/bracket-state`);
+        bracketState = await res.json();
+        document.getElementById('lastUpdatedTime').textContent =
+          bracketState._lastUpdated ? new Date(bracketState._lastUpdated).toLocaleString() : '—';
+        populateDivisions();
+        renderBracketView();
+      } catch(e) {
+        console.error('Failed to load bracket state:', e);
+      }
+    }
+
+    // ---- League/Division selectors ----
+    const DIVISIONS = {
+      Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence"],
+      Elite: ["Atlantic","Florida","Midwest","New England","Southeast"],
+      NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup"],
+    };
+
+    function onLeagueChange() {
+      populateDivisions();
+      renderBracketView();
+    }
+
+    function onDivisionChange() {
+      renderBracketView();
+    }
+
+    function populateDivisions() {
+      const league = document.getElementById('leagueSelect').value;
+      const sel = document.getElementById('divisionSelect');
+      sel.innerHTML = '';
+      (DIVISIONS[league] || []).forEach(function(div) {
+        var opt = document.createElement('option');
+        opt.value = div;
+        opt.textContent = div;
+        sel.appendChild(opt);
+      });
+    }
+
+    // ---- Render bracket view ----
+    function renderBracketView() {
+      const league = document.getElementById('leagueSelect').value;
+      const division = document.getElementById('divisionSelect').value;
+      const container = document.getElementById('bracketView');
+
+      if (!bracketState || !bracketState[league]) {
+        container.innerHTML = '<p style="color:#888;">No bracket data loaded.</p>';
+        return;
+      }
+
+      const divState = bracketState[league][division];
+      if (!divState || !divState.rounds) {
+        container.innerHTML = '<p style="color:#888;">No bracket data for this division.</p>';
+        return;
+      }
+
+      var html = '';
+
+      divState.rounds.forEach(function(round, roundIdx) {
+        html += '<div class="round-card">';
+        html += '<h3>' + round.roundName + ' (' + round.format + ')</h3>';
+
+        // Byes
+        if (round.byes && round.byes.length > 0) {
+          round.byes.forEach(function(bye) {
+            html += '<div class="matchup-row">';
+            html += '<div class="matchup-teams"><span class="seed">#' + bye.seed + '</span> ' + bye.teamName + '</div>';
+            html += '<div class="matchup-status" style="color:#2ecc71;">BYE</div>';
+            html += '</div>';
+          });
+        }
+
+        // Matchups
+        round.matchups.forEach(function(m, mIdx) {
+          html += '<div class="matchup-row">';
+          html += '<div class="matchup-teams">';
+          html += '<div><span class="seed">' + (m.homeSeed ? '#' + m.homeSeed : '') + '</span> <span class="team-name">' + m.homeTeamName + '</span></div>';
+          html += '<div><span class="seed">' + (m.awaySeed ? '#' + m.awaySeed : '') + '</span> <span class="team-name">' + m.awayTeamName + '</span></div>';
+          html += '</div>';
+          html += '<div class="matchup-score">' + m.homeWins + ' - ' + m.awayWins + '</div>';
+          html += '<div class="matchup-status ' + m.status + '">' + (m.seriesSummary || m.status) + '</div>';
+
+          // Actions
+          if (m.status === 'complete' && !m.overrideWinner) {
+            html += '<div class="matchup-actions"><button onclick="confirmWinner(\'' + league + '\',\'' + division + '\',' + roundIdx + ',' + mIdx + ')">Confirm</button></div>';
+          } else if (m.status === 'in_progress' || m.status === 'not_started') {
+            html += '<div class="matchup-actions"><button class="force" onclick="forceWinner(\'' + league + '\',\'' + division + '\',' + roundIdx + ',' + mIdx + ')">Force</button></div>';
+          }
+
+          html += '</div>';
+
+          // Game list
+          if (m.games && m.games.length > 0) {
+            html += '<div class="game-list">';
+            m.games.forEach(function(g) {
+              var homeWin = g.winner_id === m.homeTeamId;
+              var awayWin = g.winner_id === m.awayTeamId;
+              html += '<div>';
+              html += g.date + ': ';
+              html += '<span class="' + (homeWin ? 'game-winner' : '') + '">' + g.home_team + ' ' + g.home_score + '</span>';
+              html += ' - ';
+              html += '<span class="' + (awayWin ? 'game-winner' : '') + '">' + g.away_score + ' ' + g.away_team + '</span>';
+              html += ' (' + g.result_string + ')';
+              html += '</div>';
+            });
+            html += '</div>';
+          }
+        });
+
+        html += '</div>';
+
+        // Advance button if all matchups in this round are complete and there's a next round
+        if (divState.rounds[roundIdx + 1]) {
+          var allComplete = round.matchups.every(function(m) { return m.status === 'complete'; });
+          if (allComplete && round.matchups.length > 0) {
+            html += '<div class="advance-section">';
+            html += '<p>All ' + round.roundName + ' series are complete.</p>';
+            html += '<button class="action-btn" onclick="advanceRound(\'' + league + '\',\'' + division + '\',' + roundIdx + ')">Advance to ' + divState.rounds[roundIdx + 1].roundName + '</button>';
+            html += '</div>';
+          }
+        }
+      });
+
+      container.innerHTML = html;
+    }
+
+    // ---- Admin Actions ----
+    async function confirmWinner(league, division, roundIdx, matchupIdx) {
+      // Just acknowledges the series result — no state change needed
+      alert('Winner confirmed: ' + bracketState[league][division].rounds[roundIdx].matchups[matchupIdx].winnerName);
+    }
+
+    async function forceWinner(league, division, roundIdx, matchupIdx) {
+      var matchup = bracketState[league][division].rounds[roundIdx].matchups[matchupIdx];
+      var choice = prompt('Force winner (enter "home" for ' + matchup.homeTeamName + ' or "away" for ' + matchup.awayTeamName + '):');
+      if (!choice) return;
+
+      var winnerId, winnerName, winnerSeed;
+      if (choice.toLowerCase() === 'home') {
+        winnerId = matchup.homeTeamId;
+        winnerName = matchup.homeTeamName;
+        winnerSeed = matchup.homeSeed;
+      } else if (choice.toLowerCase() === 'away') {
+        winnerId = matchup.awayTeamId;
+        winnerName = matchup.awayTeamName;
+        winnerSeed = matchup.awaySeed;
+      } else {
+        alert('Invalid choice. Enter "home" or "away".');
+        return;
+      }
+
+      matchup.overrideWinner = winnerId;
+      matchup.winnerId = winnerId;
+      matchup.winnerName = winnerName;
+      matchup.winnerSeed = winnerSeed;
+      matchup.status = 'complete';
+      matchup.seriesSummary = winnerName + ' wins (admin override)';
+
+      await saveBracketState();
+      renderBracketView();
+    }
+
+    async function advanceRound(league, division, roundIdx) {
+      if (!confirm('Advance to next round? This will populate the next round matchups based on winners.')) return;
+
+      var divState = bracketState[league][division];
+      var currentRound = divState.rounds[roundIdx];
+      var nextRound = divState.rounds[roundIdx + 1];
+      if (!currentRound || !nextRound) return;
+
+      // Collect winners and byes
+      var advancing = [];
+      (currentRound.byes || []).forEach(function(bye) {
+        advancing.push({ seed: bye.seed, teamId: bye.teamId, teamName: bye.teamName, logoUrl: bye.logoUrl, profileUrl: bye.profileUrl });
+      });
+      currentRound.matchups.forEach(function(m) {
+        if (m.winnerId) {
+          var isHome = m.winnerId === m.homeTeamId;
+          advancing.push({
+            seed: isHome ? m.homeSeed : m.awaySeed,
+            teamId: m.winnerId,
+            teamName: m.winnerName,
+          });
+        }
+      });
+
+      // Sort by seed
+      advancing.sort(function(a, b) { return (a.seed || 99) - (b.seed || 99); });
+
+      // Assign to next round matchups
+      var pool = advancing.slice();
+      for (var i = 0; i < nextRound.matchups.length; i++) {
+        if (pool.length >= 2) {
+          var home = pool.shift();
+          var away = pool.pop();
+          nextRound.matchups[i].homeSeed = home.seed;
+          nextRound.matchups[i].homeTeamId = home.teamId;
+          nextRound.matchups[i].homeTeamName = home.teamName;
+          nextRound.matchups[i].awaySeed = away.seed;
+          nextRound.matchups[i].awayTeamId = away.teamId;
+          nextRound.matchups[i].awayTeamName = away.teamName;
+        }
+      }
+
+      await saveBracketState();
+      renderBracketView();
+    }
+
+    async function saveBracketState() {
+      try {
+        const res = await fetch(`${API_BASE}/api/bracket-state`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + authToken,
+          },
+          body: JSON.stringify(bracketState),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          alert('Save failed: ' + (data.error || 'Unknown error'));
+          if (res.status === 401) doLogout();
+        }
+      } catch(e) {
+        alert('Failed to save: ' + e.message);
+      }
+    }
+
+    async function doRefresh() {
+      try {
+        await fetch(`${API_BASE}/api/refresh`, { method: 'POST' });
+        await loadBracketState();
+        alert('Data refreshed from API');
+      } catch(e) {
+        alert('Refresh failed: ' + e.message);
+      }
+    }
+
+    // ---- Init ----
+    populateDivisions();
+    if (authToken) {
+      showDashboard();
+    }
+  </script>
+</body>
+</html>
