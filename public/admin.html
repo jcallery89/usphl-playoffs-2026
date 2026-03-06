@@ -477,6 +477,14 @@
         html += '<div class="round-card">';
         html += '<h3>' + round.roundName + ' (' + round.format + ')</h3>';
 
+        // Round date (shown in bracket view)
+        html += '<div class="series-note-row">';
+        html += '<label style="font-size:0.75rem;font-weight:600;color:#888;white-space:nowrap;">BRACKET DATE:</label>';
+        html += '<input type="text" id="roundDate_' + roundIdx + '" placeholder="e.g. Starting March 14" value="' + (round.roundDate || '').replace(/"/g, '&quot;') + '">';
+        html += '<button onclick="saveRoundDate(\'' + league + '\',\'' + division + '\',' + roundIdx + ')">Save</button>';
+        html += '<span class="save-msg" id="roundDateMsg_' + roundIdx + '">Saved!</span>';
+        html += '</div>';
+
         // Schedule info editing
         html += '<div class="schedule-edit">';
         html += '<label>Schedule Info</label>';
@@ -675,6 +683,15 @@
       } catch(e) {
         alert('Failed to save: ' + e.message);
       }
+    }
+
+    async function saveRoundDate(league, division, roundIdx) {
+      var val = document.getElementById('roundDate_' + roundIdx).value.trim();
+      bracketState[league][division].rounds[roundIdx].roundDate = val || null;
+      await saveBracketState();
+      var msg = document.getElementById('roundDateMsg_' + roundIdx);
+      msg.style.display = 'inline';
+      setTimeout(function() { msg.style.display = 'none'; }, 2000);
     }
 
     async function saveSeriesNote(league, division, roundIdx, matchupIdx) {
