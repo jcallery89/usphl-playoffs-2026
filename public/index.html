@@ -264,9 +264,8 @@
     .game-card-status.scheduled { color: #c91417; }
     .game-card-date { font-size: 0.68rem; color: #999; }
     .game-card-location { font-size: 0.65rem; color: #aaa; }
-    a.game-card-link { text-decoration: none; color: inherit; display: block; }
-    a.game-card-link:hover .game-card { border-color: #c91417; box-shadow: 0 1px 4px rgba(201,20,23,0.12); }
-    a.game-card-link .game-card-info::after { content: 'Box Score \203A'; font-size: 0.6rem; color: #c91417; margin-top: 0.1rem; }
+    a.game-card-status-link { text-decoration: none; }
+    a.game-card-status-link:hover { text-decoration: underline; }
     /* ===== Schedule Info (placeholder schedule data) ===== */
     .schedule-format-info {
       background: #f8f8f9;
@@ -1622,8 +1621,7 @@
               var ifNec = g.ifNecessary;
               var homeWon = !isScheduled && g.homeScore > g.awayScore;
               var awayWon = !isScheduled && g.awayScore > g.homeScore;
-              var hasLink = g.gameId && !isScheduled;
-              if (hasLink) html += '<a class="game-card-link" href="https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId + '" target="_blank" rel="noopener">';
+              var gameUrl = (g.gameId && !isScheduled) ? 'https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId : '';
               html += '<div class="game-card' + (ifNec ? ' if-necessary' : '') + '">';
               html += '<div class="game-card-teams">';
               // Home team row
@@ -1643,13 +1641,17 @@
                 html += '<div class="game-card-status scheduled">' + (ifNec ? 'If Nec.' : 'Upcoming') + '</div>';
               } else {
                 var statusClass = (g.status && g.status.indexOf('Final') !== -1) ? ' final' : '';
-                html += '<div class="game-card-status' + statusClass + '">' + (g.status || '') + '</div>';
+                var statusLabel = g.status || '';
+                if (gameUrl) {
+                  html += '<a class="game-card-status-link" href="' + gameUrl + '" target="_blank" rel="noopener"><div class="game-card-status' + statusClass + '">' + statusLabel + '</div></a>';
+                } else {
+                  html += '<div class="game-card-status' + statusClass + '">' + statusLabel + '</div>';
+                }
               }
               html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + (g.time ? '<br>' + g.time : '') + '</div>';
               if (g.location) html += '<div class="game-card-location">' + g.location + '</div>';
               html += '</div>';
               html += '</div>';
-              if (hasLink) html += '</a>';
             });
           } else if (round.scheduleInfo) {
             // No API games for this series, but we have schedule info
@@ -1746,8 +1748,7 @@
                 var isScheduled = g.gameStatus === 'scheduled' || !g.status;
                 var hWon = !isScheduled && g.homeScore > g.awayScore;
                 var aWon = !isScheduled && g.awayScore > g.homeScore;
-                var gLink = g.gameId && !isScheduled;
-                if (gLink) html += '<a class="game-card-link" href="https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId + '" target="_blank" rel="noopener">';
+                var gUrl = (g.gameId && !isScheduled) ? 'https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId : '';
                 html += '<div class="game-card">';
                 html += '<div class="game-card-teams">';
                 html += '<div class="game-card-team"><span class="game-card-team-name' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
@@ -1756,10 +1757,13 @@
                 html += '<span class="game-card-score' + (aWon ? ' winner' : (hWon ? ' loser' : '')) + '">' + (g.awayScore !== undefined && g.awayScore !== null ? g.awayScore : '') + '</span></div>';
                 html += '</div>';
                 html += '<div class="game-card-info">';
-                html += '<div class="game-card-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div>';
+                if (gUrl) {
+                  html += '<a class="game-card-status-link" href="' + gUrl + '" target="_blank" rel="noopener"><div class="game-card-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div></a>';
+                } else {
+                  html += '<div class="game-card-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div>';
+                }
                 html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + '</div>';
                 html += '</div></div>';
-                if (gLink) html += '</a>';
               });
             });
           }
