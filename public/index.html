@@ -1615,8 +1615,33 @@
   // INITIALIZE
   // ===========================================================================
   (function init() {
-    currentLeague = "NCDC";
-    currentDivision = "Atlantic";
+    // Parse URL params for per-league widget mode
+    var params = new URLSearchParams(window.location.search);
+    var leagueParam = params.get("league");
+    var divisionParam = params.get("division");
+
+    // Set league from URL param or default to NCDC
+    if (leagueParam && DIVISIONS[leagueParam]) {
+      currentLeague = leagueParam;
+      // Hide league tabs in single-league widget mode
+      document.querySelector(".league-tabs").style.display = "none";
+    } else {
+      currentLeague = "NCDC";
+    }
+
+    // Set division from URL param or default to first in league
+    if (divisionParam && DIVISIONS[currentLeague].indexOf(divisionParam) !== -1) {
+      currentDivision = divisionParam;
+    } else {
+      currentDivision = DIVISIONS[currentLeague][0];
+    }
+
+    // Sync league tab active state
+    tabButtons.forEach(function(b) {
+      if (b.getAttribute("data-league") === currentLeague) b.classList.add("active");
+      else b.classList.remove("active");
+    });
+
     populateDivisionPills(currentLeague);
     highlightActivePill();
     loadData().then(function() {
