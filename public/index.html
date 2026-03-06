@@ -345,8 +345,8 @@
   // ---- Division definitions per league ----
   const DIVISIONS = {
     NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup"],
-    Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence"],
-    Elite: ["Atlantic","Florida","Midwest","New England","Southeast"]
+    Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence","Nationals"],
+    Elite: ["Atlantic","Florida","Midwest","New England","Southeast","Nationals"]
   };
 
   let currentLeague = "NCDC";
@@ -942,8 +942,14 @@
   // ===========================================================================
   function getDivisionData() {
     if (!LEAGUE_DATA) return null;
-    if (currentLeague === "Premier") return LEAGUE_DATA.premier[currentDivision] || null;
-    if (currentLeague === "Elite") return LEAGUE_DATA.elite[currentDivision] || null;
+    if (currentLeague === "Premier") {
+      if (currentDivision === "Nationals") return { _special: "nationals" };
+      return LEAGUE_DATA.premier[currentDivision] || null;
+    }
+    if (currentLeague === "Elite") {
+      if (currentDivision === "Nationals") return { _special: "nationals" };
+      return LEAGUE_DATA.elite[currentDivision] || null;
+    }
     if (currentLeague === "NCDC") {
       if (currentDivision === "Atlantic") return LEAGUE_DATA.ncdc.conferences["Atlantic"];
       if (currentDivision === "Mountain") return LEAGUE_DATA.ncdc.conferences["Mountain"];
@@ -1002,6 +1008,7 @@
     if (!data) { standingsContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
     if (data._special === "dineen_cup") { renderDineenStandings(); return; }
     if (data._special === "ne_conference") { renderNEConferenceStandings(); return; }
+    if (data._special === "nationals") { renderNationalsStandings(); return; }
     if (data.pods) { renderPodStandings(data); return; }
     var teams = data.teams || [];
     var eliminated = data.eliminated || [];
@@ -1109,6 +1116,131 @@
   }
 
   // ===========================================================================
+  // RENDER NATIONALS (Premier & Elite)
+  // ===========================================================================
+  function getNationalsData() {
+    if (!BRACKET_STATE) return null;
+    return BRACKET_STATE[currentLeague] && BRACKET_STATE[currentLeague].Nationals;
+  }
+
+  function renderNationalsBracket() {
+    var nat = getNationalsData();
+    if (!nat) { bracketContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+
+    var html = '';
+    if (nat.formatInfo) {
+      html += '<div class="schedule-format-info">' + nat.formatInfo + '</div>';
+    }
+
+    // Pod groupings
+    if (nat.pods) {
+      html += '<div style="margin-bottom:1rem;">';
+      Object.keys(nat.pods).forEach(function(podName) {
+        var pod = nat.pods[podName];
+        html += '<div style="display:inline-block;vertical-align:top;margin-right:1.5rem;margin-bottom:0.5rem;">';
+        html += '<strong style="color:#c91417;font-size:0.85rem;">' + podName + '</strong>';
+        html += '<div style="font-size:0.8rem;color:#666;line-height:1.6;">';
+        pod.teams.forEach(function(t) { html += t + '<br>'; });
+        html += '</div></div>';
+      });
+      html += '</div>';
+    }
+
+    // Semifinals + Championship bracket
+    var semis = null;
+    var championship = null;
+    (nat.days || []).forEach(function(day) {
+      if (day.label.indexOf('Semifinal') !== -1) semis = day;
+      if (day.label.indexOf('Championship') !== -1) championship = day;
+    });
+
+    html += '<div class="bracket">';
+    if (semis) {
+      html += '<div class="round"><div class="round-title">Semifinals — ' + semis.date.replace(/^[A-Za-z]+, /, '') + '</div>';
+      semis.games.forEach(function(g) {
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home"><span>' + g.home + '</span></div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away"><span>' + g.away + '</span></div>';
+        html += '<div class="matchup-label">' + g.time + ', ' + g.rink;
+        if (g.note) html += ' (' + g.note + ')';
+        html += '</div></div>';
+      });
+      html += '</div>';
+    }
+    if (championship) {
+      html += '<div class="round"><div class="round-title" style="color:#c91417;">Championship — ' + championship.date.replace(/^[A-Za-z]+, /, '') + '</div>';
+      championship.games.forEach(function(g) {
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home"><span>' + g.home + '</span></div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away"><span>' + g.away + '</span></div>';
+        html += '<div class="matchup-label">' + g.time + ', ' + g.rink + '</div>';
+        if (g.note) html += '<div class="series-status" style="color:#c91417;font-weight:700;border:none;">' + g.note + '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+
+    bracketContent.innerHTML = html;
+  }
+
+  function renderNationalsSchedule() {
+    var nat = getNationalsData();
+    if (!nat) { scheduleContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+
+    var html = '<div class="dineen-schedule">';
+    html += '<div class="schedule-info">';
+    html += '<p><strong>' + nat.name + '</strong></p>';
+    html += '<p>' + (nat.dates || '') + '</p>';
+    if (nat.location) html += '<p>' + nat.location + '</p>';
+    html += '</div>';
+
+    (nat.days || []).forEach(function(day) {
+      html += '<div style="margin-top:1rem;">';
+      html += '<div style="font-weight:700;color:#c91417;font-size:0.9rem;margin-bottom:0.3rem;">' + day.date + ' — ' + day.label + '</div>';
+      day.games.forEach(function(g) {
+        html += '<div class="dineen-game">';
+        html += '<div class="dineen-game-date">' + g.time + ', ' + g.rink + '</div>';
+        html += '<div class="dineen-game-matchup">' + g.home + ' vs. ' + g.away;
+        if (g.pod) html += ' <span style="color:#999;font-size:0.8rem;">(' + g.pod + ')</span>';
+        html += '</div>';
+        if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+    scheduleContent.innerHTML = html;
+  }
+
+  function renderNationalsStandings() {
+    var nat = getNationalsData();
+    if (!nat) { standingsContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+
+    var html = '<div class="schedule-info">';
+    html += '<p><strong>' + nat.name + '</strong></p>';
+    html += '<p>' + (nat.dates || '') + '</p>';
+    if (nat.location) html += '<p>' + nat.location + '</p>';
+    html += '</div>';
+
+    if (nat.pods) {
+      Object.keys(nat.pods).forEach(function(podName) {
+        var pod = nat.pods[podName];
+        html += '<div style="margin-top:0.75rem;"><strong style="color:#c91417;font-size:0.9rem;">' + podName + '</strong>';
+        html += '<table class="data-table" style="margin-top:0.3rem;"><thead><tr><th>Team</th></tr></thead><tbody>';
+        pod.teams.forEach(function(t) {
+          html += '<tr><td>' + t + '</td></tr>';
+        });
+        html += '</tbody></table></div>';
+      });
+    }
+
+    standingsContent.innerHTML = html;
+  }
+
+  // ===========================================================================
   // RENDER BRACKET
   // ===========================================================================
   function renderBracket() {
@@ -1117,6 +1249,7 @@
     if (!data) { bracketContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
     if (data._special === "dineen_cup") { renderDineenBracket(); return; }
     if (data._special === "ne_conference") { renderNEConferenceBracket(); return; }
+    if (data._special === "nationals") { renderNationalsBracket(); return; }
     if (data.pods) { renderPodBracket(data); return; }
     if (!data.playoffFormat || !data.playoffFormat.rounds) {
       bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>';
@@ -1392,6 +1525,7 @@
     if (!data) { scheduleContent.innerHTML = '<p class="placeholder-msg">No data available.</p>'; return; }
     if (data._special === "dineen_cup") { renderDineenSchedule(); return; }
     if (data._special === "ne_conference") { renderNEConferenceSchedule(); return; }
+    if (data._special === "nationals") { renderNationalsSchedule(); return; }
     if (!data.playoffFormat || !data.playoffFormat.rounds) {
       scheduleContent.innerHTML = '<p class="placeholder-msg">No schedule data available.</p>';
       return;
