@@ -1768,6 +1768,11 @@
   // ===========================================================================
   function renderAll() {
     if (!LEAGUE_DATA) return;
+    // Update section titles with current division name
+    var divLabel = currentDivision.toUpperCase();
+    document.querySelector('#bracketContainer .section-title').textContent = divLabel + ' BRACKET';
+    document.querySelector('#scheduleContainer .section-title').textContent = divLabel + ' SCHEDULE';
+    document.querySelector('#standingsContainer .section-title').textContent = divLabel + ' STANDINGS';
     renderStandings();
     renderBracket();
     renderSchedule();
