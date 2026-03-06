@@ -251,7 +251,10 @@
     .game-score { font-weight: 600; min-width: 50px; text-align: center; color: #333; }
     .game-status { font-size: 0.72rem; color: #999; min-width: 50px; }
     .game-status.final { color: #2ecc71; }
+    .game-status.scheduled { color: #c91417; font-weight: 500; }
     .game-winner { color: #2ecc71; }
+    .game-result.if-necessary { opacity: 0.55; }
+    .game-location { font-size: 0.7rem; color: #999; min-width: 80px; }
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
       header h1 { font-size: 1.2rem; }
@@ -822,11 +825,14 @@
             games.push({
               date: g.date || '',
               time: g.time || '',
+              location: g.location || '',
               home: g.home_team || m.homeTeamName,
               away: g.away_team || m.awayTeamName,
               homeScore: g.home_score,
               awayScore: g.away_score,
-              status: g.result_string || 'Final',
+              status: g.result_string || (g.game_status === 'scheduled' ? 'Scheduled' : 'Final'),
+              gameStatus: g.game_status || 'final',
+              ifNecessary: g.if_necessary || false,
               round: round.roundName
             });
           }
@@ -1392,22 +1398,37 @@
           return (a.date || '').localeCompare(b.date || '');
         });
         if (seriesGames.length > 0) {
-          seriesGames.forEach(function(g) {
-            html += '<div class="game-result">';
-            html += '<div class="game-date">' + (g.date || '') + '</div>';
+          seriesGames.forEach(function(g, gi) {
+            var isScheduled = g.gameStatus === 'scheduled';
+            var ifNec = g.ifNecessary;
+            var rowClass = 'game-result' + (ifNec ? ' if-necessary' : '');
+            html += '<div class="' + rowClass + '">';
+            html += '<div class="game-date">' + (g.date || '') + (g.time ? '<br><span style="font-size:0.72rem;color:#999;">' + g.time + '</span>' : '') + '</div>';
             html += '<div class="game-teams">';
-            var homeWon = g.homeScore > g.awayScore;
-            var awayWon = g.awayScore > g.homeScore;
-            html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
-            html += ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + ' - ' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ';
-            html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+            if (isScheduled) {
+              html += teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">vs</span> ' + teamNameHTML(g.away, leagueForMap);
+            } else {
+              var homeWon = g.homeScore > g.awayScore;
+              var awayWon = g.awayScore > g.homeScore;
+              html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+              html += ' <span class="game-score">' + (g.homeScore !== null ? g.homeScore : '') + ' - ' + (g.awayScore !== null ? g.awayScore : '') + '</span> ';
+              html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+            }
             html += '</div>';
-            var statusClass = g.status === 'Final' ? ' final' : '';
-            html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
+            if (isScheduled) {
+              var label = ifNec ? 'If Necessary' : 'Upcoming';
+              html += '<div class="game-status scheduled">' + label + '</div>';
+            } else {
+              var statusClass = (g.status && g.status.indexOf('Final') !== -1) ? ' final' : '';
+              html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
+            }
+            if (g.location) {
+              html += '<div class="game-location">' + g.location + '</div>';
+            }
             html += '</div>';
           });
         } else {
-          html += '<p class="placeholder-msg" style="padding:0.3rem 0;">No games played yet</p>';
+          html += '<p class="placeholder-msg" style="padding:0.3rem 0;">No games scheduled yet</p>';
         }
       });
     } else {
