@@ -147,7 +147,7 @@
     table.data-table tbody tr:nth-child(even) { background: #f8f8f9; }
     table.data-table tbody tr:hover { background: #f0f0f2; }
     table.data-table tbody td { padding: 0.55rem 0.75rem; color: #444; }
-    table.data-table tbody tr.qualified { border-left: 3px solid #2ecc71; }
+    table.data-table tbody tr.qualified { border-left: 3px solid #0c568c; }
     table.data-table tbody tr.eliminated { opacity: 0.4; }
     .bracket-container { }
     .if-necessary { font-style: italic; opacity: 0.6; }
@@ -199,7 +199,7 @@
       align-items: center;
       color: #333;
     }
-    .matchup-team.home { border-left: 3px solid #2ecc71; padding-left: 0.5rem; }
+    .matchup-team.home { border-left: 3px solid #0c568c; padding-left: 0.5rem; }
     .matchup-seed { color: #999; font-size: 0.75rem; margin-right: 0.4rem; }
     .matchup-vs { text-align: center; font-size: 0.65rem; color: #aaa; text-transform: uppercase; padding: 0.1rem 0; }
     .matchup-bye { color: #999; font-style: italic; font-size: 0.8rem; padding: 0.35rem 0; }
@@ -215,7 +215,7 @@
       text-align: center;
     }
     .bracket-bye-entry .matchup-team { justify-content: center; }
-    .bracket-bye-tag { font-size: 0.65rem; color: #2ecc71; font-weight: 600; text-transform: uppercase; margin-left: 0.3rem; }
+    .bracket-bye-tag { font-size: 0.65rem; color: #0c568c; font-weight: 600; text-transform: uppercase; margin-left: 0.3rem; }
     .dineen-schedule { max-width: 700px; }
     .dineen-game { display: flex; gap: 1rem; padding: 0.6rem 0.75rem; border-bottom: 1px solid #eee; align-items: center; }
     .dineen-game-num { font-weight: 700; color: #c91417; min-width: 60px; }
@@ -238,10 +238,10 @@
     .team-link:hover { text-decoration: underline; color: #c91417; }
     /* ===== Series Wins Badge ===== */
     .series-wins { font-size: 0.8rem; font-weight: 700; min-width: 16px; text-align: center; padding: 0 4px; color: #555; }
-    .series-wins.leading { color: #2ecc71; }
+    .series-wins.leading { color: #0c568c; }
     /* ===== Series Status ===== */
     .series-status { text-align: center; font-size: 0.72rem; color: #999; padding: 0.2rem 0 0; border-top: 1px solid #eee; margin-top: 0.3rem; }
-    .series-status.series-final { color: #2ecc71; font-weight: 600; }
+    .series-status.series-final { color: #0c568c; font-weight: 600; }
     .series-note { text-align: center; font-size: 0.7rem; font-style: italic; color: #999; padding: 0.15rem 0 0; }
     /* ===== Loading Overlay ===== */
     .loading-overlay {
@@ -272,7 +272,7 @@
     .game-card-score.loser { color: #aaa; font-weight: 400; }
     .game-card-info { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.4rem 0.6rem; min-width: 80px; border-left: 1px solid #e8e8e8; background: #fafafa; gap: 0.15rem; text-align: center; }
     .game-card-status { font-size: 0.72rem; font-weight: 600; color: #555; }
-    .game-card-status.final { color: #2ecc71; }
+    .game-card-status.final { color: #0c568c; }
     .game-card-status.scheduled { color: #c91417; }
     .game-card-date { font-size: 0.68rem; color: #999; }
     .game-card-location { font-size: 0.65rem; color: #aaa; }
@@ -1754,7 +1754,7 @@
               html += '<div style="font-size:0.85rem;color:#ccc;margin:0.5rem 0 0.25rem;">' + s.home + ' vs ' + s.away;
               if (statusText) {
                 var isFinal = isSeriesFinal(s);
-                html += ' &mdash; <span class="' + (isFinal ? 'series-final' : '') + '" style="color:' + (isFinal ? '#2ecc71' : '#aaa') + ';">' + statusText + '</span>';
+                html += ' &mdash; <span class="' + (isFinal ? 'series-final' : '') + '" style="color:' + (isFinal ? '#0c568c' : '#aaa') + ';">' + statusText + '</span>';
               }
               html += '</div>';
               var seriesGames = games.filter(function(g) {
