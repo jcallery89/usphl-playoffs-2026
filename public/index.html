@@ -264,6 +264,9 @@
     .game-card-status.scheduled { color: #c91417; }
     .game-card-date { font-size: 0.68rem; color: #999; }
     .game-card-location { font-size: 0.65rem; color: #aaa; }
+    a.game-card-link { text-decoration: none; color: inherit; display: block; }
+    a.game-card-link:hover .game-card { border-color: #c91417; box-shadow: 0 1px 4px rgba(201,20,23,0.12); }
+    a.game-card-link .game-card-info::after { content: 'Box Score \\203A'; font-size: 0.6rem; color: #c91417; margin-top: 0.1rem; }
     /* ===== Schedule Info (placeholder schedule data) ===== */
     .schedule-format-info {
       background: #f8f8f9;
@@ -861,6 +864,7 @@
           for (var gi = 0; gi < m.games.length; gi++) {
             var g = m.games[gi];
             games.push({
+              gameId: g.game_id || null,
               date: g.date || '',
               time: g.time || '',
               location: g.location || '',
@@ -1618,6 +1622,8 @@
               var ifNec = g.ifNecessary;
               var homeWon = !isScheduled && g.homeScore > g.awayScore;
               var awayWon = !isScheduled && g.awayScore > g.homeScore;
+              var hasLink = g.gameId && !isScheduled;
+              if (hasLink) html += '<a class="game-card-link" href="https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId + '" target="_blank" rel="noopener">';
               html += '<div class="game-card' + (ifNec ? ' if-necessary' : '') + '">';
               html += '<div class="game-card-teams">';
               // Home team row
@@ -1643,6 +1649,7 @@
               if (g.location) html += '<div class="game-card-location">' + g.location + '</div>';
               html += '</div>';
               html += '</div>';
+              if (hasLink) html += '</a>';
             });
           } else if (round.scheduleInfo) {
             // No API games for this series, but we have schedule info
@@ -1739,6 +1746,8 @@
                 var isScheduled = g.gameStatus === 'scheduled' || !g.status;
                 var hWon = !isScheduled && g.homeScore > g.awayScore;
                 var aWon = !isScheduled && g.awayScore > g.homeScore;
+                var gLink = g.gameId && !isScheduled;
+                if (gLink) html += '<a class="game-card-link" href="https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.gameId + '" target="_blank" rel="noopener">';
                 html += '<div class="game-card">';
                 html += '<div class="game-card-teams">';
                 html += '<div class="game-card-team"><span class="game-card-team-name' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
@@ -1750,6 +1759,7 @@
                 html += '<div class="game-card-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div>';
                 html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + '</div>';
                 html += '</div></div>';
+                if (gLink) html += '</a>';
               });
             });
           }
