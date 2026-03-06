@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025-26 USPHL Playoffs</title>
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      min-height: 100vh;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: #22223a;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      border-bottom: 2px solid #e94560;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Main Content Wrapper ===== */
+    .content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ===== League Tabs ===== */
+    .league-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0;
+    }
+
+    .league-tab {
+      background: transparent;
+      color: #eee;
+      border: 2px solid rgba(233, 69, 96, 0.35);
+      border-radius: 6px;
+      padding: 0.55rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    .league-tab:hover {
+      opacity: 0.8;
+    }
+
+    .league-tab.active {
+      background: #e94560;
+      border-color: #e94560;
+      opacity: 1;
+    }
+
+    /* ===== Division Pills ===== */
+    .division-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0 1rem;
+      overflow-x: auto;
+    }
+
+    .division-pill {
+      background: transparent;
+      color: #ccc;
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 20px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .division-pill:hover {
+      border-color: rgba(233, 69, 96, 0.6);
+      color: #eee;
+    }
+
+    .division-pill.active {
+      background: #e94560;
+      border-color: #e94560;
+      color: #fff;
+    }
+
+    /* ===== Section Containers ===== */
+    .standings-container,
+    .bracket-container,
+    .schedule-container {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 1.5rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #e94560;
+      color: #eee;
+    }
+
+    .placeholder-msg {
+      color: #888;
+      font-style: italic;
+      padding: 1rem 0;
+    }
+
+    /* ===== Tables (Standings & Schedule) ===== */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    table.data-table thead th {
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: #bbb;
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 2px solid #e94560;
+    }
+
+    table.data-table tbody tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    table.data-table tbody tr:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    table.data-table tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    table.data-table tbody td {
+      padding: 0.55rem 0.75rem;
+    }
+
+    /* Qualified row: subtle green left border */
+    table.data-table tbody tr.qualified {
+      border-left: 3px solid #2ecc71;
+    }
+
+    /* Eliminated row: dimmed */
+    table.data-table tbody tr.eliminated {
+      opacity: 0.4;
+    }
+
+    /* ===== Bracket Container ===== */
+    .bracket-container {
+      /* Structural CSS for CSS-grid brackets will be added in later tasks */
+    }
+
+    /* ===== "If Necessary" styling ===== */
+    .if-necessary {
+      font-style: italic;
+      opacity: 0.6;
+    }
+
+    /* ===== Print Media Query ===== */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      header {
+        background: #fff;
+        border-bottom-color: #333;
+      }
+
+      header h1 {
+        color: #000;
+      }
+
+      .league-tabs,
+      .division-pills {
+        display: none;
+      }
+
+      table.data-table thead th {
+        color: #333;
+        border-bottom-color: #333;
+      }
+
+      table.data-table tbody tr:nth-child(odd) {
+        background: #f5f5f5;
+      }
+
+      table.data-table tbody tr:nth-child(even) {
+        background: #fff;
+      }
+
+      table.data-table tbody tr.qualified {
+        border-left-color: #2ecc71;
+      }
+    }
+
+    /* ===== Bracket Layout ===== */
+    .bracket {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      min-height: 200px;
+      align-items: stretch;
+    }
+
+    .round {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      min-width: 220px;
+      gap: 0.75rem;
+    }
+
+    .round-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #e94560;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .matchup {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      position: relative;
+    }
+
+    .matchup-team {
+      padding: 0.35rem 0;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .matchup-team.home {
+      border-left: 3px solid #2ecc71;
+      padding-left: 0.5rem;
+    }
+
+    .matchup-seed {
+      color: #888;
+      font-size: 0.75rem;
+      margin-right: 0.4rem;
+    }
+
+    .matchup-vs {
+      text-align: center;
+      font-size: 0.65rem;
+      color: #666;
+      text-transform: uppercase;
+      padding: 0.1rem 0;
+    }
+
+    .matchup-bye {
+      color: #666;
+      font-style: italic;
+      font-size: 0.8rem;
+      padding: 0.35rem 0;
+    }
+
+    .matchup-label {
+      font-size: 0.7rem;
+      color: #888;
+      text-align: center;
+      margin-top: 0.25rem;
+    }
+
+    .series-label {
+      font-size: 0.65rem;
+      color: #e94560;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .pod-label {
+      font-size: 0.8rem;
+      color: #e94560;
+      font-weight: 600;
+      text-align: center;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    /* Bracket bye entry */
+    .bracket-bye-entry {
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+
+    .bracket-bye-entry .matchup-team {
+      justify-content: center;
+    }
+
+    .bracket-bye-tag {
+      font-size: 0.65rem;
+      color: #2ecc71;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-left: 0.3rem;
+    }
+
+    /* Dineen Cup special styling */
+    .dineen-schedule {
+      max-width: 700px;
+    }
+
+    .dineen-game {
+      display: flex;
+      gap: 1rem;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: center;
+    }
+
+    .dineen-game-num {
+      font-weight: 700;
+      color: #e94560;
+      min-width: 60px;
+    }
+
+    .dineen-game-date {
+      color: #aaa;
+      min-width: 140px;
+      font-size: 0.85rem;
+    }
+
+    .dineen-game-matchup {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    .dineen-game-note {
+      font-size: 0.75rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* NE Conference combined view */
+    .ne-divisions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .ne-division-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .ne-division-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 0.95rem;
+      color: #e94560;
+    }
+
+    /* Bracket section divider */
+    .bracket-section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e94560;
+      margin: 1.5rem 0 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid rgba(233, 69, 96, 0.3);
+    }
+
+    /* Pod bracket wrapper for Northwest */
+    .pod-brackets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .pod-bracket-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    /* Schedule info box */
+    .schedule-info {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .schedule-info p {
+      margin: 0.3rem 0;
+      font-size: 0.88rem;
+      color: #ccc;
+    }
+
+    .schedule-round-label {
+      color: #e94560;
+      font-weight: 600;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .league-tab {
+        padding: 0.45rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .division-pills {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      table.data-table {
+        font-size: 0.78rem;
+      }
+
+      table.data-table thead th,
+      table.data-table tbody td {
+        padding: 0.4rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>2025-26 USPHL Playoffs</h1>
+  </header>
+
+  <div class="content-wrap">
+
+    <!-- League Tab Buttons -->
+    <nav class="league-tabs">
+      <button class="league-tab active" data-league="NCDC">NCDC</button>
+      <button class="league-tab" data-league="Premier">Premier</button>
+      <button class="league-tab" data-league="Elite">Elite</button>
+    </nav>
+
+    <!-- Division Pill Container -->
+    <div class="division-pills" id="divisionPills"></div>
+
+    <!-- Content Areas -->
+    <div class="standings-container" id="standingsContainer">
+      <div class="section-title">Standings</div>
+      <div id="standingsContent" class="placeholder-msg">Coming soon...</div>
+    </div>
+
+    <div class="bracket-container" id="bracketContainer">
+      <div class="section-title">Bracket</div>
+      <div id="bracketContent" class="placeholder-msg">Coming soon...</div>
+    </div>
+
+    <div class="schedule-container" id="scheduleContainer">
+      <div class="section-title">Schedule</div>
+      <div id="scheduleContent" class="placeholder-msg">Coming soon...</div>
+    </div>
+
+  </div>
+
+  <!-- ===== LEAGUE DATA (populated in later tasks) ===== -->
+  <script>
+    const LEAGUE_DATA = {
+      premier: {
+        "Atlantic": {
+          teams: [
+            { seed: 1, name: "West Chester Wolves", gp: 44, pts: 74, row: 35, l: 6, t: 0, otw: 1, otl: 1, sow: 0, sol: 1, pctg: .841 },
+            { seed: 2, name: "Red Bank Generals", gp: 44, pts: 70, row: 32, l: 8, t: 0, otw: 2, otl: 2, sow: 0, sol: 0, pctg: .795 },
+            { seed: 3, name: "Connecticut Junior Rangers", gp: 43, pts: 64, row: 26, l: 10, t: 0, otw: 2, otl: 1, sow: 3, sol: 1, pctg: .744 },
+            { seed: 4, name: "P.A.L. Jr Islanders", gp: 44, pts: 62, row: 23, l: 11, t: 0, otw: 6, otl: 3, sow: 0, sol: 1, pctg: .705 },
+            { seed: 5, name: "Wilkes-Barre Scranton Knights", gp: 44, pts: 53, row: 22, l: 16, t: 0, otw: 3, otl: 2, sow: 0, sol: 1, pctg: .602 },
+            { seed: 6, name: "Mercer Chiefs", gp: 43, pts: 50, row: 23, l: 17, t: 0, otw: 1, otl: 2, sow: 0, sol: 0, pctg: .581 },
+            { seed: 7, name: "Rockets Hockey Club", gp: 43, pts: 33, row: 15, l: 26, t: 0, otw: 1, otl: 0, sow: 0, sol: 1, pctg: .384 },
+            { seed: 8, name: "Hershey Cubs", gp: 44, pts: 29, row: 12, l: 28, t: 0, otw: 0, otl: 3, sow: 1, sol: 0, pctg: .330 }
+          ],
+          eliminated: [
+            { seed: 9, name: "Jersey Hitmen", gp: 44, pts: 18, row: 6, l: 35, t: 0, otw: 2, otl: 0, sow: 1, sol: 0, pctg: .205 },
+            { seed: 10, name: "New Jersey Renegades", gp: 43, pts: 12, row: 2, l: 35, t: 0, otw: 1, otl: 3, sow: 1, sol: 1, pctg: .140 }
+          ],
+          qualifyCount: 8,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[1,8],[2,7],[3,6],[4,5]], byes: [] },
+              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Florida": {
+          teams: [
+            { seed: 1, name: "Coral Springs Jr. Cats", gp: 43, pts: 58, row: 26, l: 14, t: 0, otw: 3, otl: 0, sow: 0, sol: 0, pctg: .674 },
+            { seed: 2, name: "Florida Eels", gp: 44, pts: 54, row: 22, l: 16, t: 0, otw: 1, otl: 2, sow: 3, sol: 0, pctg: .614 },
+            { seed: 3, name: "Tampa Bay Juniors", gp: 43, pts: 51, row: 24, l: 17, t: 0, otw: 0, otl: 0, sow: 1, sol: 1, pctg: .593 },
+            { seed: 4, name: "Florida Junior Blades", gp: 44, pts: 28, row: 11, l: 28, t: 0, otw: 1, otl: 2, sow: 0, sol: 2, pctg: .318 },
+            { seed: 5, name: "Typhoon Hockey Club", gp: 44, pts: 24, row: 9, l: 31, t: 0, otw: 1, otl: 1, sow: 1, sol: 1, pctg: .273 }
+          ],
+          eliminated: [
+            { seed: 6, name: "Bold City Battalion", gp: 6, pts: 0, row: 0, l: 6, t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: .000 }
+          ],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Great Lakes": {
+          teams: [
+            { seed: 1, name: "Toledo Cherokee", gp: 44, pts: 75, row: 35, l: 6, t: 0, otw: 1, otl: 1, sow: 1, sol: 0, pctg: .852 },
+            { seed: 2, name: "Metro Jets", gp: 44, pts: 73, row: 35, l: 7, t: 0, otw: 1, otl: 0, sow: 0, sol: 1, pctg: .830 },
+            { seed: 3, name: "Red River Spartans", gp: 44, pts: 70, row: 33, l: 9, t: 0, otw: 2, otl: 0, sow: 0, sol: 0, pctg: .795 },
+            { seed: 4, name: "Columbus Mavericks", gp: 44, pts: 64, row: 31, l: 12, t: 0, otw: 1, otl: 0, sow: 0, sol: 0, pctg: .727 },
+            { seed: 5, name: "Battle Creek Kernels", gp: 44, pts: 31, row: 13, l: 28, t: 0, otw: 2, otl: 1, sow: 0, sol: 0, pctg: .352 },
+            { seed: 6, name: "Fresh Coast Freeze", gp: 44, pts: 27, row: 10, l: 28, t: 0, otw: 1, otl: 3, sow: 0, sol: 2, pctg: .307 }
+          ],
+          eliminated: [
+            { seed: 7, name: "Cincinnati Cyclones", gp: 44, pts: 24, row: 9, l: 31, t: 0, otw: 2, otl: 2, sow: 0, sol: 0, pctg: .273 },
+            { seed: 8, name: "Bearcat Hockey Club", gp: 43, pts: 12, row: 4, l: 36, t: 0, otw: 0, otl: 2, sow: 1, sol: 0, pctg: .140 }
+          ],
+          qualifyCount: 6,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[3,6],[4,5]], byes: [1,2] },
+              { name: "Round 2", matchups: [[1,"Lowest Seed"],[2,"Second Lowest"]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Midwest": {
+          teams: [
+            { seed: 1, name: "Fort Wayne Spacemen", gp: 44, pts: 66, row: 30, l: 11, t: 0, otw: 3, otl: 0, sow: 0, sol: 0, pctg: .750 },
+            { seed: 2, name: "Chicago T-Rex", gp: 44, pts: 42, row: 18, l: 22, t: 0, otw: 0, otl: 2, sow: 2, sol: 0, pctg: .477 },
+            { seed: 3, name: "MJDP", gp: 44, pts: 41, row: 16, l: 23, t: 0, otw: 3, otl: 1, sow: 1, sol: 0, pctg: .466 },
+            { seed: 4, name: "Chicago Cougars", gp: 44, pts: 38, row: 16, l: 23, t: 0, otw: 1, otl: 2, sow: 0, sol: 2, pctg: .432 },
+            { seed: 5, name: "Chicago Crush", gp: 44, pts: 21, row: 6, l: 32, t: 0, otw: 2, otl: 3, sow: 1, sol: 0, pctg: .239 }
+          ],
+          eliminated: [],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Round 2", matchups: [[2,3],[1,"R1 Winner"]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "New England": {
+          teams: [
+            { seed: 1, name: "Northern Cyclones", gp: 44, pts: 76, row: 35, l: 5, t: 0, otw: 2, otl: 1, sow: 0, sol: 1, pctg: .864 },
+            { seed: 2, name: "Islanders Hockey Club", gp: 44, pts: 67, row: 28, l: 9, t: 0, otw: 1, otl: 3, sow: 3, sol: 0, pctg: .761 },
+            { seed: 3, name: "South Shore Kings", gp: 44, pts: 60, row: 25, l: 12, t: 0, otw: 3, otl: 3, sow: 0, sol: 1, pctg: .682 },
+            { seed: 4, name: "Utica Jr Comets", gp: 44, pts: 53, row: 25, l: 16, t: 0, otw: 0, otl: 2, sow: 0, sol: 1, pctg: .602 },
+            { seed: 5, name: "Boston Jr. Rangers", gp: 44, pts: 49, row: 21, l: 19, t: 0, otw: 2, otl: 0, sow: 1, sol: 1, pctg: .557 },
+            { seed: 6, name: "Worcester Railers JHC", gp: 44, pts: 49, row: 19, l: 18, t: 0, otw: 3, otl: 3, sow: 1, sol: 0, pctg: .557 },
+            { seed: 7, name: "Springfield Pics", gp: 44, pts: 22, row: 9, l: 33, t: 0, otw: 0, otl: 0, sow: 2, sol: 0, pctg: .250 }
+          ],
+          eliminated: [
+            { seed: 8, name: "Thunder Hockey Club", gp: 25, pts: 2, row: 1, l: 24, t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: .040 }
+          ],
+          qualifyCount: 7,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[2,7],[3,6],[4,5]], byes: [1] },
+              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "North": {
+          teams: [
+            { seed: 1, name: "Minnesota Squatch", gp: 43, pts: 76, row: 33, l: 4, t: 0, otw: 2, otl: 1, sow: 2, sol: 1, pctg: .884 },
+            { seed: 2, name: "Wisconsin Rapids Riverkings", gp: 43, pts: 65, row: 30, l: 10, t: 0, otw: 2, otl: 1, sow: 0, sol: 0, pctg: .756 },
+            { seed: 3, name: "Northwest Express", gp: 43, pts: 63, row: 29, l: 10, t: 0, otw: 0, otl: 3, sow: 1, sol: 0, pctg: .733 },
+            { seed: 4, name: "Minnesota Blue Ox", gp: 43, pts: 55, row: 24, l: 14, t: 0, otw: 2, otl: 1, sow: 0, sol: 2, pctg: .640 },
+            { seed: 5, name: "Steele County Blades", gp: 43, pts: 39, row: 16, l: 22, t: 0, otw: 2, otl: 2, sow: 0, sol: 1, pctg: .453 },
+            { seed: 6, name: "Minnesota Mullets", gp: 43, pts: 23, row: 7, l: 31, t: 0, otw: 3, otl: 1, sow: 1, sol: 0, pctg: .267 },
+            { seed: 7, name: "Hudson Havoc", gp: 43, pts: 11, row: 4, l: 36, t: 0, otw: 0, otl: 2, sow: 0, sol: 1, pctg: .128 }
+          ],
+          eliminated: [
+            { seed: 8, name: "Minnesota Outlaws", gp: 15, pts: 2, row: 1, l: 14, t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: .067 }
+          ],
+          qualifyCount: 7,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[2,7],[3,6],[4,5]], byes: [1] },
+              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Northwest": {
+          pods: {
+            "PNW": {
+              teams: [
+                { seed: 1, name: "Seattle Totems", gp: 44, pts: 71, row: 34, l: 8, t: 0, otw: 1, otl: 0, sow: 0, sol: 1, pctg: .807 },
+                { seed: 2, name: "Bremerton Sockeyes", gp: 44, pts: 44, row: 21, l: 22, t: 0, otw: 0, otl: 0, sow: 1, sol: 0, pctg: .500 }
+              ]
+            },
+            "MTN": {
+              teams: [
+                { seed: 1, name: "Vernal Oilers", gp: 44, pts: 84, row: 38, l: 2, t: 0, otw: 3, otl: 0, sow: 1, sol: 0, pctg: .955 },
+                { seed: 2, name: "McCall Smokejumpers", gp: 46, pts: 51, row: 24, l: 19, t: 0, otw: 0, otl: 2, sow: 0, sol: 1, pctg: .554 }
+              ]
+            }
+          },
+          eliminated: [
+            { seed: 5, name: "Iron County Yeti", gp: 44, pts: 35, row: 14, l: 26, t: 0, otw: 3, otl: 1, sow: 0, sol: 0, pctg: .398 },
+            { seed: 6, name: "Colorado Fighting Elk", gp: 44, pts: 1, row: 0, l: 43, t: 0, otw: 0, otl: 1, sow: 0, sol: 0, pctg: .011 },
+            { seed: 7, name: "Rogue Valley Royals", gp: 44, pts: 9, row: 3, l: 39, t: 0, otw: 1, otl: 1, sow: 0, sol: 0, pctg: .102 }
+          ],
+          qualifyCount: 4,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Pod Round", matchups: [["PNW1","PNW2"],["MTN1","MTN2"]] },
+              { name: "Divisional Finals", matchups: [["Pod Winner 1","Pod Winner 2"]] }
+            ]
+          }
+        },
+        "Pacific": {
+          teams: [
+            { seed: 1, name: "Fresno Monsters", gp: 46, pts: 75, row: 34, l: 8, t: 0, otw: 2, otl: 1, sow: 1, sol: 0, pctg: .815 },
+            { seed: 2, name: "Henderson Force", gp: 46, pts: 74, row: 34, l: 8, t: 0, otw: 2, otl: 1, sow: 0, sol: 1, pctg: .804 },
+            { seed: 3, name: "Ontario Jr Reign", gp: 46, pts: 72, row: 33, l: 9, t: 0, otw: 1, otl: 2, sow: 1, sol: 0, pctg: .783 },
+            { seed: 4, name: "Ventura Vikings", gp: 46, pts: 55, row: 25, l: 17, t: 0, otw: 0, otl: 2, sow: 1, sol: 1, pctg: .598 }
+          ],
+          eliminated: [
+            { seed: 5, name: "Long Beach Bombers", gp: 46, pts: 35, row: 15, l: 27, t: 0, otw: 1, otl: 3, sow: 0, sol: 0, pctg: .380 },
+            { seed: 6, name: "San Diego Sabers", gp: 46, pts: 28, row: 12, l: 31, t: 0, otw: 1, otl: 1, sow: 0, sol: 1, pctg: .304 },
+            { seed: 7, name: "Lake Tahoe Lakers", gp: 46, pts: 19, row: 8, l: 36, t: 0, otw: 1, otl: 1, sow: 0, sol: 0, pctg: .207 }
+          ],
+          qualifyCount: 4,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] }
+            ]
+          }
+        },
+        "Southeast": {
+          teams: [
+            { seed: 1, name: "Hampton Roads Whalers", gp: 42, pts: 69, row: 31, l: 7, t: 0, otw: 3, otl: 1, sow: 0, sol: 0, pctg: .821 },
+            { seed: 2, name: "Potomac Patriots", gp: 44, pts: 67, row: 29, l: 10, t: 0, otw: 2, otl: 0, sow: 2, sol: 1, pctg: .761 },
+            { seed: 3, name: "Charlotte Rush", gp: 44, pts: 50, row: 22, l: 17, t: 0, otw: 0, otl: 3, sow: 1, sol: 1, pctg: .568 },
+            { seed: 4, name: "Charleston Colonials", gp: 44, pts: 41, row: 17, l: 22, t: 0, otw: 1, otl: 2, sow: 1, sol: 1, pctg: .466 },
+            { seed: 5, name: "Carolina Junior Hurricanes", gp: 42, pts: 31, row: 11, l: 24, t: 0, otw: 2, otl: 3, sow: 0, sol: 2, pctg: .369 }
+          ],
+          eliminated: [],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "St. Lawrence": {
+          teams: [
+            { seed: 1, name: "Hawkesbury Knights", gp: 44, pts: 68, row: 31, l: 10, t: 0, otw: 2, otl: 0, sow: 1, sol: 0, pctg: .773 },
+            { seed: 2, name: "Montreal Black Vees", gp: 43, pts: 59, row: 24, l: 12, t: 0, otw: 3, otl: 0, sow: 1, sol: 3, pctg: .686 },
+            { seed: 3, name: "Somang Hockey", gp: 44, pts: 57, row: 23, l: 13, t: 0, otw: 2, otl: 3, sow: 1, sol: 2, pctg: .648 },
+            { seed: 4, name: "St-Lazare Avalanche", gp: 44, pts: 51, row: 18, l: 17, t: 0, otw: 2, otl: 2, sow: 4, sol: 1, pctg: .580 },
+            { seed: 5, name: "Universel College Gatineau", gp: 44, pts: 50, row: 21, l: 17, t: 0, otw: 1, otl: 3, sow: 1, sol: 1, pctg: .568 },
+            { seed: 6, name: "Universel Sherbrooke", gp: 44, pts: 39, row: 16, l: 23, t: 0, otw: 1, otl: 2, sow: 1, sol: 1, pctg: .443 },
+            { seed: 7, name: "New York Dynamo", gp: 44, pts: 38, row: 16, l: 24, t: 0, otw: 1, otl: 1, sow: 1, sol: 1, pctg: .432 },
+            { seed: 8, name: "Kingston Wranglers", gp: 43, pts: 17, row: 7, l: 33, t: 0, otw: 0, otl: 2, sow: 0, sol: 1, pctg: .198 }
+          ],
+          eliminated: [
+            { seed: 9, name: "Ottawa Valley Centennials", gp: 44, pts: 13, row: 4, l: 36, t: 0, otw: 0, otl: 1, sow: 1, sol: 2, pctg: .148 }
+          ],
+          qualifyCount: 8,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[1,8],[2,7],[3,6],[4,5]], byes: [] },
+              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Finals", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        }
+      },
+      elite: {
+        "Atlantic": {
+          teams: [
+            { seed: 1, name: "Wilkes-Barre Scranton Knights", gp: 44, pts: 64, row: 28, l: 11, t: 0, otw: 3, otl: 2, sow: 0, sol: 0, pctg: .727 },
+            { seed: 2, name: "Hershey Cubs", gp: 43, pts: 51, row: 22, l: 14, t: 0, otw: 0, otl: 4, sow: 0, sol: 3, pctg: .593 },
+            { seed: 3, name: "Connecticut Junior Rangers", gp: 42, pts: 39, row: 17, l: 22, t: 0, otw: 2, otl: 0, sow: 0, sol: 1, pctg: .464 },
+            { seed: 4, name: "Red Bank Generals", gp: 44, pts: 39, row: 13, l: 22, t: 0, otw: 3, otl: 4, sow: 1, sol: 1, pctg: .443 },
+            { seed: 5, name: "P.A.L. Jr Islanders", gp: 43, pts: 36, row: 13, l: 23, t: 0, otw: 2, otl: 3, sow: 1, sol: 1, pctg: .419 },
+            { seed: 6, name: "Atlanta Mad Hatters", gp: 43, pts: 25, row: 8, l: 30, t: 0, otw: 3, otl: 0, sow: 1, sol: 1, pctg: .291 }
+          ],
+          eliminated: [],
+          qualifyCount: 6,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[3,6],[4,5]], byes: [1,2] },
+              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Florida": {
+          teams: [
+            { seed: 1, name: "Tampa Bay Juniors", gp: 42, pts: 68, row: 29, l: 7, t: 0, otw: 3, otl: 2, sow: 1, sol: 0, pctg: .810 },
+            { seed: 2, name: "Coral Springs Jr. Cats", gp: 42, pts: 55, row: 24, l: 12, t: 0, otw: 1, otl: 2, sow: 0, sol: 3, pctg: .655 },
+            { seed: 3, name: "Florida Junior Blades", gp: 43, pts: 48, row: 18, l: 17, t: 0, otw: 3, otl: 3, sow: 1, sol: 1, pctg: .558 },
+            { seed: 4, name: "Florida Eels", gp: 43, pts: 42, row: 17, l: 21, t: 0, otw: 2, otl: 2, sow: 1, sol: 0, pctg: .488 },
+            { seed: 5, name: "Typhoon Hockey Club", gp: 43, pts: 14, row: 5, l: 34, t: 0, otw: 0, otl: 4, sow: 0, sol: 0, pctg: .163 }
+          ],
+          eliminated: [
+            { seed: 6, name: "Bold City Battalion", gp: 3, pts: 0, row: 0, l: 3, t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: .000 }
+          ],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Midwest": {
+          teams: [
+            { seed: 1, name: "Chicago Crush", gp: 44, pts: 80, row: 33, l: 3, t: 0, otw: 5, otl: 0, sow: 1, sol: 2, pctg: .909 },
+            { seed: 2, name: "Fort Wayne Spacemen", gp: 44, pts: 58, row: 26, l: 13, t: 0, otw: 1, otl: 2, sow: 0, sol: 2, pctg: .659 },
+            { seed: 3, name: "Metro Jets Elite", gp: 44, pts: 57, row: 19, l: 14, t: 0, otw: 4, otl: 2, sow: 4, sol: 1, pctg: .648 },
+            { seed: 4, name: "Chicago T-Rex", gp: 43, pts: 21, row: 9, l: 32, t: 1, otw: 1, otl: 0, sow: 0, sol: 0, pctg: .244 },
+            { seed: 5, name: "Chicago Cougars", gp: 44, pts: 10, row: 5, l: 39, t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: .114 }
+          ],
+          eliminated: [],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Round 1", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Round 2", matchups: [[2,3],[1,"R1 Winner"]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "New England": {
+          teams: [
+            { seed: 1, name: "Northern Cyclones", gp: 44, pts: 77, row: 33, l: 4, t: 0, otw: 1, otl: 2, sow: 3, sol: 1, pctg: .875 },
+            { seed: 2, name: "Montreal Knights", gp: 42, pts: 71, row: 31, l: 6, t: 0, otw: 3, otl: 0, sow: 1, sol: 1, pctg: .845 },
+            { seed: 3, name: "Islanders Hockey Club", gp: 44, pts: 42, row: 18, l: 22, t: 0, otw: 2, otl: 2, sow: 0, sol: 0, pctg: .477 },
+            { seed: 4, name: "South Shore Kings", gp: 44, pts: 28, row: 10, l: 28, t: 0, otw: 1, otl: 3, sow: 1, sol: 1, pctg: .318 },
+            { seed: 5, name: "Springfield Pics", gp: 43, pts: 26, row: 11, l: 29, t: 0, otw: 1, otl: 2, sow: 0, sol: 0, pctg: .302 }
+          ],
+          eliminated: [],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            playInFormat: "Single Game",
+            rounds: [
+              { name: "Play-In", matchups: [[4,5]], byes: [1,2,3], note: "Single game, #4 hosts" },
+              { name: "Round 1", matchups: [[2,3],[1,"PI Winner"]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        },
+        "Southeast": {
+          teams: [
+            { seed: 1, name: "Carolina Junior Hurricanes", gp: 42, pts: 74, row: 29, l: 5, t: 0, otw: 7, otl: 0, sow: 1, sol: 0, pctg: .881 },
+            { seed: 2, name: "Hampton Roads Whalers", gp: 42, pts: 71, row: 31, l: 5, t: 0, otw: 3, otl: 2, sow: 0, sol: 1, pctg: .845 },
+            { seed: 3, name: "Charlotte Rush", gp: 44, pts: 48, row: 18, l: 18, t: 0, otw: 3, otl: 4, sow: 1, sol: 0, pctg: .545 },
+            { seed: 4, name: "Potomac Patriots", gp: 44, pts: 33, row: 11, l: 25, t: 0, otw: 2, otl: 5, sow: 1, sol: 0, pctg: .375 },
+            { seed: 5, name: "Charleston Colonials", gp: 44, pts: 22, row: 9, l: 32, t: 0, otw: 1, otl: 2, sow: 0, sol: 0, pctg: .250 }
+          ],
+          eliminated: [],
+          qualifyCount: 5,
+          playoffFormat: {
+            seriesFormat: "Bo3",
+            rounds: [
+              { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
+              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Championship", matchups: [[1,2]], byes: [] }
+            ]
+          }
+        }
+      },
+      ncdc: {
+        conferences: {
+          "Atlantic": {
+            teams: [
+              { seed: 1, name: "P.A.L. Junior Islanders", gp: 46, pts: 67, row: 28, l: 11, t: 0, otw: 3, otl: 2, sow: 1, sol: 1, pctg: .728 },
+              { seed: 2, name: "Jersey Hitmen", gp: 48, pts: 64, row: 28, l: 14, t: 0, otw: 1, otl: 2, sow: 1, sol: 2, pctg: .667 },
+              { seed: 3, name: "Rockets Hockey Club", gp: 47, pts: 59, row: 23, l: 16, t: 0, otw: 2, otl: 3, sow: 3, sol: 0, pctg: .628 },
+              { seed: 4, name: "Mercer Chiefs", gp: 46, pts: 51, row: 17, l: 19, t: 0, otw: 3, otl: 1, sow: 4, sol: 2, pctg: .554 },
+              { seed: 5, name: "Connecticut Junior Rangers", gp: 45, pts: 44, row: 18, l: 22, t: 0, otw: 0, otl: 2, sow: 3, sol: 0, pctg: .489 }
+            ],
+            eliminated: [
+              { seed: 6, name: "Wilkes-Barre Scranton Knights", gp: 48, pts: 46, row: 14, l: 22, t: 0, otw: 3, otl: 2, sow: 3, sol: 4, pctg: .479 },
+              { seed: 7, name: "West Chester Wolves", gp: 48, pts: 43, row: 16, l: 23, t: 0, otw: 2, otl: 1, sow: 0, sol: 6, pctg: .448 }
+            ],
+            qualifyCount: 5,
+            playoffFormat: {
+              seriesFormat: "Bo3/Bo5",
+              rounds: [
+                { name: "Play-In (Bo3)", matchups: [[4,5]], byes: [1,2,3], note: "#4 hosts" },
+                { name: "Semifinals (Bo5)", matchups: [[1,"PI Winner"],[2,3]], byes: [] },
+                { name: "Final (Bo5)", matchups: [[1,2]], byes: [] }
+              ]
+            }
+          },
+          "New England": {
+            divisions: {
+              "Central": {
+                teams: [
+                  { seed: 1, name: "Utica Jr Comets", gp: 50, pts: 83, row: 38, l: 6, t: 0, otw: 0, otl: 2, sow: 1, sol: 3, pctg: .830 },
+                  { seed: 2, name: "Boston Jr. Rangers", gp: 47, pts: 67, row: 24, l: 11, t: 0, otw: 3, otl: 3, sow: 4, sol: 2, pctg: .713 },
+                  { seed: 3, name: "Worcester Railers JHC", gp: 47, pts: 59, row: 25, l: 17, t: 0, otw: 4, otl: 1, sow: 0, sol: 0, pctg: .628 },
+                  { seed: 4, name: "Boston Junior Bruins", gp: 50, pts: 60, row: 19, l: 14, t: 0, otw: 2, otl: 6, sow: 3, sol: 6, pctg: .600 }
+                ],
+                eliminated: [
+                  { seed: 5, name: "Springfield Pics", gp: 47, pts: 38, row: 13, l: 26, t: 0, otw: 2, otl: 2, sow: 2, sol: 2, pctg: .404 },
+                  { seed: 6, name: "New York Dynamo", gp: 48, pts: 38, row: 13, l: 28, t: 0, otw: 3, otl: 1, sow: 2, sol: 1, pctg: .396 }
+                ],
+                qualifyCount: 4,
+                playoffFormat: {
+                  seriesFormat: "Bo5",
+                  rounds: [
+                    { name: "Division Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+                    { name: "Division Final", matchups: [[1,2]], byes: [] }
+                  ]
+                }
+              },
+              "East": {
+                teams: [
+                  { seed: 1, name: "South Shore Kings", gp: 48, pts: 83, row: 36, l: 5, t: 0, otw: 2, otl: 1, sow: 2, sol: 2, pctg: .865 },
+                  { seed: 2, name: "Islanders Hockey Club", gp: 48, pts: 72, row: 23, l: 10, t: 0, otw: 5, otl: 2, sow: 6, sol: 2, pctg: .750 },
+                  { seed: 3, name: "Northern Cyclones", gp: 48, pts: 62, row: 16, l: 13, t: 0, otw: 10, otl: 4, sow: 1, sol: 4, pctg: .646 },
+                  { seed: 4, name: "Thunder Hockey Club", gp: 47, pts: 40, row: 11, l: 24, t: 0, otw: 3, otl: 3, sow: 3, sol: 3, pctg: .426 }
+                ],
+                eliminated: [
+                  { seed: 5, name: "Boston Dogs", gp: 48, pts: 37, row: 14, l: 26, t: 0, otw: 1, otl: 5, sow: 0, sol: 2, pctg: .385 },
+                  { seed: 6, name: "Universel Academy", gp: 47, pts: 31, row: 10, l: 28, t: 0, otw: 2, otl: 5, sow: 0, sol: 2, pctg: .330 }
+                ],
+                qualifyCount: 4,
+                playoffFormat: {
+                  seriesFormat: "Bo5",
+                  rounds: [
+                    { name: "Division Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+                    { name: "Division Final", matchups: [[1,2]], byes: [] }
+                  ]
+                }
+              },
+              "North": {
+                teams: [
+                  { seed: 1, name: "Lewiston MAINEiacs", gp: 51, pts: 78, row: 31, l: 9, t: 0, otw: 1, otl: 3, sow: 4, sol: 3, pctg: .765 },
+                  { seed: 2, name: "Universel Quebec", gp: 55, pts: 54, row: 20, l: 27, t: 0, otw: 3, otl: 1, sow: 3, sol: 1, pctg: .491 },
+                  { seed: 3, name: "Woodstock NB Slammers", gp: 53, pts: 51, row: 19, l: 24, t: 0, otw: 0, otl: 5, sow: 3, sol: 2, pctg: .481 },
+                  { seed: 4, name: "CT Chiefs North", gp: 53, pts: 42, row: 15, l: 30, t: 0, otw: 1, otl: 1, sow: 3, sol: 3, pctg: .396 }
+                ],
+                eliminated: [
+                  { seed: 5, name: "Northern Maine Pioneers", gp: 51, pts: 36, row: 11, l: 32, t: 0, otw: 3, otl: 1, sow: 3, sol: 1, pctg: .353 },
+                  { seed: 6, name: "St. Stephen County Moose", gp: 49, pts: 25, row: 8, l: 34, t: 0, otw: 0, otl: 1, sow: 2, sol: 4, pctg: .255 },
+                  { seed: 7, name: "New England Wolves", gp: 17, pts: 20, row: 8, l: 7, t: 0, otw: 1, otl: 0, sow: 1, sol: 0, pctg: .588 }
+                ],
+                qualifyCount: 4,
+                playoffFormat: {
+                  seriesFormat: "Bo5",
+                  rounds: [
+                    { name: "Division Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+                    { name: "Division Final", matchups: [[1,2]], byes: [] }
+                  ]
+                }
+              }
+            },
+            conferenceRounds: {
+              roundRobin: {
+                name: "Conference Round Robin",
+                dates: "Apr 9-11",
+                format: "Round Robin",
+                matchups: [["Div1 Winner","Div3 Winner"],["Div3 Winner","Div2 Winner"],["Div2 Winner","Div1 Winner"]],
+                note: "Hosted by #1 seed"
+              },
+              conferenceFinal: {
+                name: "Conference Final",
+                dates: "Apr 14-16",
+                format: "Bo3",
+                matchups: [["RR #1","RR #2"]],
+                note: "Hosted by #1 seed"
+              }
+            }
+          },
+          "Mountain": {
+            teams: [
+              { seed: 1, name: "Ogden Mustangs", gp: 46, pts: 72, row: 31, l: 9, t: 0, otw: 3, otl: 1, sow: 1, sol: 1, pctg: .783 },
+              { seed: 2, name: "Idaho Falls Spud Kings", gp: 44, pts: 68, row: 26, l: 8, t: 0, otw: 4, otl: 2, sow: 2, sol: 2, pctg: .773 },
+              { seed: 3, name: "Grand Junction River Hawks", gp: 48, pts: 58, row: 22, l: 18, t: 0, otw: 4, otl: 2, sow: 2, sol: 0, pctg: .604 },
+              { seed: 4, name: "Utah Outliers", gp: 46, pts: 54, row: 23, l: 16, t: 0, otw: 1, otl: 4, sow: 0, sol: 2, pctg: .587 }
+            ],
+            eliminated: [
+              { seed: 5, name: "Pueblo Bulls", gp: 46, pts: 45, row: 18, l: 22, t: 0, otw: 1, otl: 0, sow: 2, sol: 3, pctg: .489 },
+              { seed: 6, name: "Rock Springs Miners", gp: 46, pts: 33, row: 14, l: 28, t: 0, otw: 1, otl: 3, sow: 0, sol: 0, pctg: .359 },
+              { seed: 7, name: "Casper Warbirds", gp: 46, pts: 15, row: 4, l: 37, t: 0, otw: 1, otl: 3, sow: 1, sol: 0, pctg: .163 }
+            ],
+            qualifyCount: 4,
+            playoffFormat: {
+              seriesFormat: "Bo5",
+              rounds: [
+                { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+                { name: "Final", matchups: [[1,2]], byes: [] }
+              ]
+            }
+          }
+        },
+        dineenCup: {
+          name: "Dineen Cup Championship",
+          dates: "Apr 22-28",
+          teams: ["Atlantic Champion", "Mountain Champion", "New England Champion", "Idaho Falls Spud Kings"],
+          format: "Modified Double Elimination",
+          schedule: [
+            { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "Atlantic vs Mountain", note: "" },
+            { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "New England vs Idaho Falls", note: "Host auto-bid" },
+            { game: 3, date: "Apr 25", time: "2:00 PM", matchup: "0-1 vs 0-1", note: "Elimination" },
+            { game: 4, date: "Apr 25", time: "7:00 PM", matchup: "1-0 vs 1-0", note: "" },
+            { game: 5, date: "Apr 26", time: "7:00 PM", matchup: "1-1 vs 1-1", note: "Elimination" },
+            { game: 6, date: "Apr 27", time: "7:00 PM", matchup: "1-1 vs 2-0", note: "Final #1" },
+            { game: 7, date: "Apr 28", time: "7:00 PM", matchup: "2-1 vs 3-1", note: "If necessary - Final #2" }
+          ]
+        }
+      }
+    };
+  </script>
+
+  <!-- ===== RENDERING LOGIC ===== -->
+  <script>
+    // ---- Division definitions per league ----
+    const DIVISIONS = {
+      NCDC: [
+        "Atlantic",
+        "NE Central",
+        "NE East",
+        "NE North",
+        "NE Conference",
+        "Mountain",
+        "Dineen Cup"
+      ],
+      Premier: [
+        "Atlantic",
+        "Florida",
+        "Great Lakes",
+        "Midwest",
+        "New England",
+        "North",
+        "Northwest",
+        "Pacific",
+        "Southeast",
+        "St. Lawrence"
+      ],
+      Elite: [
+        "Atlantic",
+        "Florida",
+        "Midwest",
+        "New England",
+        "Southeast"
+      ]
+    };
+
+    // ---- State ----
+    let currentLeague = "NCDC";
+    let currentDivision = "Atlantic";
+
+    // ---- DOM References ----
+    const tabButtons = document.querySelectorAll(".league-tab");
+    const pillContainer = document.getElementById("divisionPills");
+    const standingsContent = document.getElementById("standingsContent");
+    const bracketContent = document.getElementById("bracketContent");
+    const scheduleContent = document.getElementById("scheduleContent");
+
+    // ---- Tab Switching ----
+    tabButtons.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var league = btn.getAttribute("data-league");
+        if (league === currentLeague) return;
+
+        // Update active tab
+        tabButtons.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+
+        currentLeague = league;
+
+        // Populate division pills, select first division
+        populateDivisionPills(league);
+        currentDivision = DIVISIONS[league][0];
+        highlightActivePill();
+
+        renderAll();
+      });
+    });
+
+    // ---- Division Pills ----
+    function populateDivisionPills(league) {
+      var divisions = DIVISIONS[league];
+
+      // Clear existing pills using DOM methods
+      while (pillContainer.firstChild) {
+        pillContainer.removeChild(pillContainer.firstChild);
+      }
+
+      divisions.forEach(function(div) {
+        var pill = document.createElement("button");
+        pill.className = "division-pill";
+        pill.textContent = div;
+        pill.setAttribute("data-division", div);
+
+        pill.addEventListener("click", function() {
+          currentDivision = div;
+          highlightActivePill();
+          renderAll();
+        });
+
+        pillContainer.appendChild(pill);
+      });
+    }
+
+    function highlightActivePill() {
+      var pills = pillContainer.querySelectorAll(".division-pill");
+      pills.forEach(function(p) {
+        if (p.getAttribute("data-division") === currentDivision) {
+          p.classList.add("active");
+        } else {
+          p.classList.remove("active");
+        }
+      });
+    }
+
+    // ---- Data Helper ----
+    function getDivisionData() {
+      if (currentLeague === "Premier") {
+        return LEAGUE_DATA.premier[currentDivision] || null;
+      }
+      if (currentLeague === "Elite") {
+        return LEAGUE_DATA.elite[currentDivision] || null;
+      }
+      if (currentLeague === "NCDC") {
+        if (currentDivision === "Atlantic") return LEAGUE_DATA.ncdc.conferences["Atlantic"];
+        if (currentDivision === "Mountain") return LEAGUE_DATA.ncdc.conferences["Mountain"];
+        if (currentDivision === "NE Central") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["Central"];
+        if (currentDivision === "NE East") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["East"];
+        if (currentDivision === "NE North") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["North"];
+        if (currentDivision === "NE Conference") return { _special: "ne_conference" };
+        if (currentDivision === "Dineen Cup") return { _special: "dineen_cup" };
+      }
+      return null;
+    }
+
+    // Helper: get all teams for a division (handles pods for Northwest)
+    function getAllTeams(data) {
+      if (!data) return [];
+      if (data.pods) {
+        var all = [];
+        Object.keys(data.pods).forEach(function(podName) {
+          data.pods[podName].teams.forEach(function(t) {
+            all.push(Object.assign({}, t, { pod: podName }));
+          });
+        });
+        return all;
+      }
+      return data.teams || [];
+    }
+
+    // Helper: find a team by seed from teams + eliminated arrays
+    function findTeamBySeed(data, seed) {
+      if (!data) return null;
+      var teams = getAllTeams(data);
+      var eliminated = data.eliminated || [];
+      var all = teams.concat(eliminated);
+      for (var i = 0; i < all.length; i++) {
+        if (all[i].seed === seed) return all[i];
+      }
+      return null;
+    }
+
+    // Helper: get team name by seed or label
+    function getTeamLabel(data, seedOrLabel) {
+      if (typeof seedOrLabel === "number") {
+        var team = findTeamBySeed(data, seedOrLabel);
+        return team ? team.name : "Seed #" + seedOrLabel;
+      }
+      return String(seedOrLabel);
+    }
+
+    // Helper: extract series format from round name or division format
+    function getSeriesFormat(round, divFormat) {
+      // Check if round name contains format info like "Bo3" or "Bo5"
+      var match = round.name.match(/\(Bo\d\)/);
+      if (match) return match[0].replace(/[()]/g, "");
+      // Fall back to division's seriesFormat
+      return divFormat || "";
+    }
+
+    // ---- Render Standings ----
+    function renderStandings() {
+      standingsContent.className = "";
+      var data = getDivisionData();
+
+      if (!data) {
+        standingsContent.innerHTML = '<p class="placeholder-msg">No data available.</p>';
+        return;
+      }
+
+      // Special: Dineen Cup
+      if (data._special === "dineen_cup") {
+        renderDineenStandings();
+        return;
+      }
+
+      // Special: NE Conference
+      if (data._special === "ne_conference") {
+        renderNEConferenceStandings();
+        return;
+      }
+
+      // Northwest with pods
+      if (data.pods) {
+        renderPodStandings(data);
+        return;
+      }
+
+      // Standard standings table
+      var teams = data.teams || [];
+      var eliminated = data.eliminated || [];
+      var qualifyCount = data.qualifyCount || 0;
+
+      standingsContent.innerHTML = buildStandingsTable(teams, eliminated, qualifyCount);
+    }
+
+    function buildStandingsTable(teams, eliminated, qualifyCount, opts) {
+      opts = opts || {};
+      var html = '<table class="data-table"><thead><tr>';
+      html += '<th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th>';
+      html += '</tr></thead><tbody>';
+
+      teams.forEach(function(team) {
+        var rowClass = team.seed <= qualifyCount ? "qualified" : "";
+        html += '<tr class="' + rowClass + '">';
+        html += '<td>' + team.seed + '</td>';
+        html += '<td>' + (opts.podLabel && team.pod ? '<span style="color:#888;font-size:0.75rem;">[' + team.pod + ']</span> ' : '') + team.name + '</td>';
+        html += '<td>' + team.gp + '</td>';
+        html += '<td>' + team.pts + '</td>';
+        html += '<td>' + team.row + '</td>';
+        html += '<td>' + team.l + '</td>';
+        html += '<td>' + team.pctg.toFixed(3) + '</td>';
+        html += '</tr>';
+      });
+
+      eliminated.forEach(function(team) {
+        html += '<tr class="eliminated">';
+        html += '<td>' + team.seed + '</td>';
+        html += '<td>' + team.name + '</td>';
+        html += '<td>' + team.gp + '</td>';
+        html += '<td>' + team.pts + '</td>';
+        html += '<td>' + team.row + '</td>';
+        html += '<td>' + team.l + '</td>';
+        html += '<td>' + team.pctg.toFixed(3) + '</td>';
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function renderPodStandings(data) {
+      var html = '';
+      var podNames = Object.keys(data.pods);
+
+      // Combine all pod teams with pod labels, then add eliminated
+      var allTeams = [];
+      podNames.forEach(function(podName) {
+        data.pods[podName].teams.forEach(function(t) {
+          allTeams.push(Object.assign({}, t, { pod: podName }));
+        });
+      });
+      // Sort by seed (pod teams have seeds relative to their pod, we need to re-number)
+      // Show by pod grouping instead
+      podNames.forEach(function(podName) {
+        html += '<div class="pod-label">' + podName + ' Pod</div>';
+        html += '<table class="data-table"><thead><tr>';
+        html += '<th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th>';
+        html += '</tr></thead><tbody>';
+
+        data.pods[podName].teams.forEach(function(team) {
+          html += '<tr class="qualified">';
+          html += '<td>' + team.seed + '</td>';
+          html += '<td>' + team.name + '</td>';
+          html += '<td>' + team.gp + '</td>';
+          html += '<td>' + team.pts + '</td>';
+          html += '<td>' + team.row + '</td>';
+          html += '<td>' + team.l + '</td>';
+          html += '<td>' + team.pctg.toFixed(3) + '</td>';
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+      });
+
+      if (data.eliminated && data.eliminated.length > 0) {
+        html += '<div class="pod-label" style="color:#888;">Eliminated</div>';
+        html += '<table class="data-table"><thead><tr>';
+        html += '<th>Seed</th><th>Team</th><th>GP</th><th>PTS</th><th>ROW</th><th>L</th><th>PTS%</th>';
+        html += '</tr></thead><tbody>';
+        data.eliminated.forEach(function(team) {
+          html += '<tr class="eliminated">';
+          html += '<td>' + team.seed + '</td>';
+          html += '<td>' + team.name + '</td>';
+          html += '<td>' + team.gp + '</td>';
+          html += '<td>' + team.pts + '</td>';
+          html += '<td>' + team.row + '</td>';
+          html += '<td>' + team.l + '</td>';
+          html += '<td>' + team.pctg.toFixed(3) + '</td>';
+          html += '</tr>';
+        });
+        html += '</tbody></table>';
+      }
+
+      standingsContent.innerHTML = html;
+    }
+
+    function renderNEConferenceStandings() {
+      var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+      var divNames = ["Central", "East", "North"];
+      var html = '<div class="ne-divisions-grid">';
+
+      divNames.forEach(function(divName) {
+        var div = ne.divisions[divName];
+        html += '<div class="ne-division-card">';
+        html += '<h3>NE ' + divName + '</h3>';
+        html += '<table class="data-table"><thead><tr>';
+        html += '<th>Seed</th><th>Team</th><th>PTS</th><th>PTS%</th>';
+        html += '</tr></thead><tbody>';
+
+        div.teams.forEach(function(team) {
+          var rowClass = team.seed <= div.qualifyCount ? "qualified" : "";
+          html += '<tr class="' + rowClass + '">';
+          html += '<td>' + team.seed + '</td>';
+          html += '<td>' + team.name + '</td>';
+          html += '<td>' + team.pts + '</td>';
+          html += '<td>' + team.pctg.toFixed(3) + '</td>';
+          html += '</tr>';
+        });
+
+        if (div.eliminated) {
+          div.eliminated.forEach(function(team) {
+            html += '<tr class="eliminated">';
+            html += '<td>' + team.seed + '</td>';
+            html += '<td>' + team.name + '</td>';
+            html += '<td>' + team.pts + '</td>';
+            html += '<td>' + team.pctg.toFixed(3) + '</td>';
+            html += '</tr>';
+          });
+        }
+
+        html += '</tbody></table></div>';
+      });
+
+      html += '</div>';
+      standingsContent.innerHTML = html;
+    }
+
+    function renderDineenStandings() {
+      var dc = LEAGUE_DATA.ncdc.dineenCup;
+      var html = '<div class="schedule-info">';
+      html += '<p><strong>' + dc.name + '</strong></p>';
+      html += '<p>Dates: ' + dc.dates + '</p>';
+      html += '<p>Format: ' + dc.format + '</p>';
+      html += '</div>';
+      html += '<table class="data-table"><thead><tr>';
+      html += '<th>#</th><th>Entry</th><th>Notes</th>';
+      html += '</tr></thead><tbody>';
+      dc.teams.forEach(function(entry, idx) {
+        var note = "";
+        if (entry === "Idaho Falls Spud Kings") note = "Host auto-bid";
+        else note = "Conference champion";
+        html += '<tr><td>' + (idx + 1) + '</td><td>' + entry + '</td><td style="color:#888;font-size:0.85rem;">' + note + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      standingsContent.innerHTML = html;
+    }
+
+    // ---- Render Bracket ----
+    function renderBracket() {
+      bracketContent.className = "";
+      var data = getDivisionData();
+
+      if (!data) {
+        bracketContent.innerHTML = '<p class="placeholder-msg">No data available.</p>';
+        return;
+      }
+
+      // Special: Dineen Cup
+      if (data._special === "dineen_cup") {
+        renderDineenBracket();
+        return;
+      }
+
+      // Special: NE Conference
+      if (data._special === "ne_conference") {
+        renderNEConferenceBracket();
+        return;
+      }
+
+      // Northwest with pods
+      if (data.pods) {
+        renderPodBracket(data);
+        return;
+      }
+
+      // Standard bracket
+      if (!data.playoffFormat || !data.playoffFormat.rounds) {
+        bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>';
+        return;
+      }
+
+      bracketContent.innerHTML = buildBracketHTML(data, data.playoffFormat);
+    }
+
+    function buildBracketHTML(data, format) {
+      var rounds = format.rounds;
+      var seriesFormat = format.seriesFormat || "";
+      var html = '<div class="bracket">';
+
+      rounds.forEach(function(round, roundIdx) {
+        var roundSeriesFormat = getSeriesFormat(round, seriesFormat);
+        // Override series format for play-in rounds that have a special format (e.g. single game)
+        if (format.playInFormat && round.name.indexOf("Play-In") !== -1) {
+          roundSeriesFormat = format.playInFormat;
+        }
+        html += '<div class="round">';
+        html += '<div class="round-title">' + round.name;
+        if (roundSeriesFormat && round.name.indexOf("Bo") === -1) {
+          html += ' <span class="series-label">(' + roundSeriesFormat + ')</span>';
+        }
+        html += '</div>';
+
+        // Show byes as advancing entries
+        if (round.byes && round.byes.length > 0) {
+          round.byes.forEach(function(byeSeed) {
+            var teamName = getTeamLabel(data, byeSeed);
+            html += '<div class="bracket-bye-entry">';
+            html += '<div class="matchup-team">';
+            html += '<span><span class="matchup-seed">#' + byeSeed + '</span> ' + teamName + '</span>';
+            html += '<span class="bracket-bye-tag">BYE</span>';
+            html += '</div></div>';
+          });
+        }
+
+        // Show matchups
+        round.matchups.forEach(function(matchup) {
+          var homeSeed = matchup[0];
+          var awaySeed = matchup[1];
+          var homeLabel, awayLabel;
+
+          if (typeof homeSeed === "number") {
+            var homeTeam = findTeamBySeed(data, homeSeed);
+            homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + (homeTeam ? homeTeam.name : "TBD");
+          } else {
+            homeLabel = String(homeSeed);
+          }
+
+          if (typeof awaySeed === "number") {
+            var awayTeam = findTeamBySeed(data, awaySeed);
+            awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + (awayTeam ? awayTeam.name : "TBD");
+          } else {
+            awayLabel = String(awaySeed);
+          }
+
+          html += '<div class="matchup">';
+          html += '<div class="matchup-team home">' + homeLabel + '</div>';
+          html += '<div class="matchup-vs">vs</div>';
+          html += '<div class="matchup-team away">' + awayLabel + '</div>';
+          if (round.note) {
+            html += '<div class="matchup-label">' + round.note + '</div>';
+          }
+          html += '</div>';
+        });
+
+        html += '</div>';
+      });
+
+      html += '</div>';
+      return html;
+    }
+
+    function renderPodBracket(data) {
+      var format = data.playoffFormat;
+      if (!format || !format.rounds) {
+        bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>';
+        return;
+      }
+
+      var html = '<div class="pod-brackets">';
+
+      // PNW Pod bracket
+      html += '<div class="pod-bracket-section">';
+      html += '<div class="pod-label">PNW Pod</div>';
+      html += '<div class="bracket"><div class="round">';
+      html += '<div class="round-title">Pod Round <span class="series-label">(Bo3)</span></div>';
+      var pnwTeams = data.pods["PNW"].teams;
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home"><span class="matchup-seed">#1</span> ' + pnwTeams[0].name + '</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away"><span class="matchup-seed">#2</span> ' + pnwTeams[1].name + '</div>';
+      html += '</div>';
+      html += '</div></div></div>';
+
+      // MTN Pod bracket
+      html += '<div class="pod-bracket-section">';
+      html += '<div class="pod-label">MTN Pod</div>';
+      html += '<div class="bracket"><div class="round">';
+      html += '<div class="round-title">Pod Round <span class="series-label">(Bo3)</span></div>';
+      var mtnTeams = data.pods["MTN"].teams;
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home"><span class="matchup-seed">#1</span> ' + mtnTeams[0].name + '</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away"><span class="matchup-seed">#2</span> ' + mtnTeams[1].name + '</div>';
+      html += '</div>';
+      html += '</div></div></div>';
+
+      html += '</div>';
+
+      // Divisional Finals
+      html += '<div class="bracket-section-title">Divisional Finals</div>';
+      html += '<div class="bracket"><div class="round">';
+      html += '<div class="round-title">Divisional Finals <span class="series-label">(Bo3)</span></div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">PNW Pod Winner</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">MTN Pod Winner</div>';
+      html += '</div>';
+      html += '</div></div>';
+
+      bracketContent.innerHTML = html;
+    }
+
+    function renderNEConferenceBracket() {
+      var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+      var divNames = ["Central", "East", "North"];
+      var html = '';
+
+      // Division brackets
+      divNames.forEach(function(divName) {
+        var div = ne.divisions[divName];
+        html += '<div class="bracket-section-title">NE ' + divName + ' Division Playoffs</div>';
+        html += buildBracketHTML(div, div.playoffFormat);
+      });
+
+      // Conference Round Robin
+      var rr = ne.conferenceRounds.roundRobin;
+      html += '<div class="bracket-section-title">' + rr.name + ' (' + rr.dates + ')</div>';
+      html += '<div class="bracket"><div class="round">';
+      html += '<div class="round-title">' + rr.format + '</div>';
+      rr.matchups.forEach(function(matchup) {
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home">' + matchup[0] + '</div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away">' + matchup[1] + '</div>';
+        html += '</div>';
+      });
+      html += '</div></div>';
+      if (rr.note) {
+        html += '<div class="matchup-label" style="margin-top:0.25rem;">' + rr.note + '</div>';
+      }
+
+      // Conference Final
+      var cf = ne.conferenceRounds.conferenceFinal;
+      html += '<div class="bracket-section-title">' + cf.name + ' (' + cf.dates + ')</div>';
+      html += '<div class="bracket"><div class="round">';
+      html += '<div class="round-title">' + cf.name + ' <span class="series-label">(' + cf.format + ')</span></div>';
+      cf.matchups.forEach(function(matchup) {
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home">' + matchup[0] + '</div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away">' + matchup[1] + '</div>';
+        html += '</div>';
+      });
+      html += '</div></div>';
+      if (cf.note) {
+        html += '<div class="matchup-label" style="margin-top:0.25rem;">' + cf.note + '</div>';
+      }
+
+      bracketContent.innerHTML = html;
+    }
+
+    function renderDineenBracket() {
+      var dc = LEAGUE_DATA.ncdc.dineenCup;
+      var html = '<div class="bracket-section-title">Dineen Cup -- Modified Double Elimination</div>';
+
+      // Visual bracket showing progression
+      html += '<div class="bracket">';
+
+      // Round 1: Games 1 & 2
+      html += '<div class="round">';
+      html += '<div class="round-title">Opening Round</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">Atlantic Champ</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">Mountain Champ</div>';
+      html += '<div class="matchup-label">Game 1</div>';
+      html += '</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">NE Champ</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">Idaho Falls</div>';
+      html += '<div class="matchup-label">Game 2</div>';
+      html += '</div>';
+      html += '</div>';
+
+      // Round 2: Games 3 & 4
+      html += '<div class="round">';
+      html += '<div class="round-title">Day 2</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">0-1 Team</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">0-1 Team</div>';
+      html += '<div class="matchup-label">Game 3 (Elimination)</div>';
+      html += '</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">1-0 Team</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">1-0 Team</div>';
+      html += '<div class="matchup-label">Game 4</div>';
+      html += '</div>';
+      html += '</div>';
+
+      // Round 3: Game 5
+      html += '<div class="round">';
+      html += '<div class="round-title">Day 3</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">1-1 Team</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">1-1 Team</div>';
+      html += '<div class="matchup-label">Game 5 (Elimination)</div>';
+      html += '</div>';
+      html += '</div>';
+
+      // Finals: Games 6 & 7
+      html += '<div class="round">';
+      html += '<div class="round-title">Finals</div>';
+      html += '<div class="matchup">';
+      html += '<div class="matchup-team home">Last 1-1 Team</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">2-0 Team</div>';
+      html += '<div class="matchup-label">Game 6 -- Final</div>';
+      html += '</div>';
+      html += '<div class="matchup" style="opacity:0.6;">';
+      html += '<div class="matchup-team home">TBD</div>';
+      html += '<div class="matchup-vs">vs</div>';
+      html += '<div class="matchup-team away">TBD</div>';
+      html += '<div class="matchup-label"><span class="if-necessary">Game 7 -- If Necessary</span></div>';
+      html += '</div>';
+      html += '</div>';
+
+      html += '</div>';
+      bracketContent.innerHTML = html;
+    }
+
+    // ---- Render Schedule ----
+    function renderSchedule() {
+      scheduleContent.className = "";
+      var data = getDivisionData();
+
+      if (!data) {
+        scheduleContent.innerHTML = '<p class="placeholder-msg">No data available.</p>';
+        return;
+      }
+
+      // Special: Dineen Cup
+      if (data._special === "dineen_cup") {
+        renderDineenSchedule();
+        return;
+      }
+
+      // Special: NE Conference
+      if (data._special === "ne_conference") {
+        renderNEConferenceSchedule();
+        return;
+      }
+
+      // Standard schedule: show round structure
+      if (!data.playoffFormat || !data.playoffFormat.rounds) {
+        scheduleContent.innerHTML = '<p class="placeholder-msg">No schedule data available.</p>';
+        return;
+      }
+
+      var format = data.playoffFormat;
+      var rounds = format.rounds;
+      var seriesFormat = format.seriesFormat || "";
+      var html = '';
+
+      // Show schedule table with round info
+      html += '<table class="data-table"><thead><tr>';
+      html += '<th>Round</th><th>Format</th><th>Matchups</th><th>Notes</th>';
+      html += '</tr></thead><tbody>';
+
+      rounds.forEach(function(round) {
+        var roundFormat = getSeriesFormat(round, seriesFormat);
+        // Override format for play-in rounds with special format
+        if (format.playInFormat && round.name.indexOf("Play-In") !== -1) {
+          roundFormat = format.playInFormat;
+        }
+        var matchupDescs = [];
+
+        // Handle byes
+        if (round.byes && round.byes.length > 0) {
+          round.byes.forEach(function(byeSeed) {
+            var teamName = getTeamLabel(data, byeSeed);
+            matchupDescs.push("#" + byeSeed + " " + teamName + " (BYE)");
+          });
+        }
+
+        // Handle matchups
+        round.matchups.forEach(function(matchup) {
+          var home, away;
+          if (typeof matchup[0] === "number") {
+            home = "#" + matchup[0] + " " + getTeamLabel(data, matchup[0]);
+          } else {
+            home = String(matchup[0]);
+          }
+          if (typeof matchup[1] === "number") {
+            away = "#" + matchup[1] + " " + getTeamLabel(data, matchup[1]);
+          } else {
+            away = String(matchup[1]);
+          }
+          matchupDescs.push(home + " vs " + away);
+        });
+
+        var notes = [];
+        if (round.note) notes.push(round.note);
+
+        html += '<tr>';
+        html += '<td><span class="schedule-round-label">' + round.name + '</span></td>';
+        html += '<td>' + roundFormat + '</td>';
+        html += '<td>' + matchupDescs.join('<br>') + '</td>';
+        html += '<td style="color:#888;font-size:0.85rem;">' + (notes.length > 0 ? notes.join('; ') : 'Dates TBD') + '</td>';
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      scheduleContent.innerHTML = html;
+    }
+
+    function renderDineenSchedule() {
+      var dc = LEAGUE_DATA.ncdc.dineenCup;
+      var html = '<div class="dineen-schedule">';
+      html += '<div class="schedule-info">';
+      html += '<p><strong>' + dc.name + '</strong> &mdash; ' + dc.dates + '</p>';
+      html += '<p>Format: ' + dc.format + '</p>';
+      html += '</div>';
+
+      dc.schedule.forEach(function(g) {
+        html += '<div class="dineen-game">';
+        html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
+        html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
+        html += '<div class="dineen-game-matchup">' + g.matchup + '</div>';
+        if (g.note) {
+          html += '<div class="dineen-game-note">' + g.note + '</div>';
+        }
+        html += '</div>';
+      });
+
+      html += '</div>';
+      scheduleContent.innerHTML = html;
+    }
+
+    function renderNEConferenceSchedule() {
+      var ne = LEAGUE_DATA.ncdc.conferences["New England"];
+      var divNames = ["Central", "East", "North"];
+      var html = '';
+
+      // Division playoff schedules
+      html += '<div class="bracket-section-title">Division Playoffs</div>';
+      html += '<table class="data-table"><thead><tr>';
+      html += '<th>Division</th><th>Round</th><th>Format</th><th>Matchups</th>';
+      html += '</tr></thead><tbody>';
+
+      divNames.forEach(function(divName) {
+        var div = ne.divisions[divName];
+        var format = div.playoffFormat;
+        format.rounds.forEach(function(round) {
+          var roundFormat = getSeriesFormat(round, format.seriesFormat);
+          var matchupDescs = [];
+          round.matchups.forEach(function(matchup) {
+            var home, away;
+            if (typeof matchup[0] === "number") {
+              home = "#" + matchup[0] + " " + getTeamLabel(div, matchup[0]);
+            } else {
+              home = String(matchup[0]);
+            }
+            if (typeof matchup[1] === "number") {
+              away = "#" + matchup[1] + " " + getTeamLabel(div, matchup[1]);
+            } else {
+              away = String(matchup[1]);
+            }
+            matchupDescs.push(home + " vs " + away);
+          });
+
+          html += '<tr>';
+          html += '<td>NE ' + divName + '</td>';
+          html += '<td><span class="schedule-round-label">' + round.name + '</span></td>';
+          html += '<td>' + roundFormat + '</td>';
+          html += '<td>' + matchupDescs.join('<br>') + '</td>';
+          html += '</tr>';
+        });
+      });
+
+      html += '</tbody></table>';
+
+      // Conference Rounds
+      var rr = ne.conferenceRounds.roundRobin;
+      html += '<div class="bracket-section-title">' + rr.name + '</div>';
+      html += '<div class="schedule-info">';
+      html += '<p>Dates: ' + rr.dates + '</p>';
+      html += '<p>Format: ' + rr.format + ' &mdash; 3 division winners</p>';
+      if (rr.note) html += '<p>' + rr.note + '</p>';
+      html += '</div>';
+
+      html += '<table class="data-table"><thead><tr>';
+      html += '<th>Game</th><th>Matchup</th>';
+      html += '</tr></thead><tbody>';
+      rr.matchups.forEach(function(matchup, idx) {
+        html += '<tr><td>Game ' + (idx + 1) + '</td><td>' + matchup[0] + ' vs ' + matchup[1] + '</td></tr>';
+      });
+      html += '</tbody></table>';
+
+      var cf = ne.conferenceRounds.conferenceFinal;
+      html += '<div class="bracket-section-title">' + cf.name + '</div>';
+      html += '<div class="schedule-info">';
+      html += '<p>Dates: ' + cf.dates + '</p>';
+      html += '<p>Format: ' + cf.format + ' &mdash; Top 2 from Round Robin</p>';
+      if (cf.note) html += '<p>' + cf.note + '</p>';
+      html += '</div>';
+
+      scheduleContent.innerHTML = html;
+    }
+
+    // ---- Render All ----
+    function renderAll() {
+      renderStandings();
+      renderBracket();
+      renderSchedule();
+    }
+
+    // ---- Initialize on page load ----
+    (function init() {
+      currentLeague = "NCDC";
+      currentDivision = "Atlantic";
+      populateDivisionPills(currentLeague);
+      highlightActivePill();
+      renderAll();
+    })();
+  </script>
+
+</body>
+</html>
