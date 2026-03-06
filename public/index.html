@@ -246,18 +246,24 @@
     .error-msg { background: rgba(201,20,23,0.08); border: 1px solid rgba(201,20,23,0.3); border-radius: 8px; padding: 1rem; text-align: center; color: #c91417; margin: 2rem 0; }
     /* ===== Last Updated ===== */
     .last-updated { font-size: 0.7rem; color: #999; margin-top: 0.35rem; }
-    /* ===== Game Result Rows ===== */
-    .game-result { display: flex; gap: 0.75rem; padding: 0.4rem 0.75rem; border-bottom: 1px solid #eee; font-size: 0.84rem; align-items: center; }
-    .game-result:nth-child(odd) { background: #fafafa; }
-    .game-date { color: #777; min-width: 90px; font-size: 0.78rem; }
-    .game-teams { flex: 1; color: #333; }
-    .game-score { font-weight: 600; min-width: 50px; text-align: center; color: #333; }
-    .game-status { font-size: 0.72rem; color: #999; min-width: 50px; }
-    .game-status.final { color: #2ecc71; }
-    .game-status.scheduled { color: #c91417; font-weight: 500; }
-    .game-winner { color: #2ecc71; }
-    .game-result.if-necessary { opacity: 0.55; }
-    .game-location { font-size: 0.7rem; color: #999; min-width: 80px; }
+    /* ===== Game Cards (Yahoo-style) ===== */
+    .game-card { display: flex; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 0.5rem; overflow: hidden; font-size: 0.84rem; }
+    .game-card.if-necessary { opacity: 0.55; }
+    .game-card-teams { flex: 1; }
+    .game-card-team { display: flex; align-items: center; padding: 0.45rem 0.75rem; justify-content: space-between; }
+    .game-card-team:first-child { border-bottom: 1px solid #f0f0f0; }
+    .game-card-team-name { display: flex; align-items: center; gap: 0.35rem; color: #333; }
+    .game-card-team-name.winner { font-weight: 600; }
+    .game-card-team-name.loser { color: #999; }
+    .game-card-score { font-weight: 700; font-size: 0.95rem; min-width: 1.2rem; text-align: right; color: #333; }
+    .game-card-score.winner { color: #333; }
+    .game-card-score.loser { color: #aaa; font-weight: 400; }
+    .game-card-info { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.4rem 0.6rem; min-width: 80px; border-left: 1px solid #e8e8e8; background: #fafafa; gap: 0.15rem; text-align: center; }
+    .game-card-status { font-size: 0.72rem; font-weight: 600; color: #555; }
+    .game-card-status.final { color: #2ecc71; }
+    .game-card-status.scheduled { color: #c91417; }
+    .game-card-date { font-size: 0.68rem; color: #999; }
+    .game-card-location { font-size: 0.65rem; color: #aaa; }
     /* ===== Schedule Info (placeholder schedule data) ===== */
     .schedule-format-info {
       background: #f8f8f9;
@@ -294,12 +300,8 @@
       table.data-table thead th, table.data-table tbody td { padding: 0.4rem 0.5rem; }
       .team-logo { width: 16px; height: 16px; margin-right: 4px; }
       .standings-container, .bracket-container, .schedule-container { padding: 0.75rem; border-radius: 6px; }
-      .game-result { flex-wrap: wrap; gap: 0.15rem 0.5rem; padding: 0.5rem 0.5rem; font-size: 0.8rem; }
-      .game-date { min-width: auto; font-size: 0.72rem; }
-      .game-teams { width: 100%; order: -1; font-size: 0.82rem; }
-      .game-score { min-width: auto; }
-      .game-status { min-width: auto; }
-      .game-location { min-width: auto; font-size: 0.68rem; }
+      .game-card-info { min-width: 65px; padding: 0.3rem 0.4rem; }
+      .game-card-team { padding: 0.35rem 0.5rem; }
     }
   </style>
 </head>
@@ -1614,30 +1616,32 @@
             seriesGames.forEach(function(g) {
               var isScheduled = g.gameStatus === 'scheduled';
               var ifNec = g.ifNecessary;
-              var rowClass = 'game-result' + (ifNec ? ' if-necessary' : '');
-              html += '<div class="' + rowClass + '">';
-              html += '<div class="game-date">' + (g.date || '') + (g.time ? '<br><span style="font-size:0.72rem;color:#999;">' + g.time + '</span>' : '') + '</div>';
-              html += '<div class="game-teams">';
-              if (isScheduled) {
-                html += teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">vs</span> ' + teamNameHTML(g.away, leagueForMap);
-              } else {
-                var homeWon = g.homeScore > g.awayScore;
-                var awayWon = g.awayScore > g.homeScore;
-                html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
-                html += ' <span class="game-score">' + (g.homeScore !== null ? g.homeScore : '') + ' - ' + (g.awayScore !== null ? g.awayScore : '') + '</span> ';
-                html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
-              }
+              var homeWon = !isScheduled && g.homeScore > g.awayScore;
+              var awayWon = !isScheduled && g.awayScore > g.homeScore;
+              html += '<div class="game-card' + (ifNec ? ' if-necessary' : '') + '">';
+              html += '<div class="game-card-teams">';
+              // Home team row
+              html += '<div class="game-card-team">';
+              html += '<span class="game-card-team-name' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+              html += '<span class="game-card-score' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (g.homeScore !== null ? g.homeScore : '')) + '</span>';
               html += '</div>';
+              // Away team row
+              html += '<div class="game-card-team">';
+              html += '<span class="game-card-team-name' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+              html += '<span class="game-card-score' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (g.awayScore !== null ? g.awayScore : '')) + '</span>';
+              html += '</div>';
+              html += '</div>';
+              // Info column
+              html += '<div class="game-card-info">';
               if (isScheduled) {
-                var label = ifNec ? 'If Necessary' : 'Upcoming';
-                html += '<div class="game-status scheduled">' + label + '</div>';
+                html += '<div class="game-card-status scheduled">' + (ifNec ? 'If Nec.' : 'Upcoming') + '</div>';
               } else {
                 var statusClass = (g.status && g.status.indexOf('Final') !== -1) ? ' final' : '';
-                html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
+                html += '<div class="game-card-status' + statusClass + '">' + (g.status || '') + '</div>';
               }
-              if (g.location) {
-                html += '<div class="game-location">' + g.location + '</div>';
-              }
+              html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + (g.time ? '<br>' + g.time : '') + '</div>';
+              if (g.location) html += '<div class="game-card-location">' + g.location + '</div>';
+              html += '</div>';
               html += '</div>';
             });
           } else if (round.scheduleInfo) {
@@ -1732,9 +1736,20 @@
                 return (g.home === s.home && g.away === s.away) || (g.home === s.away && g.away === s.home);
               });
               seriesGames.forEach(function(g) {
-                html += '<div class="game-result"><div class="game-date">' + (g.date || '') + '</div>';
-                html += '<div class="game-teams">' + teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + '-' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ' + teamNameHTML(g.away, leagueForMap) + '</div>';
-                html += '<div class="game-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div></div>';
+                var isScheduled = g.gameStatus === 'scheduled' || !g.status;
+                var hWon = !isScheduled && g.homeScore > g.awayScore;
+                var aWon = !isScheduled && g.awayScore > g.homeScore;
+                html += '<div class="game-card">';
+                html += '<div class="game-card-teams">';
+                html += '<div class="game-card-team"><span class="game-card-team-name' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+                html += '<span class="game-card-score' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + (g.homeScore !== undefined && g.homeScore !== null ? g.homeScore : '') + '</span></div>';
+                html += '<div class="game-card-team"><span class="game-card-team-name' + (aWon ? ' winner' : (hWon ? ' loser' : '')) + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+                html += '<span class="game-card-score' + (aWon ? ' winner' : (hWon ? ' loser' : '')) + '">' + (g.awayScore !== undefined && g.awayScore !== null ? g.awayScore : '') + '</span></div>';
+                html += '</div>';
+                html += '<div class="game-card-info">';
+                html += '<div class="game-card-status' + (g.status === 'Final' ? ' final' : '') + '">' + (g.status || '') + '</div>';
+                html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + '</div>';
+                html += '</div></div>';
               });
             });
           }
