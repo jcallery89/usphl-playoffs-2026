@@ -255,6 +255,33 @@
     .game-winner { color: #2ecc71; }
     .game-result.if-necessary { opacity: 0.55; }
     .game-location { font-size: 0.7rem; color: #999; min-width: 80px; }
+    /* ===== Schedule Info (placeholder schedule data) ===== */
+    .schedule-format-info {
+      background: #f8f8f9;
+      border-left: 3px solid #c91417;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: #555;
+      font-weight: 500;
+    }
+    .round-schedule-info {
+      background: #f8f8f9;
+      border: 1px solid #e8e8ea;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.25rem 0 0.5rem;
+      font-size: 0.8rem;
+      color: #666;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+    .round-schedule-note {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: #999;
+      padding: 0.2rem 0 0.5rem;
+    }
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
       header h1 { font-size: 1.2rem; }
@@ -1336,111 +1363,115 @@
       return;
     }
 
-    // Check if we have live game data from BRACKET_STATE
+    // Always use live schedule renderer (handles both API games and schedule info)
     var games = getDivisionGames(currentLeague, currentDivision);
-    if (games && games.length > 0) {
-      renderLiveSchedule(data, games);
-      return;
-    }
-
-    // Fall back to generic round structure
-    var format = data.playoffFormat;
-    var rounds = format.rounds;
-    var seriesFormat = format.seriesFormat || "";
-    var leagueForMap = getLeagueForMap();
-    var html = '<table class="data-table"><thead><tr><th>Round</th><th>Format</th><th>Matchups</th><th>Notes</th></tr></thead><tbody>';
-
-    rounds.forEach(function(round) {
-      var roundFormat = getSeriesFormat(round, seriesFormat);
-      if (format.playInFormat && round.name.indexOf("Play-In") !== -1) roundFormat = format.playInFormat;
-      var matchupDescs = [];
-      if (round.byes && round.byes.length > 0) {
-        round.byes.forEach(function(byeSeed) {
-          matchupDescs.push("#" + byeSeed + " " + getTeamLabel(data, byeSeed) + " (BYE)");
-        });
-      }
-      round.matchups.forEach(function(matchup) {
-        var home = typeof matchup[0] === "number" ? "#" + matchup[0] + " " + getTeamLabel(data, matchup[0]) : String(matchup[0]);
-        var away = typeof matchup[1] === "number" ? "#" + matchup[1] + " " + getTeamLabel(data, matchup[1]) : String(matchup[1]);
-        matchupDescs.push(home + " vs " + away);
-      });
-      var notes = round.note ? [round.note] : [];
-      html += '<tr><td><span class="schedule-round-label">' + round.name + '</span></td>';
-      html += '<td>' + roundFormat + '</td>';
-      html += '<td>' + matchupDescs.join('<br>') + '</td>';
-      html += '<td style="color:#888;font-size:0.85rem;">' + (notes.length > 0 ? notes.join('; ') : 'Dates TBD') + '</td></tr>';
-    });
-
-    html += '</tbody></table>';
-    scheduleContent.innerHTML = html;
+    renderLiveSchedule(data, games || []);
   }
 
-  // Render schedule with actual game results from BRACKET_STATE
+  // Get schedule info from bracket state for current division
+  function getDivisionScheduleInfo() {
+    if (!BRACKET_STATE) return null;
+    var bs = BRACKET_STATE[currentLeague];
+    if (!bs) return null;
+    return bs[currentDivision] || null;
+  }
+
+  // Render schedule with actual game results from BRACKET_STATE + schedule info
   function renderLiveSchedule(data, games) {
     var leagueForMap = getLeagueForMap();
     var series = getDivisionSeries(currentLeague, currentDivision);
+    var divInfo = getDivisionScheduleInfo();
 
-    // Group games by series/round
     var html = '';
-    if (series && series.length > 0) {
-      series.forEach(function(s) {
-        html += '<div class="bracket-section-title">' + (s.round || 'Playoffs') + ': ' + s.home + ' vs ' + s.away + '</div>';
-        var statusText = seriesStatusText(s);
-        if (statusText) {
-          var isFinal = isSeriesFinal(s);
-          html += '<div class="series-status' + (isFinal ? ' series-final' : '') + '" style="margin-bottom:0.5rem;">' + statusText + '</div>';
-        }
-        // Find games for this series
-        var seriesGames = games.filter(function(g) {
-          return (g.home === s.home && g.away === s.away) || (g.home === s.away && g.away === s.home);
-        });
-        seriesGames.sort(function(a,b) {
-          return (a.date || '').localeCompare(b.date || '');
-        });
-        if (seriesGames.length > 0) {
-          seriesGames.forEach(function(g, gi) {
-            var isScheduled = g.gameStatus === 'scheduled';
-            var ifNec = g.ifNecessary;
-            var rowClass = 'game-result' + (ifNec ? ' if-necessary' : '');
-            html += '<div class="' + rowClass + '">';
-            html += '<div class="game-date">' + (g.date || '') + (g.time ? '<br><span style="font-size:0.72rem;color:#999;">' + g.time + '</span>' : '') + '</div>';
-            html += '<div class="game-teams">';
-            if (isScheduled) {
-              html += teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">vs</span> ' + teamNameHTML(g.away, leagueForMap);
-            } else {
-              var homeWon = g.homeScore > g.awayScore;
-              var awayWon = g.awayScore > g.homeScore;
-              html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
-              html += ' <span class="game-score">' + (g.homeScore !== null ? g.homeScore : '') + ' - ' + (g.awayScore !== null ? g.awayScore : '') + '</span> ';
-              html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
-            }
-            html += '</div>';
-            if (isScheduled) {
-              var label = ifNec ? 'If Necessary' : 'Upcoming';
-              html += '<div class="game-status scheduled">' + label + '</div>';
-            } else {
-              var statusClass = (g.status && g.status.indexOf('Final') !== -1) ? ' final' : '';
-              html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
-            }
-            if (g.location) {
-              html += '<div class="game-location">' + g.location + '</div>';
-            }
-            html += '</div>';
+
+    // Show division-level format info
+    if (divInfo && divInfo.formatInfo) {
+      html += '<div class="schedule-format-info">' + divInfo.formatInfo + '</div>';
+    }
+
+    // Build a set of round names that have series (matchups with assigned teams)
+    var roundsWithSeries = {};
+    series.forEach(function(s) { roundsWithSeries[s.round] = true; });
+
+    // Get all rounds from bracket state to show schedule info for rounds without series
+    var allRounds = (divInfo && divInfo.rounds) ? divInfo.rounds : [];
+
+    // Render each round
+    allRounds.forEach(function(round) {
+      var roundName = round.roundName;
+      var roundSeries = series.filter(function(s) { return s.round === roundName; });
+
+      if (roundSeries.length > 0) {
+        // This round has assigned matchups — render each series with games
+        roundSeries.forEach(function(s) {
+          html += '<div class="bracket-section-title">' + (s.round || 'Playoffs') + ': ' + s.home + ' vs ' + s.away + '</div>';
+          var statusText = seriesStatusText(s);
+          if (statusText) {
+            var isFinal = isSeriesFinal(s);
+            html += '<div class="series-status' + (isFinal ? ' series-final' : '') + '" style="margin-bottom:0.5rem;">' + statusText + '</div>';
+          }
+          // Find games for this series
+          var seriesGames = games.filter(function(g) {
+            return (g.home === s.home && g.away === s.away) || (g.home === s.away && g.away === s.home);
           });
+          seriesGames.sort(function(a,b) {
+            return (a.date || '').localeCompare(b.date || '');
+          });
+          if (seriesGames.length > 0) {
+            seriesGames.forEach(function(g) {
+              var isScheduled = g.gameStatus === 'scheduled';
+              var ifNec = g.ifNecessary;
+              var rowClass = 'game-result' + (ifNec ? ' if-necessary' : '');
+              html += '<div class="' + rowClass + '">';
+              html += '<div class="game-date">' + (g.date || '') + (g.time ? '<br><span style="font-size:0.72rem;color:#999;">' + g.time + '</span>' : '') + '</div>';
+              html += '<div class="game-teams">';
+              if (isScheduled) {
+                html += teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">vs</span> ' + teamNameHTML(g.away, leagueForMap);
+              } else {
+                var homeWon = g.homeScore > g.awayScore;
+                var awayWon = g.awayScore > g.homeScore;
+                html += '<span class="' + (homeWon ? 'game-winner' : '') + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+                html += ' <span class="game-score">' + (g.homeScore !== null ? g.homeScore : '') + ' - ' + (g.awayScore !== null ? g.awayScore : '') + '</span> ';
+                html += '<span class="' + (awayWon ? 'game-winner' : '') + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+              }
+              html += '</div>';
+              if (isScheduled) {
+                var label = ifNec ? 'If Necessary' : 'Upcoming';
+                html += '<div class="game-status scheduled">' + label + '</div>';
+              } else {
+                var statusClass = (g.status && g.status.indexOf('Final') !== -1) ? ' final' : '';
+                html += '<div class="game-status' + statusClass + '">' + (g.status || '') + '</div>';
+              }
+              if (g.location) {
+                html += '<div class="game-location">' + g.location + '</div>';
+              }
+              html += '</div>';
+            });
+          } else if (round.scheduleInfo) {
+            // No API games for this series, but we have schedule info
+            html += '<div class="round-schedule-info">' + round.scheduleInfo + '</div>';
+          } else {
+            html += '<p class="placeholder-msg" style="padding:0.3rem 0;">No games scheduled yet</p>';
+          }
+        });
+      } else {
+        // No assigned matchups for this round yet — show schedule info if available
+        html += '<div class="bracket-section-title">' + roundName + '</div>';
+        if (round.scheduleInfo) {
+          html += '<div class="round-schedule-info">' + round.scheduleInfo + '</div>';
         } else {
-          html += '<p class="placeholder-msg" style="padding:0.3rem 0;">No games scheduled yet</p>';
+          html += '<p class="placeholder-msg" style="padding:0.3rem 0;">Teams TBD</p>';
         }
-      });
-    } else {
-      // No series info, just list all games
-      games.sort(function(a,b) { return (a.date || '').localeCompare(b.date || ''); });
-      games.forEach(function(g) {
-        html += '<div class="game-result">';
-        html += '<div class="game-date">' + (g.date || '') + '</div>';
-        html += '<div class="game-teams">' + teamNameHTML(g.home, leagueForMap) + ' <span class="game-score">' + (g.homeScore !== undefined ? g.homeScore : '') + ' - ' + (g.awayScore !== undefined ? g.awayScore : '') + '</span> ' + teamNameHTML(g.away, leagueForMap) + '</div>';
-        html += '<div class="game-status">' + (g.status || '') + '</div>';
-        html += '</div>';
-      });
+      }
+
+      // Show round-level note if present
+      if (round.scheduleNote) {
+        html += '<div class="round-schedule-note">' + round.scheduleNote + '</div>';
+      }
+    });
+
+    if (html === '' || (allRounds.length === 0 && series.length === 0)) {
+      html += '<p class="placeholder-msg">No schedule data available.</p>';
     }
 
     scheduleContent.innerHTML = html;

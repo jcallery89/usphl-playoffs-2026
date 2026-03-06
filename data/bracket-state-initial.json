@@ -1,7 +1,7 @@
 {
   "_version": 1,
-  "_lastUpdated": "2026-03-06T17:35:40.431Z",
-  "_updatedBy": "system",
+  "_lastUpdated": "2026-03-06T19:00:07.543Z",
+  "_updatedBy": "schedule-merge",
   "Premier": {
     "Atlantic": {
       "qualifyCount": 8,
@@ -157,7 +157,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; #1 seed hosts all games."
     },
     "Florida": {
       "qualifyCount": 5,
@@ -212,7 +213,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Played at the #4 seed's home rink\nThu., Mar 12 — 1:30 PM & 4:30 PM"
         },
         {
           "roundIndex": 1,
@@ -256,7 +258,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Tampa\nSat., Mar 14 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nSun., Mar 15 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
         },
         {
           "roundIndex": 2,
@@ -282,9 +285,12 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Tampa\nTue., Mar 17 — 12:30 PM / 3:30 PM",
+          "scheduleNote": "May move to Mon., Mar 16 if both semifinals end 2-0."
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; higher seed hosts unless noted (Tampa games listed below)."
     },
     "Great Lakes": {
       "qualifyCount": 6,
@@ -421,7 +427,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Top 6 qualify; all series Best-of-3; higher seed hosts."
     },
     "Midwest": {
       "qualifyCount": 5,
@@ -548,7 +555,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Three rounds; all series Best-of-3; higher seed hosts."
     },
     "New England": {
       "qualifyCount": 7,
@@ -695,7 +703,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "All series Best-of-3; highest seed hosts all games."
     },
     "North": {
       "qualifyCount": 7,
@@ -842,7 +851,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "All series Best-of-3; highest seed hosts all games."
     },
     "Northwest": {
       "qualifyCount": 4,
@@ -918,7 +928,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3 series; higher seed hosts. Home ice determined by KRACH rating."
     },
     "Pacific": {
       "qualifyCount": 4,
@@ -968,7 +979,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Top 4 qualify; all series Best-of-3; higher seed hosts. G1 & G3 at higher seed, G2 at lower seed."
     },
     "Southeast": {
       "qualifyCount": 5,
@@ -1023,7 +1035,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
         },
         {
           "roundIndex": 1,
@@ -1067,7 +1080,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
         },
         {
           "roundIndex": 2,
@@ -1093,9 +1107,12 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
+          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville)."
     },
     "St. Lawrence": {
       "qualifyCount": 8,
@@ -1251,7 +1268,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Top 8 qualify; Best-of-3; higher seed hosts except as noted. Finals: Home-Away-Home for top seed."
     }
   },
   "Elite": {
@@ -1390,7 +1408,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; #1 seed hosts all games."
     },
     "Florida": {
       "qualifyCount": 5,
@@ -1445,7 +1464,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Played at the #4 seed's home rink\nThu., Mar 12 — 1:30 PM & 4:30 PM"
         },
         {
           "roundIndex": 1,
@@ -1489,7 +1509,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Tampa\nSat., Mar 14 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nSun., Mar 15 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
         },
         {
           "roundIndex": 2,
@@ -1515,9 +1536,12 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Tampa\nTue., Mar 17 — 12:30 PM / 3:30 PM",
+          "scheduleNote": "May move to Mon., Mar 16 if both semifinals end 2-0."
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; higher seed hosts unless noted (Tampa games listed below)."
     },
     "Midwest": {
       "qualifyCount": 5,
@@ -1644,7 +1668,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; higher seed hosts."
     },
     "New England": {
       "qualifyCount": 5,
@@ -1771,7 +1796,8 @@
             }
           ]
         }
-      ]
+      ],
+      "formatInfo": "Higher seed hosts; Best-of-3 for all main rounds. Play-In is a single game, hosted by #4."
     },
     "Southeast": {
       "qualifyCount": 5,
@@ -1826,7 +1852,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
         },
         {
           "roundIndex": 1,
@@ -1870,7 +1897,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
         },
         {
           "roundIndex": 2,
@@ -1896,9 +1924,12 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
+          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
         }
-      ]
+      ],
+      "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville)."
     }
   },
   "NCDC": {
@@ -1955,7 +1986,8 @@
               "overrideWinner": null,
               "note": "#4 hosts"
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 24-26"
         },
         {
           "roundIndex": 1,
@@ -1999,7 +2031,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 30 - Apr 7"
         },
         {
           "roundIndex": 2,
@@ -2025,9 +2058,11 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Apr 8-16"
         }
-      ]
+      ],
+      "formatInfo": "Top 5 qualify. Play-In: Best-of-3. Semifinals & Final: Best-of-5."
     },
     "NE Central": {
       "qualifyCount": 4,
@@ -2075,7 +2110,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 21-29"
         },
         {
           "roundIndex": 1,
@@ -2101,9 +2137,11 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 30 - Apr 6"
         }
-      ]
+      ],
+      "formatInfo": "Top 4 qualify; all series Best-of-5."
     },
     "NE East": {
       "qualifyCount": 4,
@@ -2151,7 +2189,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 21-29"
         },
         {
           "roundIndex": 1,
@@ -2177,9 +2216,11 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 30 - Apr 6"
         }
-      ]
+      ],
+      "formatInfo": "Top 4 qualify; all series Best-of-5."
     },
     "NE North": {
       "qualifyCount": 4,
@@ -2227,7 +2268,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 21-29"
         },
         {
           "roundIndex": 1,
@@ -2253,9 +2295,11 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 30 - Apr 6"
         }
-      ]
+      ],
+      "formatInfo": "Top 4 qualify; all series Best-of-5."
     },
     "NE Conference": {
       "roundRobin": {
@@ -2300,7 +2344,8 @@
           "team2Score": null,
           "status": "upcoming"
         }
-      }
+      },
+      "formatInfo": "Division winners advance. Conference Round Robin hosted by top seed."
     },
     "Mountain": {
       "qualifyCount": 4,
@@ -2348,7 +2393,8 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Mar 31 - Apr 7"
         },
         {
           "roundIndex": 1,
@@ -2374,9 +2420,11 @@
               "overrideWinner": null,
               "note": null
             }
-          ]
+          ],
+          "scheduleInfo": "Apr 10-19"
         }
-      ]
+      ],
+      "formatInfo": "Top 4 qualify; all series Best-of-5."
     },
     "Dineen Cup": {
       "format": "double_elimination",
@@ -2483,7 +2531,8 @@
           "status": "upcoming"
         }
       ],
-      "champion": null
+      "champion": null,
+      "formatInfo": "Dineen Cup Championship Series. See usphl.com/ncdc/events/dineen-cup-championship-series/ for full details."
     }
   }
 }

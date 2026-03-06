@@ -207,6 +207,75 @@
     }
     .advance-section p { margin: 0 0 0.5rem; font-size: 0.9rem; color: #333; }
 
+    /* Schedule info editing */
+    .format-info-section {
+      background: #f8f8f9;
+      border-left: 3px solid #c91417;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .format-info-section input {
+      flex: 1;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #333;
+    }
+    .schedule-edit {
+      background: #f8f8f9;
+      border: 1px solid #e8e8ea;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin: 0.25rem 0 0.5rem;
+    }
+    .schedule-edit label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .schedule-edit textarea {
+      width: 100%;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: #333;
+      resize: vertical;
+      min-height: 50px;
+    }
+    .schedule-edit input {
+      width: 100%;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: #333;
+    }
+    .save-schedule-btn {
+      margin-top: 0.5rem;
+      padding: 0.35rem 0.8rem;
+      background: #c91417;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .save-schedule-btn:hover { background: #a91114; }
+    .save-msg { color: #2ecc71; font-size: 0.8rem; margin-left: 0.5rem; display: none; }
+
     .status-bar {
       padding: 0.75rem;
       text-align: center;
@@ -360,9 +429,27 @@
 
       var html = '';
 
+      // Division-level format info
+      html += '<div class="format-info-section">';
+      html += '<label style="font-size:0.75rem;font-weight:600;color:#888;white-space:nowrap;">FORMAT:</label>';
+      html += '<input type="text" id="formatInfo" value="' + (divState.formatInfo || '').replace(/"/g, '&quot;') + '" placeholder="e.g. Best-of-3; higher seed hosts">';
+      html += '<button class="save-schedule-btn" onclick="saveFormatInfo()">Save</button>';
+      html += '<span class="save-msg" id="formatSaveMsg">Saved!</span>';
+      html += '</div>';
+
       divState.rounds.forEach(function(round, roundIdx) {
         html += '<div class="round-card">';
         html += '<h3>' + round.roundName + ' (' + round.format + ')</h3>';
+
+        // Schedule info editing
+        html += '<div class="schedule-edit">';
+        html += '<label>Schedule Info</label>';
+        html += '<textarea id="schedInfo_' + roundIdx + '" placeholder="Dates, times, location...">' + (round.scheduleInfo || '') + '</textarea>';
+        html += '<label style="margin-top:0.3rem;">Note</label>';
+        html += '<input type="text" id="schedNote_' + roundIdx + '" value="' + (round.scheduleNote || '').replace(/"/g, '&quot;') + '" placeholder="Optional caveat or note">';
+        html += '<button class="save-schedule-btn" onclick="saveScheduleInfo(' + roundIdx + ')" style="margin-top:0.3rem;">Save Schedule</button>';
+        html += '<span class="save-msg" id="schedSaveMsg_' + roundIdx + '">Saved!</span>';
+        html += '</div>';
 
         // Byes
         if (round.byes && round.byes.length > 0) {
@@ -553,6 +640,32 @@
       } catch(e) {
         alert('Refresh failed: ' + e.message);
       }
+    }
+
+    // ---- Schedule Info Editing ----
+    async function saveFormatInfo() {
+      var league = document.getElementById('leagueSelect').value;
+      var division = document.getElementById('divisionSelect').value;
+      var val = document.getElementById('formatInfo').value.trim();
+      bracketState[league][division].formatInfo = val || null;
+      await saveBracketState();
+      var msg = document.getElementById('formatSaveMsg');
+      msg.style.display = 'inline';
+      setTimeout(function() { msg.style.display = 'none'; }, 2000);
+    }
+
+    async function saveScheduleInfo(roundIdx) {
+      var league = document.getElementById('leagueSelect').value;
+      var division = document.getElementById('divisionSelect').value;
+      var info = document.getElementById('schedInfo_' + roundIdx).value.trim();
+      var note = document.getElementById('schedNote_' + roundIdx).value.trim();
+      var round = bracketState[league][division].rounds[roundIdx];
+      round.scheduleInfo = info || null;
+      round.scheduleNote = note || null;
+      await saveBracketState();
+      var msg = document.getElementById('schedSaveMsg_' + roundIdx);
+      msg.style.display = 'inline';
+      setTimeout(function() { msg.style.display = 'none'; }, 2000);
     }
 
     // ---- Init ----
