@@ -89,13 +89,13 @@ async function main() {
     Premier: {
       'Round 1': 'Starting March 7',
       'Round 2': 'Starting March 14',
-      'Championship': 'Starting March 21',
+      'Divisional Championship': 'Starting March 21',
       'Semifinals': 'Starting March 7',
     },
     Elite: {
       'Round 1': 'Starting March 7',
       'Round 2': 'Starting March 14',
-      'Championship': 'Starting March 21',
+      'Divisional Championship': 'Starting March 21',
       'Semifinals': 'Starting March 7',
     },
   };

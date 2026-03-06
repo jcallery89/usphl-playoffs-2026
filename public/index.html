@@ -27,6 +27,18 @@
       position: relative;
       box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .header-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
     header h1 {
       margin: 0;
       font-size: 1.6rem;
@@ -296,6 +308,7 @@
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
       header h1 { font-size: 1.2rem; }
+      .header-logo { height: 36px; }
       .league-tab { padding: 0.45rem 1rem; font-size: 0.85rem; }
       .division-pills { flex-wrap: wrap; justify-content: center; }
       table.data-table { font-size: 0.78rem; }
@@ -314,7 +327,10 @@
     <div class="loading-text">Loading playoff data...</div>
   </div>
   <header>
-    <h1>2025-26 USPHL Playoffs</h1>
+    <div class="header-inner">
+      <img id="headerLogo" class="header-logo" src="/images/dineen-cup-2026.png" alt="USPHL Playoffs">
+      <h1>2025-26 USPHL Playoffs</h1>
+    </div>
     <div class="last-updated" id="lastUpdated"></div>
   </header>
   <div class="content-wrap">
@@ -1827,6 +1843,17 @@
     document.querySelector('#bracketContainer .section-title').textContent = divLabel + ' BRACKET';
     document.querySelector('#scheduleContainer .section-title').textContent = divLabel + ' SCHEDULE';
     document.querySelector('#standingsContainer .section-title').textContent = divLabel + ' STANDINGS';
+    // Swap header logo based on league
+    var logoEl = document.getElementById('headerLogo');
+    if (logoEl) {
+      if (currentLeague === 'NCDC') {
+        logoEl.src = '/images/dineen-cup-2026.png';
+        logoEl.alt = 'NCDC Dineen Cup Playoffs 2026';
+      } else {
+        logoEl.src = '/images/usphl-nationals-2026.png';
+        logoEl.alt = 'USPHL 2026 National Championships';
+      }
+    }
     renderStandings();
     renderBracket();
     renderSchedule();
