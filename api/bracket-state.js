@@ -8,7 +8,7 @@ import crypto from 'crypto';
 
 const BRACKET_KEY = 'bracket-state';
 // Bump this whenever bracket-config or initial-seeds change to force KV re-init
-const CONFIG_VERSION = 2;
+const CONFIG_VERSION = 3;
 
 async function verifyAdmin(req) {
   const token = (req.headers.authorization || '').replace('Bearer ', '');
