@@ -1018,6 +1018,20 @@
       var team = findTeamBySeed(data, seedOrLabel);
       return team ? team.name : "Seed #" + seedOrLabel;
     }
+    // Resolve pod seed strings like "PNW_1" to team names
+    if (typeof seedOrLabel === "string" && data && data.pods) {
+      var match = seedOrLabel.match(/^([A-Z]+)_(\d+)$/);
+      if (match) {
+        var podName = match[1];
+        var podSeed = parseInt(match[2]);
+        var pod = data.pods[podName];
+        if (pod && pod.teams) {
+          for (var i = 0; i < pod.teams.length; i++) {
+            if (pod.teams[i].seed === podSeed) return pod.teams[i].name;
+          }
+        }
+      }
+    }
     return String(seedOrLabel);
   }
 
@@ -1350,25 +1364,21 @@
           var aSeed = bsMatchup.awaySeed;
           homeLabel = (hSeed ? '<span class="matchup-seed">#' + hSeed + '</span> ' : '') + teamNameHTML(homeName, leagueForMap);
           awayLabel = (aSeed ? '<span class="matchup-seed">#' + aSeed + '</span> ' : '') + teamNameHTML(awayName || 'TBD', leagueForMap);
-        } else if (bsMatchup && bsMatchup.homeTeamName === 'TBD') {
-          // BRACKET_STATE says TBD — show TBD
-          homeLabel = 'TBD';
-          awayLabel = 'TBD';
         } else {
-          // Fallback to config seed resolution (Round 1 only)
+          // Fallback to config seed resolution
           if (typeof homeSeed === "number") {
             var homeTeam = findTeamBySeed(data, homeSeed);
             homeName = homeTeam ? homeTeam.name : null;
             homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + teamNameHTML(homeName || "TBD", leagueForMap);
           } else {
-            homeLabel = String(homeSeed);
+            homeLabel = getTeamLabel(data, homeSeed);
           }
           if (typeof awaySeed === "number") {
             var awayTeam = findTeamBySeed(data, awaySeed);
             awayName = awayTeam ? awayTeam.name : null;
             awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + teamNameHTML(awayName || "TBD", leagueForMap);
           } else {
-            awayLabel = String(awaySeed);
+            awayLabel = getTeamLabel(data, awaySeed);
           }
         }
 
@@ -1801,8 +1811,8 @@
         var roundFormat = getSeriesFormat(round, format.seriesFormat);
         var matchupDescs = [];
         round.matchups.forEach(function(matchup) {
-          var home = typeof matchup[0] === "number" ? "#" + matchup[0] + " " + getTeamLabel(div, matchup[0]) : String(matchup[0]);
-          var away = typeof matchup[1] === "number" ? "#" + matchup[1] + " " + getTeamLabel(div, matchup[1]) : String(matchup[1]);
+          var home = typeof matchup[0] === "number" ? "#" + matchup[0] + " " + getTeamLabel(div, matchup[0]) : getTeamLabel(div, matchup[0]);
+          var away = typeof matchup[1] === "number" ? "#" + matchup[1] + " " + getTeamLabel(div, matchup[1]) : getTeamLabel(div, matchup[1]);
           matchupDescs.push(home + " vs " + away);
         });
         html += '<tr><td>NE ' + divName + '</td><td><span class="schedule-round-label">' + round.name + '</span></td>';
