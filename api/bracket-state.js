@@ -1,14 +1,8 @@
 import { kvGet, kvSet, getCached } from '../lib/cache.js';
 import { getSchedule } from '../lib/timetoscore.js';
 import { updateBracketWithGames } from '../lib/bracket-engine.js';
-import { initializeBracketState } from '../lib/bracket-engine.js';
-import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
 
 const BRACKET_KEY = 'bracket-state';
-// Bump this whenever bracket-config or initial-seeds change to force KV re-init
-const CONFIG_VERSION = 2;
 
 async function verifyAdmin(req) {
   const token = (req.headers.authorization || '').replace('Bearer ', '');
@@ -31,26 +25,8 @@ async function handleGet(req, res) {
   try {
     let bracketState = await kvGet(BRACKET_KEY);
 
-    // Auto-reinitialize if KV state is missing or has an older config version
-    if (!bracketState || (bracketState._configVersion || 0) < CONFIG_VERSION) {
-      try {
-        const configPath = path.join(process.cwd(), 'public', 'data', 'bracket-config.json');
-        const seedsPath = path.join(process.cwd(), 'public', 'data', 'initial-seeds.json');
-        const mappingsPath = path.join(process.cwd(), 'public', 'data', 'team-mappings.json');
-        const bracketConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-        const initialSeeds = JSON.parse(fs.readFileSync(seedsPath, 'utf8'));
-        const teamMappings = JSON.parse(fs.readFileSync(mappingsPath, 'utf8'));
-        bracketState = initializeBracketState(bracketConfig, initialSeeds, teamMappings);
-        bracketState._configVersion = CONFIG_VERSION;
-        bracketState._updatedBy = 'auto-reinit';
-        await kvSet(BRACKET_KEY, bracketState);
-        console.log('Auto-reinitialized bracket state to config version', CONFIG_VERSION);
-      } catch (initErr) {
-        console.error('Failed to auto-reinitialize bracket state:', initErr);
-        if (!bracketState) {
-          return res.status(200).json({ _empty: true, message: 'Bracket state not initialized.' });
-        }
-      }
+    if (!bracketState) {
+      return res.status(200).json({ _empty: true, message: 'Bracket state not initialized. Run npm run init-bracket.' });
     }
 
     // Fetch latest games and update series records

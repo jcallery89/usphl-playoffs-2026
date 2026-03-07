@@ -21,8 +21,6 @@ const initialSeeds = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'initial
 const teamMappings = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'team-mappings.json'), 'utf8'));
 
 const state = initializeBracketState(bracketConfig, initialSeeds, teamMappings);
-state._configVersion = 2;
-
 // Always write to file for reference/backup
 const outPath = path.join(ROOT, 'data', 'bracket-state-initial.json');
 fs.writeFileSync(outPath, JSON.stringify(state, null, 2));
