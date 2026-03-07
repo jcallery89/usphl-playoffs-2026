@@ -47,14 +47,13 @@
       "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville).",
       "rounds": {
         "Play-In": {
-          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          "scheduleInfo": "Pineville Ice House\nThu., Mar 12 — 11:30 AM"
         },
         "Semifinals": {
-          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          "scheduleInfo": "Pineville Ice House\nFri., Mar 13 — 2:00 PM / 5:00 PM\nSat., Mar 14 — 2:30 PM / 5:30 PM\nSun., Mar 15 — 2:30 PM / 5:30 PM (Game 3 if necessary)"
         },
         "Divisional Championship": {
-          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
+          "scheduleInfo": "Pineville Ice House\nMon., Mar 16 — 11:30 AM"
         }
       }
     },
@@ -95,14 +94,13 @@
       "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville).",
       "rounds": {
         "Play-In": {
-          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          "scheduleInfo": "Pineville Ice House\nThu., Mar 12 — 8:30 AM"
         },
         "Semifinals": {
-          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          "scheduleInfo": "Pineville Ice House\nFri., Mar 13 — 8:00 AM / 11:00 AM\nSat., Mar 14 — 8:30 AM / 11:30 AM\nSun., Mar 15 — 8:30 AM / 11:30 AM (Game 3 if necessary)"
         },
         "Divisional Championship": {
-          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
+          "scheduleInfo": "Pineville Ice House\nMon., Mar 16 — 8:30 AM"
         }
       }
     }
