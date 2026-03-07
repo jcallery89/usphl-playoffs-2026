@@ -543,7 +543,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
-              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Semifinals", matchups: [[1,"Play-In Winner"],[2,3]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -608,7 +608,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Round 1", matchups: [[2,7],[3,6],[4,5]], byes: [1] },
-              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Round 2", matchups: [[1,"Lowest Seed"],["Highest R1 Winner","2nd R1 Winner"]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -631,7 +631,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Round 1", matchups: [[2,7],[3,6],[4,5]], byes: [1] },
-              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Round 2", matchups: [[1,"Lowest Seed"],["Highest R1 Winner","2nd R1 Winner"]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -660,7 +660,7 @@
           playoffFormat: {
             seriesFormat: "Bo3",
             rounds: [
-              { name: "Pod Round", matchups: [["PNW1","PNW2"],["MTN1","MTN2"]] },
+              { name: "Pod Round", matchups: [["PNW_1","PNW_2"],["MTN_1","MTN_2"]] },
               { name: "Divisional Finals", matchups: [["Pod Winner 1","Pod Winner 2"]] }
             ]
           }
@@ -699,7 +699,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
-              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Semifinals", matchups: [[1,"Play-In Winner"],[2,3]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -745,7 +745,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Round 1", matchups: [[3,6],[4,5]], byes: [1,2] },
-              { name: "Round 2", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Round 2", matchups: [[1,"Lowest Seed"],[2,"Second Lowest"]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -766,7 +766,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
-              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Semifinals", matchups: [[1,"Play-In Winner"],[2,3]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -824,7 +824,7 @@
             seriesFormat: "Bo3",
             rounds: [
               { name: "Play-In", matchups: [[4,5]], byes: [1,2,3] },
-              { name: "Semifinals", matchups: [[1,4],[2,3]], byes: [] },
+              { name: "Semifinals", matchups: [[1,"Play-In Winner"],[2,3]], byes: [] },
               { name: "Championship", matchups: [[1,2]], byes: [] }
             ]
           }
@@ -1131,6 +1131,20 @@
         var team = findTeamBySeed(data, seedOrLabel);
         return team ? team.name : "Seed #" + seedOrLabel;
       }
+      // Resolve pod seed strings like "PNW_1" to team names
+      if (typeof seedOrLabel === "string" && data && data.pods) {
+        var match = seedOrLabel.match(/^([A-Z]+)_(\d+)$/);
+        if (match) {
+          var podName = match[1];
+          var podSeed = parseInt(match[2]);
+          var pod = data.pods[podName];
+          if (pod && pod.teams) {
+            for (var i = 0; i < pod.teams.length; i++) {
+              if (pod.teams[i].seed === podSeed) return pod.teams[i].name;
+            }
+          }
+        }
+      }
       return String(seedOrLabel);
     }
 
@@ -1407,14 +1421,14 @@
             var homeTeam = findTeamBySeed(data, homeSeed);
             homeLabel = '<span class="matchup-seed">#' + homeSeed + '</span> ' + (homeTeam ? homeTeam.name : "TBD");
           } else {
-            homeLabel = String(homeSeed);
+            homeLabel = getTeamLabel(data, homeSeed);
           }
 
           if (typeof awaySeed === "number") {
             var awayTeam = findTeamBySeed(data, awaySeed);
             awayLabel = '<span class="matchup-seed">#' + awaySeed + '</span> ' + (awayTeam ? awayTeam.name : "TBD");
           } else {
-            awayLabel = String(awaySeed);
+            awayLabel = getTeamLabel(data, awaySeed);
           }
 
           html += '<div class="matchup">';
@@ -1667,12 +1681,12 @@
           if (typeof matchup[0] === "number") {
             home = "#" + matchup[0] + " " + getTeamLabel(data, matchup[0]);
           } else {
-            home = String(matchup[0]);
+            home = getTeamLabel(data, matchup[0]);
           }
           if (typeof matchup[1] === "number") {
             away = "#" + matchup[1] + " " + getTeamLabel(data, matchup[1]);
           } else {
-            away = String(matchup[1]);
+            away = getTeamLabel(data, matchup[1]);
           }
           matchupDescs.push(home + " vs " + away);
         });

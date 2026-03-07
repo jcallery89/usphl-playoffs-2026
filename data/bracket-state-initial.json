@@ -1,7 +1,7 @@
 {
   "_version": 1,
-  "_lastUpdated": "2026-03-06T19:00:07.543Z",
-  "_updatedBy": "schedule-merge",
+  "_lastUpdated": "2026-03-07T23:17:40.106Z",
+  "_updatedBy": "system",
   "Premier": {
     "Atlantic": {
       "qualifyCount": 8,
@@ -133,7 +133,7 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
@@ -157,8 +157,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Best-of-3; #1 seed hosts all games."
+      ]
     },
     "Florida": {
       "qualifyCount": 5,
@@ -213,8 +212,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Played at the #4 seed's home rink\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          ]
         },
         {
           "roundIndex": 1,
@@ -224,12 +222,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "2284",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Play-In Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -242,12 +240,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "441",
+              "awayTeamId": "483",
+              "homeTeamName": "Florida Eels",
+              "awayTeamName": "Tampa Bay Juniors",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -258,23 +256,22 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Tampa\nSat., Mar 14 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nSun., Mar 15 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          ]
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "2284",
+              "awayTeamId": "441",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Florida Eels",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -285,12 +282,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Tampa\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "May move to Mon., Mar 16 if both semifinals end 2-0."
+          ]
         }
-      ],
-      "formatInfo": "Best-of-3; higher seed hosts unless noted (Tampa games listed below)."
+      ]
     },
     "Great Lakes": {
       "qualifyCount": 6,
@@ -365,11 +359,11 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "485",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Toledo Cherokee",
               "awayTeamName": "Lowest Seed",
               "homeWins": 0,
               "awayWins": 0,
@@ -383,11 +377,11 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
+              "homeSeed": 2,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "460",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Metro Jets",
               "awayTeamName": "Second Lowest",
               "homeWins": 0,
               "awayWins": 0,
@@ -403,18 +397,18 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "485",
+              "awayTeamId": "460",
+              "homeTeamName": "Toledo Cherokee",
+              "awayTeamName": "Metro Jets",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -427,8 +421,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Top 6 qualify; all series Best-of-3; higher seed hosts."
+      ]
     },
     "Midwest": {
       "qualifyCount": 5,
@@ -493,12 +486,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2293",
+              "awayTeamId": "464",
+              "homeTeamName": "Chicago T-Rex",
+              "awayTeamName": "MJDP",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -511,11 +504,11 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "443",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Fort Wayne Spacemen",
               "awayTeamName": "R1 Winner",
               "homeWins": 0,
               "awayWins": 0,
@@ -531,18 +524,18 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "443",
+              "awayTeamId": "2293",
+              "homeTeamName": "Fort Wayne Spacemen",
+              "awayTeamName": "Chicago T-Rex",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -555,8 +548,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Three rounds; all series Best-of-3; higher seed hosts."
+      ]
     },
     "New England": {
       "qualifyCount": 7,
@@ -641,12 +633,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "467",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "Lowest Seed",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -663,8 +655,8 @@
               "awaySeed": null,
               "homeTeamId": null,
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Highest R1 Winner",
+              "awayTeamName": "2nd R1 Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -679,17 +671,17 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "467",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Northern Cyclones",
               "awayTeamName": "TBD",
               "homeWins": 0,
               "awayWins": 0,
@@ -703,8 +695,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "All series Best-of-3; highest seed hosts all games."
+      ]
     },
     "North": {
       "qualifyCount": 7,
@@ -789,12 +780,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "463",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Minnesota Squatch",
+              "awayTeamName": "Lowest Seed",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -811,8 +802,8 @@
               "awaySeed": null,
               "homeTeamId": null,
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Highest R1 Winner",
+              "awayTeamName": "2nd R1 Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -827,17 +818,17 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "463",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Minnesota Squatch",
               "awayTeamName": "TBD",
               "homeWins": 0,
               "awayWins": 0,
@@ -851,8 +842,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "All series Best-of-3; highest seed hosts all games."
+      ]
     },
     "Northwest": {
       "qualifyCount": 4,
@@ -866,12 +856,12 @@
           "matchups": [
             {
               "matchupId": "r0-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "PNW1",
-              "awayTeamName": "PNW2",
+              "homeSeed": "PNW_1",
+              "awaySeed": "PNW_2",
+              "homeTeamId": "478",
+              "awayTeamId": "428",
+              "homeTeamName": "Seattle Totems",
+              "awayTeamName": "Bremerton Sockeyes",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -884,12 +874,12 @@
             },
             {
               "matchupId": "r0-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "MTN1",
-              "awayTeamName": "MTN2",
+              "homeSeed": "MTN_1",
+              "awaySeed": "MTN_2",
+              "homeTeamId": "490",
+              "awayTeamId": "423",
+              "homeTeamName": "Vernal Oilers",
+              "awayTeamName": "McCall Smokejumpers",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -928,8 +918,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Best-of-3 series; higher seed hosts. Home ice determined by KRACH rating."
+      ]
     },
     "Pacific": {
       "qualifyCount": 4,
@@ -979,8 +968,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Top 4 qualify; all series Best-of-3; higher seed hosts. G1 & G3 at higher seed, G2 at lower seed."
+      ]
     },
     "Southeast": {
       "qualifyCount": 5,
@@ -1035,8 +1023,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          ]
         },
         {
           "roundIndex": 1,
@@ -1046,12 +1033,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "446",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Play-In Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1064,12 +1051,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "472",
+              "awayTeamId": "431",
+              "homeTeamName": "Potomac Patriots",
+              "awayTeamName": "Charlotte Rush",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1080,23 +1067,22 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          ]
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "446",
+              "awayTeamId": "472",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Potomac Patriots",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1107,12 +1093,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
+          ]
         }
-      ],
-      "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville)."
+      ]
     },
     "St. Lawrence": {
       "qualifyCount": 8,
@@ -1268,8 +1251,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Top 8 qualify; Best-of-3; higher seed hosts except as noted. Finals: Home-Away-Home for top seed."
+      ]
     }
   },
   "Elite": {
@@ -1346,12 +1328,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1429",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Wilkes-Barre Scranton Knights",
+              "awayTeamName": "Lowest Seed",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1364,12 +1346,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
+              "homeSeed": 2,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1410",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Hershey Cubs",
+              "awayTeamName": "Second Lowest",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1384,18 +1366,18 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1429",
+              "awayTeamId": "1410",
+              "homeTeamName": "Wilkes-Barre Scranton Knights",
+              "awayTeamName": "Hershey Cubs",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1408,8 +1390,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Best-of-3; #1 seed hosts all games."
+      ]
     },
     "Florida": {
       "qualifyCount": 5,
@@ -1464,8 +1445,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Played at the #4 seed's home rink\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          ]
         },
         {
           "roundIndex": 1,
@@ -1475,12 +1455,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1425",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Tampa Bay Juniors",
+              "awayTeamName": "Play-In Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1493,12 +1473,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2290",
+              "awayTeamId": "1407",
+              "homeTeamName": "Coral Springs Jr. Cats",
+              "awayTeamName": "Florida Junior Blades",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1509,23 +1489,22 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Tampa\nSat., Mar 14 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nSun., Mar 15 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          ]
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1425",
+              "awayTeamId": "2290",
+              "homeTeamName": "Tampa Bay Juniors",
+              "awayTeamName": "Coral Springs Jr. Cats",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1536,12 +1515,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Tampa\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "May move to Mon., Mar 16 if both semifinals end 2-0."
+          ]
         }
-      ],
-      "formatInfo": "Best-of-3; higher seed hosts unless noted (Tampa games listed below)."
+      ]
     },
     "Midwest": {
       "qualifyCount": 5,
@@ -1606,12 +1582,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "1408",
+              "awayTeamId": "1414",
+              "homeTeamName": "Fort Wayne Spacemen",
+              "awayTeamName": "Metro Jets Elite",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1624,11 +1600,11 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1402",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Chicago Crush",
               "awayTeamName": "R1 Winner",
               "homeWins": 0,
               "awayWins": 0,
@@ -1644,18 +1620,18 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1402",
+              "awayTeamId": "1408",
+              "homeTeamName": "Chicago Crush",
+              "awayTeamName": "Fort Wayne Spacemen",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1668,8 +1644,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Best-of-3; higher seed hosts."
+      ]
     },
     "New England": {
       "qualifyCount": 5,
@@ -1734,12 +1709,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "2291",
+              "awayTeamId": "1411",
+              "homeTeamName": "Montreal Knights",
+              "awayTeamName": "Islanders Hockey Club",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1752,11 +1727,11 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1417",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "Northern Cyclones",
               "awayTeamName": "PI Winner",
               "homeWins": 0,
               "awayWins": 0,
@@ -1772,18 +1747,18 @@
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1417",
+              "awayTeamId": "2291",
+              "homeTeamName": "Northern Cyclones",
+              "awayTeamName": "Montreal Knights",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1796,8 +1771,7 @@
             }
           ]
         }
-      ],
-      "formatInfo": "Higher seed hosts; Best-of-3 for all main rounds. Play-In is a single game, hosted by #4."
+      ]
     },
     "Southeast": {
       "qualifyCount": 5,
@@ -1852,8 +1826,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Own rink or Pineville\nThu., Mar 12 — 1:30 PM & 4:30 PM"
+          ]
         },
         {
           "roundIndex": 1,
@@ -1863,12 +1836,12 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "1399",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeTeamName": "Carolina Junior Hurricanes",
+              "awayTeamName": "Play-In Winner",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1881,12 +1854,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "1409",
+              "awayTeamId": "1400",
+              "homeTeamName": "Hampton Roads Whalers",
+              "awayTeamName": "Charlotte Rush",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1897,23 +1870,22 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Pineville\nSat., Mar 14\nSun., Mar 15\nMon., Mar 16 — 10:00 AM / 1:00 PM / 4:30 PM / 7:30 PM"
+          ]
         },
         {
           "roundIndex": 2,
-          "roundName": "Championship",
+          "roundName": "Divisional Championship",
           "format": "Bo3",
           "byes": [],
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "1399",
+              "awayTeamId": "1409",
+              "homeTeamName": "Carolina Junior Hurricanes",
+              "awayTeamName": "Hampton Roads Whalers",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -1924,12 +1896,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Pineville\nTue., Mar 17 — 12:30 PM / 3:30 PM",
-          "scheduleNote": "Moves to Mar 16 if both semis finish 2-0."
+          ]
         }
-      ],
-      "formatInfo": "Best-of-3; higher seed hosts unless noted (played in Pineville)."
+      ]
     }
   },
   "NCDC": {
@@ -1986,8 +1955,7 @@
               "overrideWinner": null,
               "note": "#4 hosts"
             }
-          ],
-          "scheduleInfo": "Mar 24-26"
+          ]
         },
         {
           "roundIndex": 1,
@@ -1997,11 +1965,11 @@
           "matchups": [
             {
               "matchupId": "r1-m0",
-              "homeSeed": null,
+              "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": null,
+              "homeTeamId": "115",
               "awayTeamId": null,
-              "homeTeamName": "TBD",
+              "homeTeamName": "P.A.L. Junior Islanders",
               "awayTeamName": "PI Winner",
               "homeWins": 0,
               "awayWins": 0,
@@ -2015,12 +1983,12 @@
             },
             {
               "matchupId": "r1-m1",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 2,
+              "awaySeed": 3,
+              "homeTeamId": "111",
+              "awayTeamId": "118",
+              "homeTeamName": "Jersey Hitmen",
+              "awayTeamName": "Rockets Hockey Club",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -2031,8 +1999,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 30 - Apr 7"
+          ]
         },
         {
           "roundIndex": 2,
@@ -2042,12 +2009,12 @@
           "matchups": [
             {
               "matchupId": "r2-m0",
-              "homeSeed": null,
-              "awaySeed": null,
-              "homeTeamId": null,
-              "awayTeamId": null,
-              "homeTeamName": "TBD",
-              "awayTeamName": "TBD",
+              "homeSeed": 1,
+              "awaySeed": 2,
+              "homeTeamId": "115",
+              "awayTeamId": "111",
+              "homeTeamName": "P.A.L. Junior Islanders",
+              "awayTeamName": "Jersey Hitmen",
               "homeWins": 0,
               "awayWins": 0,
               "status": "not_started",
@@ -2058,11 +2025,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Apr 8-16"
+          ]
         }
-      ],
-      "formatInfo": "Top 5 qualify. Play-In: Best-of-3. Semifinals & Final: Best-of-5."
+      ]
     },
     "NE Central": {
       "qualifyCount": 4,
@@ -2110,8 +2075,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 21-29"
+          ]
         },
         {
           "roundIndex": 1,
@@ -2137,11 +2101,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 30 - Apr 6"
+          ]
         }
-      ],
-      "formatInfo": "Top 4 qualify; all series Best-of-5."
+      ]
     },
     "NE East": {
       "qualifyCount": 4,
@@ -2189,8 +2151,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 21-29"
+          ]
         },
         {
           "roundIndex": 1,
@@ -2216,11 +2177,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 30 - Apr 6"
+          ]
         }
-      ],
-      "formatInfo": "Top 4 qualify; all series Best-of-5."
+      ]
     },
     "NE North": {
       "qualifyCount": 4,
@@ -2268,8 +2227,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 21-29"
+          ]
         },
         {
           "roundIndex": 1,
@@ -2295,11 +2253,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 30 - Apr 6"
+          ]
         }
-      ],
-      "formatInfo": "Top 4 qualify; all series Best-of-5."
+      ]
     },
     "NE Conference": {
       "roundRobin": {
@@ -2344,8 +2300,7 @@
           "team2Score": null,
           "status": "upcoming"
         }
-      },
-      "formatInfo": "Division winners advance. Conference Round Robin hosted by top seed."
+      }
     },
     "Mountain": {
       "qualifyCount": 4,
@@ -2393,8 +2348,7 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Mar 31 - Apr 7"
+          ]
         },
         {
           "roundIndex": 1,
@@ -2420,11 +2374,9 @@
               "overrideWinner": null,
               "note": null
             }
-          ],
-          "scheduleInfo": "Apr 10-19"
+          ]
         }
-      ],
-      "formatInfo": "Top 4 qualify; all series Best-of-5."
+      ]
     },
     "Dineen Cup": {
       "format": "double_elimination",
@@ -2531,8 +2483,7 @@
           "status": "upcoming"
         }
       ],
-      "champion": null,
-      "formatInfo": "Dineen Cup Championship Series. See usphl.com/ncdc/events/dineen-cup-championship-series/ for full details."
+      "champion": null
     }
   }
 }

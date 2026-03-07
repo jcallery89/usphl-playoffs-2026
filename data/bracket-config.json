@@ -78,7 +78,7 @@
             "matchups": [
               [
                 1,
-                4
+                "Play-In Winner"
               ],
               [
                 2,
@@ -225,11 +225,11 @@
             "matchups": [
               [
                 1,
-                4
+                "Lowest Seed"
               ],
               [
-                2,
-                3
+                "Highest R1 Winner",
+                "2nd R1 Winner"
               ]
             ],
             "byes": []
@@ -277,11 +277,11 @@
             "matchups": [
               [
                 1,
-                4
+                "Lowest Seed"
               ],
               [
-                2,
-                3
+                "Highest R1 Winner",
+                "2nd R1 Winner"
               ]
             ],
             "byes": []
@@ -308,12 +308,12 @@
             "name": "Pod Round",
             "matchups": [
               [
-                "PNW1",
-                "PNW2"
+                "PNW_1",
+                "PNW_2"
               ],
               [
-                "MTN1",
-                "MTN2"
+                "MTN_1",
+                "MTN_2"
               ]
             ]
           },
@@ -375,7 +375,7 @@
             "matchups": [
               [
                 1,
-                4
+                "Play-In Winner"
               ],
               [
                 2,
@@ -480,11 +480,11 @@
             "matchups": [
               [
                 1,
-                4
+                "Lowest Seed"
               ],
               [
                 2,
-                3
+                "Second Lowest"
               ]
             ],
             "byes": []
@@ -526,7 +526,7 @@
             "matchups": [
               [
                 1,
-                4
+                "Play-In Winner"
               ],
               [
                 2,
@@ -666,7 +666,7 @@
             "matchups": [
               [
                 1,
-                4
+                "Play-In Winner"
               ],
               [
                 2,
