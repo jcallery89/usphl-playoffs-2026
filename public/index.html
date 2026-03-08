@@ -1366,8 +1366,14 @@
           var aSeed = bsMatchup.awaySeed;
           homeLabel = (hSeed ? '<span class="matchup-seed">#' + hSeed + '</span> ' : '') + teamNameHTML(homeName, leagueForMap);
           awayLabel = (aSeed ? '<span class="matchup-seed">#' + aSeed + '</span> ' : '') + teamNameHTML(awayName || 'TBD', leagueForMap);
+        } else if (bsMatchup && (bsMatchup.homeTeamName === 'TBD' || !bsMatchup.homeTeamId)) {
+          // Bracket state exists but teams haven't advanced here yet — show TBD
+          homeName = null;
+          awayName = null;
+          homeLabel = 'TBD';
+          awayLabel = 'TBD';
         } else {
-          // Fallback to config seed resolution
+          // Fallback to config seed resolution (only for Round 1 or when no bracket state)
           if (typeof homeSeed === "number") {
             var homeTeam = findTeamBySeed(data, homeSeed);
             homeName = homeTeam ? homeTeam.name : null;
