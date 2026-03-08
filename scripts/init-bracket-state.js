@@ -41,16 +41,16 @@ for (const league of ['Premier', 'Elite', 'NCDC']) {
 }
 console.log(`\nInitialized: ${totalRounds} rounds, ${totalMatchups} matchups across all leagues`);
 
-// Try to push to Upstash if configured
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+// Try to push to Upstash if configured (accept both env var naming conventions)
+const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+
+if (kvUrl && kvToken) {
   const { Redis } = await import('@upstash/redis');
-  const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
-  });
+  const redis = new Redis({ url: kvUrl, token: kvToken });
   await redis.set('bracket-state', state);
   console.log('Pushed bracket state to Upstash Redis');
 } else {
   console.log('\nNo Upstash credentials found. Upload data/bracket-state-initial.json manually,');
-  console.log('or set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN env vars.');
+  console.log('or set KV_REST_API_URL/KV_REST_API_TOKEN (or UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN) env vars.');
 }
