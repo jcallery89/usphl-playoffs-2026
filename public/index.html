@@ -415,17 +415,19 @@
   async function loadData() {
     showLoading(true);
     try {
+      // Cache-bust static files so iframe/CDN doesn't serve stale data
+      var cacheBust = '_cb=' + Date.now();
       // Load team mappings, initial seeds, bracket config, and bracket state in parallel
       var results = await Promise.all([
-        fetch(API_BASE + '/data/team-mappings.json').then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/initial-seeds.json').then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/bracket-config.json').then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/api/bracket-state').then(function(r){
+        fetch(API_BASE + '/data/team-mappings.json?' + cacheBust).then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/initial-seeds.json?' + cacheBust).then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/bracket-config.json?' + cacheBust).then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/api/bracket-state?' + cacheBust).then(function(r){
           if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
           return r.json();
         }).catch(function(e){
           console.warn('bracket-state API not available, trying static fallback:', e.message);
-          return fetch(API_BASE + '/data/bracket-state-initial.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
+          return fetch(API_BASE + '/data/bracket-state-initial.json?' + cacheBust).then(function(r){ return r.json(); }).catch(function(){ return null; });
         })
       ]);
 
@@ -1876,15 +1878,16 @@
 
   function startAutoRefresh() {
     if (refreshInterval) clearInterval(refreshInterval);
+    // In cross-origin iframes, document.hidden may not reflect parent page
+    // visibility accurately, so always refresh regardless
     refreshInterval = setInterval(function() {
-      if (document.hidden) return;
       refreshGameData();
     }, 5 * 60 * 1000);
   }
 
   async function refreshGameData() {
     try {
-      var resp = await fetch(API_BASE + '/api/bracket-state');
+      var resp = await fetch(API_BASE + '/api/bracket-state?_cb=' + Date.now());
       if (!resp.ok) return;
       var newState = await resp.json();
       BRACKET_STATE = newState;
