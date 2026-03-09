@@ -1461,10 +1461,16 @@
     html += '<div class="bracket"><div class="round">';
     html += '<div class="round-title">Pod Round <span class="series-label">(Best-of-3)</span></div>';
     var pnwTeams = data.pods["PNW"].teams;
+    var pnwMatchup = getBracketStateMatchup(currentLeague, currentDivision, 0, 0);
     html += '<div class="matchup">';
-    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(pnwTeams[0].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(pnwTeams[0].name, leagueForMap) + '</span>';
+    if (pnwMatchup) html += '<span class="matchup-score">' + (pnwMatchup.homeWins || 0) + '</span>';
+    html += '</div>';
     html += '<div class="matchup-vs">vs</div>';
-    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(pnwTeams[1].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(pnwTeams[1].name, leagueForMap) + '</span>';
+    if (pnwMatchup) html += '<span class="matchup-score">' + (pnwMatchup.awayWins || 0) + '</span>';
+    html += '</div>';
+    if (pnwMatchup && pnwMatchup.seriesSummary) html += '<div class="matchup-label">' + pnwMatchup.seriesSummary + '</div>';
     html += '</div></div></div></div>';
 
     // MTN Pod
@@ -1472,21 +1478,41 @@
     html += '<div class="bracket"><div class="round">';
     html += '<div class="round-title">Pod Round <span class="series-label">(Best-of-3)</span></div>';
     var mtnTeams = data.pods["MTN"].teams;
+    var mtnMatchup = getBracketStateMatchup(currentLeague, currentDivision, 0, 1);
     html += '<div class="matchup">';
-    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(mtnTeams[0].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(mtnTeams[0].name, leagueForMap) + '</span>';
+    if (mtnMatchup) html += '<span class="matchup-score">' + (mtnMatchup.homeWins || 0) + '</span>';
+    html += '</div>';
     html += '<div class="matchup-vs">vs</div>';
-    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(mtnTeams[1].name, leagueForMap) + '</span></div>';
+    html += '<div class="matchup-team away"><span><span class="matchup-seed">#2</span> ' + teamNameHTML(mtnTeams[1].name, leagueForMap) + '</span>';
+    if (mtnMatchup) html += '<span class="matchup-score">' + (mtnMatchup.awayWins || 0) + '</span>';
+    html += '</div>';
+    if (mtnMatchup && mtnMatchup.seriesSummary) html += '<div class="matchup-label">' + mtnMatchup.seriesSummary + '</div>';
     html += '</div></div></div></div>';
 
     html += '</div>';
 
-    // Divisional Finals
+    // Divisional Finals — pull from bracket state if available
     html += '<div class="bracket-section-title">Divisional Finals</div>';
     html += '<div class="bracket"><div class="round">';
     html += '<div class="round-title">Divisional Finals <span class="series-label">(Best-of-3)</span></div>';
-    html += '<div class="matchup"><div class="matchup-team home">PNW Pod Winner</div>';
+    var finalsMatchup = getBracketStateMatchup(currentLeague, currentDivision, 1, 0);
+    var finalsHome = 'PNW Pod Winner';
+    var finalsAway = 'MTN Pod Winner';
+    var finalsHomeScore = '';
+    var finalsAwayScore = '';
+    var finalsSummary = '';
+    if (finalsMatchup && finalsMatchup.homeTeamName && finalsMatchup.homeTeamName !== 'TBD') {
+      finalsHome = teamNameHTML(finalsMatchup.homeTeamName, leagueForMap);
+      finalsAway = teamNameHTML(finalsMatchup.awayTeamName, leagueForMap);
+      finalsHomeScore = '<span class="matchup-score">' + (finalsMatchup.homeWins || 0) + '</span>';
+      finalsAwayScore = '<span class="matchup-score">' + (finalsMatchup.awayWins || 0) + '</span>';
+      if (finalsMatchup.seriesSummary) finalsSummary = '<div class="matchup-label">' + finalsMatchup.seriesSummary + '</div>';
+    }
+    html += '<div class="matchup"><div class="matchup-team home"><span>' + finalsHome + '</span>' + finalsHomeScore + '</div>';
     html += '<div class="matchup-vs">vs</div>';
-    html += '<div class="matchup-team away">MTN Pod Winner</div></div>';
+    html += '<div class="matchup-team away"><span>' + finalsAway + '</span>' + finalsAwayScore + '</div>';
+    html += finalsSummary + '</div>';
     html += '</div></div>';
 
     bracketContent.innerHTML = html;
