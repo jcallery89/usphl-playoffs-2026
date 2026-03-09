@@ -305,6 +305,89 @@
       color: #999;
       padding: 0.2rem 0 0.5rem;
     }
+    /* ===== Clickable Matchup Cards ===== */
+    .matchup.clickable { cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; }
+    .matchup.clickable:hover { border-color: #c91417; box-shadow: 0 1px 6px rgba(201, 20, 23, 0.15); }
+
+    /* ===== Matchup Detail Modal ===== */
+    .matchup-modal-backdrop {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; transition: opacity 0.2s ease;
+    }
+    .matchup-modal-backdrop.visible { opacity: 1; }
+    .matchup-modal {
+      background: #fff; border-radius: 10px;
+      max-width: 520px; width: 100%; max-height: 85vh;
+      overflow-y: auto; position: relative;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px); transition: transform 0.2s ease;
+    }
+    .matchup-modal-backdrop.visible .matchup-modal { transform: translateY(0); }
+    .matchup-modal-close {
+      position: sticky; top: 0; float: right;
+      background: none; border: none; font-size: 1.6rem;
+      color: #999; cursor: pointer; padding: 0.5rem 0.75rem;
+      line-height: 1; z-index: 1; transition: color 0.15s;
+    }
+    .matchup-modal-close:hover { color: #c91417; }
+    .matchup-modal-body { padding: 1.25rem; padding-top: 0; }
+    .modal-series-header {
+      text-align: center; padding: 0.75rem 0;
+      border-bottom: 2px solid #c91417; margin-bottom: 1rem;
+    }
+    .modal-round-info {
+      font-size: 0.78rem; color: #999;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+    }
+    .modal-teams-row {
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+    }
+    .modal-team {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.3rem; flex: 1; min-width: 0;
+    }
+    .modal-team-logo { width: 48px; height: 48px; object-fit: contain; }
+    .modal-team-name {
+      font-size: 0.85rem; font-weight: 600; color: #333;
+      text-align: center; word-wrap: break-word;
+    }
+    .modal-team-seed { font-size: 0.72rem; color: #999; }
+    .modal-vs {
+      font-size: 0.75rem; color: #aaa;
+      text-transform: uppercase; font-weight: 600;
+    }
+    .modal-series-score {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; margin-top: 0.5rem;
+    }
+    .modal-wins-num {
+      font-size: 1.5rem; font-weight: 800; color: #333;
+      min-width: 2rem; text-align: center;
+    }
+    .modal-wins-num.leading { color: #0c568c; }
+    .modal-wins-dash { color: #ccc; font-size: 1.2rem; }
+    .modal-series-status { font-size: 0.8rem; color: #777; margin-top: 0.3rem; }
+    .modal-series-status.final { color: #0c568c; font-weight: 600; }
+    .modal-games-title {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: #1a1a2e; margin-bottom: 0.5rem;
+    }
+    .modal-no-games { color: #999; font-style: italic; font-size: 0.85rem; padding: 0.5rem 0; }
+    .modal-schedule-info {
+      background: #f8f8f9; border: 1px solid #e8e8ea; border-radius: 6px;
+      padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #666;
+      white-space: pre-line; line-height: 1.5; margin-bottom: 0.5rem;
+    }
+    .modal-schedule-note {
+      font-size: 0.78rem; font-style: italic; color: #999;
+      padding: 0.2rem 0 0.5rem;
+    }
+
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
       header h1 { font-size: 1.2rem; }
@@ -317,6 +400,13 @@
       .standings-container, .bracket-container, .schedule-container { padding: 0.75rem; border-radius: 6px; }
       .game-card-info { min-width: 65px; padding: 0.3rem 0.4rem; }
       .game-card-team { padding: 0.35rem 0.5rem; }
+      /* Modal mobile */
+      .matchup-modal-backdrop { padding: 0.5rem; }
+      .matchup-modal { max-height: 90vh; border-radius: 8px; }
+      .matchup-modal-body { padding: 1rem; padding-top: 0; }
+      .modal-team-logo { width: 36px; height: 36px; }
+      .modal-team-name { font-size: 0.78rem; }
+      .modal-wins-num { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -351,6 +441,14 @@
     <div class="standings-container" id="standingsContainer">
       <div class="section-title">Standings</div>
       <div id="standingsContent" class="placeholder-msg">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Matchup Detail Popup -->
+  <div class="matchup-modal-backdrop" id="matchupModal" style="display:none;">
+    <div class="matchup-modal">
+      <button class="matchup-modal-close" id="matchupModalClose" aria-label="Close">&times;</button>
+      <div class="matchup-modal-body" id="matchupModalBody"></div>
     </div>
   </div>
 
@@ -1399,7 +1497,7 @@
           series = getSeriesData(currentLeague, divisionName, round.name, homeName, awayName);
         }
 
-        html += '<div class="matchup">';
+        html += '<div class="matchup clickable" data-league="' + currentLeague + '" data-division="' + divisionName + '" data-round="' + roundIdx + '" data-matchup="' + matchupIdx + '">';
 
         // Home team with wins badge
         html += '<div class="matchup-team home"><span>' + homeLabel + '</span>';
@@ -1462,7 +1560,7 @@
     html += '<div class="round-title">Pod Round <span class="series-label">(Best-of-3)</span></div>';
     var pnwTeams = data.pods["PNW"].teams;
     var pnwMatchup = getBracketStateMatchup(currentLeague, currentDivision, 0, 0);
-    html += '<div class="matchup">';
+    html += '<div class="matchup clickable" data-league="' + currentLeague + '" data-division="' + currentDivision + '" data-round="0" data-matchup="0">';
     html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(pnwTeams[0].name, leagueForMap) + '</span>';
     if (pnwMatchup) html += '<span class="matchup-score">' + (pnwMatchup.homeWins || 0) + '</span>';
     html += '</div>';
@@ -1479,7 +1577,7 @@
     html += '<div class="round-title">Pod Round <span class="series-label">(Best-of-3)</span></div>';
     var mtnTeams = data.pods["MTN"].teams;
     var mtnMatchup = getBracketStateMatchup(currentLeague, currentDivision, 0, 1);
-    html += '<div class="matchup">';
+    html += '<div class="matchup clickable" data-league="' + currentLeague + '" data-division="' + currentDivision + '" data-round="0" data-matchup="1">';
     html += '<div class="matchup-team home"><span><span class="matchup-seed">#1</span> ' + teamNameHTML(mtnTeams[0].name, leagueForMap) + '</span>';
     if (mtnMatchup) html += '<span class="matchup-score">' + (mtnMatchup.homeWins || 0) + '</span>';
     html += '</div>';
@@ -1509,7 +1607,7 @@
       finalsAwayScore = '<span class="matchup-score">' + (finalsMatchup.awayWins || 0) + '</span>';
       if (finalsMatchup.seriesSummary) finalsSummary = '<div class="matchup-label">' + finalsMatchup.seriesSummary + '</div>';
     }
-    html += '<div class="matchup"><div class="matchup-team home"><span>' + finalsHome + '</span>' + finalsHomeScore + '</div>';
+    html += '<div class="matchup clickable" data-league="' + currentLeague + '" data-division="' + currentDivision + '" data-round="1" data-matchup="0"><div class="matchup-team home"><span>' + finalsHome + '</span>' + finalsHomeScore + '</div>';
     html += '<div class="matchup-vs">vs</div>';
     html += '<div class="matchup-team away"><span>' + finalsAway + '</span>' + finalsAwayScore + '</div>';
     html += finalsSummary + '</div>';
@@ -1905,6 +2003,223 @@
     renderBracket();
     renderSchedule();
   }
+
+  // ===========================================================================
+  // MATCHUP DETAIL POPUP
+  // ===========================================================================
+  var matchupModalEl = document.getElementById('matchupModal');
+  var matchupModalBody = document.getElementById('matchupModalBody');
+  var matchupModalCloseBtn = document.getElementById('matchupModalClose');
+
+  function formatSeriesLabel(fmt) {
+    if (!fmt) return '';
+    var f = fmt.toLowerCase();
+    if (f.indexOf('bo5') !== -1) return 'Best-of-5';
+    if (f.indexOf('bo7') !== -1) return 'Best-of-7';
+    if (f.indexOf('bo3') !== -1) return 'Best-of-3';
+    if (f.indexOf('1 game') !== -1 || f.indexOf('single') !== -1) return '1 Game';
+    return fmt;
+  }
+
+  function openMatchupModal(league, division, roundIdx, matchupIdx) {
+    var matchup = getBracketStateMatchup(league, division, roundIdx, matchupIdx);
+    if (!matchup) return;
+
+    var leagueForMap = (league === 'Premier') ? 'Premier' : (league === 'Elite') ? 'Elite' : 'NCDC';
+
+    // Get round info
+    var divData = BRACKET_STATE && BRACKET_STATE[league] && BRACKET_STATE[league][division];
+    var round = divData && divData.rounds && divData.rounds[roundIdx];
+    var roundName = round ? round.roundName : '';
+    var roundFormat = round ? round.format : '';
+
+    var html = '';
+
+    // --- Series Header ---
+    html += '<div class="modal-series-header">';
+
+    // Round info line
+    if (roundName) {
+      html += '<div class="modal-round-info">';
+      html += roundName;
+      if (roundFormat) html += ' &mdash; ' + formatSeriesLabel(roundFormat);
+      html += '</div>';
+    }
+
+    // Teams row with logos
+    html += '<div class="modal-teams-row">';
+
+    // Home team
+    html += '<div class="modal-team">';
+    var homeInfo = getTeamInfo(matchup.homeTeamName, leagueForMap);
+    if (homeInfo && homeInfo.logo_url) {
+      html += '<img src="' + homeInfo.logo_url + '" class="modal-team-logo" onerror="this.style.display=\'none\'" alt="">';
+    }
+    if (matchup.homeSeed) {
+      html += '<div class="modal-team-seed">#' + matchup.homeSeed + ' Seed</div>';
+    }
+    html += '<div class="modal-team-name">' + (matchup.homeTeamName || 'TBD') + '</div>';
+    html += '</div>';
+
+    // VS
+    html += '<div class="modal-vs">vs</div>';
+
+    // Away team
+    html += '<div class="modal-team">';
+    var awayInfo = getTeamInfo(matchup.awayTeamName, leagueForMap);
+    if (awayInfo && awayInfo.logo_url) {
+      html += '<img src="' + awayInfo.logo_url + '" class="modal-team-logo" onerror="this.style.display=\'none\'" alt="">';
+    }
+    if (matchup.awaySeed) {
+      html += '<div class="modal-team-seed">#' + matchup.awaySeed + ' Seed</div>';
+    }
+    html += '<div class="modal-team-name">' + (matchup.awayTeamName || 'TBD') + '</div>';
+    html += '</div>';
+
+    html += '</div>'; // end modal-teams-row
+
+    // Series score
+    var hw = matchup.homeWins || 0;
+    var aw = matchup.awayWins || 0;
+    if (hw > 0 || aw > 0 || matchup.status === 'in_progress' || matchup.status === 'complete') {
+      html += '<div class="modal-series-score">';
+      html += '<span class="modal-wins-num' + (hw > aw ? ' leading' : '') + '">' + hw + '</span>';
+      html += '<span class="modal-wins-dash">&ndash;</span>';
+      html += '<span class="modal-wins-num' + (aw > hw ? ' leading' : '') + '">' + aw + '</span>';
+      html += '</div>';
+    }
+
+    // Series status text
+    var seriesObj = {
+      home: matchup.homeTeamName,
+      away: matchup.awayTeamName,
+      homeWins: hw,
+      awayWins: aw,
+      winsNeeded: getWinsNeededFromFormat(roundFormat),
+      status: matchup.status,
+      seriesSummary: matchup.seriesSummary || ''
+    };
+    var statusText = seriesStatusText(seriesObj);
+    if (statusText) {
+      var isFinal = matchup.status === 'complete';
+      html += '<div class="modal-series-status' + (isFinal ? ' final' : '') + '">' + statusText + '</div>';
+    }
+
+    html += '</div>'; // end modal-series-header
+
+    // --- Games List ---
+    var games = matchup.games || [];
+    if (games.length > 0) {
+      html += '<div class="modal-games-title">Schedule</div>';
+      var sortedGames = games.slice().sort(function(a, b) {
+        return (a.date || '').localeCompare(b.date || '');
+      });
+      sortedGames.forEach(function(g) {
+        var isScheduled = g.game_status === 'scheduled';
+        var ifNec = g.if_necessary || false;
+        var homeScore = g.home_score;
+        var awayScore = g.away_score;
+        var homeWon = !isScheduled && homeScore !== null && homeScore > awayScore;
+        var awayWon = !isScheduled && awayScore !== null && awayScore > homeScore;
+        var homeName = g.home_team || matchup.homeTeamName;
+        var awayName = g.away_team || matchup.awayTeamName;
+        var gameUrl = (g.game_id && !isScheduled)
+          ? 'https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + g.game_id
+          : '';
+
+        html += '<div class="game-card' + (ifNec ? ' if-necessary' : '') + '">';
+        html += '<div class="game-card-teams">';
+        // Home
+        html += '<div class="game-card-team">';
+        html += '<span class="game-card-team-name' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + teamNameHTML(homeName, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (homeScore !== null && homeScore !== undefined ? homeScore : '')) + '</span>';
+        html += '</div>';
+        // Away
+        html += '<div class="game-card-team">';
+        html += '<span class="game-card-team-name' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + teamNameHTML(awayName, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (awayScore !== null && awayScore !== undefined ? awayScore : '')) + '</span>';
+        html += '</div>';
+        html += '</div>';
+        // Info column
+        html += '<div class="game-card-info">';
+        if (isScheduled) {
+          html += '<div class="game-card-status scheduled">' + (ifNec ? 'If Nec.' : 'Upcoming') + '</div>';
+        } else {
+          var statusClass = (g.result_string && g.result_string.indexOf('Final') !== -1) ? ' final' : '';
+          var statusLabel = g.result_string || 'Final';
+          if (gameUrl) {
+            html += '<a class="game-card-status-link" href="' + gameUrl + '" target="_blank" rel="noopener"><div class="game-card-status' + statusClass + '">' + statusLabel + '</div></a>';
+          } else {
+            html += '<div class="game-card-status' + statusClass + '">' + statusLabel + '</div>';
+          }
+        }
+        var dateStr = (g.date || '').replace(/^2026-/, '');
+        html += '<div class="game-card-date">' + dateStr + (g.time ? '<br>' + g.time : '') + '</div>';
+        if (g.location) html += '<div class="game-card-location">' + g.location + '</div>';
+        html += '</div>';
+        html += '</div>';
+      });
+    } else {
+      // No games — show schedule info if available
+      if (round && round.scheduleInfo) {
+        html += '<div class="modal-games-title">Schedule</div>';
+        html += '<div class="modal-schedule-info">' + round.scheduleInfo + '</div>';
+      } else {
+        html += '<div class="modal-no-games">No games scheduled yet</div>';
+      }
+    }
+
+    // Schedule note
+    if (round && round.scheduleNote) {
+      html += '<div class="modal-schedule-note">' + round.scheduleNote + '</div>';
+    }
+
+    // Admin series note
+    if (matchup.seriesNote) {
+      html += '<div class="modal-schedule-note">' + matchup.seriesNote + '</div>';
+    }
+
+    matchupModalBody.innerHTML = html;
+
+    // Show the modal with animation
+    matchupModalEl.style.display = 'flex';
+    matchupModalEl.offsetHeight; // force reflow for transition
+    matchupModalEl.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMatchupModal() {
+    matchupModalEl.classList.remove('visible');
+    setTimeout(function() {
+      matchupModalEl.style.display = 'none';
+      matchupModalBody.innerHTML = '';
+      document.body.style.overflow = '';
+    }, 200);
+  }
+
+  // --- Event Delegation: bracket matchup clicks ---
+  bracketContent.addEventListener('click', function(e) {
+    // Don't open modal if user clicked a team profile link
+    if (e.target.closest('a.team-link')) return;
+    var matchupEl = e.target.closest('.matchup.clickable');
+    if (!matchupEl) return;
+    var league = matchupEl.getAttribute('data-league');
+    var division = matchupEl.getAttribute('data-division');
+    var roundIdx = parseInt(matchupEl.getAttribute('data-round'), 10);
+    var matchupIdx = parseInt(matchupEl.getAttribute('data-matchup'), 10);
+    if (league && division && !isNaN(roundIdx) && !isNaN(matchupIdx)) {
+      openMatchupModal(league, division, roundIdx, matchupIdx);
+    }
+  });
+
+  // --- Close modal handlers ---
+  matchupModalCloseBtn.addEventListener('click', closeMatchupModal);
+  matchupModalEl.addEventListener('click', function(e) {
+    if (e.target === matchupModalEl) closeMatchupModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && matchupModalEl.style.display !== 'none') closeMatchupModal();
+  });
 
   // ===========================================================================
   // AUTO-REFRESH (every 5 minutes when tab is visible)
