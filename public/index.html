@@ -786,7 +786,7 @@
     var f = format.toLowerCase();
     if (f.indexOf('bo5') !== -1) return 3;
     if (f.indexOf('bo7') !== -1) return 4;
-    if (f.indexOf('single') !== -1) return 1;
+    if (f.indexOf('single') !== -1 || f.indexOf('1 game') !== -1) return 1;
     return 2; // Bo3 default
   }
 
