@@ -1326,6 +1326,9 @@
       if (format.playInFormat && round.name.indexOf("Play-In") !== -1) {
         roundSeriesFormat = format.playInFormat;
       }
+      if (format.championshipFormat && round.name.indexOf("Championship") !== -1) {
+        roundSeriesFormat = format.championshipFormat;
+      }
       html += '<div class="round">';
       html += '<div class="round-title">' + expandBoLabels(round.name);
       if (roundSeriesFormat && round.name.indexOf("Bo") === -1) {
