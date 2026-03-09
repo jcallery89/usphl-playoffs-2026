@@ -811,20 +811,20 @@
     },
     "Southeast": {
       "1": {
-        "name": "Carolina Junior Hurricanes",
-        "gp": 42,
-        "pts": 74,
-        "row": 29,
+        "name": "Hampton Roads Whalers",
+        "gp": 44,
+        "pts": 75,
+        "row": 33,
         "l": 5,
-        "pctg": 0.881
+        "pctg": 0.852
       },
       "2": {
-        "name": "Hampton Roads Whalers",
-        "gp": 42,
-        "pts": 71,
-        "row": 31,
-        "l": 5,
-        "pctg": 0.845
+        "name": "Carolina Junior Hurricanes",
+        "gp": 44,
+        "pts": 74,
+        "row": 29,
+        "l": 7,
+        "pctg": 0.841
       },
       "3": {
         "name": "Charlotte Rush",
