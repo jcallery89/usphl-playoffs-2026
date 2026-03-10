@@ -94,6 +94,7 @@ async function handlePost(req, res) {
       case 'publish': return handlePublish(req, res);
       case 'update-college': return handleUpdateCollege(req, res);
       case 'delete-college': return handleDeleteCollege(req, res);
+      case 'bulk-update-college-level': return handleBulkUpdateCollegeLevel(req, res);
       default:
         return res.status(400).json({ error: `Unknown action: ${action}` });
     }
@@ -209,7 +210,7 @@ async function handlePublish(req, res) {
 }
 
 async function handleUpdateCollege(req, res) {
-  const { collegeName, espnId, website } = req.body;
+  const { collegeName, espnId, website, level } = req.body;
   if (!collegeName) {
     return res.status(400).json({ error: 'collegeName is required' });
   }
@@ -221,6 +222,7 @@ async function handleUpdateCollege(req, res) {
     espnId: espnId ? parseInt(espnId, 10) : null,
     logoUrl: espnId ? espnLogoUrl(parseInt(espnId, 10)) : null,
     website: (website || '').trim() || null,
+    level: (level || '').trim() || null,
   };
 
   await kvSet('college-mappings', { _lastUpdated: new Date().toISOString(), colleges });
@@ -243,4 +245,32 @@ async function handleDeleteCollege(req, res) {
   delete colleges[collegeName];
   await kvSet('college-mappings', { _lastUpdated: new Date().toISOString(), colleges });
   return res.status(200).json({ ok: true, message: `College "${collegeName}" deleted`, colleges });
+}
+
+async function handleBulkUpdateCollegeLevel(req, res) {
+  const { collegeName, level } = req.body;
+  if (!collegeName || !level) {
+    return res.status(400).json({ error: 'collegeName and level are required' });
+  }
+
+  const draft = await getDraft();
+  let updated = 0;
+  for (const c of draft.commitments) {
+    if (c.collegeName === collegeName && c.collegeLevel !== level) {
+      c.collegeLevel = level;
+      updated++;
+    }
+  }
+
+  if (updated === 0) {
+    return res.status(200).json({ ok: true, message: 'No commitments needed updating', updated: 0, draft });
+  }
+
+  const saved = await saveDraft(draft);
+  return res.status(200).json({
+    ok: true,
+    message: `Updated ${updated} commitment(s) for "${collegeName}" to "${level}"`,
+    updated,
+    draft: saved,
+  });
 }

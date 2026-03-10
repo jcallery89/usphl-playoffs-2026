@@ -197,21 +197,34 @@
       margin: 0 0 0.75rem; font-size: 0.95rem; font-weight: 700; color: #1a1a2e;
       padding-bottom: 0.5rem; border-bottom: 2px solid #c91417;
     }
+    .college-search {
+      display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center;
+    }
+    .college-search input {
+      flex: 1; padding: 0.45rem 0.7rem; border: 1px solid #ccc; border-radius: 6px;
+      font-family: inherit; font-size: 0.85rem;
+    }
+    .college-search input:focus { outline: none; border-color: #c91417; }
+    .college-search .search-count { font-size: 0.78rem; color: #888; white-space: nowrap; }
     .college-row {
-      display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0;
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0;
       border-bottom: 1px solid #f0f0f2; flex-wrap: wrap;
     }
     .college-row:last-child { border-bottom: none; }
     .college-row .college-name {
       min-width: 180px; flex: 1; font-size: 0.82rem; font-weight: 600;
     }
-    .college-row input {
+    .college-row .college-name .commit-count {
+      font-weight: 400; color: #999; font-size: 0.72rem;
+    }
+    .college-row input, .college-row select {
       padding: 0.35rem 0.5rem; border: 1px solid #ddd; border-radius: 4px;
       font-family: inherit; font-size: 0.8rem;
     }
-    .college-row input:focus { outline: none; border-color: #c91417; }
+    .college-row input:focus, .college-row select:focus { outline: none; border-color: #c91417; }
     .college-row .espn-input { width: 80px; }
-    .college-row .url-input { width: 220px; }
+    .college-row .level-select { width: 110px; }
+    .college-row .url-input { width: 200px; }
     .college-row .logo-preview {
       width: 28px; height: 28px; object-fit: contain; border-radius: 3px;
     }
@@ -220,12 +233,16 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 0.65rem; color: #aaa;
     }
+    .college-row .no-logo { background: #fff3cd; }
     .add-college-row {
       display: flex; gap: 0.5rem; align-items: center; margin-top: 0.75rem;
       padding-top: 0.75rem; border-top: 2px solid #eee; flex-wrap: wrap;
     }
-    .add-college-row input { padding: 0.4rem 0.6rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; font-size: 0.82rem; }
-    .add-college-row input:focus { outline: none; border-color: #c91417; }
+    .add-college-row input, .add-college-row select {
+      padding: 0.4rem 0.6rem; border: 1px solid #ccc; border-radius: 4px;
+      font-family: inherit; font-size: 0.82rem;
+    }
+    .add-college-row input:focus, .add-college-row select:focus { outline: none; border-color: #c91417; }
 
     /* Toast */
     .toast {
@@ -247,6 +264,9 @@
       .spacer { display: none; }
       .data-table { font-size: 0.75rem; }
       .college-row { flex-direction: column; align-items: flex-start; }
+      .college-row .url-input { width: 100%; }
+      .add-college-row { flex-direction: column; align-items: stretch; }
+      .add-college-row input, .add-college-row select { width: 100%; }
     }
 
     #loginView, #dashView { display: none; }
@@ -289,12 +309,27 @@
       <!-- College Mappings Panel -->
       <div class="college-panel" id="collegePanel">
         <h3>College Mappings</h3>
+        <div class="college-search">
+          <input type="text" id="collegeSearchInput" placeholder="Search colleges...">
+          <span class="search-count" id="collegeSearchCount"></span>
+        </div>
         <div id="collegeList"></div>
         <div class="add-college-row">
           <input type="text" id="newCollegeName" placeholder="College name" style="flex:1;min-width:150px;">
+          <select id="newCollegeLevel" class="level-select">
+            <option value="">Level...</option>
+            <option value="NCAA DI">NCAA DI</option>
+            <option value="NCAA DII">NCAA DII</option>
+            <option value="NCAA DIII">NCAA DIII</option>
+            <option value="NESCAC">NESCAC</option>
+            <option value="ACHA">ACHA</option>
+          </select>
           <input type="text" id="newCollegeEspn" placeholder="ESPN ID" class="espn-input">
           <input type="text" id="newCollegeUrl" placeholder="Hockey website URL" class="url-input">
           <button class="btn btn-sm btn-primary" onclick="addCollege()">Add</button>
+        </div>
+        <div class="helper" style="margin-top:0.5rem;font-size:0.75rem;color:#888;">
+          ESPN ID = the number from the college's ESPN page URL (e.g., espn.com/college/fpi/_/id/<strong>2066</strong>/american-intl). Logo auto-generates from ESPN ID.
         </div>
       </div>
 
@@ -807,35 +842,92 @@ function toggleCollegePanel() {
   btn.classList.toggle('active', isActive);
 }
 
+function getCollegeCommitCounts() {
+  const counts = {};
+  if (draft && draft.commitments) {
+    for (const c of draft.commitments) {
+      if (c.collegeName) {
+        counts[c.collegeName] = (counts[c.collegeName] || 0) + 1;
+      }
+    }
+  }
+  return counts;
+}
+
+const LEVEL_OPTIONS = ['', 'NCAA DI', 'NCAA DII', 'NCAA DIII', 'NESCAC', 'ACHA'];
+
+function levelSelectHtml(currentLevel, fieldName) {
+  return `<select class="level-select" data-field="${fieldName}">
+    <option value="">Level...</option>
+    ${LEVEL_OPTIONS.filter(Boolean).map(l =>
+      `<option value="${l}"${l === currentLevel ? ' selected' : ''}>${l}</option>`
+    ).join('')}
+  </select>`;
+}
+
 function renderColleges() {
   const list = document.getElementById('collegeList');
   const sorted = Object.entries(collegeMappings).sort((a, b) => a[0].localeCompare(b[0]));
+  const counts = getCollegeCommitCounts();
 
   list.innerHTML = sorted.map(([name, info]) => {
-    const logoHtml = info.logoUrl
-      ? `<img class="logo-preview" src="${info.logoUrl}" onerror="this.outerHTML='<div class=\\'logo-placeholder\\'>?</div>'">`
-      : '<div class="logo-placeholder">-</div>';
+    const escapedName = name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const count = counts[name] || 0;
+    const countText = count > 0 ? ` <span class="commit-count">(${count} commit${count !== 1 ? 's' : ''})</span>` : '';
+    const noLogoCls = !info.espnId ? ' no-logo' : '';
 
-    return `<div class="college-row" data-college="${name}">
+    const logoHtml = info.logoUrl
+      ? `<img class="logo-preview" src="${info.logoUrl}" onerror="this.outerHTML='<div class=\\'logo-placeholder no-logo\\'>?</div>'">`
+      : `<div class="logo-placeholder${noLogoCls}">-</div>`;
+
+    return `<div class="college-row" data-college="${name}" data-search="${name.toLowerCase()}">
       ${logoHtml}
-      <span class="college-name">${name}</span>
+      <span class="college-name">${name}${countText}</span>
+      ${levelSelectHtml(info.level || '', 'level')}
       <input class="espn-input" type="text" value="${info.espnId || ''}" placeholder="ESPN ID" data-field="espnId">
       <input class="url-input" type="text" value="${info.website || ''}" placeholder="Website URL" data-field="website">
-      <button class="btn btn-sm btn-primary" onclick="saveCollege('${name.replace(/'/g, "\\'")}', this)">Save</button>
-      <button class="btn btn-sm btn-danger" onclick="deleteCollege('${name.replace(/'/g, "\\'")}')">Del</button>
+      <button class="btn btn-sm btn-primary" onclick="saveCollege('${escapedName}', this)">Save</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteCollege('${escapedName}')">Del</button>
     </div>`;
   }).join('');
+
+  // Update search count
+  filterColleges();
+}
+
+// College search
+let collegeSearchTimer;
+document.getElementById('collegeSearchInput').addEventListener('input', () => {
+  clearTimeout(collegeSearchTimer);
+  collegeSearchTimer = setTimeout(filterColleges, 150);
+});
+
+function filterColleges() {
+  const query = document.getElementById('collegeSearchInput').value.toLowerCase().trim();
+  const rows = document.querySelectorAll('#collegeList .college-row');
+  let visible = 0;
+  rows.forEach(row => {
+    const name = row.dataset.search || '';
+    const show = !query || name.includes(query);
+    row.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('collegeSearchCount').textContent = query
+    ? `${visible} of ${rows.length} colleges`
+    : `${rows.length} colleges`;
 }
 
 async function saveCollege(name, btn) {
   const row = btn.closest('.college-row');
   const espnId = row.querySelector('[data-field="espnId"]').value.trim();
   const website = row.querySelector('[data-field="website"]').value.trim();
+  const level = row.querySelector('[data-field="level"]').value;
+  const oldLevel = (collegeMappings[name] && collegeMappings[name].level) || '';
 
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website },
+      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website, level },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -843,13 +935,48 @@ async function saveCollege(name, btn) {
     collegeMappings = data.colleges;
     renderColleges();
     showToast(`Updated "${name}"`, 'success');
+
+    // If level changed and there are commitments with this college, offer bulk update
+    if (level && level !== oldLevel) {
+      const counts = getCollegeCommitCounts();
+      const count = counts[name] || 0;
+      if (count > 0) {
+        const doUpdate = confirm(
+          `Update the level to "${level}" on all ${count} commitment(s) for ${name}?\n\n` +
+          `This will change their level in the draft. You'll still need to Publish to update the live page.`
+        );
+        if (doUpdate) {
+          await bulkUpdateCollegeLevel(name, level);
+        }
+      }
+    }
   } catch (e) {
     showToast('Save failed: ' + e.message, 'error');
   }
 }
 
+async function bulkUpdateCollegeLevel(collegeName, level) {
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'bulk-update-college-level', collegeName, level },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    draft = data.draft;
+    isDirty = true;
+    updateStatus();
+    renderTable();
+    showToast(`Updated ${data.updated} commitment(s) to "${level}"`, 'success');
+  } catch (e) {
+    showToast('Bulk update failed: ' + e.message, 'error');
+  }
+}
+
 async function addCollege() {
   const name = document.getElementById('newCollegeName').value.trim();
+  const level = document.getElementById('newCollegeLevel').value;
   const espnId = document.getElementById('newCollegeEspn').value.trim();
   const website = document.getElementById('newCollegeUrl').value.trim();
 
@@ -858,7 +985,7 @@ async function addCollege() {
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website },
+      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website, level },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -871,6 +998,7 @@ async function addCollege() {
       const o = document.createElement('option'); o.value = name; dl.appendChild(o);
     }
     document.getElementById('newCollegeName').value = '';
+    document.getElementById('newCollegeLevel').value = '';
     document.getElementById('newCollegeEspn').value = '';
     document.getElementById('newCollegeUrl').value = '';
     showToast(`Added "${name}"`, 'success');
@@ -908,6 +1036,27 @@ function showToast(msg, type = '') {
   el.className = 'toast show' + (type ? ' ' + type : '');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ============================================================
+// Auto-populate level from college mapping
+// ============================================================
+document.getElementById('fCollege').addEventListener('change', autoPopulateLevel);
+document.getElementById('fCollege').addEventListener('input', () => {
+  clearTimeout(autoPopulateTimer);
+  autoPopulateTimer = setTimeout(autoPopulateLevel, 300);
+});
+let autoPopulateTimer;
+
+function autoPopulateLevel() {
+  const collegeName = document.getElementById('fCollege').value.trim();
+  const levelSelect = document.getElementById('fLevel');
+  if (collegeName && collegeMappings[collegeName] && collegeMappings[collegeName].level) {
+    // Only auto-fill if the level is currently empty (don't override manual selection)
+    if (!levelSelect.value) {
+      levelSelect.value = collegeMappings[collegeName].level;
+    }
+  }
 }
 
 // ============================================================
