@@ -222,7 +222,8 @@
       font-family: inherit; font-size: 0.8rem;
     }
     .college-row input:focus, .college-row select:focus { outline: none; border-color: #c91417; }
-    .college-row .espn-input { width: 80px; }
+    .college-row .mhr-input { width: 80px; }
+    .college-row .state-input { width: 45px; text-transform: uppercase; }
     .college-row .level-select { width: 110px; }
     .college-row .url-input { width: 200px; }
     .college-row .logo-preview {
@@ -324,12 +325,13 @@
             <option value="NESCAC">NESCAC</option>
             <option value="ACHA">ACHA</option>
           </select>
-          <input type="text" id="newCollegeEspn" placeholder="ESPN ID" class="espn-input">
+          <input type="text" id="newCollegeState" placeholder="ST" class="state-input" maxlength="2">
+          <input type="text" id="newCollegeMhr" placeholder="MHR ID" class="mhr-input">
           <input type="text" id="newCollegeUrl" placeholder="Hockey website URL" class="url-input">
           <button class="btn btn-sm btn-primary" onclick="addCollege()">Add</button>
         </div>
         <div class="helper" style="margin-top:0.5rem;font-size:0.75rem;color:#888;">
-          ESPN ID = the number from the college's ESPN page URL (e.g., espn.com/college/fpi/_/id/<strong>2066</strong>/american-intl). Logo auto-generates from ESPN ID.
+          MHR ID = hex code from the college's logo URL on <strong>myhockeyrankings.com</strong>. Logo auto-generates from MHR ID. State = 2-letter abbreviation (e.g., MA, NY).
         </div>
       </div>
 
@@ -874,7 +876,7 @@ function renderColleges() {
     const escapedName = name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
     const count = counts[name] || 0;
     const countText = count > 0 ? ` <span class="commit-count">(${count} commit${count !== 1 ? 's' : ''})</span>` : '';
-    const noLogoCls = !info.espnId ? ' no-logo' : '';
+    const noLogoCls = !info.mhrId ? ' no-logo' : '';
 
     const logoHtml = info.logoUrl
       ? `<img class="logo-preview" src="${info.logoUrl}" onerror="this.outerHTML='<div class=\\'logo-placeholder no-logo\\'>?</div>'">`
@@ -884,7 +886,8 @@ function renderColleges() {
       ${logoHtml}
       <span class="college-name">${name}${countText}</span>
       ${levelSelectHtml(info.level || '', 'level')}
-      <input class="espn-input" type="text" value="${info.espnId || ''}" placeholder="ESPN ID" data-field="espnId">
+      <input class="state-input" type="text" value="${info.state || ''}" placeholder="ST" maxlength="2" data-field="state">
+      <input class="mhr-input" type="text" value="${info.mhrId || ''}" placeholder="MHR ID" data-field="mhrId">
       <input class="url-input" type="text" value="${info.website || ''}" placeholder="Website URL" data-field="website">
       <button class="btn btn-sm btn-primary" onclick="saveCollege('${escapedName}', this)">Save</button>
       <button class="btn btn-sm btn-danger" onclick="deleteCollege('${escapedName}')">Del</button>
@@ -919,7 +922,8 @@ function filterColleges() {
 
 async function saveCollege(name, btn) {
   const row = btn.closest('.college-row');
-  const espnId = row.querySelector('[data-field="espnId"]').value.trim();
+  const mhrId = row.querySelector('[data-field="mhrId"]').value.trim();
+  const state = row.querySelector('[data-field="state"]').value.trim().toUpperCase();
   const website = row.querySelector('[data-field="website"]').value.trim();
   const level = row.querySelector('[data-field="level"]').value;
   const oldLevel = (collegeMappings[name] && collegeMappings[name].level) || '';
@@ -927,7 +931,7 @@ async function saveCollege(name, btn) {
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website, level },
+      body: { action: 'update-college', collegeName: name, mhrId: mhrId || null, website, level, state },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -977,7 +981,8 @@ async function bulkUpdateCollegeLevel(collegeName, level) {
 async function addCollege() {
   const name = document.getElementById('newCollegeName').value.trim();
   const level = document.getElementById('newCollegeLevel').value;
-  const espnId = document.getElementById('newCollegeEspn').value.trim();
+  const state = document.getElementById('newCollegeState').value.trim().toUpperCase();
+  const mhrId = document.getElementById('newCollegeMhr').value.trim();
   const website = document.getElementById('newCollegeUrl').value.trim();
 
   if (!name) { showToast('College name is required', 'error'); return; }
@@ -985,7 +990,7 @@ async function addCollege() {
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website, level },
+      body: { action: 'update-college', collegeName: name, mhrId: mhrId || null, website, level, state },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -999,7 +1004,8 @@ async function addCollege() {
     }
     document.getElementById('newCollegeName').value = '';
     document.getElementById('newCollegeLevel').value = '';
-    document.getElementById('newCollegeEspn').value = '';
+    document.getElementById('newCollegeState').value = '';
+    document.getElementById('newCollegeMhr').value = '';
     document.getElementById('newCollegeUrl').value = '';
     showToast(`Added "${name}"`, 'success');
   } catch (e) {

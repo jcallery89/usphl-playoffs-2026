@@ -1,252 +1,352 @@
 {
   "Adrian College": {
-    "espnId": 110134,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/110134.png&h=40&w=40",
-    "website": "https://adrianbulldogs.com/sports/mens-ice-hockey"
+    "mhrId": "0004cc",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0004cc_a.png",
+    "website": "https://adrianbulldogs.com/sports/mhockey",
+    "state": "MI",
+    "level": "NCAA DIII"
   },
   "Air Force Academy": {
-    "espnId": 2005,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2005.png&h=40&w=40",
-    "website": "https://goairforcefalcons.com/sports/mens-ice-hockey"
+    "mhrId": "000833",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/000833_a.png",
+    "website": "https://goairforcefalcons.com/sports/mens-ice-hockey",
+    "state": "CO",
+    "level": "NCAA DI"
   },
   "American International College": {
-    "espnId": 2022,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
-    "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+    "mhrId": null,
+    "logoUrl": null,
+    "website": "https://aicyellowjackets.com/sports/mens-ice-hockey",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Amherst College": {
-    "espnId": 7,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/7.png&h=40&w=40",
-    "website": "https://athletics.amherst.edu/sports/mice/index"
+    "mhrId": "001a30",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a30_a.png",
+    "website": "https://athletics.amherst.edu/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Arcadia University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://arcadiaknights.com/sports/mice/index"
+    "mhrId": "001a88",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a88_a.png",
+    "website": "https://arcadiaknights.com/sports/mhockey",
+    "state": "PA",
+    "level": "NCAA DIII"
   },
   "Army West Point": {
-    "espnId": 349,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40",
-    "website": "https://goarmywestpoint.com/sports/mens-ice-hockey"
+    "mhrId": "000834",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/000834_a.png",
+    "website": "https://goarmywestpoint.com/sports/mens-ice-hockey",
+    "state": "NY",
+    "level": "NCAA DI"
   },
   "Augustana University": {
-    "espnId": 2043,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2043.png&h=40&w=40",
-    "website": "https://goaugie.com/sports/mens-ice-hockey"
+    "mhrId": "00208d",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/00208d_a.png",
+    "website": "https://goaugie.com/sports/mens-hockey",
+    "state": "SD",
+    "level": "NCAA DI"
   },
   "Aurora University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://auaurora.com/sports/mice/index"
+    "mhrId": "001a49",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a49_a.png",
+    "website": "https://athletics.aurora.edu/sports/mens-ice-hockey",
+    "state": "IL",
+    "level": "NCAA DIII"
   },
   "Babson College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+    "mhrId": "001aaf",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001aaf_a.png",
+    "website": "https://babsonathletics.com/sports/mens-ice-hockey",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Beloit College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://beloitbuccaneers.com/sports/mice/index"
+    "mhrId": "002ffc",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/002ffc_a.png",
+    "website": "https://beloitcollegeathletics.com/sports/menshockey",
+    "state": "WI",
+    "level": "NCAA DIII"
   },
   "Canisius University": {
-    "espnId": 2099,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2099.png&h=40&w=40",
-    "website": "https://gogriffs.com/sports/mens-ice-hockey"
+    "mhrId": "001829",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001829_a.png",
+    "website": "https://gogriffs.com/sports/mens-ice-hockey",
+    "state": "NY",
+    "level": "NCAA DI"
   },
   "Colby College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://colbymules.com/sports/mens-ice-hockey"
+    "mhrId": "001ab1",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001ab1_a.png",
+    "website": "https://colbymules.com/sports/mens-ice-hockey",
+    "state": "ME",
+    "level": "NESCAC"
   },
   "College of the Holy Cross": {
-    "espnId": 107,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/107.png&h=40&w=40",
-    "website": "https://goholycross.com/sports/mens-ice-hockey"
+    "mhrId": "00182a",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/00182a_a.png",
+    "website": "https://goholycross.com/sports/mens-ice-hockey",
+    "state": "MA",
+    "level": "NCAA DI"
   },
   "Connecticut College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://camelathletics.com/sports/mice/index"
+    "mhrId": "001a2e",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a2e_a.png",
+    "website": "https://camelathletics.com/sports/mice/index",
+    "state": "CT",
+    "level": "NESCAC"
   },
   "Curry College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://curryathletics.com/sports/mice/index"
+    "mhrId": "001a7b",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a7b_a.png",
+    "website": "https://curryathletics.com/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Elmira College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://elmirasoareagles.com/sports/mice/index"
+    "mhrId": "001a36",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a36_a.png",
+    "website": "https://athletics.elmira.edu/sports/mens-ice-hockey",
+    "state": "NY",
+    "level": "NCAA DIII"
   },
   "Fitchburg State University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://fitchburgathletics.com/sports/mice/index"
+    "mhrId": "001ab4",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001ab4_a.png",
+    "website": "https://www.fitchburgfalcons.com/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Framingham State University": {
-    "espnId": 126815,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/126815.png&h=40&w=40",
-    "website": "https://framinghamrams.com/sports/mice/index"
+    "mhrId": "001ac0",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001ac0_a.png",
+    "website": "https://www.fsurams.com/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Franklin Pierce University": {
-    "espnId": 112334,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/112334.png&h=40&w=40",
-    "website": "https://franklinpierceathletics.com/sports/mens-ice-hockey"
+    "mhrId": "001ab9",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001ab9_a.png",
+    "website": "https://www.fpuravens.com/sports/mice/index",
+    "state": "NH",
+    "level": "NCAA DII"
   },
   "Hamilton College": {
-    "espnId": 348,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/348.png&h=40&w=40",
-    "website": "https://athletics.hamilton.edu/sports/mice/index"
+    "mhrId": "001a51",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a51_a.png",
+    "website": "https://athletics.hamilton.edu/sports/mhockey",
+    "state": "NY",
+    "level": "NESCAC"
   },
   "Lake Forest College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://goforesters.com/sports/mice/index"
+    "mhrId": "001a57",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a57_a.png",
+    "website": "https://goforesters.com/sports/mice/index",
+    "state": "IL",
+    "level": "NCAA DIII"
   },
   "Lebanon Valley College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://godutchmen.com/sports/mice/index"
+    "mhrId": "001a98",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a98_a.png",
+    "website": "https://godutchmen.com/sports/mens-ice-hockey",
+    "state": "PA",
+    "level": "NCAA DIII"
   },
   "Lindenwood University": {
-    "espnId": 2815,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2815.png&h=40&w=40",
-    "website": "https://lindenwoodlions.com/sports/mens-ice-hockey"
+    "mhrId": "001832",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001832_a.png",
+    "website": "https://lindenwoodlions.com/sports/mhockey-ncaa",
+    "state": "MO",
+    "level": "NCAA DI"
   },
   "Manhattanville University": {
-    "espnId": 2879,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40",
-    "website": "https://mvillevaliants.com/sports/mice/index"
+    "mhrId": "001a65",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a65_a.png",
+    "website": "https://govaliants.com/sports/mens-ice-hockey",
+    "state": "NY",
+    "level": "NCAA DIII"
   },
   "Misericordia University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://misericordiacougars.com/sports/mice/index"
+    "mhrId": "0025c1",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0025c1_a.png",
+    "website": "https://athletics.misericordia.edu/sports/mens-ice-hockey",
+    "state": "PA",
+    "level": "NCAA DIII"
   },
   "Niagara University": {
-    "espnId": 315,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/315.png&h=40&w=40",
-    "website": "https://purpleeagles.com/sports/mens-ice-hockey"
+    "mhrId": "00182c",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/00182c_a.png",
+    "website": "https://purpleeagles.com/sports/mens-ice-hockey",
+    "state": "NY",
+    "level": "NCAA DI"
   },
   "Norwich University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://norwichathletics.com/sports/mice/index"
+    "mhrId": "0004cd",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0004cd_a.png",
+    "website": "https://norwichathletics.com/sports/mice/index",
+    "state": "VT",
+    "level": "NCAA DIII"
   },
   "Robert Morris University": {
-    "espnId": 2523,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2523.png&h=40&w=40",
-    "website": "https://rmucolonials.com/sports/mens-ice-hockey"
+    "mhrId": "001ec4",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001ec4_a.png",
+    "website": "https://rmucolonials.com/sports/mens-ice-hockey",
+    "state": "PA",
+    "level": "NCAA DI"
   },
   "Roger Williams University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://rwuhawks.com/sports/mice/index"
+    "mhrId": "002ff9",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/002ff9_a.png",
+    "website": "https://rwuhawks.com/sports/mens-ice-hockey",
+    "state": "RI",
+    "level": "NCAA DIII"
   },
   "SUNY Canton": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://cantonroos.com/sports/mice/index"
+    "mhrId": "001a61",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a61_a.png",
+    "website": "https://cantonroos.com/sports/mice/index",
+    "state": "NY",
+    "level": "NCAA DIII"
   },
   "SUNY Fredonia": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://fredoniabluedevils.com/sports/mice/index"
+    "mhrId": "001aba",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001aba_a.png",
+    "website": "https://fredoniabluedevils.com/sports/mice/index",
+    "state": "NY",
+    "level": "NCAA DIII"
   },
   "Sacred Heart University": {
-    "espnId": 2529,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2529.png&h=40&w=40",
-    "website": "https://sacredheartpioneers.com/sports/mens-ice-hockey"
+    "mhrId": "00182e",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/00182e_a.png",
+    "website": "https://sacredheartpioneers.com/sports/mens-ice-hockey",
+    "state": "CT",
+    "level": "NCAA DI"
   },
   "Saint Anselm College": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://saintanselmhawks.com/sports/mice/index"
+    "mhrId": "0025cc",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0025cc_a.png",
+    "website": "https://saintanselmhawks.com/sports/mhockey",
+    "state": "NH",
+    "level": "NCAA DII"
   },
   "Saint Michael's College": {
-    "espnId": null,
+    "mhrId": null,
     "logoUrl": null,
-    "website": "https://smcknights.com/sports/mice/index"
+    "website": "https://smcathletics.com/sports/mens-ice-hockey",
+    "state": "VT",
+    "level": "NCAA DII"
   },
   "Salem State University": {
-    "espnId": null,
+    "mhrId": null,
     "logoUrl": null,
-    "website": "https://salemstatevikings.com/sports/mice/index"
+    "website": "https://www.salemstatevikings.com/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Salve Regina University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://salveathletics.com/sports/mice/index"
+    "mhrId": "0004ce",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0004ce_a.png",
+    "website": "https://salveathletics.com/sports/mice/index",
+    "state": "RI",
+    "level": "NCAA DIII"
   },
   "Skidmore College": {
-    "espnId": null,
+    "mhrId": null,
     "logoUrl": null,
-    "website": "https://skidmoreathletics.com/sports/mice/index"
+    "website": "https://skidmoreathletics.com/sports/mice/index",
+    "state": "NY",
+    "level": "NCAA DIII"
   },
   "Southern New Hampshire University": {
-    "espnId": 2549,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2549.png&h=40&w=40",
-    "website": "https://snhupenmen.com/sports/mice/index"
+    "mhrId": "001abf",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001abf_a.png",
+    "website": "https://snhupenmen.com/sports/mhockey",
+    "state": "NH",
+    "level": "NCAA DII"
   },
   "Stevenson University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://stevensonathletics.com/sports/mice/index"
+    "mhrId": "0025c5",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0025c5_a.png",
+    "website": "https://stevensonathletics.com/sports/mice/index",
+    "state": "MD",
+    "level": "NCAA DIII"
   },
   "Tufts University": {
-    "espnId": 66,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/66.png&h=40&w=40",
-    "website": "https://gotuftsjumbos.com/sports/mice/index"
+    "mhrId": null,
+    "logoUrl": null,
+    "website": "https://gotuftsjumbos.com/sports/mens-ice-hockey",
+    "state": "MA",
+    "level": "NESCAC"
   },
   "University of Dubuque": {
-    "espnId": null,
+    "mhrId": null,
     "logoUrl": null,
-    "website": "https://dbqspartans.com/sports/mice/index"
+    "website": "https://udspartans.com/sports/mens-hockey",
+    "state": "IA",
+    "level": "NCAA DIII"
   },
   "University of Maine": {
-    "espnId": 311,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/311.png&h=40&w=40",
-    "website": "https://goblackbears.com/sports/mens-ice-hockey"
+    "mhrId": "0003bc",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0003bc_a.png",
+    "website": "https://goblackbears.com/sports/mens-ice-hockey",
+    "state": "ME",
+    "level": "NCAA DI"
   },
   "University of New Hampshire": {
-    "espnId": 160,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/160.png&h=40&w=40",
-    "website": "https://unhwildcats.com/sports/mens-ice-hockey"
+    "mhrId": "0018c1",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/0018c1_a.png",
+    "website": "https://unhwildcats.com/sports/mens-ice-hockey",
+    "state": "NH",
+    "level": "NCAA DI"
   },
   "University of Vermont": {
-    "espnId": 261,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/261.png&h=40&w=40",
-    "website": "https://uvmathletics.com/sports/mens-ice-hockey"
+    "mhrId": "001834",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001834_a.png",
+    "website": "https://uvmathletics.com/sports/mens-ice-hockey",
+    "state": "VT",
+    "level": "NCAA DI"
   },
   "University of Wisconsin-Stevens Point": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://uwsppointers.com/sports/mice/index"
+    "mhrId": "001a70",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a70_a.png",
+    "website": "https://athletics.uwsp.edu/sports/mens-ice-hockey",
+    "state": "WI",
+    "level": "NCAA DIII"
   },
   "University of Wisconsin-Stout": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://uwstout.prestosports.com/sports/mice/index"
+    "mhrId": "001aa9",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001aa9_a.png",
+    "website": "https://stoutbluedevils.com/sports/mens-ice-hockey",
+    "state": "WI",
+    "level": "NCAA DIII"
   },
   "Wentworth Institute of Technology": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://wentworthathletics.com/sports/mice/index"
+    "mhrId": "001abe",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001abe_a.png",
+    "website": "https://www.wentworthathletics.com/sports/mice/index",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Wesleyan University": {
-    "espnId": 2955,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40",
-    "website": "https://wesleyanathletics.com/sports/mice/index"
+    "mhrId": "001a4f",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a4f_a.png",
+    "website": "https://wesleyanathletics.com/sports/mice/index",
+    "state": "CT",
+    "level": "NESCAC"
   },
   "Western New England University": {
-    "espnId": null,
-    "logoUrl": null,
-    "website": "https://wnegoldenbears.com/sports/mice/index"
+    "mhrId": "001a67",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/001a67_a.png",
+    "website": "https://wnegoldenbears.com/sports/mens-ice-hockey",
+    "state": "MA",
+    "level": "NCAA DIII"
   },
   "Yale University": {
-    "espnId": 43,
-    "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/43.png&h=40&w=40",
-    "website": "https://yalebulldogs.com/sports/mens-ice-hockey"
+    "mhrId": "000831",
+    "logoUrl": "https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/000831_a.png",
+    "website": "https://yalebulldogs.com/sports/mens-ice-hockey",
+    "state": "CT",
+    "level": "NCAA DI"
   }
 }

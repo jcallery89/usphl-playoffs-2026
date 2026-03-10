@@ -34,9 +34,9 @@ function generateId(commitments) {
   return `c_${String(maxNum + 1).padStart(3, '0')}`;
 }
 
-function espnLogoUrl(espnId) {
-  if (!espnId) return null;
-  return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/${espnId}.png&h=40&w=40`;
+function mhrLogoUrl(mhrId) {
+  if (!mhrId) return null;
+  return `https://ranktech-cdn.s3.us-east-2.amazonaws.com/myhockey_prod/logos/${mhrId}_a.png`;
 }
 
 export default async function handler(req, res) {
@@ -210,7 +210,7 @@ async function handlePublish(req, res) {
 }
 
 async function handleUpdateCollege(req, res) {
-  const { collegeName, espnId, website, level } = req.body;
+  const { collegeName, mhrId, website, level, state } = req.body;
   if (!collegeName) {
     return res.status(400).json({ error: 'collegeName is required' });
   }
@@ -219,10 +219,11 @@ async function handleUpdateCollege(req, res) {
   const colleges = data.colleges || data;
 
   colleges[collegeName.trim()] = {
-    espnId: espnId ? parseInt(espnId, 10) : null,
-    logoUrl: espnId ? espnLogoUrl(parseInt(espnId, 10)) : null,
+    mhrId: (mhrId || '').trim() || null,
+    logoUrl: mhrId ? mhrLogoUrl((mhrId || '').trim()) : null,
     website: (website || '').trim() || null,
     level: (level || '').trim() || null,
+    state: (state || '').trim() || null,
   };
 
   await kvSet('college-mappings', { _lastUpdated: new Date().toISOString(), colleges });

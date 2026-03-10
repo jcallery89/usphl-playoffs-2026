@@ -166,6 +166,7 @@ a:hover { color: var(--usphl-red); text-decoration: underline; }
 .cc-player-link { color: var(--usphl-dark); }
 .cc-player-link:hover { color: var(--usphl-red); }
 .cc-college-name { font-weight: 500; font-size: 13px; }
+.cc-state { color: var(--text-secondary); font-size: 11px; font-weight: 400; }
 .cc-college-link:hover { color: var(--usphl-red); }
 
 /* === Level Badge === */
@@ -403,13 +404,14 @@ function renderTable() {
       : `<span class="cc-player-name">${playerName}</span>`;
 
     const collegeLogo = imgOrFallback(c.college.logoUrl, COLLEGE_ICON, 'cc-logo');
+    const stateTag = c.college.state ? ` <span class="cc-state">(${c.college.state})</span>` : '';
     const collegeLink = c.college.website
-      ? `<a href="${c.college.website}" target="_blank" rel="noopener" class="cc-college-name cc-college-link">${c.college.name}</a>`
-      : `<span class="cc-college-name">${c.college.name}</span>`;
+      ? `<a href="${c.college.website}" target="_blank" rel="noopener" class="cc-college-name cc-college-link">${c.college.name}</a>${stateTag}`
+      : `<span class="cc-college-name">${c.college.name}</span>${stateTag}`;
 
     const badge = `<span class="cc-badge ${levelClass(c.college.level)}">${levelLabel(c.college.level)}</span>`;
 
-    const searchText = [c.team.name, c.firstName, c.lastName, c.hometown, c.college.name, c.college.level].join(' ').toLowerCase();
+    const searchText = [c.team.name, c.firstName, c.lastName, c.hometown, c.college.name, c.college.level, c.college.state].join(' ').toLowerCase();
 
     return {
       searchText,
