@@ -12,6 +12,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "public", "-l", "3456"],
       "port": 3456
+    },
+    {
+      "name": "commitments-preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "commitments", "-l", "3457"],
+      "port": 3457
     }
   ]
 }

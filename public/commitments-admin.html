@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USPHL Commitments Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f2f2f3;
+      color: #333;
+      min-height: 100vh;
+    }
+    header {
+      background: #fff;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      border-bottom: 3px solid #c91417;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #1a1a2e;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+
+    /* Login */
+    .login-box {
+      max-width: 380px;
+      margin: 3rem auto;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .login-box h2 { margin-top: 0; font-size: 1.1rem; font-weight: 700; color: #1a1a2e; }
+    .login-box input {
+      width: 100%; padding: 0.6rem 0.8rem; margin: 0.5rem 0;
+      border: 1px solid #ccc; border-radius: 4px; background: #fff;
+      color: #333; font-family: inherit; font-size: 1rem;
+    }
+    .login-box input:focus { outline: none; border-color: #c91417; }
+    .login-box button {
+      width: 100%; padding: 0.65rem; margin-top: 0.5rem;
+      background: #c91417; color: #fff; border: none; border-radius: 4px;
+      font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+    }
+    .login-box button:hover { background: #a91114; }
+    .error-msg { color: #c91417; font-size: 0.85rem; margin-top: 0.5rem; }
+
+    /* Status Bar */
+    .status-bar {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+      background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+      padding: 0.75rem 1rem; margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .status-item { font-size: 0.85rem; color: #555; }
+    .status-item strong { color: #1a1a2e; }
+    .status-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3px;
+    }
+    .badge-dirty { background: #fef3cd; color: #856404; }
+    .badge-clean { background: #d4edda; color: #155724; }
+    .badge-empty { background: #f3f4f6; color: #6b7280; }
+
+    /* Action Bar */
+    .action-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; align-items: center;
+    }
+    .btn {
+      padding: 0.5rem 1rem; border: 2px solid; border-radius: 6px;
+      font-family: inherit; font-size: 0.85rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary { background: #c91417; border-color: #c91417; color: #fff; }
+    .btn-primary:hover { background: #a91114; border-color: #a91114; }
+    .btn-publish { background: #198754; border-color: #198754; color: #fff; }
+    .btn-publish:hover { background: #157347; border-color: #157347; }
+    .btn-publish:disabled { background: #ccc; border-color: #ccc; cursor: default; }
+    .btn-secondary { background: #fff; border-color: #6c757d; color: #6c757d; }
+    .btn-secondary:hover { background: #f5f5f5; }
+    .btn-secondary.active { background: #6c757d; color: #fff; }
+    .btn-danger { background: #fff; border-color: #dc3545; color: #dc3545; }
+    .btn-danger:hover { background: #fdf0f0; }
+    .btn-sm { padding: 0.3rem 0.6rem; font-size: 0.78rem; border-width: 1px; }
+    .spacer { flex: 1; }
+
+    /* Filters */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem;
+    }
+    .filter-bar input[type="text"] {
+      flex: 1; min-width: 180px; padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc; border-radius: 6px; font-family: inherit; font-size: 0.85rem;
+    }
+    .filter-bar input:focus { outline: none; border-color: #c91417; }
+    .filter-bar select {
+      padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 6px;
+      font-family: inherit; font-size: 0.85rem; background: #fff; cursor: pointer;
+    }
+    .filter-bar select:focus { outline: none; border-color: #c91417; }
+    .showing-count { font-size: 0.8rem; color: #888; margin-left: auto; white-space: nowrap; }
+
+    /* Table */
+    .data-table {
+      width: 100%; border-collapse: collapse; background: #fff;
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border: 1px solid #e0e0e0;
+    }
+    .data-table thead th {
+      background: #1a1a2e; color: #fff; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px;
+      text-align: left; white-space: nowrap; cursor: pointer; user-select: none;
+    }
+    .data-table thead th:hover { background: #282844; }
+    .data-table thead th .sort-arrow {
+      display: inline-block; margin-left: 3px; opacity: 0.4; font-size: 9px;
+    }
+    .data-table thead th.sort-active .sort-arrow { opacity: 1; }
+    .data-table tbody td {
+      padding: 8px 12px; font-size: 0.82rem; border-bottom: 1px solid #eee; vertical-align: middle;
+    }
+    .data-table tbody tr:nth-child(even) { background: #f8f8f9; }
+    .data-table tbody tr:hover { background: #f0f0f2; }
+    .level-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3px; white-space: nowrap;
+    }
+    .badge-di { background: #fde8e8; color: #b91c1c; }
+    .badge-dii { background: #dbeafe; color: #1e40af; }
+    .badge-diii { background: #dcfce7; color: #166534; }
+    .badge-nescac { background: #f3e8ff; color: #6b21a8; }
+    .badge-acha { background: #f3f4f6; color: #374151; }
+    .actions-cell { white-space: nowrap; }
+    .actions-cell button { margin-right: 4px; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+      z-index: 1000; justify-content: center; align-items: flex-start; padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #fff; border-radius: 12px; width: 100%; max-width: 560px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15); max-height: 90vh; overflow-y: auto;
+    }
+    .modal-header {
+      padding: 1rem 1.25rem; border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-header h3 { margin: 0; font-size: 1rem; font-weight: 700; color: #1a1a2e; }
+    .modal-close {
+      background: none; border: none; font-size: 1.3rem; cursor: pointer;
+      color: #999; padding: 0; line-height: 1;
+    }
+    .modal-close:hover { color: #333; }
+    .modal-body { padding: 1.25rem; }
+    .form-group { margin-bottom: 0.9rem; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 700; color: #555;
+      text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 0.3rem;
+    }
+    .form-group input, .form-group select {
+      width: 100%; padding: 0.5rem 0.75rem; border: 1px solid #ccc; border-radius: 6px;
+      font-family: inherit; font-size: 0.9rem; background: #fff;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #c91417; }
+    .form-group .helper { font-size: 0.72rem; color: #999; margin-top: 0.2rem; }
+    .form-row { display: flex; gap: 0.75rem; }
+    .form-row .form-group { flex: 1; }
+    .modal-footer {
+      padding: 0.75rem 1.25rem; border-top: 1px solid #eee;
+      display: flex; justify-content: flex-end; gap: 0.5rem;
+    }
+
+    /* College Mappings Panel */
+    .college-panel {
+      display: none; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+      padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .college-panel.active { display: block; }
+    .college-panel h3 {
+      margin: 0 0 0.75rem; font-size: 0.95rem; font-weight: 700; color: #1a1a2e;
+      padding-bottom: 0.5rem; border-bottom: 2px solid #c91417;
+    }
+    .college-row {
+      display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0;
+      border-bottom: 1px solid #f0f0f2; flex-wrap: wrap;
+    }
+    .college-row:last-child { border-bottom: none; }
+    .college-row .college-name {
+      min-width: 180px; flex: 1; font-size: 0.82rem; font-weight: 600;
+    }
+    .college-row input {
+      padding: 0.35rem 0.5rem; border: 1px solid #ddd; border-radius: 4px;
+      font-family: inherit; font-size: 0.8rem;
+    }
+    .college-row input:focus { outline: none; border-color: #c91417; }
+    .college-row .espn-input { width: 80px; }
+    .college-row .url-input { width: 220px; }
+    .college-row .logo-preview {
+      width: 28px; height: 28px; object-fit: contain; border-radius: 3px;
+    }
+    .college-row .logo-placeholder {
+      width: 28px; height: 28px; background: #eee; border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: #aaa;
+    }
+    .add-college-row {
+      display: flex; gap: 0.5rem; align-items: center; margin-top: 0.75rem;
+      padding-top: 0.75rem; border-top: 2px solid #eee; flex-wrap: wrap;
+    }
+    .add-college-row input { padding: 0.4rem 0.6rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; font-size: 0.82rem; }
+    .add-college-row input:focus { outline: none; border-color: #c91417; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; padding: 0.75rem 1.25rem;
+      background: #1a1a2e; color: #fff; border-radius: 8px; font-size: 0.85rem;
+      font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transform: translateY(100px); opacity: 0; transition: all 0.3s ease;
+      z-index: 2000;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.error { background: #dc3545; }
+    .toast.success { background: #198754; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .filter-bar { flex-direction: column; }
+      .filter-bar input[type="text"] { min-width: 100%; }
+      .action-bar { flex-direction: column; align-items: stretch; }
+      .spacer { display: none; }
+      .data-table { font-size: 0.75rem; }
+      .college-row { flex-direction: column; align-items: flex-start; }
+    }
+
+    #loginView, #dashView { display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>USPHL College Commitments Admin</h1>
+  </header>
+
+  <div class="container">
+    <!-- Login View -->
+    <div id="loginView">
+      <div class="login-box">
+        <h2>Admin Login</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="current-password">
+        <button id="loginBtn" onclick="doLogin()">Login</button>
+        <div class="error-msg" id="loginError"></div>
+      </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashView">
+      <!-- Status Bar -->
+      <div class="status-bar" id="statusBar">
+        <span class="status-item" id="draftStatus">Loading...</span>
+        <span class="status-item" id="pubStatus"></span>
+        <span id="dirtyBadge"></span>
+        <div class="spacer"></div>
+        <button class="btn btn-sm btn-secondary" onclick="doLogout()">Logout</button>
+      </div>
+
+      <!-- Action Bar -->
+      <div class="action-bar">
+        <button class="btn btn-primary" onclick="openAddModal()">+ Add New</button>
+        <button class="btn btn-publish" id="publishBtn" onclick="doPublish()" disabled>Publish</button>
+        <button class="btn btn-secondary" id="collegeToggle" onclick="toggleCollegePanel()">Manage Colleges</button>
+      </div>
+
+      <!-- College Mappings Panel -->
+      <div class="college-panel" id="collegePanel">
+        <h3>College Mappings</h3>
+        <div id="collegeList"></div>
+        <div class="add-college-row">
+          <input type="text" id="newCollegeName" placeholder="College name" style="flex:1;min-width:150px;">
+          <input type="text" id="newCollegeEspn" placeholder="ESPN ID" class="espn-input">
+          <input type="text" id="newCollegeUrl" placeholder="Hockey website URL" class="url-input">
+          <button class="btn btn-sm btn-primary" onclick="addCollege()">Add</button>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search players, teams, colleges...">
+        <select id="levelFilter"><option value="">All Levels</option></select>
+        <select id="teamFilter"><option value="">All Teams</option></select>
+        <span class="showing-count" id="showingCount"></span>
+      </div>
+
+      <!-- Commitments Table -->
+      <table class="data-table" id="commitmentsTable">
+        <thead>
+          <tr>
+            <th data-col="player" class="sort-active">Player <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="team">Team <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="hometown">Hometown <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="college">College <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="level">Level <span class="sort-arrow">&#9650;</span></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add/Edit Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add Commitment</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editId">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="fFirstName" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="fLastName" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Hometown</label>
+          <input type="text" id="fHometown" placeholder="City, State">
+        </div>
+        <div class="form-group">
+          <label>NCDC Team</label>
+          <select id="fTeam"><option value="">Select team...</option></select>
+        </div>
+        <div class="form-group">
+          <label>Player ID</label>
+          <input type="text" id="fPlayerId" placeholder="Optional">
+          <div class="helper">From the player's TimeToScore URL (playerId= parameter)</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>College</label>
+            <input type="text" id="fCollege" list="collegeDatalist" placeholder="Start typing...">
+            <datalist id="collegeDatalist"></datalist>
+          </div>
+          <div class="form-group">
+            <label>Level</label>
+            <select id="fLevel">
+              <option value="">Select...</option>
+              <option value="NCAA DI">NCAA DI</option>
+              <option value="NCAA DII">NCAA DII</option>
+              <option value="NCAA DIII">NCAA DIII</option>
+              <option value="NESCAC">NESCAC</option>
+              <option value="ACHA">ACHA</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Story URL</label>
+          <input type="text" id="fStoryUrl" placeholder="Optional link to commitment story">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" id="saveBtn" onclick="saveCommitment()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// State
+// ============================================================
+let token = sessionStorage.getItem('adminToken');
+let draft = null;
+let publishedMeta = null;
+let collegeMappings = {};
+let teamNames = [];
+let isDirty = false;
+let sortCol = 'player';
+let sortDir = 1;
+
+const API_BASE = '';
+
+// ============================================================
+// Auth
+// ============================================================
+async function doLogin() {
+  const pw = document.getElementById('passwordInput').value;
+  const errEl = document.getElementById('loginError');
+  errEl.textContent = '';
+  try {
+    const res = await fetch(`${API_BASE}/api/admin-auth`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pw }),
+    });
+    const data = await res.json();
+    if (!res.ok) { errEl.textContent = data.error || 'Login failed'; return; }
+    token = data.token;
+    sessionStorage.setItem('adminToken', token);
+    showDashboard();
+  } catch (e) {
+    errEl.textContent = 'Connection error';
+  }
+}
+
+document.getElementById('passwordInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doLogin();
+});
+
+function doLogout() {
+  token = null;
+  sessionStorage.removeItem('adminToken');
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('loginView').style.display = 'block';
+  document.getElementById('dashView').style.display = 'none';
+}
+
+async function showDashboard() {
+  document.getElementById('loginView').style.display = 'none';
+  document.getElementById('dashView').style.display = 'block';
+  await loadData();
+}
+
+// ============================================================
+// Data Loading
+// ============================================================
+async function authFetch(url, options = {}) {
+  const headers = { ...options.headers, Authorization: `Bearer ${token}` };
+  if (options.body && typeof options.body === 'object' && !(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(options.body);
+  }
+  const res = await fetch(url, { ...options, headers });
+  if (res.status === 401) { doLogout(); throw new Error('Session expired'); }
+  return res;
+}
+
+async function loadData() {
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    draft = data.draft;
+    publishedMeta = data.published;
+    collegeMappings = data.collegeMappings || {};
+    teamNames = data.teamNames || [];
+    isDirty = data.isDirty;
+
+    updateStatus();
+    populateFilters();
+    renderTable();
+    renderColleges();
+  } catch (e) {
+    if (e.message !== 'Session expired') {
+      showToast('Failed to load data: ' + e.message, 'error');
+    }
+  }
+}
+
+// ============================================================
+// Status Bar
+// ============================================================
+function updateStatus() {
+  const count = (draft && draft.commitments) ? draft.commitments.length : 0;
+  const draftTime = draft && draft._lastUpdated ? timeAgo(draft._lastUpdated) : 'never';
+  document.getElementById('draftStatus').innerHTML = `<strong>Draft:</strong> ${count} commitments, saved ${draftTime}`;
+
+  if (publishedMeta) {
+    const pubTime = timeAgo(publishedMeta._lastUpdated);
+    document.getElementById('pubStatus').innerHTML = `<strong>Published:</strong> ${publishedMeta.count} commitments, ${pubTime}`;
+  } else {
+    document.getElementById('pubStatus').innerHTML = `<strong>Published:</strong> Never`;
+  }
+
+  const badge = document.getElementById('dirtyBadge');
+  if (isDirty) {
+    badge.innerHTML = '<span class="status-badge badge-dirty">Unpublished Changes</span>';
+    document.getElementById('publishBtn').disabled = false;
+  } else {
+    badge.innerHTML = '<span class="status-badge badge-clean">Up to Date</span>';
+    document.getElementById('publishBtn').disabled = true;
+  }
+}
+
+function timeAgo(iso) {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs / 24);
+  return `${days}d ago`;
+}
+
+// ============================================================
+// Filters & Sorting
+// ============================================================
+function populateFilters() {
+  const commitments = (draft && draft.commitments) || [];
+
+  // Levels
+  const levels = [...new Set(commitments.map(c => c.collegeLevel).filter(Boolean))].sort();
+  const levelSel = document.getElementById('levelFilter');
+  levelSel.innerHTML = '<option value="">All Levels</option>';
+  levels.forEach(l => { const o = document.createElement('option'); o.value = l; o.textContent = l; levelSel.appendChild(o); });
+
+  // Teams
+  const teams = [...new Set(commitments.map(c => c.teamName).filter(Boolean))].sort();
+  const teamSel = document.getElementById('teamFilter');
+  teamSel.innerHTML = '<option value="">All Teams</option>';
+  teams.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; teamSel.appendChild(o); });
+
+  // Team dropdown in form
+  const fTeam = document.getElementById('fTeam');
+  fTeam.innerHTML = '<option value="">Select team...</option>';
+  teamNames.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; fTeam.appendChild(o); });
+
+  // College datalist
+  const dl = document.getElementById('collegeDatalist');
+  dl.innerHTML = '';
+  Object.keys(collegeMappings).sort().forEach(c => {
+    const o = document.createElement('option'); o.value = c; dl.appendChild(o);
+  });
+}
+
+let searchTimer;
+document.getElementById('searchInput').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilters, 150);
+});
+document.getElementById('levelFilter').addEventListener('change', applyFilters);
+document.getElementById('teamFilter').addEventListener('change', applyFilters);
+
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const level = document.getElementById('levelFilter').value;
+  const team = document.getElementById('teamFilter').value;
+
+  let visible = 0;
+  const rows = document.querySelectorAll('#tableBody tr');
+  rows.forEach(row => {
+    const s = row.dataset.search || '';
+    const l = row.dataset.level || '';
+    const t = row.dataset.team || '';
+    const show = (!search || s.includes(search)) && (!level || l === level) && (!team || t === team);
+    row.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('showingCount').textContent = `Showing ${visible} of ${rows.length}`;
+}
+
+// ============================================================
+// Table Rendering
+// ============================================================
+function levelBadgeClass(level) {
+  const l = (level || '').toLowerCase();
+  if (l.includes('nescac')) return 'badge-nescac';
+  if (l.includes('acha')) return 'badge-acha';
+  if (l === 'ncaa di' || l.endsWith(' di')) return 'badge-di';
+  if (l.includes('diii')) return 'badge-diii';
+  if (l.includes('dii')) return 'badge-dii';
+  return 'badge-diii';
+}
+
+function renderTable() {
+  const commitments = (draft && draft.commitments) ? [...draft.commitments] : [];
+
+  // Sort
+  commitments.sort((a, b) => {
+    let va, vb;
+    switch (sortCol) {
+      case 'player': va = a.lastName + a.firstName; vb = b.lastName + b.firstName; break;
+      case 'team': va = a.teamName; vb = b.teamName; break;
+      case 'hometown': va = a.hometown; vb = b.hometown; break;
+      case 'college': va = a.collegeName; vb = b.collegeName; break;
+      case 'level': va = a.collegeLevel; vb = b.collegeLevel; break;
+      default: va = ''; vb = '';
+    }
+    va = (va || '').toLowerCase(); vb = (vb || '').toLowerCase();
+    if (va < vb) return -1 * sortDir;
+    if (va > vb) return 1 * sortDir;
+    return 0;
+  });
+
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = commitments.map(c => {
+    const searchText = [c.teamName, c.firstName, c.lastName, c.hometown, c.collegeName, c.collegeLevel].join(' ').toLowerCase();
+    const badge = `<span class="level-badge ${levelBadgeClass(c.collegeLevel)}">${c.collegeLevel || ''}</span>`;
+    return `<tr data-id="${c.id}" data-search="${searchText}" data-team="${c.teamName || ''}" data-level="${c.collegeLevel || ''}">
+      <td><strong>${c.lastName}</strong>, ${c.firstName}${c.playerId ? ' <span style="color:#aaa;font-size:0.7rem;">ID:' + c.playerId + '</span>' : ''}</td>
+      <td>${c.teamName || ''}</td>
+      <td>${c.hometown || ''}</td>
+      <td>${c.collegeName || ''}</td>
+      <td>${badge}</td>
+      <td class="actions-cell">
+        <button class="btn btn-sm btn-secondary" onclick="openEditModal('${c.id}')">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteCommitment('${c.id}')">Del</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  // Update sort headers
+  document.querySelectorAll('#commitmentsTable thead th[data-col]').forEach(th => {
+    const col = th.dataset.col;
+    th.classList.toggle('sort-active', col === sortCol);
+    th.querySelector('.sort-arrow').innerHTML = col === sortCol ? (sortDir === 1 ? '&#9650;' : '&#9660;') : '&#9650;';
+  });
+
+  applyFilters();
+}
+
+// Sort header clicks
+document.querySelectorAll('#commitmentsTable thead th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) sortDir *= -1;
+    else { sortCol = col; sortDir = 1; }
+    renderTable();
+  });
+});
+
+// ============================================================
+// Add / Edit Modal
+// ============================================================
+function openAddModal() {
+  document.getElementById('modalTitle').textContent = 'Add Commitment';
+  document.getElementById('editId').value = '';
+  document.getElementById('fFirstName').value = '';
+  document.getElementById('fLastName').value = '';
+  document.getElementById('fHometown').value = '';
+  document.getElementById('fTeam').value = '';
+  document.getElementById('fPlayerId').value = '';
+  document.getElementById('fCollege').value = '';
+  document.getElementById('fLevel').value = '';
+  document.getElementById('fStoryUrl').value = '';
+  document.getElementById('modalOverlay').classList.add('active');
+  document.getElementById('fFirstName').focus();
+}
+
+function openEditModal(id) {
+  const c = (draft.commitments || []).find(x => x.id === id);
+  if (!c) return;
+  document.getElementById('modalTitle').textContent = 'Edit Commitment';
+  document.getElementById('editId').value = id;
+  document.getElementById('fFirstName').value = c.firstName || '';
+  document.getElementById('fLastName').value = c.lastName || '';
+  document.getElementById('fHometown').value = c.hometown || '';
+  document.getElementById('fPlayerId').value = c.playerId || '';
+  document.getElementById('fCollege').value = c.collegeName || '';
+  document.getElementById('fLevel').value = c.collegeLevel || '';
+  document.getElementById('fStoryUrl').value = c.storyUrl || '';
+
+  // Set team — try direct match first, then try alias match
+  const fTeam = document.getElementById('fTeam');
+  const teamVal = c.teamName || '';
+  let found = false;
+  for (const opt of fTeam.options) {
+    if (opt.value === teamVal) { fTeam.value = teamVal; found = true; break; }
+  }
+  if (!found) {
+    // Add as a temporary option
+    const opt = document.createElement('option');
+    opt.value = teamVal; opt.textContent = teamVal + ' (custom)';
+    fTeam.appendChild(opt);
+    fTeam.value = teamVal;
+  }
+
+  document.getElementById('modalOverlay').classList.add('active');
+  document.getElementById('fFirstName').focus();
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+async function saveCommitment() {
+  const editId = document.getElementById('editId').value;
+  const firstName = document.getElementById('fFirstName').value.trim();
+  const lastName = document.getElementById('fLastName').value.trim();
+
+  if (!firstName || !lastName) {
+    showToast('First name and last name are required', 'error');
+    return;
+  }
+
+  const commitment = {
+    firstName,
+    lastName,
+    hometown: document.getElementById('fHometown').value.trim(),
+    teamName: document.getElementById('fTeam').value,
+    playerId: document.getElementById('fPlayerId').value.trim() || null,
+    collegeName: document.getElementById('fCollege').value.trim(),
+    collegeLevel: document.getElementById('fLevel').value,
+    storyUrl: document.getElementById('fStoryUrl').value.trim() || null,
+  };
+
+  try {
+    let body;
+    if (editId) {
+      body = { action: 'update', id: editId, fields: commitment };
+    } else {
+      body = { action: 'add', commitment };
+    }
+
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST', body,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    draft = data.draft;
+    isDirty = true;
+    updateStatus();
+    renderTable();
+    closeModal();
+    showToast(editId ? 'Commitment updated' : 'Commitment added', 'success');
+  } catch (e) {
+    showToast('Save failed: ' + e.message, 'error');
+  }
+}
+
+// ============================================================
+// Delete
+// ============================================================
+async function deleteCommitment(id) {
+  const c = (draft.commitments || []).find(x => x.id === id);
+  if (!c) return;
+  if (!confirm(`Delete ${c.firstName} ${c.lastName} (${c.collegeName})?\n\nThis removes from the draft. Publish to update the live page.`)) return;
+
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'delete', id },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    draft = data.draft;
+    isDirty = true;
+    updateStatus();
+    renderTable();
+    showToast('Commitment deleted', 'success');
+  } catch (e) {
+    showToast('Delete failed: ' + e.message, 'error');
+  }
+}
+
+// ============================================================
+// Publish
+// ============================================================
+async function doPublish() {
+  const count = (draft && draft.commitments) ? draft.commitments.length : 0;
+  if (!confirm(`Publish ${count} commitments to the live page?\n\nThis will replace the currently published data.`)) return;
+
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'publish' },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    isDirty = false;
+    publishedMeta = { _lastUpdated: data.publishedAt, count };
+    updateStatus();
+    showToast(`Published ${count} commitments!`, 'success');
+  } catch (e) {
+    showToast('Publish failed: ' + e.message, 'error');
+  }
+}
+
+// ============================================================
+// College Mappings
+// ============================================================
+function toggleCollegePanel() {
+  const panel = document.getElementById('collegePanel');
+  const btn = document.getElementById('collegeToggle');
+  const isActive = panel.classList.toggle('active');
+  btn.classList.toggle('active', isActive);
+}
+
+function renderColleges() {
+  const list = document.getElementById('collegeList');
+  const sorted = Object.entries(collegeMappings).sort((a, b) => a[0].localeCompare(b[0]));
+
+  list.innerHTML = sorted.map(([name, info]) => {
+    const logoHtml = info.logoUrl
+      ? `<img class="logo-preview" src="${info.logoUrl}" onerror="this.outerHTML='<div class=\\'logo-placeholder\\'>?</div>'">`
+      : '<div class="logo-placeholder">-</div>';
+
+    return `<div class="college-row" data-college="${name}">
+      ${logoHtml}
+      <span class="college-name">${name}</span>
+      <input class="espn-input" type="text" value="${info.espnId || ''}" placeholder="ESPN ID" data-field="espnId">
+      <input class="url-input" type="text" value="${info.website || ''}" placeholder="Website URL" data-field="website">
+      <button class="btn btn-sm btn-primary" onclick="saveCollege('${name.replace(/'/g, "\\'")}', this)">Save</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteCollege('${name.replace(/'/g, "\\'")}')">Del</button>
+    </div>`;
+  }).join('');
+}
+
+async function saveCollege(name, btn) {
+  const row = btn.closest('.college-row');
+  const espnId = row.querySelector('[data-field="espnId"]').value.trim();
+  const website = row.querySelector('[data-field="website"]').value.trim();
+
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    collegeMappings = data.colleges;
+    renderColleges();
+    showToast(`Updated "${name}"`, 'success');
+  } catch (e) {
+    showToast('Save failed: ' + e.message, 'error');
+  }
+}
+
+async function addCollege() {
+  const name = document.getElementById('newCollegeName').value.trim();
+  const espnId = document.getElementById('newCollegeEspn').value.trim();
+  const website = document.getElementById('newCollegeUrl').value.trim();
+
+  if (!name) { showToast('College name is required', 'error'); return; }
+
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'update-college', collegeName: name, espnId: espnId || null, website },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    collegeMappings = data.colleges;
+    renderColleges();
+    // Update datalist
+    const dl = document.getElementById('collegeDatalist');
+    if (![...dl.options].some(o => o.value === name)) {
+      const o = document.createElement('option'); o.value = name; dl.appendChild(o);
+    }
+    document.getElementById('newCollegeName').value = '';
+    document.getElementById('newCollegeEspn').value = '';
+    document.getElementById('newCollegeUrl').value = '';
+    showToast(`Added "${name}"`, 'success');
+  } catch (e) {
+    showToast('Add failed: ' + e.message, 'error');
+  }
+}
+
+async function deleteCollege(name) {
+  if (!confirm(`Delete college mapping for "${name}"?\n\nCommitments referencing this college will lose their logo and website link.`)) return;
+
+  try {
+    const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
+      method: 'POST',
+      body: { action: 'delete-college', collegeName: name },
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    collegeMappings = data.colleges;
+    renderColleges();
+    showToast(`Deleted "${name}"`, 'success');
+  } catch (e) {
+    showToast('Delete failed: ' + e.message, 'error');
+  }
+}
+
+// ============================================================
+// Toast
+// ============================================================
+let toastTimer;
+function showToast(msg, type = '') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ============================================================
+// Init
+// ============================================================
+if (token) {
+  showDashboard();
+} else {
+  showLogin();
+}
+</script>
+</body>
+</html>

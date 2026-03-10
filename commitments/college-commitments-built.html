@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025-26 NCDC College Commitments</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* === Reset & Base === */
+*,:before,:after{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --usphl-red: #c91417;
+  --usphl-dark: #1a1a2e;
+  --bg: #fff;
+  --bg-alt: #f8f8f9;
+  --bg-hover: #f0f0f2;
+  --text: #1e1e2e;
+  --text-secondary: #555;
+  --border: #e2e2e6;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--usphl-red); text-decoration: underline; }
+
+/* === Container === */
+.cc-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* === Stats Banner === */
+.cc-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 16px;
+}
+.cc-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 600;
+}
+.cc-stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--usphl-red);
+  line-height: 1;
+}
+
+/* === Filters === */
+.cc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.cc-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E") 12px center no-repeat;
+  transition: border-color .2s;
+}
+.cc-search:focus { outline: none; border-color: var(--usphl-red); }
+.cc-select {
+  padding: 10px 32px 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.cc-showing {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* === Table === */
+.cc-table-wrap {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.cc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.cc-table thead th {
+  background: var(--usphl-dark);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 12px 14px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.cc-table thead th:hover { background: #282844; }
+.cc-table thead th .sort-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  opacity: 0.4;
+  font-size: 10px;
+}
+.cc-table thead th.sort-active .sort-arrow { opacity: 1; }
+.cc-table tbody td {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.cc-table tbody tr:nth-child(even) { background: var(--bg-alt); }
+.cc-table tbody tr:hover { background: var(--bg-hover); }
+.cc-hidden { display: none !important; }
+
+/* === Cell content === */
+.cc-team-cell, .cc-college-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cc-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+.cc-team-name { font-weight: 600; font-size: 13px; }
+.cc-player-name { font-weight: 600; }
+.cc-player-link { color: var(--usphl-dark); }
+.cc-player-link:hover { color: var(--usphl-red); }
+.cc-college-name { font-weight: 500; font-size: 13px; }
+.cc-college-link:hover { color: var(--usphl-red); }
+
+/* === Level Badge === */
+.cc-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+.cc-badge-di { background: #fde8e8; color: #b91c1c; }
+.cc-badge-dii { background: #dbeafe; color: #1e40af; }
+.cc-badge-diii { background: #dcfce7; color: #166534; }
+.cc-badge-nescac { background: #f3e8ff; color: #6b21a8; }
+.cc-badge-acha { background: #f3f4f6; color: #374151; }
+
+/* === Fallback logo SVG === */
+.cc-logo-fallback {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cc-logo-fallback svg { width: 18px; height: 18px; fill: #aaa; }
+
+/* === No results === */
+.cc-no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* === Mobile Card View === */
+@media (max-width: 768px) {
+  .cc-filters { flex-direction: column; }
+  .cc-search { min-width: 100%; }
+  .cc-showing { margin-left: 0; }
+  .cc-table-wrap { display: none; }
+  .cc-cards { display: block !important; }
+}
+.cc-cards { display: none; }
+.cc-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.cc-card.cc-hidden { display: none; }
+.cc-card-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.cc-card-team .cc-logo { width: 24px; height: 24px; }
+.cc-card-team .cc-team-name { font-size: 12px; color: var(--text-secondary); }
+.cc-card-player {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.cc-card-hometown {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+.cc-card-college {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cc-card-college .cc-logo { width: 24px; height: 24px; }
+.cc-card-college .cc-college-name { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="cc-wrapper" id="ccApp">
+  <div class="cc-stats" id="ccStats"></div>
+  <div class="cc-filters">
+    <input type="text" class="cc-search" id="ccSearch" placeholder="Search players, teams, colleges...">
+    <select class="cc-select" id="ccLevel"><option value="">All Levels</option></select>
+    <select class="cc-select" id="ccTeam"><option value="">All Teams</option></select>
+    <span class="cc-showing" id="ccShowing"></span>
+  </div>
+  <div class="cc-table-wrap">
+    <table class="cc-table">
+      <thead>
+        <tr>
+          <th data-col="team">NCDC Team <span class="sort-arrow">&#9650;</span></th>
+          <th data-col="player">Player <span class="sort-arrow">&#9650;</span></th>
+          <th data-col="hometown">Hometown <span class="sort-arrow">&#9650;</span></th>
+          <th data-col="college">College <span class="sort-arrow">&#9650;</span></th>
+          <th data-col="level">Level <span class="sort-arrow">&#9650;</span></th>
+        </tr>
+      </thead>
+      <tbody id="ccTableBody"></tbody>
+    </table>
+  </div>
+  <div class="cc-no-results cc-hidden" id="ccNoResults">No commitments match your search.</div>
+  <div class="cc-cards" id="ccCards"></div>
+</div>
+
+<script>
+// === DATA (embedded at build time) ===
+const DATA = {"generated":"2026-03-09T22:11:05.286Z","season":"2025-26","league":"NCDC","count":84,"commitments":[{"firstName":"Colin","lastName":"Foyle","hometown":"Westfield, MA","team":{"name":"Boston Jr. Bruins","teamId":"2270","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"},"player":{"playerId":"1683","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1683&team=2270&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/35c2ebfc67628846a6ecc906d167fee4310ac328b65c9570454fb544f7ec5776.jpeg"},"college":{"name":"Fitchburg State University","level":"NCAA DIII","logoUrl":null,"website":"https://fitchburgathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Riley","lastName":"Greer","hometown":"Daytona Beach, FL","team":{"name":"Boston Jr. Bruins","teamId":"2270","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"},"player":{"playerId":"6433","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=6433&team=2270&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b154e52f02a6038cad041648dcc05b38f2d648e565f6cfbd880ad2da1127adff.jpeg"},"college":{"name":"Southern New Hampshire University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2549.png&h=40&w=40","website":"https://snhupenmen.com/sports/mice/index"},"storyUrl":null},{"firstName":"Brendan","lastName":"Nee","hometown":"Arlington, MA","team":{"name":"Boston Jr. Bruins","teamId":"2270","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"},"player":{"playerId":"19191","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19191&team=2270&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/66645d99a626a659221fd5869f836896dad32b1657ef5c780f384036cda36cf4.jpeg"},"college":{"name":"Fitchburg State University","level":"NCAA DIII","logoUrl":null,"website":"https://fitchburgathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Simon","lastName":"Mateas","hometown":"Bratislava, Slovenia","team":{"name":"Boston Jr. Bruins","teamId":"2270","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"},"player":{"playerId":"19200","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19200&team=2270&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4d4c80ac030428df5ac006c9d1c22e2dcf13b8f4ddbaf56d2600ba60d2d87f8c.jpeg"},"college":{"name":"Elmira College","level":"NCAA DIII","logoUrl":null,"website":"https://elmirasoareagles.com/sports/mice/index"},"storyUrl":null},{"firstName":"Gellert","lastName":"Kiss-Molnar","hometown":"Budapest, Hungary","team":{"name":"Boston Jr. Bruins","teamId":"2270","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Manhattanville University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40","website":"https://mvillevaliants.com/sports/mice/index"},"storyUrl":null},{"firstName":"Matthew","lastName":"O'Connor","hometown":"Melrose, MA","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Saint Michael's College","level":"NCAA DII","logoUrl":null,"website":"https://smcknights.com/sports/mice/index"},"storyUrl":null},{"firstName":"Aries","lastName":"Carangi","hometown":"Philadelphia, PA","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":"2894","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2894&team=105&season=65","imageUrl":"https://lscluster.hockeytech.com/img/nophoto.png"},"college":{"name":"Salem State University","level":"NCAA DIII","logoUrl":null,"website":"https://salemstatevikings.com/sports/mice/index"},"storyUrl":null},{"firstName":"Sammy","lastName":"Ohannesian","hometown":"Lynn, MA","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Wentworth Institute of Technology","level":"NCAA DIII","logoUrl":null,"website":"https://wentworthathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Tyler","lastName":"Gwatkin","hometown":"Lyndonville, VT","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Saint Michael's College","level":"NCAA DII","logoUrl":null,"website":"https://smcknights.com/sports/mice/index"},"storyUrl":null},{"firstName":"Kayston","lastName":"Un Yi","hometown":"Laval, QC, CAN","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Elmira College","level":"NCAA DIII","logoUrl":null,"website":"https://elmirasoareagles.com/sports/mice/index"},"storyUrl":null},{"firstName":"Ayzek","lastName":"Waldron","hometown":"Cadyville, NY","team":{"name":"Boston Dogs","teamId":"105","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=105&season=65"},"player":{"playerId":"1821","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1821&team=105&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/7e3b9b7c405dfb2429229da623787c20fb3aee3397e9b5577c0bcd5c06fbf20e.jpeg"},"college":{"name":"Misericordia University","level":"NCAA DIII","logoUrl":null,"website":"https://misericordiacougars.com/sports/mice/index"},"storyUrl":null},{"firstName":"Charles","lastName":"Dey","hometown":"Kailua, HI","team":{"name":"Boston Jr. Rangers","teamId":"106","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7aaac0c71e1c4fa4809a1cbcb59aad6ac5ede0d929c74405cac936ec7b0de1d2.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=106&season=65"},"player":{"playerId":"19297","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19297&team=106&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/c55131b297647ca30bbb86b498cbae5d7c2b18d6a101ad7be619be9608f4e980.jpeg"},"college":{"name":"Curry College","level":"NCAA DIII","logoUrl":null,"website":"https://curryathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jack","lastName":"O'Connor","hometown":"Canton, GA","team":{"name":"Boston Jr. Rangers","teamId":"106","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7aaac0c71e1c4fa4809a1cbcb59aad6ac5ede0d929c74405cac936ec7b0de1d2.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=106&season=65"},"player":{"playerId":"6428","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=6428&team=106&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/76421e896511b44ee1b8defd0d6c32082c208133e7c0706059a6693af2227db6.jpeg"},"college":{"name":"Colby College","level":"NESCAC","logoUrl":null,"website":"https://colbymules.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Joel","lastName":"Nieminen","hometown":"Helsinki, FIN","team":{"name":"Connecticut Jr. Rangers","teamId":"108","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=108&season=65"},"player":{"playerId":"19905","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19905&team=108&season=65","imageUrl":null},"college":{"name":"SUNY Canton","level":"NCAA DIII","logoUrl":null,"website":"https://cantonroos.com/sports/mice/index"},"storyUrl":null},{"firstName":"Magnus","lastName":"Turcotte","hometown":"North Haven, CT","team":{"name":"Connecticut Jr. Rangers","teamId":"108","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=108&season=65"},"player":{"playerId":"2110","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2110&team=108&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21788.jpg"},"college":{"name":"Saint Anselm College","level":"NCAA DII","logoUrl":null,"website":"https://saintanselmhawks.com/sports/mice/index"},"storyUrl":null},{"firstName":"Zachary","lastName":"Lacasse","hometown":"Chesterfield, MO","team":{"name":"Connecticut Jr. Rangers","teamId":"108","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=108&season=65"},"player":{"playerId":"19044","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19044&team=108&season=65","imageUrl":null},"college":{"name":"Beloit College","level":"NCAA DIII","logoUrl":null,"website":"https://beloitbuccaneers.com/sports/mice/index"},"storyUrl":null},{"firstName":"Andrew","lastName":"Schmidt","hometown":"Chicago, IL","team":{"name":"Idaho Falls Spud Kings","teamId":"109","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f68fab118290c8a003aff32652f4c73f1ad86fec09178c69c9beeb2a01da5bcc.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=109&season=65"},"player":{"playerId":"1387","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1387&team=109&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/498fe38c3c58b3baa4d54fdc92e98d885ed15b74fae1228399f9de57a7633750.jpeg"},"college":{"name":"Connecticut College","level":"NESCAC","logoUrl":null,"website":"https://camelathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Sam","lastName":"Grimaldi","hometown":"Elk Grove Village, IL","team":{"name":"Idaho Falls Spud Kings","teamId":"109","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f68fab118290c8a003aff32652f4c73f1ad86fec09178c69c9beeb2a01da5bcc.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=109&season=65"},"player":{"playerId":"19325","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19325&team=109&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/834f282dbfd2e47dcc7795199dbca500ef2b3228812893d9ed87e71b193d8362.jpeg"},"college":{"name":"Aurora University","level":"NCAA DIII","logoUrl":null,"website":"https://auaurora.com/sports/mice/index"},"storyUrl":null},{"firstName":"Brady","lastName":"Plaza","hometown":"Danvers, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1090","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1090&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21789.jpg"},"college":{"name":"Salve Regina University","level":"NCAA DIII","logoUrl":null,"website":"https://salveathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Cameron","lastName":"Stehle","hometown":"Raleigh, NC","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1093","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1093&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4947b0e34fbfcd0b46a5e16cedf312606cd83388f93d19707d7ccb4a194342ec.jpeg"},"college":{"name":"Stevenson University","level":"NCAA DIII","logoUrl":null,"website":"https://stevensonathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jake","lastName":"Freelove","hometown":"Tyngsboro, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1080","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1080&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/c206c6681a4c3f82a569c364917de02a461604168982fad83eace129723755bd.jpeg"},"college":{"name":"Fitchburg State University","level":"NCAA DIII","logoUrl":null,"website":"https://fitchburgathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Nate","lastName":"Freelove","hometown":"Tyngsboro, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"20075","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=20075&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/ef606d2d7b88295d828566927e3bda49941176bda7fe98607d6de13293d65953.jpeg"},"college":{"name":"Fitchburg State University","level":"NCAA DIII","logoUrl":null,"website":"https://fitchburgathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Brendan","lastName":"Peck","hometown":"Framingham, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"19688","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19688&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/dad1760de94d75bc34fbff8d51c73570033d3d5beb7104916ac60863554d9b01.jpeg"},"college":{"name":"Tufts University","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/66.png&h=40&w=40","website":"https://gotuftsjumbos.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jaden","lastName":"Duprey","hometown":"Saint Albans, VT","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1049","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1049&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4a7359006152d373db561e3558cace91e089a90a506e963acc1ef8b5d09ca960.jpeg"},"college":{"name":"Norwich University","level":"NCAA DIII","logoUrl":null,"website":"https://norwichathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"David","lastName":"Coughlin","hometown":"Burlington, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1077","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1077&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/dc1374b8c498c68c325063aca7fb546a72e328217cc16fca72bba19c4f68931a.jpeg"},"college":{"name":"Babson College","level":"NCAA DIII","logoUrl":null,"website":"https://babsonathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Jack","lastName":"Fickenscher","hometown":"Davidson, NC","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1781","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1781&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/22203.jpg"},"college":{"name":"Wentworth Institute of Technology","level":"NCAA DIII","logoUrl":null,"website":"https://wentworthathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Blake","lastName":"McMeniman","hometown":"Revere, MA","team":{"name":"Islanders Hockey Club","teamId":"110","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=110&season=65"},"player":{"playerId":"1094","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1094&team=110&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/40efa7ef6709d42fcd5728ed6e93540e90dafc02ae2b4265e31e93e1197e278a.jpeg"},"college":{"name":"Army West Point","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40","website":"https://goarmywestpoint.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Camden","lastName":"Prier","hometown":"North Palm Beach, FL","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Niagara University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/315.png&h=40&w=40","website":"https://purpleeagles.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Dante","lastName":"Siciliano","hometown":"Whitby, ON, CAN","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of Maine","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/311.png&h=40&w=40","website":"https://goblackbears.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Kirby","lastName":"Perler","hometown":"Woodbridge, CT","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Yale University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/43.png&h=40&w=40","website":"https://yalebulldogs.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Nick","lastName":"Bunch","hometown":"Michigan","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":"1261","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1261&team=111&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b3e1c42bf5844108c3b697b0e9f64b9eb9950e37e3971c7c756e17f4f0c2eb53.jpeg"},"college":{"name":"Skidmore College","level":"NCAA DIII","logoUrl":null,"website":"https://skidmoreathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Nicky","lastName":"Romeo","hometown":"New City, NY","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of New Hampshire","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/160.png&h=40&w=40","website":"https://unhwildcats.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Tommy","lastName":"Holtby","hometown":"Frederick, MD","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Army West Point","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40","website":"https://goarmywestpoint.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Dean","lastName":"Toskos","hometown":"Oakland, NJ","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"College of the Holy Cross","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/107.png&h=40&w=40","website":"https://goholycross.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Ryan","lastName":"Shea","hometown":"Norwell, MA","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":"1255","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1255&team=111&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6aebaa89a7fa6b11fa0e1552cb343e9388a77b85e571e147722bff82470291a4.jpeg"},"college":{"name":"Babson College","level":"NCAA DIII","logoUrl":null,"website":"https://babsonathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Marty","lastName":"Magaletta","hometown":"Clifton Park, NY","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":"21521","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21521&team=111&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b65e4670bfaca2ccbd36724f5079286fd332b428a5a200c06057f97ef5ea7398.jpeg"},"college":{"name":"Saint Michael's College","level":"NCAA DII","logoUrl":null,"website":"https://smcknights.com/sports/mice/index"},"storyUrl":null},{"firstName":"Kristofers","lastName":"Krummins","hometown":"Riga, Latvia","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of Vermont","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/261.png&h=40&w=40","website":"https://uvmathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Derek","lastName":"Tremblay","hometown":"Quebec, QC, CAN","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":"1242","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1242&team=111&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/0574b1bc304ba97a58861dad197ed53b51440800b5c93593d6d68aeebdb4482e.jpeg"},"college":{"name":"Amherst College","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/7.png&h=40&w=40","website":"https://athletics.amherst.edu/sports/mice/index"},"storyUrl":null},{"firstName":"Tristan","lastName":"Caldwell","hometown":"Ottawa, ON, CAN","team":{"name":"Jersey Hitmen","teamId":"111","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=111&season=65"},"player":{"playerId":"1266","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1266&team=111&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/f7fbeef711e3f831525fc7c712c63bcde2e4f69310e42edeb213738639f7a627.jpeg"},"college":{"name":"Norwich University","level":"NCAA DIII","logoUrl":null,"website":"https://norwichathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Ethan","lastName":"Abram-Hale","hometown":"Cape Neddick, ME","team":{"name":"Lewiston MAINEiacs","teamId":"2278","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/200e474503a99d96f35f46f95a51d8383974ea30ba82f967d8346664b5674fcd.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2278&season=65"},"player":{"playerId":"1215","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1215&team=2278&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20925.jpg"},"college":{"name":"SUNY Fredonia","level":"NCAA DIII","logoUrl":null,"website":"https://fredoniabluedevils.com/sports/mice/index"},"storyUrl":null},{"firstName":"Brent","lastName":"Beswick","hometown":"Wyckoff, NJ","team":{"name":"Mercer Chiefs","teamId":"112","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d71007943a2032623b96460b14231fbf7a6a15fbce353fcfbd7a3884def4de66.jpeg","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=112&season=65"},"player":{"playerId":"18962","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=18962&team=112&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4554c0d531d3c2a50644b6e56108b85d4ffeb16f9a7faab87dfd4ab9dcb1753a.jpeg"},"college":{"name":"Manhattanville University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40","website":"https://mvillevaliants.com/sports/mice/index"},"storyUrl":null},{"firstName":"Alex","lastName":"Roy","hometown":"Stanstead, QC, CAN","team":{"name":"New England Wolves","teamId":"2380","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"},"player":{"playerId":"21952","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21952&team=2380&season=65","imageUrl":null},"college":{"name":"American International College","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40","website":"https://aicyellowjackets.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Julian","lastName":"Karagiannis","hometown":"LaSalle, QC, CAN","team":{"name":"New England Wolves","teamId":"2380","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"},"player":{"playerId":"21934","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21934&team=2380&season=65","imageUrl":null},"college":{"name":"American International College","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40","website":"https://aicyellowjackets.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Vincent","lastName":"Cregheur","hometown":"Terrebonne, QC, CAN","team":{"name":"New England Wolves","teamId":"2380","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"},"player":{"playerId":"730","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=730&team=2380&season=65","imageUrl":null},"college":{"name":"American International College","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40","website":"https://aicyellowjackets.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Zach","lastName":"Spicuzza","hometown":"Meredith, NH","team":{"name":"New England Wolves","teamId":"2380","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"},"player":{"playerId":"21955","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21955&team=2380&season=65","imageUrl":null},"college":{"name":"Framingham State University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/126815.png&h=40&w=40","website":"https://framinghamrams.com/sports/mice/index"},"storyUrl":null},{"firstName":"Riley","lastName":"Casey","hometown":"Bennington, VT","team":{"name":"Northern Cyclones","teamId":"113","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/3f47340ee3433959dc0096c7ff8146ce33049533c60dfcf6d4531128a6c234be.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=113&season=65"},"player":{"playerId":"1927","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1927&team=113&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/647feb3b2c5685c4fd16017977d71c8de0875403be71b216b2b4cac0e88b44b5.jpeg"},"college":{"name":"Elmira College","level":"NCAA DIII","logoUrl":null,"website":"https://elmirasoareagles.com/sports/mice/index"},"storyUrl":null},{"firstName":"Cade","lastName":"Miner","hometown":"Lee, NH","team":{"name":"New York Dynamo","teamId":"119","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f19fa2d858177e2db61d75c32a4e05e9cef269f07c9f0e98fdcdd234ada4691d.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=119&season=65"},"player":{"playerId":"2009","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2009&team=119&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20330.jpg"},"college":{"name":"Franklin Pierce University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/112334.png&h=40&w=40","website":"https://franklinpierceathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Caleb","lastName":"Bendell","hometown":"Chanhassen, MN","team":{"name":"Ogden Mustangs","teamId":"114","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=114&season=65"},"player":{"playerId":"1416","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1416&team=114&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/19233.jpg"},"college":{"name":"University of Wisconsin-Stevens Point","level":"NCAA DIII","logoUrl":null,"website":"https://uwsppointers.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jacob","lastName":"Margarit","hometown":"Chaska, MN","team":{"name":"Ogden Mustangs","teamId":"114","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=114&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Army West Point","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40","website":"https://goarmywestpoint.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Liam","lastName":"Waugh","hometown":"Lawrenceville, GA","team":{"name":"Ogden Mustangs","teamId":"114","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=114&season=65"},"player":{"playerId":"2611","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2611&team=114&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/e2b63969d9de04db438ba8ebc6621a15cdfe2f1559c4156ec7196aeba70bf494.jpeg"},"college":{"name":"Western New England University","level":"NCAA DIII","logoUrl":null,"website":"https://wnegoldenbears.com/sports/mice/index"},"storyUrl":null},{"firstName":"Troy","lastName":"Hunka","hometown":"North Canton, OH","team":{"name":"Ogden Mustangs","teamId":"114","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=114&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Robert Morris University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2523.png&h=40&w=40","website":"https://rmucolonials.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Ryan","lastName":"Franks","hometown":"Roslyn, NY","team":{"name":"P.A.L. Jr. Islanders","teamId":"115","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=115&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Canisius University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2099.png&h=40&w=40","website":"https://gogriffs.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Carsten","lastName":"Gause","hometown":"Wisconsin Rapids, WI","team":{"name":"Pueblo Bulls","teamId":"116","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=116&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of Dubuque","level":"NCAA DIII","logoUrl":null,"website":"https://dbqspartans.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jimmy","lastName":"Monks","hometown":"Wyandotte, MI","team":{"name":"Pueblo Bulls","teamId":"116","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=116&season=65"},"player":{"playerId":"21841","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21841&team=116&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/93e0974c52b44439606180363bf4cb9f49af5e1988a460d6b74b98d6dd3b6580.png"},"college":{"name":"Adrian College","level":"ACHA","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/110134.png&h=40&w=40","website":"https://adrianbulldogs.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Matsvei","lastName":"Marshchanok","hometown":"Minsk, Belarus","team":{"name":"Pueblo Bulls","teamId":"116","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=116&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Augustana University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2043.png&h=40&w=40","website":"https://goaugie.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Siamion","lastName":"Marshchanok","hometown":"Minsk, Belarus","team":{"name":"Pueblo Bulls","teamId":"116","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=116&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Augustana University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2043.png&h=40&w=40","website":"https://goaugie.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Dallas","lastName":"Potter","hometown":"Madison, CT","team":{"name":"Rockets Hockey Club","teamId":"118","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=118&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Sacred Heart University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2529.png&h=40&w=40","website":"https://sacredheartpioneers.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Danny","lastName":"Hussa","hometown":"North Wales, PA","team":{"name":"Rockets Hockey Club","teamId":"118","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=118&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of Vermont","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/261.png&h=40&w=40","website":"https://uvmathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Gabriel","lastName":"Simpson","hometown":"Lafayette, CO","team":{"name":"Rockets Hockey Club","teamId":"118","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=118&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Lindenwood University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2815.png&h=40&w=40","website":"https://lindenwoodlions.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Kyle","lastName":"Rohrer","hometown":"Oregon, WI","team":{"name":"Rockets Hockey Club","teamId":"118","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=118&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Lindenwood University","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2815.png&h=40&w=40","website":"https://lindenwoodlions.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Isaac","lastName":"Suh","hometown":"Chatham, NJ","team":{"name":"Rockets Hockey Club","teamId":"118","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=118&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Air Force Academy","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2005.png&h=40&w=40","website":"https://goairforcefalcons.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Alex","lastName":"Babineau","hometown":"Lafayette, CO","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Wesleyan University","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40","website":"https://wesleyanathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Will","lastName":"Cavanagh","hometown":"East Greenwich, RI","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Wesleyan University","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40","website":"https://wesleyanathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Brendan","lastName":"Keaveney","hometown":"Westwood, MA","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":"19962","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19962&team=120&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/60f1fd614852d24e1a85a73a3a76526d552deadcb29fd4cb600760a5d7b6e098.jpeg"},"college":{"name":"Babson College","level":"NCAA DIII","logoUrl":null,"website":"https://babsonathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Corwith","lastName":"Simmers","hometown":"Hailey, ID","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":"21677","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=21677&team=120&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/44dbee98ba0071347427fbde6cde8fe2cc216b5d5dee7ace65e9d532640e149c.jpeg"},"college":{"name":"Hamilton College","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/348.png&h=40&w=40","website":"https://athletics.hamilton.edu/sports/mice/index"},"storyUrl":null},{"firstName":"Jake","lastName":"Owns","hometown":"Chittenango, NY","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Tufts University","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/66.png&h=40&w=40","website":"https://gotuftsjumbos.com/sports/mice/index"},"storyUrl":null},{"firstName":"Matt","lastName":"Lemay","hometown":"Lévis, QC, CAN","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":"19937","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19937&team=120&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/050bd0de13107bc3442c3f935df30b660a5a4ee13ce3a9e33236610029684048.jpeg"},"college":{"name":"Babson College","level":"NCAA DIII","logoUrl":null,"website":"https://babsonathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Brennan","lastName":"Cail","hometown":"Cheshire, CT","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":"1053","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1053&team=120&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b23729a749e96d10fe9b42d996d8e89c8ced6e98e3be17cb34e2678e0d13919c.jpeg"},"college":{"name":"Roger Williams University","level":"NCAA DIII","logoUrl":null,"website":"https://rwuhawks.com/sports/mice/index"},"storyUrl":null},{"firstName":"Eli","lastName":"Velepec","hometown":"Irondequoit, NY","team":{"name":"South Shore Kings","teamId":"120","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=120&season=65"},"player":{"playerId":"1023","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1023&team=120&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/29b8b3004d0b344eff34af430b8f8c05f22a6b42a99add1f061a82511429d34c.jpeg"},"college":{"name":"Wesleyan University","level":"NESCAC","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40","website":"https://wesleyanathletics.com/sports/mice/index"},"storyUrl":null},{"firstName":"Travis","lastName":"Raisanen","hometown":"Drumheller, AB, CAN","team":{"name":"Springfield Pics","teamId":"2292","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"},"player":{"playerId":"7313","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=7313&team=2292&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20985.jpg"},"college":{"name":"SUNY Canton","level":"NCAA DIII","logoUrl":null,"website":"https://cantonroos.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jacob","lastName":"Carey","hometown":"Christchurch, NZL","team":{"name":"Springfield Pics","teamId":"2292","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"},"player":{"playerId":"7333","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=7333&team=2292&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/19173.jpg"},"college":{"name":"American International College","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40","website":"https://aicyellowjackets.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Dylan","lastName":"Rovetti","hometown":"Cromwell, CT","team":{"name":"Springfield Pics","teamId":"2292","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"},"player":{"playerId":"19230","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19230&team=2292&season=65","imageUrl":null},"college":{"name":"American International College","level":"NCAA DI","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40","website":"https://aicyellowjackets.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Cal","lastName":"Fielder","hometown":"Monument, CO","team":{"name":"Springfield Pics","teamId":"2292","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Lebanon Valley College","level":"NCAA DIII","logoUrl":null,"website":"https://godutchmen.com/sports/mice/index"},"storyUrl":null},{"firstName":"Evan","lastName":"Luxford","hometown":"Sun Prairie, WI","team":{"name":"Thunder Hockey Club","teamId":"121","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1c5e398a6c902ae09b8e07fabd5d0a99fac8ec6a9c6922b6eddc6c146ae5746c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=121&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"University of Wisconsin-Stout","level":"NCAA DIII","logoUrl":null,"website":"https://uwstout.prestosports.com/sports/mice/index"},"storyUrl":null},{"firstName":"Killian","lastName":"Wright","hometown":"Arlington, MA","team":{"name":"Thunder Hockey Club","teamId":"121","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1c5e398a6c902ae09b8e07fabd5d0a99fac8ec6a9c6922b6eddc6c146ae5746c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=121&season=65"},"player":{"playerId":"2020","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2020&team=121&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6c9087278bad89c7fd697b3af9508265a992496ea4f76210098b9862e610b25c.jpeg"},"college":{"name":"Saint Michael's College","level":"NCAA DII","logoUrl":null,"website":"https://smcknights.com/sports/mice/index"},"storyUrl":null},{"firstName":"Carson","lastName":"Zick","hometown":"Baraboo, WI","team":{"name":"Utica Jr. Comets","teamId":"123","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2f313cb0985b26eae20b60c9f7ee47bba4497626b964a792aeef0ed5f3a90441.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=123&season=65"},"player":{"playerId":"2070","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=2070&team=123&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/2216f1b30a72eff26a5295b2b0a3f96dbd24b05ab78f9c45ba13f595da278c47.jpeg"},"college":{"name":"University of Wisconsin-Stout","level":"NCAA DIII","logoUrl":null,"website":"https://uwstout.prestosports.com/sports/mice/index"},"storyUrl":null},{"firstName":"Lorenzo","lastName":"Rossi","hometown":"Wappingers Falls, NY","team":{"name":"West Chester Wolves","teamId":"124","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=124&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"Arcadia University","level":"NCAA DIII","logoUrl":null,"website":"https://arcadiaknights.com/sports/mice/index"},"storyUrl":null},{"firstName":"Alec","lastName":"Alfieri","hometown":"Denver, CO","team":{"name":"West Chester Wolves","teamId":"124","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=124&season=65"},"player":{"playerId":"1592","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1592&team=124&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/f8e275962a303172b3e2ccbf91023630c360720a4f5e25f6f267e120aa770170.png"},"college":{"name":"Lake Forest College","level":"NCAA DIII","logoUrl":null,"website":"https://goforesters.com/sports/mice/index"},"storyUrl":null},{"firstName":"Reece","lastName":"Allman","hometown":"Chicago Heights, IL","team":{"name":"West Chester Wolves","teamId":"124","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=124&season=65"},"player":{"playerId":"1466","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1466&team=124&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6a43252f1b172d92fde4eff7710f0c3da65ae5d54052578a8f726985b00883b7.png"},"college":{"name":"Lake Forest College","level":"NCAA DIII","logoUrl":null,"website":"https://goforesters.com/sports/mice/index"},"storyUrl":null},{"firstName":"Jakob","lastName":"Hansen","hometown":"Fishers, IN","team":{"name":"West Chester Wolves","teamId":"124","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=124&season=65"},"player":{"playerId":"19766","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=19766&team=124&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/da17db3e7d6d0099d760c0109225e597f51a6abbeaed2ed4a324ae5e92e68949.jpeg"},"college":{"name":"Lake Forest College","level":"NCAA DIII","logoUrl":null,"website":"https://goforesters.com/sports/mice/index"},"storyUrl":null},{"firstName":"George","lastName":"Acklin","hometown":"Pittsburgh, PA","team":{"name":"Worcester Railers JHC","teamId":"126","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=126&season=65"},"player":{"playerId":"1730","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1730&team=126&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20850.jpg"},"college":{"name":"Saint Anselm College","level":"NCAA DII","logoUrl":null,"website":"https://saintanselmhawks.com/sports/mice/index"},"storyUrl":null},{"firstName":"Travis","lastName":"Rugg","hometown":"Hingham, MA","team":{"name":"Worcester Railers JHC","teamId":"126","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=126&season=65"},"player":{"playerId":"18746","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=18746&team=126&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/1ac581df68c8ecb5d7d369b36d3f4347d128f6585ffa3621b214f21a5b9c3487.png"},"college":{"name":"Babson College","level":"NCAA DIII","logoUrl":null,"website":"https://babsonathletics.com/sports/mens-ice-hockey"},"storyUrl":null},{"firstName":"Ezra","lastName":"Zizmor","hometown":"Brooklyn, NY","team":{"name":"Worcester Railers JHC","teamId":"126","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=126&season=65"},"player":{"playerId":"1727","profileUrl":"https://usphl.com/ncdc/game-center/players/?playerId=1727&team=126&season=65","imageUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21089.jpg"},"college":{"name":"Manhattanville University","level":"NCAA DIII","logoUrl":"https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40","website":"https://mvillevaliants.com/sports/mice/index"},"storyUrl":null},{"firstName":"Ben","lastName":"Jarosz","hometown":"Franklin, MA","team":{"name":"Worcester Railers JHC","teamId":"126","logoUrl":"https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png","profileUrl":"https://usphl.com/ncdc/game-center/teams/?team=126&season=65"},"player":{"playerId":null,"profileUrl":null,"imageUrl":null},"college":{"name":"SUNY Fredonia","level":"NCAA DIII","logoUrl":null,"website":"https://fredoniabluedevils.com/sports/mice/index"},"storyUrl":null}]};
+
+// === Fallback SVGs ===
+const HOCKEY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+const COLLEGE_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>`;
+
+function imgOrFallback(url, fallbackSvg, cls) {
+  if (!url) return `<span class="cc-logo-fallback">${fallbackSvg}</span>`;
+  return `<img class="${cls}" src="${url}" loading="lazy" onerror="this.parentNode.replaceChild(Object.assign(document.createElement('span'),{className:'cc-logo-fallback',innerHTML:decodeURIComponent('${encodeURIComponent(fallbackSvg)}')}),this)">`;
+}
+
+function levelClass(level) {
+  const l = (level || '').toLowerCase();
+  if (l.includes('nescac')) return 'cc-badge-nescac';
+  if (l.includes('acha')) return 'cc-badge-acha';
+  if (l === 'ncaa di' || l === 'di ncaa' || l.includes(' di ') || l.endsWith(' di')) return 'cc-badge-di';
+  if (l.includes('diii')) return 'cc-badge-diii';
+  if (l.includes('dii')) return 'cc-badge-dii';
+  return 'cc-badge-diii';
+}
+
+function levelLabel(level) {
+  const l = (level || '').toUpperCase();
+  if (l.includes('NESCAC')) return 'NESCAC';
+  if (l.includes('ACHA')) return 'ACHA';
+  if (l === 'NCAA DI' || l === 'DI NCAA') return 'NCAA DI';
+  if (l.includes('DIII')) return 'NCAA DIII';
+  if (l.includes('DII')) return 'NCAA DII';
+  return l;
+}
+
+// === Build Stats ===
+function buildStats() {
+  const data = DATA.commitments;
+  const levels = {};
+  const teams = new Set();
+  data.forEach(c => {
+    const lbl = levelLabel(c.college.level);
+    levels[lbl] = (levels[lbl] || 0) + 1;
+    teams.add(c.team.name);
+  });
+
+  const statsEl = document.getElementById('ccStats');
+  statsEl.innerHTML = `
+    <div class="cc-stat"><span class="cc-stat-num">${data.length}</span> College Commitments</div>
+    ${Object.entries(levels).sort((a,b) => b[1] - a[1]).map(([l,n]) =>
+      `<div class="cc-stat"><span class="cc-stat-num">${n}</span> ${l}</div>`
+    ).join('')}
+    <div class="cc-stat"><span class="cc-stat-num">${teams.size}</span> NCDC Teams</div>
+  `;
+}
+
+// === Build Filters ===
+function buildFilters() {
+  const data = DATA.commitments;
+  const levels = [...new Set(data.map(c => levelLabel(c.college.level)))].sort();
+  const teams = [...new Set(data.map(c => c.team.name))].sort();
+
+  const levelSelect = document.getElementById('ccLevel');
+  levels.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l; opt.textContent = l;
+    levelSelect.appendChild(opt);
+  });
+
+  const teamSelect = document.getElementById('ccTeam');
+  teams.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t; opt.textContent = t;
+    teamSelect.appendChild(opt);
+  });
+}
+
+// === Sort State ===
+let sortCol = 'team';
+let sortDir = 1; // 1=asc, -1=desc
+let sortedData = [...DATA.commitments];
+
+function sortData() {
+  sortedData.sort((a, b) => {
+    let va, vb;
+    switch (sortCol) {
+      case 'team': va = a.team.name; vb = b.team.name; break;
+      case 'player': va = a.lastName; vb = b.lastName; break;
+      case 'hometown': va = a.hometown; vb = b.hometown; break;
+      case 'college': va = a.college.name; vb = b.college.name; break;
+      case 'level': va = levelLabel(a.college.level); vb = levelLabel(b.college.level); break;
+      default: va = ''; vb = '';
+    }
+    va = (va || '').toLowerCase();
+    vb = (vb || '').toLowerCase();
+    if (va < vb) return -1 * sortDir;
+    if (va > vb) return 1 * sortDir;
+    // Secondary sort by last name
+    if (sortCol !== 'player') {
+      const la = a.lastName.toLowerCase(), lb = b.lastName.toLowerCase();
+      if (la < lb) return -1;
+      if (la > lb) return 1;
+    }
+    return 0;
+  });
+}
+
+// === Render Table ===
+function renderTable() {
+  sortData();
+  const tbody = document.getElementById('ccTableBody');
+  const cardsEl = document.getElementById('ccCards');
+
+  const rows = sortedData.map((c, i) => {
+    const teamLogo = imgOrFallback(c.team.logoUrl, HOCKEY_ICON, 'cc-logo');
+    const teamLink = c.team.profileUrl
+      ? `<a href="${c.team.profileUrl}" target="_blank" class="cc-team-name">${c.team.name}</a>`
+      : `<span class="cc-team-name">${c.team.name}</span>`;
+
+    const playerName = `${c.firstName} ${c.lastName}`;
+    const playerLink = c.player.profileUrl
+      ? `<a href="${c.player.profileUrl}" target="_blank" class="cc-player-name cc-player-link">${playerName}</a>`
+      : `<span class="cc-player-name">${playerName}</span>`;
+
+    const collegeLogo = imgOrFallback(c.college.logoUrl, COLLEGE_ICON, 'cc-logo');
+    const collegeLink = c.college.website
+      ? `<a href="${c.college.website}" target="_blank" rel="noopener" class="cc-college-name cc-college-link">${c.college.name}</a>`
+      : `<span class="cc-college-name">${c.college.name}</span>`;
+
+    const badge = `<span class="cc-badge ${levelClass(c.college.level)}">${levelLabel(c.college.level)}</span>`;
+
+    const searchText = [c.team.name, c.firstName, c.lastName, c.hometown, c.college.name, c.college.level].join(' ').toLowerCase();
+
+    return {
+      searchText,
+      teamName: c.team.name,
+      level: levelLabel(c.college.level),
+      tableRow: `<tr data-idx="${i}" data-search="${searchText}" data-team="${c.team.name}" data-level="${levelLabel(c.college.level)}">
+        <td><div class="cc-team-cell">${teamLogo}${teamLink}</div></td>
+        <td>${playerLink}</td>
+        <td>${c.hometown || ''}</td>
+        <td><div class="cc-college-cell">${collegeLogo}${collegeLink}</div></td>
+        <td>${badge}</td>
+      </tr>`,
+      card: `<div class="cc-card" data-idx="${i}" data-search="${searchText}" data-team="${c.team.name}" data-level="${levelLabel(c.college.level)}">
+        <div class="cc-card-team">${teamLogo}${teamLink}</div>
+        <div class="cc-card-player">${playerLink}</div>
+        <div class="cc-card-hometown">${c.hometown || ''}</div>
+        <div class="cc-card-college">${collegeLogo}${collegeLink} ${badge}</div>
+      </div>`
+    };
+  });
+
+  tbody.innerHTML = rows.map(r => r.tableRow).join('');
+  cardsEl.innerHTML = rows.map(r => r.card).join('');
+
+  // Update sort indicators
+  document.querySelectorAll('.cc-table thead th').forEach(th => {
+    const col = th.dataset.col;
+    th.classList.toggle('sort-active', col === sortCol);
+    th.querySelector('.sort-arrow').innerHTML = col === sortCol ? (sortDir === 1 ? '&#9650;' : '&#9660;') : '&#9650;';
+  });
+
+  applyFilters();
+}
+
+// === Filtering ===
+function applyFilters() {
+  const search = document.getElementById('ccSearch').value.toLowerCase().trim();
+  const levelFilter = document.getElementById('ccLevel').value;
+  const teamFilter = document.getElementById('ccTeam').value;
+
+  let visible = 0;
+  const total = sortedData.length;
+
+  document.querySelectorAll('#ccTableBody tr, .cc-cards .cc-card').forEach(el => {
+    const s = el.dataset.search || '';
+    const t = el.dataset.team || '';
+    const l = el.dataset.level || '';
+
+    const matchSearch = !search || s.includes(search);
+    const matchLevel = !levelFilter || l === levelFilter;
+    const matchTeam = !teamFilter || t === teamFilter;
+
+    const show = matchSearch && matchLevel && matchTeam;
+    el.classList.toggle('cc-hidden', !show);
+    // Count only table rows (not cards) to avoid double-counting
+    if (el.tagName === 'TR' && show) visible++;
+  });
+
+  document.getElementById('ccShowing').textContent = `Showing ${visible} of ${total}`;
+  document.getElementById('ccNoResults').classList.toggle('cc-hidden', visible > 0);
+}
+
+// === Event Listeners ===
+let searchTimer;
+document.getElementById('ccSearch').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applyFilters, 150);
+});
+document.getElementById('ccLevel').addEventListener('change', applyFilters);
+document.getElementById('ccTeam').addEventListener('change', applyFilters);
+
+document.querySelectorAll('.cc-table thead th').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) { sortDir *= -1; }
+    else { sortCol = col; sortDir = 1; }
+    renderTable();
+  });
+});
+
+// === Init ===
+buildStats();
+buildFilters();
+renderTable();
+</script>
+</body>
+</html>

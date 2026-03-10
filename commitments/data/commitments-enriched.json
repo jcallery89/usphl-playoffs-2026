@@ -1,0 +1,1940 @@
+{
+  "generated": "2026-03-09T22:11:05.286Z",
+  "season": "2025-26",
+  "league": "NCDC",
+  "count": 84,
+  "commitments": [
+    {
+      "firstName": "Colin",
+      "lastName": "Foyle",
+      "hometown": "Westfield, MA",
+      "team": {
+        "name": "Boston Jr. Bruins",
+        "teamId": "2270",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "player": {
+        "playerId": "1683",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1683&team=2270&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/35c2ebfc67628846a6ecc906d167fee4310ac328b65c9570454fb544f7ec5776.jpeg"
+      },
+      "college": {
+        "name": "Fitchburg State University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fitchburgathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Riley",
+      "lastName": "Greer",
+      "hometown": "Daytona Beach, FL",
+      "team": {
+        "name": "Boston Jr. Bruins",
+        "teamId": "2270",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "player": {
+        "playerId": "6433",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=6433&team=2270&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b154e52f02a6038cad041648dcc05b38f2d648e565f6cfbd880ad2da1127adff.jpeg"
+      },
+      "college": {
+        "name": "Southern New Hampshire University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2549.png&h=40&w=40",
+        "website": "https://snhupenmen.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brendan",
+      "lastName": "Nee",
+      "hometown": "Arlington, MA",
+      "team": {
+        "name": "Boston Jr. Bruins",
+        "teamId": "2270",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "player": {
+        "playerId": "19191",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19191&team=2270&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/66645d99a626a659221fd5869f836896dad32b1657ef5c780f384036cda36cf4.jpeg"
+      },
+      "college": {
+        "name": "Fitchburg State University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fitchburgathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Simon",
+      "lastName": "Mateas",
+      "hometown": "Bratislava, Slovenia",
+      "team": {
+        "name": "Boston Jr. Bruins",
+        "teamId": "2270",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "player": {
+        "playerId": "19200",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19200&team=2270&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4d4c80ac030428df5ac006c9d1c22e2dcf13b8f4ddbaf56d2600ba60d2d87f8c.jpeg"
+      },
+      "college": {
+        "name": "Elmira College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://elmirasoareagles.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Gellert",
+      "lastName": "Kiss-Molnar",
+      "hometown": "Budapest, Hungary",
+      "team": {
+        "name": "Boston Jr. Bruins",
+        "teamId": "2270",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d08d28e22997f19f1c8d00f01bc3fa31e6095f288808bbc3df32088ea02143ee.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2270&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Manhattanville University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40",
+        "website": "https://mvillevaliants.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Matthew",
+      "lastName": "O'Connor",
+      "hometown": "Melrose, MA",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Saint Michael's College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://smcknights.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Aries",
+      "lastName": "Carangi",
+      "hometown": "Philadelphia, PA",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": "2894",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2894&team=105&season=65",
+        "imageUrl": "https://lscluster.hockeytech.com/img/nophoto.png"
+      },
+      "college": {
+        "name": "Salem State University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://salemstatevikings.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Sammy",
+      "lastName": "Ohannesian",
+      "hometown": "Lynn, MA",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Wentworth Institute of Technology",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://wentworthathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Tyler",
+      "lastName": "Gwatkin",
+      "hometown": "Lyndonville, VT",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Saint Michael's College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://smcknights.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Kayston",
+      "lastName": "Un Yi",
+      "hometown": "Laval, QC, CAN",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Elmira College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://elmirasoareagles.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ayzek",
+      "lastName": "Waldron",
+      "hometown": "Cadyville, NY",
+      "team": {
+        "name": "Boston Dogs",
+        "teamId": "105",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/745a3e7a2b2587fdb353ef3710f703f6de8b27af293d4e9bfe8223a23d6e2b97.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=105&season=65"
+      },
+      "player": {
+        "playerId": "1821",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1821&team=105&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/7e3b9b7c405dfb2429229da623787c20fb3aee3397e9b5577c0bcd5c06fbf20e.jpeg"
+      },
+      "college": {
+        "name": "Misericordia University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://misericordiacougars.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Charles",
+      "lastName": "Dey",
+      "hometown": "Kailua, HI",
+      "team": {
+        "name": "Boston Jr. Rangers",
+        "teamId": "106",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7aaac0c71e1c4fa4809a1cbcb59aad6ac5ede0d929c74405cac936ec7b0de1d2.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=106&season=65"
+      },
+      "player": {
+        "playerId": "19297",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19297&team=106&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/c55131b297647ca30bbb86b498cbae5d7c2b18d6a101ad7be619be9608f4e980.jpeg"
+      },
+      "college": {
+        "name": "Curry College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://curryathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jack",
+      "lastName": "O'Connor",
+      "hometown": "Canton, GA",
+      "team": {
+        "name": "Boston Jr. Rangers",
+        "teamId": "106",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7aaac0c71e1c4fa4809a1cbcb59aad6ac5ede0d929c74405cac936ec7b0de1d2.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=106&season=65"
+      },
+      "player": {
+        "playerId": "6428",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=6428&team=106&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/76421e896511b44ee1b8defd0d6c32082c208133e7c0706059a6693af2227db6.jpeg"
+      },
+      "college": {
+        "name": "Colby College",
+        "level": "NESCAC",
+        "logoUrl": null,
+        "website": "https://colbymules.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Joel",
+      "lastName": "Nieminen",
+      "hometown": "Helsinki, FIN",
+      "team": {
+        "name": "Connecticut Jr. Rangers",
+        "teamId": "108",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=108&season=65"
+      },
+      "player": {
+        "playerId": "19905",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19905&team=108&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "SUNY Canton",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://cantonroos.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Magnus",
+      "lastName": "Turcotte",
+      "hometown": "North Haven, CT",
+      "team": {
+        "name": "Connecticut Jr. Rangers",
+        "teamId": "108",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=108&season=65"
+      },
+      "player": {
+        "playerId": "2110",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2110&team=108&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21788.jpg"
+      },
+      "college": {
+        "name": "Saint Anselm College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://saintanselmhawks.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Zachary",
+      "lastName": "Lacasse",
+      "hometown": "Chesterfield, MO",
+      "team": {
+        "name": "Connecticut Jr. Rangers",
+        "teamId": "108",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=108&season=65"
+      },
+      "player": {
+        "playerId": "19044",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19044&team=108&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Beloit College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://beloitbuccaneers.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Andrew",
+      "lastName": "Schmidt",
+      "hometown": "Chicago, IL",
+      "team": {
+        "name": "Idaho Falls Spud Kings",
+        "teamId": "109",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f68fab118290c8a003aff32652f4c73f1ad86fec09178c69c9beeb2a01da5bcc.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=109&season=65"
+      },
+      "player": {
+        "playerId": "1387",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1387&team=109&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/498fe38c3c58b3baa4d54fdc92e98d885ed15b74fae1228399f9de57a7633750.jpeg"
+      },
+      "college": {
+        "name": "Connecticut College",
+        "level": "NESCAC",
+        "logoUrl": null,
+        "website": "https://camelathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Sam",
+      "lastName": "Grimaldi",
+      "hometown": "Elk Grove Village, IL",
+      "team": {
+        "name": "Idaho Falls Spud Kings",
+        "teamId": "109",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f68fab118290c8a003aff32652f4c73f1ad86fec09178c69c9beeb2a01da5bcc.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=109&season=65"
+      },
+      "player": {
+        "playerId": "19325",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19325&team=109&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/834f282dbfd2e47dcc7795199dbca500ef2b3228812893d9ed87e71b193d8362.jpeg"
+      },
+      "college": {
+        "name": "Aurora University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://auaurora.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brady",
+      "lastName": "Plaza",
+      "hometown": "Danvers, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1090",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1090&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21789.jpg"
+      },
+      "college": {
+        "name": "Salve Regina University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://salveathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Cameron",
+      "lastName": "Stehle",
+      "hometown": "Raleigh, NC",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1093",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1093&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4947b0e34fbfcd0b46a5e16cedf312606cd83388f93d19707d7ccb4a194342ec.jpeg"
+      },
+      "college": {
+        "name": "Stevenson University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://stevensonathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jake",
+      "lastName": "Freelove",
+      "hometown": "Tyngsboro, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1080",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1080&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/c206c6681a4c3f82a569c364917de02a461604168982fad83eace129723755bd.jpeg"
+      },
+      "college": {
+        "name": "Fitchburg State University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fitchburgathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Nate",
+      "lastName": "Freelove",
+      "hometown": "Tyngsboro, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "20075",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=20075&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/ef606d2d7b88295d828566927e3bda49941176bda7fe98607d6de13293d65953.jpeg"
+      },
+      "college": {
+        "name": "Fitchburg State University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fitchburgathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brendan",
+      "lastName": "Peck",
+      "hometown": "Framingham, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "19688",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19688&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/dad1760de94d75bc34fbff8d51c73570033d3d5beb7104916ac60863554d9b01.jpeg"
+      },
+      "college": {
+        "name": "Tufts University",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/66.png&h=40&w=40",
+        "website": "https://gotuftsjumbos.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jaden",
+      "lastName": "Duprey",
+      "hometown": "Saint Albans, VT",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1049",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1049&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4a7359006152d373db561e3558cace91e089a90a506e963acc1ef8b5d09ca960.jpeg"
+      },
+      "college": {
+        "name": "Norwich University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://norwichathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "David",
+      "lastName": "Coughlin",
+      "hometown": "Burlington, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1077",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1077&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/dc1374b8c498c68c325063aca7fb546a72e328217cc16fca72bba19c4f68931a.jpeg"
+      },
+      "college": {
+        "name": "Babson College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jack",
+      "lastName": "Fickenscher",
+      "hometown": "Davidson, NC",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1781",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1781&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/22203.jpg"
+      },
+      "college": {
+        "name": "Wentworth Institute of Technology",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://wentworthathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Blake",
+      "lastName": "McMeniman",
+      "hometown": "Revere, MA",
+      "team": {
+        "name": "Islanders Hockey Club",
+        "teamId": "110",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a58035ffbd70d0471697f039a3033991b2187cf6aeed06bd9c873962f58b5160.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=110&season=65"
+      },
+      "player": {
+        "playerId": "1094",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1094&team=110&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/40efa7ef6709d42fcd5728ed6e93540e90dafc02ae2b4265e31e93e1197e278a.jpeg"
+      },
+      "college": {
+        "name": "Army West Point",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40",
+        "website": "https://goarmywestpoint.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Camden",
+      "lastName": "Prier",
+      "hometown": "North Palm Beach, FL",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Niagara University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/315.png&h=40&w=40",
+        "website": "https://purpleeagles.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Dante",
+      "lastName": "Siciliano",
+      "hometown": "Whitby, ON, CAN",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of Maine",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/311.png&h=40&w=40",
+        "website": "https://goblackbears.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Kirby",
+      "lastName": "Perler",
+      "hometown": "Woodbridge, CT",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Yale University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/43.png&h=40&w=40",
+        "website": "https://yalebulldogs.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Nick",
+      "lastName": "Bunch",
+      "hometown": "Michigan",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": "1261",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1261&team=111&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b3e1c42bf5844108c3b697b0e9f64b9eb9950e37e3971c7c756e17f4f0c2eb53.jpeg"
+      },
+      "college": {
+        "name": "Skidmore College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://skidmoreathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Nicky",
+      "lastName": "Romeo",
+      "hometown": "New City, NY",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of New Hampshire",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/160.png&h=40&w=40",
+        "website": "https://unhwildcats.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Tommy",
+      "lastName": "Holtby",
+      "hometown": "Frederick, MD",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Army West Point",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40",
+        "website": "https://goarmywestpoint.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Dean",
+      "lastName": "Toskos",
+      "hometown": "Oakland, NJ",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "College of the Holy Cross",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/107.png&h=40&w=40",
+        "website": "https://goholycross.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ryan",
+      "lastName": "Shea",
+      "hometown": "Norwell, MA",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": "1255",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1255&team=111&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6aebaa89a7fa6b11fa0e1552cb343e9388a77b85e571e147722bff82470291a4.jpeg"
+      },
+      "college": {
+        "name": "Babson College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Marty",
+      "lastName": "Magaletta",
+      "hometown": "Clifton Park, NY",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": "21521",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21521&team=111&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b65e4670bfaca2ccbd36724f5079286fd332b428a5a200c06057f97ef5ea7398.jpeg"
+      },
+      "college": {
+        "name": "Saint Michael's College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://smcknights.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Kristofers",
+      "lastName": "Krummins",
+      "hometown": "Riga, Latvia",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of Vermont",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/261.png&h=40&w=40",
+        "website": "https://uvmathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Derek",
+      "lastName": "Tremblay",
+      "hometown": "Quebec, QC, CAN",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": "1242",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1242&team=111&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/0574b1bc304ba97a58861dad197ed53b51440800b5c93593d6d68aeebdb4482e.jpeg"
+      },
+      "college": {
+        "name": "Amherst College",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/7.png&h=40&w=40",
+        "website": "https://athletics.amherst.edu/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Tristan",
+      "lastName": "Caldwell",
+      "hometown": "Ottawa, ON, CAN",
+      "team": {
+        "name": "Jersey Hitmen",
+        "teamId": "111",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/729d8d8dc9b4a2f95d548369daafab5880807b02a352c5ef9aa733247808658a.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=111&season=65"
+      },
+      "player": {
+        "playerId": "1266",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1266&team=111&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/f7fbeef711e3f831525fc7c712c63bcde2e4f69310e42edeb213738639f7a627.jpeg"
+      },
+      "college": {
+        "name": "Norwich University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://norwichathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ethan",
+      "lastName": "Abram-Hale",
+      "hometown": "Cape Neddick, ME",
+      "team": {
+        "name": "Lewiston MAINEiacs",
+        "teamId": "2278",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/200e474503a99d96f35f46f95a51d8383974ea30ba82f967d8346664b5674fcd.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2278&season=65"
+      },
+      "player": {
+        "playerId": "1215",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1215&team=2278&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20925.jpg"
+      },
+      "college": {
+        "name": "SUNY Fredonia",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fredoniabluedevils.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brent",
+      "lastName": "Beswick",
+      "hometown": "Wyckoff, NJ",
+      "team": {
+        "name": "Mercer Chiefs",
+        "teamId": "112",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d71007943a2032623b96460b14231fbf7a6a15fbce353fcfbd7a3884def4de66.jpeg",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=112&season=65"
+      },
+      "player": {
+        "playerId": "18962",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=18962&team=112&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/4554c0d531d3c2a50644b6e56108b85d4ffeb16f9a7faab87dfd4ab9dcb1753a.jpeg"
+      },
+      "college": {
+        "name": "Manhattanville University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40",
+        "website": "https://mvillevaliants.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Roy",
+      "hometown": "Stanstead, QC, CAN",
+      "team": {
+        "name": "New England Wolves",
+        "teamId": "2380",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"
+      },
+      "player": {
+        "playerId": "21952",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21952&team=2380&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "American International College",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
+        "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Julian",
+      "lastName": "Karagiannis",
+      "hometown": "LaSalle, QC, CAN",
+      "team": {
+        "name": "New England Wolves",
+        "teamId": "2380",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"
+      },
+      "player": {
+        "playerId": "21934",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21934&team=2380&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "American International College",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
+        "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Vincent",
+      "lastName": "Cregheur",
+      "hometown": "Terrebonne, QC, CAN",
+      "team": {
+        "name": "New England Wolves",
+        "teamId": "2380",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"
+      },
+      "player": {
+        "playerId": "730",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=730&team=2380&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "American International College",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
+        "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Zach",
+      "lastName": "Spicuzza",
+      "hometown": "Meredith, NH",
+      "team": {
+        "name": "New England Wolves",
+        "teamId": "2380",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/12197749671634cdfbc1f5a1e36e9baf67646243f992e3fdb93af2bdee205f9c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2380&season=65"
+      },
+      "player": {
+        "playerId": "21955",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21955&team=2380&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Framingham State University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/126815.png&h=40&w=40",
+        "website": "https://framinghamrams.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Riley",
+      "lastName": "Casey",
+      "hometown": "Bennington, VT",
+      "team": {
+        "name": "Northern Cyclones",
+        "teamId": "113",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/3f47340ee3433959dc0096c7ff8146ce33049533c60dfcf6d4531128a6c234be.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=113&season=65"
+      },
+      "player": {
+        "playerId": "1927",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1927&team=113&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/647feb3b2c5685c4fd16017977d71c8de0875403be71b216b2b4cac0e88b44b5.jpeg"
+      },
+      "college": {
+        "name": "Elmira College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://elmirasoareagles.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Cade",
+      "lastName": "Miner",
+      "hometown": "Lee, NH",
+      "team": {
+        "name": "New York Dynamo",
+        "teamId": "119",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/f19fa2d858177e2db61d75c32a4e05e9cef269f07c9f0e98fdcdd234ada4691d.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=119&season=65"
+      },
+      "player": {
+        "playerId": "2009",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2009&team=119&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20330.jpg"
+      },
+      "college": {
+        "name": "Franklin Pierce University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/112334.png&h=40&w=40",
+        "website": "https://franklinpierceathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Caleb",
+      "lastName": "Bendell",
+      "hometown": "Chanhassen, MN",
+      "team": {
+        "name": "Ogden Mustangs",
+        "teamId": "114",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=114&season=65"
+      },
+      "player": {
+        "playerId": "1416",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1416&team=114&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/19233.jpg"
+      },
+      "college": {
+        "name": "University of Wisconsin-Stevens Point",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://uwsppointers.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jacob",
+      "lastName": "Margarit",
+      "hometown": "Chaska, MN",
+      "team": {
+        "name": "Ogden Mustangs",
+        "teamId": "114",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=114&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Army West Point",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/349.png&h=40&w=40",
+        "website": "https://goarmywestpoint.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Liam",
+      "lastName": "Waugh",
+      "hometown": "Lawrenceville, GA",
+      "team": {
+        "name": "Ogden Mustangs",
+        "teamId": "114",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=114&season=65"
+      },
+      "player": {
+        "playerId": "2611",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2611&team=114&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/e2b63969d9de04db438ba8ebc6621a15cdfe2f1559c4156ec7196aeba70bf494.jpeg"
+      },
+      "college": {
+        "name": "Western New England University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://wnegoldenbears.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Troy",
+      "lastName": "Hunka",
+      "hometown": "North Canton, OH",
+      "team": {
+        "name": "Ogden Mustangs",
+        "teamId": "114",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/a52eed37e32e06207eb73c412c065dfb1625386a6404f60c541f89fd2150a380.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=114&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Robert Morris University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2523.png&h=40&w=40",
+        "website": "https://rmucolonials.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ryan",
+      "lastName": "Franks",
+      "hometown": "Roslyn, NY",
+      "team": {
+        "name": "P.A.L. Jr. Islanders",
+        "teamId": "115",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b94adb7bd9b737e31a42df1ed413d1bc96271d9cdb26a018009a4f607022ee05.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=115&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Canisius University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2099.png&h=40&w=40",
+        "website": "https://gogriffs.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Carsten",
+      "lastName": "Gause",
+      "hometown": "Wisconsin Rapids, WI",
+      "team": {
+        "name": "Pueblo Bulls",
+        "teamId": "116",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=116&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of Dubuque",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://dbqspartans.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jimmy",
+      "lastName": "Monks",
+      "hometown": "Wyandotte, MI",
+      "team": {
+        "name": "Pueblo Bulls",
+        "teamId": "116",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=116&season=65"
+      },
+      "player": {
+        "playerId": "21841",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21841&team=116&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/93e0974c52b44439606180363bf4cb9f49af5e1988a460d6b74b98d6dd3b6580.png"
+      },
+      "college": {
+        "name": "Adrian College",
+        "level": "ACHA",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/110134.png&h=40&w=40",
+        "website": "https://adrianbulldogs.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Matsvei",
+      "lastName": "Marshchanok",
+      "hometown": "Minsk, Belarus",
+      "team": {
+        "name": "Pueblo Bulls",
+        "teamId": "116",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=116&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Augustana University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2043.png&h=40&w=40",
+        "website": "https://goaugie.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Siamion",
+      "lastName": "Marshchanok",
+      "hometown": "Minsk, Belarus",
+      "team": {
+        "name": "Pueblo Bulls",
+        "teamId": "116",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/59be757a10fe75cad97344cca19a5bf1d2f70f2d9135d106658019a85002f85c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=116&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Augustana University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2043.png&h=40&w=40",
+        "website": "https://goaugie.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Dallas",
+      "lastName": "Potter",
+      "hometown": "Madison, CT",
+      "team": {
+        "name": "Rockets Hockey Club",
+        "teamId": "118",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Sacred Heart University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2529.png&h=40&w=40",
+        "website": "https://sacredheartpioneers.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Danny",
+      "lastName": "Hussa",
+      "hometown": "North Wales, PA",
+      "team": {
+        "name": "Rockets Hockey Club",
+        "teamId": "118",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of Vermont",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/261.png&h=40&w=40",
+        "website": "https://uvmathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Gabriel",
+      "lastName": "Simpson",
+      "hometown": "Lafayette, CO",
+      "team": {
+        "name": "Rockets Hockey Club",
+        "teamId": "118",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Lindenwood University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2815.png&h=40&w=40",
+        "website": "https://lindenwoodlions.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Kyle",
+      "lastName": "Rohrer",
+      "hometown": "Oregon, WI",
+      "team": {
+        "name": "Rockets Hockey Club",
+        "teamId": "118",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Lindenwood University",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2815.png&h=40&w=40",
+        "website": "https://lindenwoodlions.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Isaac",
+      "lastName": "Suh",
+      "hometown": "Chatham, NJ",
+      "team": {
+        "name": "Rockets Hockey Club",
+        "teamId": "118",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/4a935c390ba82f6c2f586355ff1eb30ac74ca4512f1274976f256d303c072f9e.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=118&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Air Force Academy",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2005.png&h=40&w=40",
+        "website": "https://goairforcefalcons.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Alex",
+      "lastName": "Babineau",
+      "hometown": "Lafayette, CO",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Wesleyan University",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40",
+        "website": "https://wesleyanathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Will",
+      "lastName": "Cavanagh",
+      "hometown": "East Greenwich, RI",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Wesleyan University",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40",
+        "website": "https://wesleyanathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brendan",
+      "lastName": "Keaveney",
+      "hometown": "Westwood, MA",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": "19962",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19962&team=120&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/60f1fd614852d24e1a85a73a3a76526d552deadcb29fd4cb600760a5d7b6e098.jpeg"
+      },
+      "college": {
+        "name": "Babson College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Corwith",
+      "lastName": "Simmers",
+      "hometown": "Hailey, ID",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": "21677",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=21677&team=120&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/44dbee98ba0071347427fbde6cde8fe2cc216b5d5dee7ace65e9d532640e149c.jpeg"
+      },
+      "college": {
+        "name": "Hamilton College",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/348.png&h=40&w=40",
+        "website": "https://athletics.hamilton.edu/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jake",
+      "lastName": "Owns",
+      "hometown": "Chittenango, NY",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Tufts University",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/66.png&h=40&w=40",
+        "website": "https://gotuftsjumbos.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Matt",
+      "lastName": "Lemay",
+      "hometown": "Lévis, QC, CAN",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": "19937",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19937&team=120&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/050bd0de13107bc3442c3f935df30b660a5a4ee13ce3a9e33236610029684048.jpeg"
+      },
+      "college": {
+        "name": "Babson College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Brennan",
+      "lastName": "Cail",
+      "hometown": "Cheshire, CT",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": "1053",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1053&team=120&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/b23729a749e96d10fe9b42d996d8e89c8ced6e98e3be17cb34e2678e0d13919c.jpeg"
+      },
+      "college": {
+        "name": "Roger Williams University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://rwuhawks.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Eli",
+      "lastName": "Velepec",
+      "hometown": "Irondequoit, NY",
+      "team": {
+        "name": "South Shore Kings",
+        "teamId": "120",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/d163603c925050e569ab48a4e21b47c825fdd85b1a74a3125fef397094620de3.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=120&season=65"
+      },
+      "player": {
+        "playerId": "1023",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1023&team=120&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/29b8b3004d0b344eff34af430b8f8c05f22a6b42a99add1f061a82511429d34c.jpeg"
+      },
+      "college": {
+        "name": "Wesleyan University",
+        "level": "NESCAC",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2955.png&h=40&w=40",
+        "website": "https://wesleyanathletics.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Travis",
+      "lastName": "Raisanen",
+      "hometown": "Drumheller, AB, CAN",
+      "team": {
+        "name": "Springfield Pics",
+        "teamId": "2292",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"
+      },
+      "player": {
+        "playerId": "7313",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=7313&team=2292&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20985.jpg"
+      },
+      "college": {
+        "name": "SUNY Canton",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://cantonroos.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jacob",
+      "lastName": "Carey",
+      "hometown": "Christchurch, NZL",
+      "team": {
+        "name": "Springfield Pics",
+        "teamId": "2292",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"
+      },
+      "player": {
+        "playerId": "7333",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=7333&team=2292&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/19173.jpg"
+      },
+      "college": {
+        "name": "American International College",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
+        "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Dylan",
+      "lastName": "Rovetti",
+      "hometown": "Cromwell, CT",
+      "team": {
+        "name": "Springfield Pics",
+        "teamId": "2292",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"
+      },
+      "player": {
+        "playerId": "19230",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19230&team=2292&season=65",
+        "imageUrl": null
+      },
+      "college": {
+        "name": "American International College",
+        "level": "NCAA DI",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2022.png&h=40&w=40",
+        "website": "https://aicyellowjackets.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Cal",
+      "lastName": "Fielder",
+      "hometown": "Monument, CO",
+      "team": {
+        "name": "Springfield Pics",
+        "teamId": "2292",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b4829571cb5d128fd40d73cf1d5c4baf275d61ca057e97e9e3b83e81b418d180.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=2292&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Lebanon Valley College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://godutchmen.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Evan",
+      "lastName": "Luxford",
+      "hometown": "Sun Prairie, WI",
+      "team": {
+        "name": "Thunder Hockey Club",
+        "teamId": "121",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1c5e398a6c902ae09b8e07fabd5d0a99fac8ec6a9c6922b6eddc6c146ae5746c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=121&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "University of Wisconsin-Stout",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://uwstout.prestosports.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Killian",
+      "lastName": "Wright",
+      "hometown": "Arlington, MA",
+      "team": {
+        "name": "Thunder Hockey Club",
+        "teamId": "121",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1c5e398a6c902ae09b8e07fabd5d0a99fac8ec6a9c6922b6eddc6c146ae5746c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=121&season=65"
+      },
+      "player": {
+        "playerId": "2020",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2020&team=121&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6c9087278bad89c7fd697b3af9508265a992496ea4f76210098b9862e610b25c.jpeg"
+      },
+      "college": {
+        "name": "Saint Michael's College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://smcknights.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Carson",
+      "lastName": "Zick",
+      "hometown": "Baraboo, WI",
+      "team": {
+        "name": "Utica Jr. Comets",
+        "teamId": "123",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/2f313cb0985b26eae20b60c9f7ee47bba4497626b964a792aeef0ed5f3a90441.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=123&season=65"
+      },
+      "player": {
+        "playerId": "2070",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=2070&team=123&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/2216f1b30a72eff26a5295b2b0a3f96dbd24b05ab78f9c45ba13f595da278c47.jpeg"
+      },
+      "college": {
+        "name": "University of Wisconsin-Stout",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://uwstout.prestosports.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Lorenzo",
+      "lastName": "Rossi",
+      "hometown": "Wappingers Falls, NY",
+      "team": {
+        "name": "West Chester Wolves",
+        "teamId": "124",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=124&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "Arcadia University",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://arcadiaknights.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Alec",
+      "lastName": "Alfieri",
+      "hometown": "Denver, CO",
+      "team": {
+        "name": "West Chester Wolves",
+        "teamId": "124",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=124&season=65"
+      },
+      "player": {
+        "playerId": "1592",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1592&team=124&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/f8e275962a303172b3e2ccbf91023630c360720a4f5e25f6f267e120aa770170.png"
+      },
+      "college": {
+        "name": "Lake Forest College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://goforesters.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Reece",
+      "lastName": "Allman",
+      "hometown": "Chicago Heights, IL",
+      "team": {
+        "name": "West Chester Wolves",
+        "teamId": "124",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=124&season=65"
+      },
+      "player": {
+        "playerId": "1466",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1466&team=124&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/6a43252f1b172d92fde4eff7710f0c3da65ae5d54052578a8f726985b00883b7.png"
+      },
+      "college": {
+        "name": "Lake Forest College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://goforesters.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Jakob",
+      "lastName": "Hansen",
+      "hometown": "Fishers, IN",
+      "team": {
+        "name": "West Chester Wolves",
+        "teamId": "124",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/1ed9d34ff1bd64fe74eba9c96b571c117405c4609e4121b5a12f65cca8bb167b.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=124&season=65"
+      },
+      "player": {
+        "playerId": "19766",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=19766&team=124&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/da17db3e7d6d0099d760c0109225e597f51a6abbeaed2ed4a324ae5e92e68949.jpeg"
+      },
+      "college": {
+        "name": "Lake Forest College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://goforesters.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "George",
+      "lastName": "Acklin",
+      "hometown": "Pittsburgh, PA",
+      "team": {
+        "name": "Worcester Railers JHC",
+        "teamId": "126",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=126&season=65"
+      },
+      "player": {
+        "playerId": "1730",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1730&team=126&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/20850.jpg"
+      },
+      "college": {
+        "name": "Saint Anselm College",
+        "level": "NCAA DII",
+        "logoUrl": null,
+        "website": "https://saintanselmhawks.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Travis",
+      "lastName": "Rugg",
+      "hometown": "Hingham, MA",
+      "team": {
+        "name": "Worcester Railers JHC",
+        "teamId": "126",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=126&season=65"
+      },
+      "player": {
+        "playerId": "18746",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=18746&team=126&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/1ac581df68c8ecb5d7d369b36d3f4347d128f6585ffa3621b214f21a5b9c3487.png"
+      },
+      "college": {
+        "name": "Babson College",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://babsonathletics.com/sports/mens-ice-hockey"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ezra",
+      "lastName": "Zizmor",
+      "hometown": "Brooklyn, NY",
+      "team": {
+        "name": "Worcester Railers JHC",
+        "teamId": "126",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=126&season=65"
+      },
+      "player": {
+        "playerId": "1727",
+        "profileUrl": "https://usphl.com/ncdc/game-center/players/?playerId=1727&team=126&season=65",
+        "imageUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/21089.jpg"
+      },
+      "college": {
+        "name": "Manhattanville University",
+        "level": "NCAA DIII",
+        "logoUrl": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2879.png&h=40&w=40",
+        "website": "https://mvillevaliants.com/sports/mice/index"
+      },
+      "storyUrl": null
+    },
+    {
+      "firstName": "Ben",
+      "lastName": "Jarosz",
+      "hometown": "Franklin, MA",
+      "team": {
+        "name": "Worcester Railers JHC",
+        "teamId": "126",
+        "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/03515d681597ab8b0ede5cffd76105cf7e8649d3ba8faf0e2a26478704842f6c.png",
+        "profileUrl": "https://usphl.com/ncdc/game-center/teams/?team=126&season=65"
+      },
+      "player": {
+        "playerId": null,
+        "profileUrl": null,
+        "imageUrl": null
+      },
+      "college": {
+        "name": "SUNY Fredonia",
+        "level": "NCAA DIII",
+        "logoUrl": null,
+        "website": "https://fredoniabluedevils.com/sports/mice/index"
+      },
+      "storyUrl": null
+    }
+  ]
+}

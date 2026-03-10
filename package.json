@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "serve public -l 3456",
     "preview": "serve public -l 3456",
     "build-team-map": "node scripts/build-team-map.js",
     "init-bracket": "node scripts/init-bracket-state.js"
