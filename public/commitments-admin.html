@@ -222,7 +222,7 @@
       font-family: inherit; font-size: 0.8rem;
     }
     .college-row input:focus, .college-row select:focus { outline: none; border-color: #c91417; }
-    .college-row .mhr-input { width: 80px; }
+    .college-row .logo-input { width: 160px; }
     .college-row .state-input { width: 45px; text-transform: uppercase; }
     .college-row .level-select { width: 110px; }
     .college-row .url-input { width: 200px; }
@@ -326,12 +326,12 @@
             <option value="ACHA">ACHA</option>
           </select>
           <input type="text" id="newCollegeState" placeholder="ST" class="state-input" maxlength="2">
-          <input type="text" id="newCollegeMhr" placeholder="MHR ID" class="mhr-input">
+          <input type="text" id="newCollegeLogo" placeholder="MHR ID or logo URL" class="logo-input" title="Enter an MHR hex ID (e.g. 0004cc) or paste a full image URL">
           <input type="text" id="newCollegeUrl" placeholder="Hockey website URL" class="url-input">
           <button class="btn btn-sm btn-primary" onclick="addCollege()">Add</button>
         </div>
         <div class="helper" style="margin-top:0.5rem;font-size:0.75rem;color:#888;">
-          MHR ID = hex code from the college's logo URL on <strong>myhockeyrankings.com</strong>. Logo auto-generates from MHR ID. State = 2-letter abbreviation (e.g., MA, NY).
+          <strong>Logo:</strong> Enter an MHR hex ID (auto-generates CDN URL) or paste any image URL directly. <strong>State:</strong> 2-letter abbreviation (e.g., MA, NY).
         </div>
       </div>
 
@@ -882,12 +882,15 @@ function renderColleges() {
       ? `<img class="logo-preview" src="${info.logoUrl}" onerror="this.outerHTML='<div class=\\'logo-placeholder no-logo\\'>?</div>'">`
       : `<div class="logo-placeholder${noLogoCls}">-</div>`;
 
+    // Show mhrId if present, otherwise show custom logoUrl
+    const logoFieldValue = info.mhrId || (info.logoUrl && !info.mhrId ? info.logoUrl : '') || '';
+
     return `<div class="college-row" data-college="${name}" data-search="${name.toLowerCase()}">
       ${logoHtml}
       <span class="college-name">${name}${countText}</span>
       ${levelSelectHtml(info.level || '', 'level')}
       <input class="state-input" type="text" value="${info.state || ''}" placeholder="ST" maxlength="2" data-field="state">
-      <input class="mhr-input" type="text" value="${info.mhrId || ''}" placeholder="MHR ID" data-field="mhrId">
+      <input class="logo-input" type="text" value="${logoFieldValue}" placeholder="MHR ID or logo URL" data-field="logo" title="Enter an MHR hex ID (e.g. 0004cc) or paste a full image URL">
       <input class="url-input" type="text" value="${info.website || ''}" placeholder="Website URL" data-field="website">
       <button class="btn btn-sm btn-primary" onclick="saveCollege('${escapedName}', this)">Save</button>
       <button class="btn btn-sm btn-danger" onclick="deleteCollege('${escapedName}')">Del</button>
@@ -922,16 +925,21 @@ function filterColleges() {
 
 async function saveCollege(name, btn) {
   const row = btn.closest('.college-row');
-  const mhrId = row.querySelector('[data-field="mhrId"]').value.trim();
+  const logoField = row.querySelector('[data-field="logo"]').value.trim();
   const state = row.querySelector('[data-field="state"]').value.trim().toUpperCase();
   const website = row.querySelector('[data-field="website"]').value.trim();
   const level = row.querySelector('[data-field="level"]').value;
   const oldLevel = (collegeMappings[name] && collegeMappings[name].level) || '';
 
+  // Detect if the logo field contains a URL or an MHR hex ID
+  const isUrl = logoField.startsWith('http://') || logoField.startsWith('https://');
+  const mhrId = isUrl ? null : (logoField || null);
+  const logoUrl = isUrl ? logoField : null;
+
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, mhrId: mhrId || null, website, level, state },
+      body: { action: 'update-college', collegeName: name, mhrId, logoUrl, website, level, state },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -982,15 +990,19 @@ async function addCollege() {
   const name = document.getElementById('newCollegeName').value.trim();
   const level = document.getElementById('newCollegeLevel').value;
   const state = document.getElementById('newCollegeState').value.trim().toUpperCase();
-  const mhrId = document.getElementById('newCollegeMhr').value.trim();
+  const logoField = document.getElementById('newCollegeLogo').value.trim();
   const website = document.getElementById('newCollegeUrl').value.trim();
 
   if (!name) { showToast('College name is required', 'error'); return; }
 
+  const isUrl = logoField.startsWith('http://') || logoField.startsWith('https://');
+  const mhrId = isUrl ? null : (logoField || null);
+  const logoUrl = isUrl ? logoField : null;
+
   try {
     const res = await authFetch(`${API_BASE}/api/commitments-admin`, {
       method: 'POST',
-      body: { action: 'update-college', collegeName: name, mhrId: mhrId || null, website, level, state },
+      body: { action: 'update-college', collegeName: name, mhrId, logoUrl, website, level, state },
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error);
@@ -1005,7 +1017,7 @@ async function addCollege() {
     document.getElementById('newCollegeName').value = '';
     document.getElementById('newCollegeLevel').value = '';
     document.getElementById('newCollegeState').value = '';
-    document.getElementById('newCollegeMhr').value = '';
+    document.getElementById('newCollegeLogo').value = '';
     document.getElementById('newCollegeUrl').value = '';
     showToast(`Added "${name}"`, 'success');
   } catch (e) {

@@ -210,7 +210,7 @@ async function handlePublish(req, res) {
 }
 
 async function handleUpdateCollege(req, res) {
-  const { collegeName, mhrId, website, level, state } = req.body;
+  const { collegeName, mhrId, logoUrl, website, level, state } = req.body;
   if (!collegeName) {
     return res.status(400).json({ error: 'collegeName is required' });
   }
@@ -218,9 +218,13 @@ async function handleUpdateCollege(req, res) {
   const data = (await kvGet('college-mappings')) || { colleges: {} };
   const colleges = data.colleges || data;
 
+  // logoUrl takes priority if provided directly; otherwise auto-generate from mhrId
+  const resolvedMhrId = (mhrId || '').trim() || null;
+  const resolvedLogoUrl = (logoUrl || '').trim() || (resolvedMhrId ? mhrLogoUrl(resolvedMhrId) : null);
+
   colleges[collegeName.trim()] = {
-    mhrId: (mhrId || '').trim() || null,
-    logoUrl: mhrId ? mhrLogoUrl((mhrId || '').trim()) : null,
+    mhrId: resolvedMhrId,
+    logoUrl: resolvedLogoUrl,
     website: (website || '').trim() || null,
     level: (level || '').trim() || null,
     state: (state || '').trim() || null,
