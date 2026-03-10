@@ -465,7 +465,7 @@
   },
   "Elite": {
     "Atlantic": {
-      "qualifyCount": 6,
+      "qualifyCount": 5,
       "playoffFormat": {
         "seriesFormat": "Bo3",
         "rounds": [
@@ -473,17 +473,14 @@
             "name": "Round 1",
             "matchups": [
               [
-                3,
-                6
-              ],
-              [
                 4,
                 5
               ]
             ],
             "byes": [
               1,
-              2
+              2,
+              3
             ]
           },
           {
