@@ -1399,7 +1399,7 @@
         {
           "roundIndex": 0,
           "roundName": "Play-In",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [
             {
               "seed": 1,
@@ -1780,7 +1780,7 @@
         {
           "roundIndex": 0,
           "roundName": "Play-In",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [
             {
               "seed": 1,
@@ -1875,7 +1875,7 @@
         {
           "roundIndex": 2,
           "roundName": "Divisional Championship",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [],
           "matchups": [
             {
