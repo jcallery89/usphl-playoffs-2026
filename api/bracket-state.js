@@ -1,6 +1,11 @@
+import { readFileSync } from 'fs';
 import { kvGet, kvSet, getCached } from '../lib/cache.js';
 import { getSchedule } from '../lib/timetoscore.js';
-import { updateBracketWithGames } from '../lib/bracket-engine.js';
+import { updateBracketWithGames, syncFormatsFromConfig } from '../lib/bracket-engine.js';
+
+const bracketConfig = JSON.parse(
+  readFileSync(new URL('../data/bracket-config.json', import.meta.url), 'utf8')
+);
 
 const BRACKET_KEY = 'bracket-state';
 
@@ -41,6 +46,9 @@ async function handleGet(req, res) {
       Elite: eliteGames || [],
       NCDC: ncdcGames || [],
     };
+
+    // Sync round formats from config to fix stale format overrides in state
+    syncFormatsFromConfig(bracketState, bracketConfig);
 
     // Update series records from live data (also auto-advances completed rounds)
     bracketState = updateBracketWithGames(bracketState, allGames);
