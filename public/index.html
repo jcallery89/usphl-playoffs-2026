@@ -1279,13 +1279,55 @@
     return BRACKET_STATE[currentLeague] && BRACKET_STATE[currentLeague].Nationals;
   }
 
+  /**
+   * Scan all divisions in the current league for completed divisional
+   * championship rounds and return the list of qualified teams.
+   */
+  function getQualifiedTeams(league) {
+    if (!BRACKET_STATE || !BRACKET_STATE[league]) return [];
+    var qualified = [];
+    var leagueState = BRACKET_STATE[league];
+    var divNames = (DIVISIONS[league] || []).filter(function(d) { return d !== 'Nationals'; });
+    divNames.forEach(function(division) {
+      var divState = leagueState[division];
+      if (!divState || !divState.rounds || divState.rounds.length === 0) return;
+      // Find the last round (championship)
+      var lastRound = divState.rounds[divState.rounds.length - 1];
+      if (!lastRound || !lastRound.matchups) return;
+      lastRound.matchups.forEach(function(m) {
+        if (m.status === 'complete' && m.winnerId && m.winnerName) {
+          qualified.push({ teamName: m.winnerName, teamId: m.winnerId, division: division });
+        }
+      });
+    });
+    return qualified;
+  }
+
   function renderNationalsBracket() {
     var nat = getNationalsData();
-    if (!nat) { bracketContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+    var qualified = getQualifiedTeams(currentLeague);
+    var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals'; }).length;
+    var allChampionsDetermined = qualified.length >= totalDivisions;
+
+    // If no Nationals data yet, show qualified teams tracker
+    if (!nat) {
+      var html = '';
+      html += renderQualifiedTeamsSection(qualified, totalDivisions, allChampionsDetermined);
+      if (qualified.length === 0) {
+        html += '<p class="placeholder-msg">Nationals bracket will be set once divisional championships are finalized.</p>';
+      }
+      bracketContent.innerHTML = html;
+      return;
+    }
 
     var html = '';
     if (nat.formatInfo) {
       html += '<div class="schedule-format-info">' + nat.formatInfo + '</div>';
+    }
+
+    // Show qualified teams if seeds are still being finalized
+    if (!allChampionsDetermined && qualified.length > 0) {
+      html += renderQualifiedTeamsSection(qualified, totalDivisions, allChampionsDetermined);
     }
 
     // Pod groupings
@@ -1342,9 +1384,43 @@
     bracketContent.innerHTML = html;
   }
 
+  function renderQualifiedTeamsSection(qualified, totalDivisions, allChampionsDetermined) {
+    var html = '';
+    html += '<div style="background:#f8f8f9;border-left:3px solid #0c568c;padding:0.65rem 0.85rem;margin-bottom:1rem;font-size:0.85rem;">';
+    if (allChampionsDetermined) {
+      html += '<strong>All divisional champions determined!</strong> Seeds will be announced shortly.';
+    } else {
+      html += '<strong>Qualified for Nationals (' + qualified.length + '/' + totalDivisions + ' divisions decided)</strong>';
+      html += '<span style="color:#888;margin-left:0.5rem;font-weight:400;"> \u2014 Seeds finalized once all divisional championships are complete</span>';
+    }
+    html += '</div>';
+    if (qualified.length > 0) {
+      html += '<table class="data-table" style="margin-bottom:1rem;"><thead><tr><th style="width:60%;">Team</th><th>Division Champion</th></tr></thead><tbody>';
+      qualified.forEach(function(q) {
+        html += '<tr class="qualified"><td>' + teamNameHTML(q.teamName, currentLeague) + '</td>';
+        html += '<td style="color:#888;font-size:0.85rem;">' + q.division + '</td></tr>';
+      });
+      // Show remaining TBD slots
+      var remaining = totalDivisions - qualified.length;
+      for (var i = 0; i < remaining; i++) {
+        html += '<tr><td style="color:#bbb;font-style:italic;">TBD</td><td style="color:#bbb;font-style:italic;">In progress</td></tr>';
+      }
+      html += '</tbody></table>';
+    }
+    return html;
+  }
+
   function renderNationalsSchedule() {
     var nat = getNationalsData();
-    if (!nat) { scheduleContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+    if (!nat) {
+      var qualified = getQualifiedTeams(currentLeague);
+      if (qualified.length > 0) {
+        scheduleContent.innerHTML = '<p class="placeholder-msg">Schedule will be available once all divisional championships are finalized and seeds are set.</p>';
+      } else {
+        scheduleContent.innerHTML = '<p class="placeholder-msg">Nationals schedule not available yet.</p>';
+      }
+      return;
+    }
 
     var html = '<div class="dineen-schedule">';
     html += '<div class="schedule-info">';
@@ -1373,7 +1449,16 @@
 
   function renderNationalsStandings() {
     var nat = getNationalsData();
-    if (!nat) { standingsContent.innerHTML = '<p class="placeholder-msg">Nationals data not available yet.</p>'; return; }
+    if (!nat) {
+      var qualified = getQualifiedTeams(currentLeague);
+      var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals'; }).length;
+      if (qualified.length > 0) {
+        standingsContent.innerHTML = renderQualifiedTeamsSection(qualified, totalDivisions, qualified.length >= totalDivisions);
+      } else {
+        standingsContent.innerHTML = '<p class="placeholder-msg">Nationals standings not available yet.</p>';
+      }
+      return;
+    }
 
     var html = '<div class="schedule-info">';
     html += '<p><strong>' + nat.name + '</strong></p>';
