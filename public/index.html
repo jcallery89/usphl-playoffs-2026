@@ -1407,6 +1407,12 @@
       }
       html += '</tbody></table>';
     }
+    // Wild card note for Premier (10 division champs + 2 wild cards = 12 teams)
+    if (currentLeague === 'Premier') {
+      html += '<div style="background:#fff8e1;border-left:3px solid #e6a817;padding:0.55rem 0.85rem;margin-bottom:1rem;font-size:0.82rem;color:#6d5a00;">';
+      html += '<strong>Wild Cards:</strong> The final 2 wild card selections will be determined once all divisional playoffs are finalized.';
+      html += '</div>';
+    }
     return html;
   }
 
