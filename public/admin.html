@@ -530,8 +530,8 @@
             m.games.forEach(function(g) {
               var isScheduled = g.game_status === 'scheduled';
               var isIfNecessary = g.if_necessary;
-              var homeWin = g.winner_id === m.homeTeamId;
-              var awayWin = g.winner_id === m.awayTeamId;
+              var homeWin = String(g.winner_id) === String(m.homeTeamId);
+              var awayWin = String(g.winner_id) === String(m.awayTeamId);
 
               if (isScheduled) {
                 var cls = isIfNecessary ? 'if-necessary' : 'scheduled';
@@ -634,7 +634,7 @@
       });
       currentRound.matchups.forEach(function(m) {
         if (m.winnerId) {
-          var isHome = m.winnerId === m.homeTeamId;
+          var isHome = String(m.winnerId) === String(m.homeTeamId);
           advancing.push({
             seed: isHome ? m.homeSeed : m.awaySeed,
             teamId: m.winnerId,
