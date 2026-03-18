@@ -261,7 +261,7 @@
         {
           "roundIndex": 2,
           "roundName": "Divisional Championship",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [],
           "matchups": [
             {
@@ -1494,7 +1494,7 @@
         {
           "roundIndex": 2,
           "roundName": "Divisional Championship",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [],
           "matchups": [
             {

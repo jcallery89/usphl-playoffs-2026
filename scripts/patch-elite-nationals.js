@@ -19,6 +19,9 @@ async function main() {
     dates: 'March 25\u201329, 2026',
     location: 'Ice Vault, Wayne, NJ',
     formatInfo: 'Round-robin pod play leading to semifinals and championship. All games at Ice Vault, Wayne, NJ.',
+    wildCards: [
+      { label: 'Elite Wild Card', teamName: 'Montreal Knights', teamId: '2291', division: 'New England' },
+    ],
     days: [
       {
         date: 'Wednesday, March 25',
