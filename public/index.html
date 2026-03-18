@@ -1274,6 +1274,28 @@
   // ===========================================================================
   // RENDER NATIONALS (Premier & Elite)
   // ===========================================================================
+
+  /**
+   * Resolve a Nationals placeholder label (e.g. "Elite Wild Card", "Elite Seed #1")
+   * to the actual team name if wild card or seed data is available.
+   */
+  function resolveNationalsLabel(nat, label) {
+    if (!nat || !label) return label;
+    // Check wild cards
+    if (nat.wildCards) {
+      for (var i = 0; i < nat.wildCards.length; i++) {
+        if (nat.wildCards[i].label === label) return nat.wildCards[i].teamName;
+      }
+    }
+    // Check seeds
+    if (nat.seeds) {
+      for (var i = 0; i < nat.seeds.length; i++) {
+        if (nat.seeds[i].label === label) return nat.seeds[i].teamName;
+      }
+    }
+    return label;
+  }
+
   function getNationalsData() {
     if (!BRACKET_STATE) return null;
     return BRACKET_STATE[currentLeague] && BRACKET_STATE[currentLeague].Nationals;
@@ -1338,7 +1360,7 @@
         html += '<div style="display:inline-block;vertical-align:top;margin-right:1.5rem;margin-bottom:0.5rem;">';
         html += '<strong style="color:#c91417;font-size:0.85rem;">' + podName + '</strong>';
         html += '<div style="font-size:0.8rem;color:#666;line-height:1.6;">';
-        pod.teams.forEach(function(t) { html += t + '<br>'; });
+        pod.teams.forEach(function(t) { html += resolveNationalsLabel(nat, t) + '<br>'; });
         html += '</div></div>';
       });
       html += '</div>';
@@ -1357,9 +1379,9 @@
       html += '<div class="round"><div class="round-title">Semifinals — ' + semis.date.replace(/^[A-Za-z]+, /, '') + '</div>';
       semis.games.forEach(function(g) {
         html += '<div class="matchup">';
-        html += '<div class="matchup-team home"><span>' + g.home + '</span></div>';
+        html += '<div class="matchup-team home"><span>' + resolveNationalsLabel(nat, g.home) + '</span></div>';
         html += '<div class="matchup-vs">vs</div>';
-        html += '<div class="matchup-team away"><span>' + g.away + '</span></div>';
+        html += '<div class="matchup-team away"><span>' + resolveNationalsLabel(nat, g.away) + '</span></div>';
         html += '<div class="matchup-label">' + g.time + ', ' + g.rink;
         if (g.note) html += ' (' + g.note + ')';
         html += '</div></div>';
@@ -1370,9 +1392,9 @@
       html += '<div class="round"><div class="round-title" style="color:#c91417;">Championship — ' + championship.date.replace(/^[A-Za-z]+, /, '') + '</div>';
       championship.games.forEach(function(g) {
         html += '<div class="matchup">';
-        html += '<div class="matchup-team home"><span>' + g.home + '</span></div>';
+        html += '<div class="matchup-team home"><span>' + resolveNationalsLabel(nat, g.home) + '</span></div>';
         html += '<div class="matchup-vs">vs</div>';
-        html += '<div class="matchup-team away"><span>' + g.away + '</span></div>';
+        html += '<div class="matchup-team away"><span>' + resolveNationalsLabel(nat, g.away) + '</span></div>';
         html += '<div class="matchup-label">' + g.time + ', ' + g.rink + '</div>';
         if (g.note) html += '<div class="series-status" style="color:#c91417;font-weight:700;border:none;">' + g.note + '</div>';
         html += '</div>';
@@ -1407,10 +1429,21 @@
       }
       html += '</tbody></table>';
     }
-    // Wild card note for Premier (10 division champs + 2 wild cards = 12 teams)
+    // Wild card notes
     if (currentLeague === 'Premier') {
       html += '<div style="background:#fff8e1;border-left:3px solid #e6a817;padding:0.55rem 0.85rem;margin-bottom:1rem;font-size:0.82rem;color:#6d5a00;">';
       html += '<strong>Wild Cards:</strong> The final 2 wild card selections will be determined once all divisional playoffs are finalized.';
+      html += '</div>';
+    }
+    if (currentLeague === 'Elite') {
+      var nat = getNationalsData();
+      var wcNames = (nat && nat.wildCards) ? nat.wildCards.map(function(wc) { return wc.teamName; }) : [];
+      html += '<div style="background:#fff8e1;border-left:3px solid #e6a817;padding:0.55rem 0.85rem;margin-bottom:1rem;font-size:0.82rem;color:#6d5a00;">';
+      if (wcNames.length > 0) {
+        html += '<strong>Wild Card:</strong> ' + wcNames.join(', ');
+      } else {
+        html += '<strong>Wild Card:</strong> The wild card selection will be determined once all divisional playoffs are finalized.';
+      }
       html += '</div>';
     }
     return html;
@@ -1441,7 +1474,7 @@
       day.games.forEach(function(g) {
         html += '<div class="dineen-game">';
         html += '<div class="dineen-game-date">' + g.time + ', ' + g.rink + '</div>';
-        html += '<div class="dineen-game-matchup">' + g.home + ' vs. ' + g.away;
+        html += '<div class="dineen-game-matchup">' + resolveNationalsLabel(nat, g.home) + ' vs. ' + resolveNationalsLabel(nat, g.away);
         if (g.pod) html += ' <span style="color:#999;font-size:0.8rem;">(' + g.pod + ')</span>';
         html += '</div>';
         if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
