@@ -58,6 +58,8 @@
       "qualifyCount": 5,
       "playoffFormat": {
         "seriesFormat": "Bo3",
+        "playInFormat": "1 Game",
+        "championshipFormat": "1 Game",
         "rounds": [
           {
             "name": "Play-In",
