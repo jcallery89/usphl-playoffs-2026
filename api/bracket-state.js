@@ -1,10 +1,16 @@
 import { readFileSync } from 'fs';
 import { kvGet, kvSet, getCached } from '../lib/cache.js';
 import { getSchedule } from '../lib/timetoscore.js';
-import { updateBracketWithGames, syncFormatsFromConfig } from '../lib/bracket-engine.js';
+import { updateBracketWithGames, syncFormatsFromConfig, initializeBracketState, BRACKET_STATE_VERSION } from '../lib/bracket-engine.js';
 
 const bracketConfig = JSON.parse(
   readFileSync(new URL('../data/bracket-config.json', import.meta.url), 'utf8')
+);
+const initialSeeds = JSON.parse(
+  readFileSync(new URL('../data/initial-seeds.json', import.meta.url), 'utf8')
+);
+const teamMappings = JSON.parse(
+  readFileSync(new URL('../data/team-mappings.json', import.meta.url), 'utf8')
 );
 
 const BRACKET_KEY = 'bracket-state';
@@ -32,6 +38,13 @@ async function handleGet(req, res) {
 
     if (!bracketState) {
       return res.status(200).json({ _empty: true, message: 'Bracket state not initialized. Run npm run init-bracket.' });
+    }
+
+    // Auto-reinitialize if bracket state version is outdated (e.g. after bug fixes)
+    if (!bracketState._version || bracketState._version < BRACKET_STATE_VERSION) {
+      console.log(`Bracket state version ${bracketState._version || 0} < ${BRACKET_STATE_VERSION}, reinitializing...`);
+      bracketState = initializeBracketState(bracketConfig, initialSeeds, teamMappings);
+      await kvSet(BRACKET_KEY, bracketState);
     }
 
     // Fetch latest games and update series records
