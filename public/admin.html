@@ -422,8 +422,10 @@
     const DIVISIONS = {
       Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence"],
       Elite: ["Atlantic","Florida","Midwest","New England","Southeast"],
-      NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup"],
+      NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup Finals"],
     };
+    // Map display names to bracket state keys
+    function divStateKey(division) { return (division === 'Dineen Cup Finals') ? 'Dineen Cup' : division; }
 
     function onLeagueChange() {
       populateDivisions();
@@ -457,7 +459,7 @@
         return;
       }
 
-      const divState = bracketState[league][division];
+      const divState = bracketState[league][divStateKey(division)];
       if (!divState || !divState.rounds) {
         container.innerHTML = '<p style="color:#888;">No bracket data for this division.</p>';
         return;
@@ -720,7 +722,7 @@
       var league = document.getElementById('leagueSelect').value;
       var division = document.getElementById('divisionSelect').value;
       var val = document.getElementById('formatInfo').value.trim();
-      bracketState[league][division].formatInfo = val || null;
+      bracketState[league][divStateKey(division)].formatInfo = val || null;
       await saveBracketState();
       var msg = document.getElementById('formatSaveMsg');
       msg.style.display = 'inline';
@@ -732,7 +734,7 @@
       var division = document.getElementById('divisionSelect').value;
       var info = document.getElementById('schedInfo_' + roundIdx).value.trim();
       var note = document.getElementById('schedNote_' + roundIdx).value.trim();
-      var round = bracketState[league][division].rounds[roundIdx];
+      var round = bracketState[league][divStateKey(division)].rounds[roundIdx];
       round.scheduleInfo = info || null;
       round.scheduleNote = note || null;
       await saveBracketState();
