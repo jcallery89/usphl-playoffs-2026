@@ -463,6 +463,22 @@
           }
         ]
       }
+    },
+    "Nationals": {
+      "wildCards": [
+        {
+          "label": "Premier Wild Card 1",
+          "teamName": "Toledo Cherokee",
+          "teamId": "485",
+          "division": "Great Lakes"
+        },
+        {
+          "label": "Premier Wild Card 2",
+          "teamName": "Fresno Monsters",
+          "teamId": "445",
+          "division": "Pacific"
+        }
+      ]
     }
   },
   "Elite": {
