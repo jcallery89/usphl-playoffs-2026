@@ -222,6 +222,26 @@
     .dineen-game-date { color: #777; min-width: 140px; font-size: 0.85rem; }
     .dineen-game-matchup { flex: 1; font-size: 0.9rem; color: #333; }
     .dineen-game-note { font-size: 0.75rem; color: #999; font-style: italic; }
+    /* ===== Dineen Cup Finals Page ===== */
+    .dineen-hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; padding: 2rem 1.5rem; border-radius: 10px; text-align: center; margin-bottom: 1.5rem; border-bottom: 4px solid #c91417; }
+    .dineen-hero-logo { max-width: 200px; height: auto; margin-bottom: 1rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
+    .dineen-hero-title { font-size: 1.6rem; font-weight: 800; margin: 0 0 0.4rem; letter-spacing: 0.5px; text-transform: uppercase; }
+    .dineen-hero-subtitle { font-size: 1rem; color: #b0c4de; margin-bottom: 0.3rem; }
+    .dineen-hero-dates { font-size: 0.9rem; color: #8899aa; }
+    .dineen-section { margin-bottom: 1.5rem; }
+    .dineen-section p { font-size: 0.88rem; color: #444; line-height: 1.65; margin: 0.4rem 0; }
+    .dineen-section-title { font-size: 1rem; font-weight: 700; color: #c91417; margin: 0 0 0.6rem; padding-bottom: 0.35rem; border-bottom: 2px solid rgba(201, 20, 23, 0.2); text-transform: uppercase; letter-spacing: 0.3px; }
+    .dineen-quote { background: #f8f8f9; border-left: 4px solid #c91417; padding: 1rem 1.25rem; margin-bottom: 1rem; border-radius: 0 6px 6px 0; }
+    .dineen-quote p { font-size: 0.88rem; color: #444; line-height: 1.6; margin: 0 0 0.5rem; font-style: italic; }
+    .dineen-quote cite { font-size: 0.82rem; color: #777; font-style: normal; font-weight: 600; }
+    .dineen-history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .dineen-history-col { }
+    .dineen-history-table { font-size: 0.84rem; }
+    .dineen-venue { background: #f0f4f8; border: 1px solid #d0dbe6; border-radius: 8px; padding: 1.25rem; }
+    @media (max-width: 700px) {
+      .dineen-history-grid { grid-template-columns: 1fr; }
+      .dineen-hero-title { font-size: 1.25rem; }
+    }
     .ne-divisions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
     .ne-division-card { background: #f8f8f9; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
     .ne-division-card h3 { margin: 0 0 0.75rem; font-size: 0.95rem; color: #c91417; }
@@ -419,7 +439,7 @@
   </div>
   <header>
     <div class="header-inner">
-      <img id="headerLogo" class="header-logo" src="https://b4018362.smushcdn.com/4018362/wp-content/uploads/2025/06/USPHL-NCDC_Dineen-Cup-Logo-2026.png?lossy=2&strip=1&webp=1" alt="USPHL Playoffs">
+      <img id="headerLogo" class="header-logo" src="logos/USPHL-NCDC_Dineen-Cup-Logo-2026.webp" alt="USPHL Playoffs">
       <h1>2025-26 USPHL Playoffs</h1>
     </div>
     <div class="last-updated" id="lastUpdated"></div>
@@ -470,7 +490,7 @@
 
   // ---- Division definitions per league ----
   const DIVISIONS = {
-    NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup"],
+    NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup Finals"],
     Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence","Nationals"],
     Elite: ["Atlantic","Florida","Midwest","New England","Southeast","Nationals"]
   };
@@ -864,13 +884,13 @@
         teams: ["Atlantic Champion", "Mountain Champion", "New England Champion", "Idaho Falls Spud Kings"],
         format: "Modified Double Elimination",
         schedule: [
-          { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "Atlantic vs Mountain", note: "" },
-          { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "New England vs Idaho Falls", note: "Host auto-bid" },
-          { game: 3, date: "Apr 25", time: "2:00 PM", matchup: "0-1 vs 0-1", note: "Elimination" },
-          { game: 4, date: "Apr 25", time: "7:00 PM", matchup: "1-0 vs 1-0", note: "" },
-          { game: 5, date: "Apr 26", time: "7:00 PM", matchup: "1-1 vs 1-1", note: "Elimination" },
-          { game: 6, date: "Apr 27", time: "7:00 PM", matchup: "1-1 vs 2-0", note: "Final #1" },
-          { game: 7, date: "Apr 28", time: "7:00 PM", matchup: "2-1 vs 3-1", note: "If necessary - Final #2" }
+          { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "Atlantic Champion vs. Mountain*", note: "" },
+          { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "New England Champion vs. Idaho Falls Spud Kings", note: "Host auto-bid" },
+          { game: 3, date: "Apr 25", time: "2:00 PM", matchup: "0-1 vs. 0-1", note: "Elimination" },
+          { game: 4, date: "Apr 25", time: "7:00 PM", matchup: "1-0 vs. 1-0", note: "Winner advances to Final" },
+          { game: 5, date: "Apr 26", time: "7:00 PM", matchup: "1-1 vs. 1-1", note: "Elimination / Winner advances to Final" },
+          { game: 6, date: "Apr 27", time: "7:00 PM", matchup: "2-1 vs. 2-0", note: "Final #1" },
+          { game: 7, date: "Apr 28", time: "7:00 PM", matchup: "3-1 vs. 2-1", note: "Final #2, if necessary" }
         ]
       };
     }
@@ -1086,7 +1106,7 @@
       if (currentDivision === "NE East") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["East"];
       if (currentDivision === "NE North") return LEAGUE_DATA.ncdc.conferences["New England"].divisions["North"];
       if (currentDivision === "NE Conference") return { _special: "ne_conference" };
-      if (currentDivision === "Dineen Cup") return { _special: "dineen_cup" };
+      if (currentDivision === "Dineen Cup Finals") return { _special: "dineen_cup" };
     }
     return null;
   }
@@ -1257,17 +1277,93 @@
   function renderDineenStandings() {
     var dc = LEAGUE_DATA.ncdc.dineenCup;
     var leagueForMap = 'NCDC';
-    var html = '<div class="schedule-info">';
-    html += '<p><strong>' + dc.name + '</strong></p>';
-    html += '<p>Dates: ' + dc.dates + '</p>';
-    html += '<p>Format: ' + dc.format + '</p></div>';
+    var html = '';
+
+    // Hero header
+    html += '<div class="dineen-hero">';
+    html += '<img src="logos/USPHL-NCDC_Dineen-Cup-Logo-2026.webp" alt="2026 Dineen Cup Championships" class="dineen-hero-logo">';
+    html += '<h2 class="dineen-hero-title">2026 Dineen Cup Championships</h2>';
+    html += '<div class="dineen-hero-subtitle">Mountain America Center &mdash; Idaho Falls, Idaho</div>';
+    html += '<div class="dineen-hero-dates">April 22&ndash;28, 2026 &bull; Double Elimination</div>';
+    html += '</div>';
+
+    // Announcement
+    html += '<div class="dineen-section">';
+    html += '<p>The United States Premier Hockey League (USPHL) is excited to announce that the National Collegiate Development Conference (NCDC) will host the 2026 Dineen Cup Championships in Idaho Falls at the Mountain America Center. This is a first for not only the Eastern Idaho venue but will be the first time this prestigious event will take place in the Mountain Division since its inception. Confirmed dates and game times are listed below in the schedule. Tickets for this event will also go on sale next hockey season, with both full playoff packages and single game tickets available for purchase.</p>';
+    html += '</div>';
+
+    // Quotes
+    html += '<div class="dineen-quote">';
+    html += '<p>&ldquo;The NCDC is excited to have its National Championship hosted outside of the East Coast for the first time. This shows the tremendous growth and strength of the league to play in a great city and venue in Idaho Falls.&rdquo;</p>';
+    html += '<cite>&mdash; Tony Zasowski, NCDC Deputy Commissioner</cite>';
+    html += '</div>';
+
+    html += '<div class="dineen-quote">';
+    html += '<p>&ldquo;Having been a member of the NCDC for the past two seasons, we have seen the success this league has had as a whole, and it is quite impressive. Competing for a Dineen Cup, the highest honor in the NCDC, is a right that our team does not take for granted here in Idaho Falls. Being selected as the host for the 2025-2026 Dineen Cup is a true privilege, not only for our team, but for the best fans in junior hockey at the Spud Kingdom in Idaho Falls. The Mountain America Center will provide for a world class venue, to showcase some of the best talent in tier II junior hockey, as well for scouts around college hockey to come recruit. We look forward to the planning process of this event and continuing the success of the NCDC as a whole. Go Spud Kings!&rdquo;</p>';
+    html += '<cite>&mdash; Erik Hudson, General Manager, Mountain America Center &amp; Idaho Falls Spud Kings</cite>';
+    html += '</div>';
+
+    // Participants
+    html += '<div class="dineen-section">';
+    html += '<h3 class="dineen-section-title">Championship Participants</h3>';
     html += '<table class="data-table"><thead><tr><th>#</th><th>Entry</th><th>Notes</th></tr></thead><tbody>';
     dc.teams.forEach(function(entry, idx) {
-      var note = (entry === "Idaho Falls Spud Kings") ? "Host auto-bid" : "Conference champion";
+      var note = (entry === "Idaho Falls Spud Kings") ? "Host auto-bid" : "Conference/Division champion";
       html += '<tr><td>' + (idx + 1) + '</td><td>' + teamNameHTML(entry, leagueForMap) + '</td>';
       html += '<td style="color:#888;font-size:0.85rem;">' + note + '</td></tr>';
     });
     html += '</tbody></table>';
+    html += '</div>';
+
+    // About the Dineen Cup
+    html += '<div class="dineen-section">';
+    html += '<h3 class="dineen-section-title">About the Dineen Cup</h3>';
+    html += '<p>The Dineen Cup earned its namesake after the late coach Gary Dineen, a driving force in raising the profile of U.S. junior hockey, especially in the northeastern U.S. that had traditionally been dominated by prep school hockey. The Dineen Cup began with the National Collegiate Development Conference\'s inception in 2017-18. Learn more at <a href="https://ncdchockey.com/playoffs" target="_blank" rel="noopener" style="color:#0c568c;">ncdchockey.com/playoffs</a>.</p>';
+    html += '</div>';
+
+    // Past Champions & Hosts side by side
+    html += '<div class="dineen-history-grid">';
+
+    html += '<div class="dineen-history-col">';
+    html += '<h3 class="dineen-section-title">Past Champions</h3>';
+    html += '<table class="data-table dineen-history-table"><thead><tr><th>Year</th><th>Champion</th></tr></thead><tbody>';
+    var pastChamps = [
+      ["2025","Idaho Falls Spud Kings"],["2024","South Shore Kings"],["2023","P.A.L. Jr. Islanders"],
+      ["2022","Jersey Hitmen"],["2021","Jersey Hitmen"],["2020","No event (COVID-19)"],
+      ["2019","Boston Junior Bruins"],["2018","Islanders Hockey Club"]
+    ];
+    pastChamps.forEach(function(c) {
+      html += '<tr><td>' + c[0] + '</td><td>' + c[1] + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+
+    html += '<div class="dineen-history-col">';
+    html += '<h3 class="dineen-section-title">Past Hosts</h3>';
+    html += '<table class="data-table dineen-history-table"><thead><tr><th>Year</th><th>Venue &amp; Location</th></tr></thead><tbody>';
+    var pastHosts = [
+      ["2025","Ice Vault, Wayne, N.J."],
+      ["2024","Foxboro Sports Center, Foxboro, Mass."],
+      ["2023","Northwell Health Ice Center, East Meadow, N.Y."],
+      ["2022","Ice Vault, Wayne, N.J."],
+      ["2021","Revolution Ice Centre, Pittston, Penn."],
+      ["2020","No event (COVID-19)"],
+      ["2019","New England Sports Center, Marlborough, Mass."],
+      ["2018","Lawler Rink, Merrimack College, North Andover, Mass."]
+    ];
+    pastHosts.forEach(function(h) {
+      html += '<tr><td>' + h[0] + '</td><td>' + h[1] + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+
+    html += '</div>';
+
+    // About Mountain America Center
+    html += '<div class="dineen-section dineen-venue">';
+    html += '<h3 class="dineen-section-title">About Mountain America Center</h3>';
+    html += '<p>After opening in November 2022, the Mountain America Center is Eastern Idaho\'s gateway for live entertainment! This community gem provides 27,000 square feet of event space within the arena space, along with an additional 11,000 square feet of meeting space in the Blue Cross of Idaho Conference Center. The Mountain America Center hosts the Idaho Falls Spud Kings, a USPHL Junior A ice hockey franchise, and hosts a multitude of unique events with the ability to seat 6,000 guests. Our venue welcomed over 250,000 visitors through our doors in our first year of operation, and our dedicated staff strives to provide all guests with a unique and unforgettable experience with each visit.</p>';
+    html += '<p style="margin-top:0.5rem;">For more information: <a href="https://www.mountainamericacenter.com" target="_blank" rel="noopener" style="color:#0c568c;">mountainamericacenter.com</a></p>';
+    html += '</div>';
+
     standingsContent.innerHTML = html;
   }
 
@@ -2125,7 +2221,7 @@
     var logoEl = document.getElementById('headerLogo');
     if (logoEl) {
       if (currentLeague === 'NCDC') {
-        logoEl.src = 'https://b4018362.smushcdn.com/4018362/wp-content/uploads/2025/06/USPHL-NCDC_Dineen-Cup-Logo-2026.png?lossy=2&strip=1&webp=1';
+        logoEl.src = 'logos/USPHL-NCDC_Dineen-Cup-Logo-2026.webp';
         logoEl.alt = 'NCDC Dineen Cup Playoffs 2026';
       } else {
         logoEl.src = 'https://usphl.com/wp-content/uploads/2026/02/USPHL-Nationals-2026-300x282.png';
