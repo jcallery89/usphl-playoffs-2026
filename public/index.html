@@ -1431,8 +1431,16 @@
     }
     // Wild card notes
     if (currentLeague === 'Premier') {
+      var nat = getNationalsData();
+      var wcNames = (nat && nat.wildCards) ? nat.wildCards.map(function(wc) { return wc.teamName; }) : [];
       html += '<div style="background:#fff8e1;border-left:3px solid #e6a817;padding:0.55rem 0.85rem;margin-bottom:1rem;font-size:0.82rem;color:#6d5a00;">';
-      html += '<strong>Wild Cards:</strong> The final 2 wild card selections will be determined once all divisional playoffs are finalized.';
+      if (wcNames.length >= 2) {
+        html += '<strong>Wild Cards:</strong> ' + wcNames.join(', ');
+      } else if (wcNames.length === 1) {
+        html += '<strong>Wild Cards:</strong> ' + wcNames[0] + ' + 1 TBD';
+      } else {
+        html += '<strong>Wild Cards:</strong> The final 2 wild card selections will be determined once all divisional playoffs are finalized.';
+      }
       html += '</div>';
     }
     if (currentLeague === 'Elite') {
