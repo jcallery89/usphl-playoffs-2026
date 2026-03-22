@@ -621,6 +621,62 @@
         "l": 36,
         "pctg": 0.148
       }
+    },
+    "Alberta": {
+      "N_1": {
+        "name": "Hanna Havoc",
+        "pod": "North",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      },
+      "N_2": {
+        "name": "Three Hills Titans",
+        "pod": "North",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      },
+      "N_3": {
+        "name": "OLCN Scouts",
+        "pod": "North",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      },
+      "S_1": {
+        "name": "Diamond Valley Rockies",
+        "pod": "South",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      },
+      "S_2": {
+        "name": "Southern Alberta Mustangs",
+        "pod": "South",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      },
+      "S_3": {
+        "name": "Calgary Bandits",
+        "pod": "South",
+        "gp": 0,
+        "pts": 0,
+        "row": 0,
+        "l": 0,
+        "pctg": 0.0
+      }
     }
   },
   "Elite": {

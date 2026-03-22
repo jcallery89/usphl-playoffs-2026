@@ -498,7 +498,7 @@
   // ---- Division definitions per league ----
   const DIVISIONS = {
     NCDC: ["Atlantic","NE Central","NE East","NE North","NE Conference","Mountain","Dineen Cup Finals"],
-    Premier: ["Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence","Nationals"],
+    Premier: ["Alberta","Atlantic","Florida","Great Lakes","Midwest","New England","North","Northwest","Pacific","Southeast","St. Lawrence","Nationals"],
     Elite: ["Atlantic","Florida","Midwest","New England","Southeast","Nationals"]
   };
 
@@ -707,6 +707,12 @@
         continue;
       }
 
+      // Check if this is the Alberta pod-based division
+      if (divName === 'Alberta') {
+        data[dataKey][divName] = buildAlbertaDiv(divSeeds, divConfig);
+        continue;
+      }
+
       // Standard division
       var teams = [];
       var eliminated = [];
@@ -793,6 +799,42 @@
       eliminated: eliminated,
       qualifyCount: divConfig.qualifyCount || 4,
       playoffFormat: divConfig.playoffFormat || {}
+    };
+  }
+
+  function buildAlbertaDiv(divSeeds, divConfig) {
+    var pods = { North: { teams: [] }, South: { teams: [] } };
+    var seedKeys = Object.keys(divSeeds);
+
+    for (var si = 0; si < seedKeys.length; si++) {
+      var key = seedKeys[si];
+      var entry = divSeeds[key];
+      var podName = key.indexOf('N_') === 0 ? 'North' : 'South';
+      var seedNum = parseInt(key.split('_')[1], 10);
+
+      pods[podName].teams.push({
+        seed: seedNum, name: entry.name,
+        gp: entry.gp || 0, pts: entry.pts || 0, row: entry.row || 0, l: entry.l || 0,
+        t: 0, otw: 0, otl: 0, sow: 0, sol: 0, pctg: entry.pctg || 0
+      });
+    }
+
+    pods.North.teams.sort(function(a,b){ return a.seed - b.seed; });
+    pods.South.teams.sort(function(a,b){ return a.seed - b.seed; });
+
+    // Get round robin data from bracket state
+    var roundRobin = null;
+    if (BRACKET_STATE && BRACKET_STATE.Premier && BRACKET_STATE.Premier.Alberta) {
+      roundRobin = BRACKET_STATE.Premier.Alberta.roundRobin || null;
+    }
+
+    return {
+      _alberta: true,
+      pods: pods,
+      eliminated: [],
+      qualifyCount: divConfig.qualifyCount || 6,
+      playoffFormat: divConfig.playoffFormat || {},
+      roundRobin: roundRobin
     };
   }
 
@@ -1192,6 +1234,7 @@
     if (data._special === "dineen_cup") { renderDineenStandings(); return; }
     if (data._special === "ne_conference") { renderNEConferenceStandings(); return; }
     if (data._special === "nationals") { renderNationalsStandings(); return; }
+    if (data._alberta) { renderAlbertaStandings(data); return; }
     if (data.pods) { renderPodStandings(data); return; }
     var teams = data.teams || [];
     var eliminated = data.eliminated || [];
@@ -1251,6 +1294,62 @@
       });
       html += '</tbody></table>';
     }
+    standingsContent.innerHTML = html;
+  }
+
+  function renderAlbertaStandings(data) {
+    var leagueForMap = getLeagueForMap();
+    var rr = data.roundRobin;
+    var html = '';
+
+    ['North', 'South'].forEach(function(podName) {
+      html += '<div class="pod-label">' + podName + ' Pod — Round Robin</div>';
+      if (rr && rr[podName] && rr[podName].standings) {
+        var standings = rr[podName].standings;
+        html += '<table class="data-table"><thead><tr>';
+        html += '<th>#</th><th>Team</th><th>W</th><th>L</th><th>GF</th><th>GA</th><th>PTS</th>';
+        html += '</tr></thead><tbody>';
+        standings.forEach(function(team, idx) {
+          html += '<tr class="qualified">';
+          html += '<td>' + (idx + 1) + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td>';
+          html += '<td>' + (team.w || 0) + '</td><td>' + (team.l || 0) + '</td>';
+          html += '<td>' + (team.gf || 0) + '</td><td>' + (team.ga || 0) + '</td>';
+          html += '<td>' + (team.pts || 0) + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      } else {
+        // Fallback to seed-based list
+        html += '<table class="data-table"><thead><tr><th>#</th><th>Team</th></tr></thead><tbody>';
+        data.pods[podName].teams.forEach(function(team) {
+          html += '<tr class="qualified"><td>' + team.seed + '</td><td>' + teamNameHTML(team.name, leagueForMap) + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+
+      // Show round robin games
+      if (rr && rr[podName] && rr[podName].games) {
+        html += '<div style="margin-top:0.5rem;">';
+        rr[podName].games.forEach(function(g) {
+          var isPlayed = g.home_score !== null && g.away_score !== null;
+          var homeWon = isPlayed && g.home_score > g.away_score;
+          var awayWon = isPlayed && g.away_score > g.home_score;
+          html += '<div class="game-card">';
+          html += '<div class="game-card-teams">';
+          html += '<div class="game-card-team"><span class="game-card-team-name' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+          html += '<span class="game-card-score' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + (isPlayed ? g.home_score : '') + '</span></div>';
+          html += '<div class="game-card-team"><span class="game-card-team-name' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+          html += '<span class="game-card-score' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + (isPlayed ? g.away_score : '') + '</span></div>';
+          html += '</div>';
+          html += '<div class="game-card-info"><div class="game-card-date">' + g.date + '</div>';
+          html += '<div class="game-card-time">' + (g.time || '') + '</div>';
+          html += '<div class="game-card-location">' + (g.location || '') + '</div></div>';
+          html += '</div>';
+          if (g.note) html += '<div class="matchup-label" style="font-size:0.7rem;color:#c91417;margin-top:-0.25rem;margin-bottom:0.5rem;">' + g.note + '</div>';
+        });
+        html += '</div>';
+      }
+    });
+
     standingsContent.innerHTML = html;
   }
 
@@ -1412,7 +1511,7 @@
     if (!BRACKET_STATE || !BRACKET_STATE[league]) return [];
     var qualified = [];
     var leagueState = BRACKET_STATE[league];
-    var divNames = (DIVISIONS[league] || []).filter(function(d) { return d !== 'Nationals'; });
+    var divNames = (DIVISIONS[league] || []).filter(function(d) { return d !== 'Nationals' && d !== 'Alberta'; });
     divNames.forEach(function(division) {
       var divState = leagueState[division];
       if (!divState || !divState.rounds || divState.rounds.length === 0) return;
@@ -1431,7 +1530,7 @@
   function renderNationalsBracket() {
     var nat = getNationalsData();
     var qualified = getQualifiedTeams(currentLeague);
-    var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals'; }).length;
+    var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals' && d !== 'Alberta'; }).length;
     var allChampionsDetermined = qualified.length >= totalDivisions;
 
     // If no Nationals data yet, show qualified teams tracker
@@ -1601,7 +1700,7 @@
     var nat = getNationalsData();
     if (!nat) {
       var qualified = getQualifiedTeams(currentLeague);
-      var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals'; }).length;
+      var totalDivisions = (DIVISIONS[currentLeague] || []).filter(function(d) { return d !== 'Nationals' && d !== 'Alberta'; }).length;
       if (qualified.length > 0) {
         standingsContent.innerHTML = renderQualifiedTeamsSection(qualified, totalDivisions, qualified.length >= totalDivisions);
       } else {
@@ -1641,6 +1740,7 @@
     if (data._special === "dineen_cup") { renderDineenBracket(); return; }
     if (data._special === "ne_conference") { renderNEConferenceBracket(); return; }
     if (data._special === "nationals") { renderNationalsBracket(); return; }
+    if (data._alberta) { renderAlbertaBracket(data); return; }
     if (data.pods) { renderPodBracket(data); return; }
     if (!data.playoffFormat || !data.playoffFormat.rounds) {
       bracketContent.innerHTML = '<p class="placeholder-msg">No playoff format data.</p>';
@@ -1852,6 +1952,84 @@
     bracketContent.innerHTML = html;
   }
 
+  function renderAlbertaBracket(data) {
+    var leagueForMap = getLeagueForMap();
+    var html = '';
+
+    // Format info
+    var abState = (BRACKET_STATE && BRACKET_STATE.Premier && BRACKET_STATE.Premier.Alberta) || {};
+    if (abState.formatInfo) {
+      html += '<div class="schedule-format-info">' + abState.formatInfo + '</div>';
+    }
+
+    // Pod Elimination (#2 vs #3)
+    html += '<div class="bracket-section-title">Pod Elimination — March 23</div>';
+    html += '<div class="pod-brackets">';
+
+    var elimMatchupN = getBracketStateMatchup('Premier', 'Alberta', 0, 0);
+    var elimMatchupS = getBracketStateMatchup('Premier', 'Alberta', 0, 1);
+
+    // North Pod Elimination
+    html += '<div class="pod-bracket-section"><div class="pod-label">North Pod</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">#3 vs #2 <span class="series-label">(Single Game)</span></div>';
+    html += renderAlbertaMatchup(elimMatchupN, leagueForMap, 0, 0);
+    html += '</div></div></div>';
+
+    // South Pod Elimination
+    html += '<div class="pod-bracket-section"><div class="pod-label">South Pod</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">#3 vs #2 <span class="series-label">(Single Game)</span></div>';
+    html += renderAlbertaMatchup(elimMatchupS, leagueForMap, 0, 1);
+    html += '</div></div></div>';
+
+    html += '</div>';
+
+    // Crossover Round
+    html += '<div class="bracket-section-title">Crossover — March 25</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">Crossover <span class="series-label">(Single Game)</span></div>';
+    var crossMatchup0 = getBracketStateMatchup('Premier', 'Alberta', 1, 0);
+    var crossMatchup1 = getBracketStateMatchup('Premier', 'Alberta', 1, 1);
+    html += renderAlbertaMatchup(crossMatchup0, leagueForMap, 1, 0);
+    html += renderAlbertaMatchup(crossMatchup1, leagueForMap, 1, 1);
+    html += '</div></div>';
+
+    // Alberta Finals
+    html += '<div class="bracket-section-title">Alberta Finals</div>';
+    html += '<div class="bracket"><div class="round">';
+    html += '<div class="round-title">Alberta Finals <span class="series-label">(Best-of-3)</span></div>';
+    var finalsMatchup = getBracketStateMatchup('Premier', 'Alberta', 2, 0);
+    html += renderAlbertaMatchup(finalsMatchup, leagueForMap, 2, 0);
+    html += '</div></div>';
+
+    bracketContent.innerHTML = html;
+  }
+
+  function renderAlbertaMatchup(matchup, leagueForMap, roundIdx, matchupIdx) {
+    var homeName = matchup ? matchup.homeTeamName : 'TBD';
+    var awayName = matchup ? matchup.awayTeamName : 'TBD';
+    var homeScore = '', awayScore = '', summary = '';
+    var isTBD = homeName === 'TBD' || !matchup;
+
+    if (matchup && matchup.homeTeamId) {
+      homeName = teamNameHTML(matchup.homeTeamName, leagueForMap);
+      awayName = teamNameHTML(matchup.awayTeamName, leagueForMap);
+      homeScore = '<span class="matchup-score">' + (matchup.homeWins || 0) + '</span>';
+      awayScore = '<span class="matchup-score">' + (matchup.awayWins || 0) + '</span>';
+      if (matchup.seriesSummary) summary = '<div class="matchup-label">' + matchup.seriesSummary + '</div>';
+    }
+
+    var html = '<div class="matchup clickable" data-league="Premier" data-division="Alberta" data-round="' + roundIdx + '" data-matchup="' + matchupIdx + '">';
+    html += '<div class="matchup-team home"><span>' + homeName + '</span>' + homeScore + '</div>';
+    html += '<div class="matchup-vs">vs</div>';
+    html += '<div class="matchup-team away"><span>' + awayName + '</span>' + awayScore + '</div>';
+    html += summary;
+    if (matchup && matchup.note) html += '<div class="matchup-label">' + matchup.note + '</div>';
+    html += '</div>';
+    return html;
+  }
+
   function renderNEConferenceBracket() {
     var ne = LEAGUE_DATA.ncdc.conferences["New England"];
     var divNames = ["Central", "East", "North"];
@@ -1953,6 +2131,7 @@
     if (data._special === "dineen_cup") { renderDineenSchedule(); return; }
     if (data._special === "ne_conference") { renderNEConferenceSchedule(); return; }
     if (data._special === "nationals") { renderNationalsSchedule(); return; }
+    if (data._alberta) { renderAlbertaSchedule(data); return; }
     if (!data.playoffFormat || !data.playoffFormat.rounds) {
       scheduleContent.innerHTML = '<p class="placeholder-msg">No schedule data available.</p>';
       return;
@@ -2076,6 +2255,99 @@
     if (html === '' || (allRounds.length === 0 && series.length === 0)) {
       html += '<p class="placeholder-msg">No schedule data available.</p>';
     }
+
+    scheduleContent.innerHTML = html;
+  }
+
+  function renderAlbertaSchedule(data) {
+    var leagueForMap = getLeagueForMap();
+    var abState = (BRACKET_STATE && BRACKET_STATE.Premier && BRACKET_STATE.Premier.Alberta) || {};
+    var rr = abState.roundRobin || {};
+    var html = '';
+
+    if (abState.formatInfo) {
+      html += '<div class="schedule-format-info">' + abState.formatInfo + '</div>';
+    }
+
+    // Collect all games: round robin + bracket rounds
+    var allGames = [];
+
+    // Round robin games
+    ['North', 'South'].forEach(function(podName) {
+      if (rr[podName] && rr[podName].games) {
+        rr[podName].games.forEach(function(g) {
+          allGames.push({
+            section: podName + ' Pod — Round Robin',
+            date: g.date, time: g.time, location: g.location,
+            home: g.home, away: g.away,
+            homeScore: g.home_score, awayScore: g.away_score,
+            gameStatus: g.game_status || 'scheduled',
+            gameId: g.game_id, note: g.note || null,
+            ifNecessary: false
+          });
+        });
+      }
+    });
+
+    // Bracket round games
+    if (abState.rounds) {
+      abState.rounds.forEach(function(round) {
+        round.matchups.forEach(function(m) {
+          if (m.games) {
+            m.games.forEach(function(g) {
+              allGames.push({
+                section: round.roundName,
+                date: g.date, time: g.time, location: g.location,
+                home: g.home_team || m.homeTeamName, away: g.away_team || m.awayTeamName,
+                homeScore: g.home_score, awayScore: g.away_score,
+                gameStatus: g.game_status || 'scheduled',
+                gameId: g.game_id, note: g.note || null,
+                ifNecessary: g.if_necessary || false
+              });
+            });
+          }
+        });
+      });
+    }
+
+    // Group by section
+    var sections = [];
+    var sectionMap = {};
+    allGames.forEach(function(g) {
+      if (!sectionMap[g.section]) {
+        sectionMap[g.section] = [];
+        sections.push(g.section);
+      }
+      sectionMap[g.section].push(g);
+    });
+
+    sections.forEach(function(section) {
+      html += '<div class="bracket-section-title">' + section + '</div>';
+      sectionMap[section].forEach(function(g) {
+        var isScheduled = g.gameStatus === 'scheduled';
+        var ifNec = g.ifNecessary;
+        var homeWon = !isScheduled && g.homeScore !== null && g.homeScore > g.awayScore;
+        var awayWon = !isScheduled && g.awayScore !== null && g.awayScore > g.homeScore;
+        html += '<div class="game-card' + (ifNec ? ' if-necessary' : '') + '">';
+        html += '<div class="game-card-teams">';
+        html += '<div class="game-card-team"><span class="game-card-team-name' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + teamNameHTML(g.home, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (homeWon ? ' winner' : (awayWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (g.homeScore !== null ? g.homeScore : '')) + '</span></div>';
+        html += '<div class="game-card-team"><span class="game-card-team-name' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + teamNameHTML(g.away, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (awayWon ? ' winner' : (homeWon ? ' loser' : '')) + '">' + (isScheduled ? '' : (g.awayScore !== null ? g.awayScore : '')) + '</span></div>';
+        html += '</div>';
+        html += '<div class="game-card-info">';
+        if (isScheduled) {
+          html += '<div class="game-card-status scheduled">' + (ifNec ? 'If Nec.' : 'Upcoming') + '</div>';
+        } else {
+          html += '<div class="game-card-status final">Final</div>';
+        }
+        html += '<div class="game-card-date">' + (g.date || '').replace(/^2026-/, '') + (g.time ? '<br>' + g.time : '') + '</div>';
+        if (g.location) html += '<div class="game-card-location">' + g.location + '</div>';
+        html += '</div>';
+        html += '</div>';
+        if (g.note) html += '<div class="matchup-label" style="font-size:0.7rem;color:#c91417;margin-top:-0.25rem;margin-bottom:0.5rem;">' + g.note + '</div>';
+      });
+    });
 
     scheduleContent.innerHTML = html;
   }

@@ -1,6 +1,6 @@
 {
-  "_version": 1,
-  "_lastUpdated": "2026-03-08T00:06:33.379Z",
+  "_version": 4,
+  "_lastUpdated": "2026-03-22T00:33:26.830Z",
   "_updatedBy": "system",
   "Premier": {
     "Atlantic": {
@@ -166,7 +166,7 @@
         {
           "roundIndex": 0,
           "roundName": "Play-In",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [
             {
               "seed": 1,
@@ -967,6 +967,32 @@
               "note": null
             }
           ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Divisional Championship",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": null,
+              "awaySeed": null,
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "TBD",
+              "awayTeamName": "TBD",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
         }
       ]
     },
@@ -977,7 +1003,7 @@
         {
           "roundIndex": 0,
           "roundName": "Play-In",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [
             {
               "seed": 1,
@@ -1072,7 +1098,7 @@
         {
           "roundIndex": 2,
           "roundName": "Divisional Championship",
-          "format": "Bo3",
+          "format": "1 Game",
           "byes": [],
           "matchups": [
             {
@@ -1252,11 +1278,370 @@
           ]
         }
       ]
+    },
+    "Nationals": {
+      "wildCards": [
+        {
+          "label": "Premier Wild Card 1",
+          "teamName": "Toledo Cherokee",
+          "teamId": "485",
+          "division": "Great Lakes"
+        },
+        {
+          "label": "Premier Wild Card 2",
+          "teamName": "Fresno Monsters",
+          "teamId": "445",
+          "division": "Pacific"
+        }
+      ]
+    },
+    "Alberta": {
+      "qualifyCount": 6,
+      "seriesFormat": "Bo1",
+      "formatInfo": "Round Robin pods \u2192 #2 vs #3 elimination \u2192 Crossover vs #1 seeds \u2192 Best-of-3 Finals",
+      "rounds": [
+        {
+          "roundIndex": 0,
+          "roundName": "Pod Elimination",
+          "format": "Bo1",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r0-m0",
+              "homeSeed": "N_3",
+              "awaySeed": "N_2",
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "OLCN Scouts",
+              "awayTeamName": "Three Hills Titans",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [
+                {
+                  "game_id": "23571",
+                  "date": "2026-03-23",
+                  "time": "5:00 PM",
+                  "location": "Trochu Arena",
+                  "home_team": "OLCN Scouts",
+                  "away_team": "Three Hills Titans",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                }
+              ],
+              "overrideWinner": null,
+              "note": "Single elimination game"
+            },
+            {
+              "matchupId": "r0-m1",
+              "homeSeed": "S_3",
+              "awaySeed": "S_2",
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "Calgary Bandits",
+              "awayTeamName": "Southern Alberta Mustangs",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [
+                {
+                  "game_id": "23403",
+                  "date": "2026-03-23",
+                  "time": "7:15 PM",
+                  "location": "Max Bell Centre",
+                  "home_team": "Calgary Bandits",
+                  "away_team": "Southern Alberta Mustangs",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                }
+              ],
+              "overrideWinner": null,
+              "note": "Single elimination game"
+            }
+          ]
+        },
+        {
+          "roundIndex": 1,
+          "roundName": "Crossover",
+          "format": "Bo1",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r1-m0",
+              "homeSeed": null,
+              "awaySeed": "N_1",
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "Winner South Elim",
+              "awayTeamName": "Hanna Havoc",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [
+                {
+                  "game_id": "23397",
+                  "date": "2026-03-25",
+                  "time": "7:00 PM",
+                  "location": "TBD",
+                  "home_team": "South Elim. Winner",
+                  "away_team": "Hanna Havoc",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                }
+              ],
+              "overrideWinner": null,
+              "note": null
+            },
+            {
+              "matchupId": "r1-m1",
+              "homeSeed": null,
+              "awaySeed": "S_1",
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "Winner North Elim",
+              "awayTeamName": "Diamond Valley Rockies",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [
+                {
+                  "game_id": "23404",
+                  "date": "2026-03-25",
+                  "time": "7:00 PM",
+                  "location": "TBD",
+                  "home_team": "North Elim. Winner",
+                  "away_team": "Diamond Valley Rockies",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                }
+              ],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        },
+        {
+          "roundIndex": 2,
+          "roundName": "Alberta Finals",
+          "format": "Bo3",
+          "byes": [],
+          "matchups": [
+            {
+              "matchupId": "r2-m0",
+              "homeSeed": null,
+              "awaySeed": null,
+              "homeTeamId": null,
+              "awayTeamId": null,
+              "homeTeamName": "Crossover Winner 1",
+              "awayTeamName": "Crossover Winner 2",
+              "homeWins": 0,
+              "awayWins": 0,
+              "status": "not_started",
+              "winnerId": null,
+              "winnerSeed": null,
+              "winnerName": null,
+              "games": [
+                {
+                  "game_id": "23398",
+                  "date": "2026-03-27",
+                  "time": "7:00 PM",
+                  "location": "TBD",
+                  "home_team": "TBD",
+                  "away_team": "TBD",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                },
+                {
+                  "game_id": "23399",
+                  "date": "2026-03-28",
+                  "time": "7:00 PM",
+                  "location": "TBD",
+                  "home_team": "TBD",
+                  "away_team": "TBD",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled"
+                },
+                {
+                  "game_id": "23405",
+                  "date": "2026-03-29",
+                  "time": "7:00 PM",
+                  "location": "TBD",
+                  "home_team": "TBD",
+                  "away_team": "TBD",
+                  "home_score": null,
+                  "away_score": null,
+                  "game_status": "scheduled",
+                  "if_necessary": true
+                }
+              ],
+              "overrideWinner": null,
+              "note": null
+            }
+          ]
+        }
+      ],
+      "roundRobin": {
+        "North": {
+          "teams": [
+            "Hanna Havoc",
+            "Three Hills Titans",
+            "OLCN Scouts"
+          ],
+          "games": [
+            {
+              "game_id": "23393",
+              "date": "2026-03-20",
+              "time": "7:00 PM",
+              "location": "Centennial Place Arena",
+              "home": "Hanna Havoc",
+              "away": "Three Hills Titans",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23394",
+              "date": "2026-03-21",
+              "time": "8:00 PM",
+              "location": "Hanna Agri-Sports Complex",
+              "home": "OLCN Scouts",
+              "away": "Hanna Havoc",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23395",
+              "date": "2026-03-22",
+              "time": "3:45 PM",
+              "location": "Centennial Place Arena",
+              "home": "OLCN Scouts",
+              "away": "Three Hills Titans",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            }
+          ],
+          "standings": [
+            {
+              "name": "Hanna Havoc",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Three Hills Titans",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "OLCN Scouts",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            }
+          ]
+        },
+        "South": {
+          "teams": [
+            "Diamond Valley Rockies",
+            "Southern Alberta Mustangs",
+            "Calgary Bandits"
+          ],
+          "games": [
+            {
+              "game_id": "23400",
+              "date": "2026-03-20",
+              "time": "6:00 PM",
+              "location": "Bob Snodgrass Arena",
+              "home": "Diamond Valley Rockies",
+              "away": "Southern Alberta Mustangs",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled",
+              "note": "DV won 7-4 on ice; forfeit loss (illegal player) \u2014 SA credited with 1-0 win"
+            },
+            {
+              "game_id": "23401",
+              "date": "2026-03-21",
+              "time": "7:00 PM",
+              "location": "Flames Community Center Blue",
+              "home": "Diamond Valley Rockies",
+              "away": "Calgary Bandits",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23402",
+              "date": "2026-03-22",
+              "time": "2:45 PM",
+              "location": "Flames Community Center Blue",
+              "home": "Calgary Bandits",
+              "away": "Southern Alberta Mustangs",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            }
+          ],
+          "standings": [
+            {
+              "name": "Diamond Valley Rockies",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Southern Alberta Mustangs",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Calgary Bandits",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            }
+          ]
+        }
+      }
     }
   },
   "Elite": {
     "Atlantic": {
-      "qualifyCount": 6,
+      "qualifyCount": 5,
       "seriesFormat": "Bo3",
       "rounds": [
         {
@@ -1279,29 +1664,19 @@
               "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b48f204df5697bddc3aec06fd9ec7349828263dd0467dd7a5d8168053926c8e1.png",
               "logoFile": "Hershey_Cubs.png",
               "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1410&season=65&level_id=1"
+            },
+            {
+              "seed": 3,
+              "teamName": "Connecticut Junior Rangers",
+              "teamId": "1403",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/68fccc791c042b15a225154778cdfce5291d841d0230e77f172c7508cdde2ed4.png",
+              "logoFile": "07_Connecticut_Junior_Rangers.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1403&season=65&level_id=1"
             }
           ],
           "matchups": [
             {
               "matchupId": "r0-m0",
-              "homeSeed": 3,
-              "awaySeed": 6,
-              "homeTeamId": "1403",
-              "awayTeamId": "1396",
-              "homeTeamName": "Connecticut Junior Rangers",
-              "awayTeamName": "Atlanta Mad Hatters",
-              "homeWins": 0,
-              "awayWins": 0,
-              "status": "not_started",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
-              "games": [],
-              "overrideWinner": null,
-              "note": null
-            },
-            {
-              "matchupId": "r0-m1",
               "homeSeed": 4,
               "awaySeed": 5,
               "homeTeamId": "2288",
@@ -1784,19 +2159,19 @@
           "byes": [
             {
               "seed": 1,
-              "teamName": "Carolina Junior Hurricanes",
-              "teamId": "1399",
-              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9d31d6116c98698859154c86f49ca59a36146d93a0a50df17234aa7a7cefc5f1.png",
-              "logoFile": "Carolina_Junior_Hurricanes.png",
-              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1399&season=65&level_id=1"
-            },
-            {
-              "seed": 2,
               "teamName": "Hampton Roads Whalers",
               "teamId": "1409",
               "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/7ade2d6a9813b0035f4ae430dbfd5eae0b5bf37e1028d022fab6bb71f6803187.png",
               "logoFile": "Hampton_Roads_Whalers.png",
               "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1409&season=65&level_id=1"
+            },
+            {
+              "seed": 2,
+              "teamName": "Carolina Junior Hurricanes",
+              "teamId": "1399",
+              "logoUrl": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/9d31d6116c98698859154c86f49ca59a36146d93a0a50df17234aa7a7cefc5f1.png",
+              "logoFile": "Carolina_Junior_Hurricanes.png",
+              "profileUrl": "https://usphl.com/elite/game-center/teams/?team=1399&season=65&level_id=1"
             },
             {
               "seed": 3,
@@ -1838,9 +2213,9 @@
               "matchupId": "r1-m0",
               "homeSeed": 1,
               "awaySeed": null,
-              "homeTeamId": "1399",
+              "homeTeamId": "1409",
               "awayTeamId": null,
-              "homeTeamName": "Carolina Junior Hurricanes",
+              "homeTeamName": "Hampton Roads Whalers",
               "awayTeamName": "Play-In Winner",
               "homeWins": 0,
               "awayWins": 0,
@@ -1856,9 +2231,9 @@
               "matchupId": "r1-m1",
               "homeSeed": 2,
               "awaySeed": 3,
-              "homeTeamId": "1409",
+              "homeTeamId": "1399",
               "awayTeamId": "1400",
-              "homeTeamName": "Hampton Roads Whalers",
+              "homeTeamName": "Carolina Junior Hurricanes",
               "awayTeamName": "Charlotte Rush",
               "homeWins": 0,
               "awayWins": 0,
@@ -2409,7 +2784,7 @@
           "game": 1,
           "date": "Apr 24",
           "time": "2:00 PM",
-          "matchup": "Atlantic Champion vs. Mountain*",
+          "matchup": "Atlantic vs Mountain",
           "note": "",
           "homeScore": null,
           "awayScore": null,
@@ -2420,7 +2795,7 @@
           "game": 2,
           "date": "Apr 24",
           "time": "7:00 PM",
-          "matchup": "New England Champion vs. Idaho Falls Spud Kings",
+          "matchup": "New England vs Idaho Falls",
           "note": "Host auto-bid",
           "homeScore": null,
           "awayScore": null,
@@ -2443,7 +2818,7 @@
           "date": "Apr 25",
           "time": "7:00 PM",
           "matchup": "1-0 vs 1-0",
-          "note": "Winner advances to Final",
+          "note": "",
           "homeScore": null,
           "awayScore": null,
           "winnerId": null,
@@ -2454,7 +2829,7 @@
           "date": "Apr 26",
           "time": "7:00 PM",
           "matchup": "1-1 vs 1-1",
-          "note": "Elimination / Winner advances to Final",
+          "note": "Elimination",
           "homeScore": null,
           "awayScore": null,
           "winnerId": null,
@@ -2464,7 +2839,7 @@
           "game": 6,
           "date": "Apr 27",
           "time": "7:00 PM",
-          "matchup": "2-1 vs 2-0",
+          "matchup": "1-1 vs 2-0",
           "note": "Final #1",
           "homeScore": null,
           "awayScore": null,
@@ -2475,8 +2850,8 @@
           "game": 7,
           "date": "Apr 28",
           "time": "7:00 PM",
-          "matchup": "3-1 vs 2-1",
-          "note": "Final #2, if necessary",
+          "matchup": "2-1 vs 3-1",
+          "note": "If necessary - Final #2",
           "homeScore": null,
           "awayScore": null,
           "winnerId": null,
