@@ -1,6 +1,6 @@
 {
-  "_version": 5,
-  "_lastUpdated": "2026-03-22T18:00:00.000Z",
+  "_version": 6,
+  "_lastUpdated": "2026-03-22T18:10:00.000Z",
   "_updatedBy": "system",
   "Premier": {
     "Atlantic": {
@@ -1581,9 +1581,9 @@
               "location": "Bob Snodgrass Arena",
               "home": "Diamond Valley Rockies",
               "away": "Southern Alberta Mustangs",
-              "home_score": null,
-              "away_score": null,
-              "game_status": "scheduled",
+              "home_score": 0,
+              "away_score": 1,
+              "game_status": "final",
               "note": "DV won 7-4 on ice; forfeit loss (illegal player) \u2014 SA credited with 1-0 win"
             },
             {
@@ -1613,18 +1613,18 @@
             {
               "name": "Diamond Valley Rockies",
               "w": 0,
-              "l": 0,
+              "l": 1,
               "gf": 0,
-              "ga": 0,
+              "ga": 1,
               "pts": 0
             },
             {
               "name": "Southern Alberta Mustangs",
-              "w": 0,
+              "w": 1,
               "l": 0,
-              "gf": 0,
+              "gf": 1,
               "ga": 0,
-              "pts": 0
+              "pts": 2
             },
             {
               "name": "Calgary Bandits",
