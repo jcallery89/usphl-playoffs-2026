@@ -57,6 +57,7 @@ const HARDCODED_TEAMS = {
     "New England": ["Northern Cyclones","Islanders Hockey Club","South Shore Kings","Utica Jr Comets","Boston Jr. Rangers","Worcester Railers JHC","Springfield Pics","Thunder Hockey Club"],
     North: ["Minnesota Squatch","Wisconsin Rapids Riverkings","Northwest Express","Minnesota Blue Ox","Steele County Blades","Minnesota Mullets","Hudson Havoc","Minnesota Outlaws"],
     Northwest: ["Seattle Totems","Bremerton Sockeyes","Vernal Oilers","McCall Smokejumpers","Iron County Yeti","Colorado Fighting Elk","Rogue Valley Royals"],
+    Alberta: ["Calgary Bandits","Southern Alberta Mustangs","Three Hills Titans","Diamond Valley Rockies","Hanna Havoc","OLCN Scouts"],
     Pacific: ["Fresno Monsters","Henderson Force","Ontario Jr Reign","Ventura Vikings","Long Beach Bombers","San Diego Sabers","Lake Tahoe Lakers"],
     Southeast: ["Hampton Roads Whalers","Potomac Patriots","Charlotte Rush","Charleston Colonials","Carolina Junior Hurricanes"],
     "St. Lawrence": ["Hawkesbury Knights","Montreal Black Vees","Somang Hockey","St-Lazare Avalanche","Universel College Gatineau","Universel Sherbrooke","New York Dynamo","Kingston Wranglers","Ottawa Valley Centennials"],
