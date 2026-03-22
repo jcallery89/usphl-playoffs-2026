@@ -1,6 +1,6 @@
 {
-  "_version": 4,
-  "_lastUpdated": "2026-03-22T00:40:38.635Z",
+  "_version": 5,
+  "_lastUpdated": "2026-03-22T18:00:00.000Z",
   "_updatedBy": "system",
   "Premier": {
     "Atlantic": {
@@ -1513,9 +1513,9 @@
               "location": "Centennial Place Arena",
               "home": "Hanna Havoc",
               "away": "Three Hills Titans",
-              "home_score": null,
-              "away_score": null,
-              "game_status": "scheduled"
+              "home_score": 10,
+              "away_score": 4,
+              "game_status": "final"
             },
             {
               "game_id": "23394",
@@ -1524,9 +1524,9 @@
               "location": "Hanna Agri-Sports Complex",
               "home": "OLCN Scouts",
               "away": "Hanna Havoc",
-              "home_score": null,
-              "away_score": null,
-              "game_status": "scheduled"
+              "home_score": 11,
+              "away_score": 6,
+              "game_status": "final"
             },
             {
               "game_id": "23395",
@@ -1543,27 +1543,27 @@
           "standings": [
             {
               "name": "Hanna Havoc",
-              "w": 0,
-              "l": 0,
-              "gf": 0,
-              "ga": 0,
-              "pts": 0
+              "w": 1,
+              "l": 1,
+              "gf": 16,
+              "ga": 15,
+              "pts": 2
             },
             {
               "name": "Three Hills Titans",
               "w": 0,
-              "l": 0,
-              "gf": 0,
-              "ga": 0,
+              "l": 1,
+              "gf": 4,
+              "ga": 10,
               "pts": 0
             },
             {
               "name": "OLCN Scouts",
-              "w": 0,
+              "w": 1,
               "l": 0,
-              "gf": 0,
-              "ga": 0,
-              "pts": 0
+              "gf": 11,
+              "ga": 6,
+              "pts": 2
             }
           ]
         },
