@@ -844,7 +844,7 @@
       },
       "Universel College Gatineau": {
         "team_id": "486",
-        "api_name": "Universel Collège Gatineau",
+        "api_name": "Universel Coll\u00e8ge Gatineau",
         "match_score": 100,
         "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/b3b15b20f05c442d7ecbf70305ab7342b958ba1e1a5d14b22bd15f3f5e15c915.png",
         "logo_file": "Universel_Coll#U00e8ge_Gatineau.png",
@@ -881,6 +881,56 @@
         "logo_url": "https://d3bll69iq5agq8.cloudfront.net/usphl/logos/fd0c55324a1b197df33abed81e46cf87c15fd98c0945f258638fe3c83f53070d.png",
         "logo_file": "Ottawa_Valley_Centennials.png",
         "profile_url": "https://usphl.com/premier/game-center/teams/?team=2294&season=65"
+      }
+    },
+    "Alberta": {
+      "Calgary Bandits": {
+        "team_id": "2331",
+        "api_name": "Calgary Bandits",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2331&season=65"
+      },
+      "Southern Alberta Mustangs": {
+        "team_id": "2301",
+        "api_name": "Southern Alberta Mustangs",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2301&season=65"
+      },
+      "Three Hills Titans": {
+        "team_id": "2302",
+        "api_name": "Three Hills Titans",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2302&season=65"
+      },
+      "Diamond Valley Rockies": {
+        "team_id": "2299",
+        "api_name": "Diamond Valley Rockies",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2299&season=65"
+      },
+      "Hanna Havoc": {
+        "team_id": "2300",
+        "api_name": "Hanna Havoc",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2300&season=65"
+      },
+      "OLCN Scouts": {
+        "team_id": "2375",
+        "api_name": "OLCN Scouts",
+        "match_score": 100,
+        "logo_url": null,
+        "logo_file": null,
+        "profile_url": "https://usphl.com/premier/game-center/teams/?team=2375&season=65"
       }
     }
   },

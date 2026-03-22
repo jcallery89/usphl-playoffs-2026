@@ -480,6 +480,192 @@
           "division": "Pacific"
         }
       ]
+    },
+    "Alberta": {
+      "qualifyCount": 6,
+      "format": "alberta_pods",
+      "playoffFormat": {
+        "seriesFormat": "Bo1",
+        "rounds": [
+          {
+            "name": "Pod Elimination",
+            "format": "Bo1",
+            "matchups": [
+              [
+                "N_3",
+                "N_2"
+              ],
+              [
+                "S_3",
+                "S_2"
+              ]
+            ]
+          },
+          {
+            "name": "Crossover",
+            "format": "Bo1",
+            "matchups": [
+              [
+                "Winner South Elim",
+                "N_1"
+              ],
+              [
+                "Winner North Elim",
+                "S_1"
+              ]
+            ]
+          },
+          {
+            "name": "Alberta Finals",
+            "format": "Bo3",
+            "matchups": [
+              [
+                "Crossover Winner 1",
+                "Crossover Winner 2"
+              ]
+            ]
+          }
+        ]
+      },
+      "roundRobin": {
+        "North": {
+          "teams": [
+            "Hanna Havoc",
+            "Three Hills Titans",
+            "OLCN Scouts"
+          ],
+          "games": [
+            {
+              "game_id": "23393",
+              "date": "2026-03-20",
+              "time": "7:00 PM",
+              "location": "Centennial Place Arena",
+              "home": "Hanna Havoc",
+              "away": "Three Hills Titans",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23394",
+              "date": "2026-03-21",
+              "time": "8:00 PM",
+              "location": "Hanna Agri-Sports Complex",
+              "home": "OLCN Scouts",
+              "away": "Hanna Havoc",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23395",
+              "date": "2026-03-22",
+              "time": "3:45 PM",
+              "location": "Centennial Place Arena",
+              "home": "OLCN Scouts",
+              "away": "Three Hills Titans",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            }
+          ],
+          "standings": [
+            {
+              "name": "Hanna Havoc",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Three Hills Titans",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "OLCN Scouts",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            }
+          ]
+        },
+        "South": {
+          "teams": [
+            "Diamond Valley Rockies",
+            "Southern Alberta Mustangs",
+            "Calgary Bandits"
+          ],
+          "games": [
+            {
+              "game_id": "23400",
+              "date": "2026-03-20",
+              "time": "6:00 PM",
+              "location": "Bob Snodgrass Arena",
+              "home": "Diamond Valley Rockies",
+              "away": "Southern Alberta Mustangs",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled",
+              "note": "DV won 7-4 on ice; forfeit loss (illegal player) \u2014 SA credited with 1-0 win"
+            },
+            {
+              "game_id": "23401",
+              "date": "2026-03-21",
+              "time": "7:00 PM",
+              "location": "Flames Community Center Blue",
+              "home": "Diamond Valley Rockies",
+              "away": "Calgary Bandits",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            },
+            {
+              "game_id": "23402",
+              "date": "2026-03-22",
+              "time": "2:45 PM",
+              "location": "Flames Community Center Blue",
+              "home": "Calgary Bandits",
+              "away": "Southern Alberta Mustangs",
+              "home_score": null,
+              "away_score": null,
+              "game_status": "scheduled"
+            }
+          ],
+          "standings": [
+            {
+              "name": "Diamond Valley Rockies",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Southern Alberta Mustangs",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            },
+            {
+              "name": "Calgary Bandits",
+              "w": 0,
+              "l": 0,
+              "gf": 0,
+              "ga": 0,
+              "pts": 0
+            }
+          ]
+        }
+      }
     }
   },
   "Elite": {
