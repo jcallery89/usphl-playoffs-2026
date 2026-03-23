@@ -1,5 +1,5 @@
 {
-  "_version": 6,
+  "_version": 7,
   "_lastUpdated": "2026-03-22T20:30:00.000Z",
   "_updatedBy": "system",
   "Premier": {
@@ -2379,13 +2379,6 @@
           "teamId": "2291",
           "division": "New England"
         }
-      ],
-      "seeds": [
-        { "label": "Elite Seed #1", "teamName": "Carolina Junior Hurricanes", "teamId": "1399", "division": "Southeast" },
-        { "label": "Elite Seed #2", "teamName": "Northern Cyclones", "teamId": "1417", "division": "New England" },
-        { "label": "Elite Seed #3", "teamName": "Tampa Bay Juniors", "teamId": "1425", "division": "Florida" },
-        { "label": "Elite Seed #4", "teamName": "Wilkes-Barre Scranton Knights", "teamId": "1429", "division": "Atlantic" },
-        { "label": "Elite Seed #5", "teamName": "Fort Wayne Spacemen", "teamId": "1408", "division": "Midwest" }
       ],
       "days": [
         {
