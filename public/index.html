@@ -1554,6 +1554,38 @@
       html += renderQualifiedTeamsSection(qualified, totalDivisions, allChampionsDetermined);
     }
 
+    // Seedings display with logos
+    var allSeeded = (nat.nationalSeeds || []).concat(
+      (nat.wildCards || []).map(function(wc, i) {
+        return { seed: 'WC' + (nat.wildCards.length > 1 ? ' ' + (i + 1) : ''), teamName: wc.teamName, teamId: wc.teamId, division: wc.division, pool: wc.pool };
+      })
+    );
+    if (allSeeded.length > 0) {
+      html += '<div style="margin-bottom:1.25rem;">';
+      html += '<strong style="color:#c91417;font-size:0.9rem;display:block;margin-bottom:0.5rem;">Seedings</strong>';
+      html += '<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:0.5rem;">';
+      allSeeded.forEach(function(entry) {
+        var info = getTeamInfo(entry.teamName, currentLeague);
+        var logoHtml = (info && info.logo_url)
+          ? '<img src="' + info.logo_url + '" style="width:32px;height:32px;object-fit:contain;margin-right:10px;flex-shrink:0;" onerror="this.style.display=\'none\'" alt="">'
+          : '<div style="width:32px;height:32px;margin-right:10px;flex-shrink:0;"></div>';
+        var seedLabel = (typeof entry.seed === 'number') ? '#' + entry.seed : entry.seed;
+        var poolLabel = entry.pool ? ' &middot; Pool ' + entry.pool : '';
+        html += '<div style="display:flex;align-items:center;padding:0.4rem 0.6rem;background:#f8f8f8;border-radius:6px;border:1px solid #e8e8e8;">';
+        html += '<div style="font-weight:700;color:#c91417;font-size:0.85rem;min-width:30px;text-align:center;margin-right:8px;">' + seedLabel + '</div>';
+        html += logoHtml;
+        html += '<div style="line-height:1.3;">';
+        if (info && info.profile_url) {
+          html += '<a href="' + info.profile_url + '" target="_blank" class="team-link" style="font-weight:600;font-size:0.85rem;">' + entry.teamName + '</a>';
+        } else {
+          html += '<span style="font-weight:600;font-size:0.85rem;">' + entry.teamName + '</span>';
+        }
+        html += '<div style="font-size:0.75rem;color:#888;">' + (entry.division || '') + poolLabel + '</div>';
+        html += '</div></div>';
+      });
+      html += '</div></div>';
+    }
+
     // Pod groupings
     if (nat.pods) {
       html += '<div style="margin-bottom:1rem;">';
