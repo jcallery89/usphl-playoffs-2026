@@ -20,14 +20,14 @@ async function main() {
     location: 'Ice Vault, Wayne, NJ',
     formatInfo: 'Pod play round-robin leading to semifinals and championship. All games at Ice Vault, Wayne, NJ.',
     pods: {
-      'Pod 1': {
-        teams: ['Premier Seed #1', 'Premier Seed #6', 'Premier Seed #7', 'Premier Seed #10'],
+      'Pool A': {
+        teams: ['Vernal Oilers', 'Minnesota Squatch', 'West Chester Wolves', 'Hawkesbury Knights'],
       },
-      'Pod 2': {
-        teams: ['Premier Seed #2', 'Premier Seed #5', 'Premier Seed #8', 'Premier Wild Card #1'],
+      'Pool B': {
+        teams: ['Hampton Roads Whalers', 'Ontario Jr Reign', 'Coral Springs Jr. Cats', 'Fresno Monsters'],
       },
-      'Pod 3': {
-        teams: ['Premier Seed #3', 'Premier Seed #4', 'Premier Seed #9', 'Premier Wild Card #2'],
+      'Pool C': {
+        teams: ['Metro Jets', 'Northern Cyclones', 'Fort Wayne Spacemen', 'Toledo Cherokee'],
       },
     },
     days: [
@@ -35,44 +35,44 @@ async function main() {
         date: 'Wednesday, March 25',
         label: 'Pod Play',
         games: [
-          { time: '2:30 PM', rink: 'Rink 1', home: 'Premier Seed #9', away: 'Premier Seed #4', pod: 'Pod 3' },
-          { time: '2:45 PM', rink: 'Rink 2', home: 'Premier Wild Card #2', away: 'Premier Seed #3', pod: 'Pod 3' },
-          { time: '3:00 PM', rink: 'Rink 3', home: 'Premier Seed #8', away: 'Premier Seed #5', pod: 'Pod 2' },
-          { time: '5:30 PM', rink: 'Rink 1', home: 'Premier Wild Card #1', away: 'Premier Seed #2', pod: 'Pod 2' },
-          { time: '5:45 PM', rink: 'Rink 2', home: 'Premier Seed #7', away: 'Premier Seed #6', pod: 'Pod 1' },
-          { time: '6:00 PM', rink: 'Rink 3', home: 'Premier Seed #10', away: 'Premier Seed #1', pod: 'Pod 1' },
+          { time: '2:30 PM', rink: 'Rink 1', home: 'Fort Wayne Spacemen', away: 'Northern Cyclones', pod: 'Pool C' },
+          { time: '2:45 PM', rink: 'Rink 2', home: 'Toledo Cherokee', away: 'Metro Jets', pod: 'Pool C' },
+          { time: '3:00 PM', rink: 'Rink 3', home: 'Coral Springs Jr. Cats', away: 'Ontario Jr Reign', pod: 'Pool B' },
+          { time: '5:30 PM', rink: 'Rink 1', home: 'Fresno Monsters', away: 'Hampton Roads Whalers', pod: 'Pool B' },
+          { time: '5:45 PM', rink: 'Rink 2', home: 'West Chester Wolves', away: 'Minnesota Squatch', pod: 'Pool A' },
+          { time: '6:00 PM', rink: 'Rink 3', home: 'Hawkesbury Knights', away: 'Vernal Oilers', pod: 'Pool A' },
         ],
       },
       {
         date: 'Thursday, March 26',
         label: 'Pod Play',
         games: [
-          { time: '12:30 PM', rink: 'Rink 1', home: 'Premier Seed #8', away: 'Premier Seed #2', pod: 'Pod 2' },
-          { time: '12:45 PM', rink: 'Rink 2', home: 'Premier Wild Card #1', away: 'Premier Seed #5', pod: 'Pod 2' },
-          { time: '3:30 PM', rink: 'Rink 1', home: 'Premier Seed #10', away: 'Premier Seed #6', pod: 'Pod 1' },
-          { time: '3:45 PM', rink: 'Rink 3', home: 'Premier Seed #7', away: 'Premier Seed #1', pod: 'Pod 1' },
-          { time: '3:45 PM', rink: 'Rink 2', home: 'Premier Wild Card #2', away: 'Premier Seed #4', pod: 'Pod 3' },
-          { time: '6:45 PM', rink: 'Rink 2', home: 'Premier Seed #9', away: 'Premier Seed #3', pod: 'Pod 3' },
+          { time: '12:30 PM', rink: 'Rink 1', home: 'Coral Springs Jr. Cats', away: 'Hampton Roads Whalers', pod: 'Pool B' },
+          { time: '12:45 PM', rink: 'Rink 2', home: 'Fresno Monsters', away: 'Ontario Jr Reign', pod: 'Pool B' },
+          { time: '3:30 PM', rink: 'Rink 1', home: 'Hawkesbury Knights', away: 'Minnesota Squatch', pod: 'Pool A' },
+          { time: '3:45 PM', rink: 'Rink 3', home: 'West Chester Wolves', away: 'Vernal Oilers', pod: 'Pool A' },
+          { time: '3:45 PM', rink: 'Rink 2', home: 'Toledo Cherokee', away: 'Northern Cyclones', pod: 'Pool C' },
+          { time: '6:45 PM', rink: 'Rink 2', home: 'Fort Wayne Spacemen', away: 'Metro Jets', pod: 'Pool C' },
         ],
       },
       {
         date: 'Friday, March 27',
         label: 'Final Day of Pod Play',
         games: [
-          { time: '12:00 PM', rink: 'Rink 2', home: 'Premier Seed #6', away: 'Premier Seed #1', pod: 'Pod 1' },
-          { time: '12:30 PM', rink: 'Rink 1', home: 'Premier Seed #10', away: 'Premier Seed #7', pod: 'Pod 1' },
-          { time: '12:45 PM', rink: 'Rink 3', home: 'Premier Wild Card #2', away: 'Premier Seed #9', pod: 'Pod 3' },
-          { time: '3:00 PM', rink: 'Rink 2', home: 'Premier Seed #5', away: 'Premier Seed #2', pod: 'Pod 2' },
-          { time: '3:45 PM', rink: 'Rink 3', home: 'Premier Wild Card #1', away: 'Premier Seed #8', pod: 'Pod 2' },
-          { time: '6:00 PM', rink: 'Rink 2', home: 'Premier Seed #4', away: 'Premier Seed #3', pod: 'Pod 3' },
+          { time: '12:00 PM', rink: 'Rink 2', home: 'Minnesota Squatch', away: 'Vernal Oilers', pod: 'Pool A' },
+          { time: '12:30 PM', rink: 'Rink 1', home: 'Hawkesbury Knights', away: 'West Chester Wolves', pod: 'Pool A' },
+          { time: '12:45 PM', rink: 'Rink 3', home: 'Toledo Cherokee', away: 'Fort Wayne Spacemen', pod: 'Pool C' },
+          { time: '3:00 PM', rink: 'Rink 2', home: 'Ontario Jr Reign', away: 'Hampton Roads Whalers', pod: 'Pool B' },
+          { time: '3:45 PM', rink: 'Rink 3', home: 'Fresno Monsters', away: 'Coral Springs Jr. Cats', pod: 'Pool B' },
+          { time: '6:00 PM', rink: 'Rink 2', home: 'Northern Cyclones', away: 'Metro Jets', pod: 'Pool C' },
         ],
       },
       {
         date: 'Saturday, March 28',
         label: 'Semifinals',
         games: [
-          { time: '3:45 PM', rink: 'Rink 3', home: 'Premier Seed #2', away: 'Premier Seed #3', note: 'Semifinal #1' },
-          { time: '4:00 PM', rink: 'Rink 2', home: 'Premier Seed #1', away: 'Premier Seed #4', note: 'Semifinal #2' },
+          { time: '3:45 PM', rink: 'Rink 3', home: 'Pool B Winner', away: 'Pool C Winner', note: 'Semifinal #1' },
+          { time: '4:00 PM', rink: 'Rink 2', home: 'Pool A Winner', away: 'Best 2nd Place', note: 'Semifinal #2' },
         ],
       },
       {

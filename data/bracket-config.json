@@ -466,18 +466,32 @@
       }
     },
     "Nationals": {
+      "nationalSeeds": [
+        { "seed": 1, "teamName": "Vernal Oilers", "teamId": "490", "division": "Northwest", "pool": "A" },
+        { "seed": 2, "teamName": "Hampton Roads Whalers", "teamId": "446", "division": "Southeast", "pool": "B" },
+        { "seed": 3, "teamName": "Metro Jets", "teamId": "460", "division": "Great Lakes", "pool": "C" },
+        { "seed": 4, "teamName": "Northern Cyclones", "teamId": "467", "division": "New England", "pool": "C" },
+        { "seed": 5, "teamName": "Ontario Jr Reign", "teamId": "469", "division": "Pacific", "pool": "B" },
+        { "seed": 6, "teamName": "Minnesota Squatch", "teamId": "463", "division": "North", "pool": "A" },
+        { "seed": 7, "teamName": "West Chester Wolves", "teamId": "491", "division": "Atlantic", "pool": "A" },
+        { "seed": 8, "teamName": "Coral Springs Jr. Cats", "teamId": "2284", "division": "Florida", "pool": "B" },
+        { "seed": 9, "teamName": "Fort Wayne Spacemen", "teamId": "443", "division": "Midwest", "pool": "C" },
+        { "seed": 10, "teamName": "Hawkesbury Knights", "teamId": "447", "division": "St. Lawrence", "pool": "A" }
+      ],
       "wildCards": [
         {
           "label": "Premier Wild Card 1",
-          "teamName": "Toledo Cherokee",
-          "teamId": "485",
-          "division": "Great Lakes"
+          "teamName": "Fresno Monsters",
+          "teamId": "445",
+          "division": "Pacific",
+          "pool": "B"
         },
         {
           "label": "Premier Wild Card 2",
-          "teamName": "Fresno Monsters",
-          "teamId": "445",
-          "division": "Pacific"
+          "teamName": "Toledo Cherokee",
+          "teamId": "485",
+          "division": "Great Lakes",
+          "pool": "C"
         }
       ]
     },
