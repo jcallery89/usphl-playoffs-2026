@@ -1677,7 +1677,7 @@
                 {
                   "game_id": "23404",
                   "date": "2026-03-26",
-                  "time": "1:00 AM",
+                  "time": "1:00 PM (listed as 1 AM in API — likely PM)",
                   "location": "TBD",
                   "home_team": "OLCN Scouts",
                   "away_team": "Diamond Valley Rockies",
