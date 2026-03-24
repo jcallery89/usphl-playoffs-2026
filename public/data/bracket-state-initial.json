@@ -2614,20 +2614,20 @@
             {
               "time": "9:30 AM",
               "rink": "Rink 3",
-              "home": "Elite Wild Card",
-              "away": "Elite Seed #1"
+              "home": "Montreal Knights",
+              "away": "Carolina Junior Hurricanes"
             },
             {
               "time": "11:30 AM",
               "rink": "Rink 1",
-              "home": "Elite Seed #5",
-              "away": "Elite Seed #4"
+              "home": "Fort Wayne Spacemen",
+              "away": "Wilkes-Barre Scranton Knights"
             },
             {
               "time": "11:45 AM",
               "rink": "Rink 2",
-              "home": "Elite Seed #3",
-              "away": "Elite Seed #2"
+              "home": "Tampa Bay Juniors",
+              "away": "Northern Cyclones"
             }
           ]
         },
@@ -2638,20 +2638,20 @@
             {
               "time": "9:30 AM",
               "rink": "Rink 1",
-              "home": "Elite Seed #5",
-              "away": "Elite Seed #3"
+              "home": "Fort Wayne Spacemen",
+              "away": "Tampa Bay Juniors"
             },
             {
               "time": "9:45 AM",
               "rink": "Rink 2",
-              "home": "Elite Seed #4",
-              "away": "Elite Seed #1"
+              "home": "Wilkes-Barre Scranton Knights",
+              "away": "Carolina Junior Hurricanes"
             },
             {
               "time": "1:15 PM",
               "rink": "Rink 3",
-              "home": "Elite Wild Card",
-              "away": "Elite Seed #2"
+              "home": "Montreal Knights",
+              "away": "Northern Cyclones"
             }
           ]
         },
@@ -2662,20 +2662,20 @@
             {
               "time": "9:00 AM",
               "rink": "Rink 2",
-              "home": "Elite Seed #4",
-              "away": "Elite Seed #2"
+              "home": "Wilkes-Barre Scranton Knights",
+              "away": "Northern Cyclones"
             },
             {
               "time": "9:30 AM",
               "rink": "Rink 1",
-              "home": "Elite Wild Card",
-              "away": "Elite Seed #5"
+              "home": "Montreal Knights",
+              "away": "Fort Wayne Spacemen"
             },
             {
               "time": "9:45 AM",
               "rink": "Rink 3",
-              "home": "Elite Seed #3",
-              "away": "Elite Seed #1"
+              "home": "Tampa Bay Juniors",
+              "away": "Carolina Junior Hurricanes"
             }
           ]
         },
@@ -2686,15 +2686,15 @@
             {
               "time": "12:45 PM",
               "rink": "Rink 3",
-              "home": "Elite Seed #4",
-              "away": "Elite Seed #1",
+              "home": "Wilkes-Barre Scranton Knights",
+              "away": "Carolina Junior Hurricanes",
               "note": "Semifinal #1"
             },
             {
               "time": "1:00 PM",
               "rink": "Rink 2",
-              "home": "Elite Seed #3",
-              "away": "Elite Seed #2",
+              "home": "Tampa Bay Juniors",
+              "away": "Northern Cyclones",
               "note": "Semifinal #2"
             }
           ]
@@ -2706,8 +2706,8 @@
             {
               "time": "11:30 AM",
               "rink": "Rink 2",
-              "home": "Elite Seed #2",
-              "away": "Elite Seed #1",
+              "home": "Northern Cyclones",
+              "away": "Carolina Junior Hurricanes",
               "note": "USPHL Elite National Championship Game"
             }
           ]
