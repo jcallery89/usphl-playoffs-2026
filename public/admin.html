@@ -774,8 +774,8 @@
             m.games.forEach(function(g) {
               var isScheduled = g.game_status === 'scheduled';
               var isIfNecessary = g.if_necessary;
-              var homeWin = String(g.winner_id) === String(m.homeTeamId);
-              var awayWin = String(g.winner_id) === String(m.awayTeamId);
+              var homeWin = String(g.winner_id) === String(g.home_id);
+              var awayWin = String(g.winner_id) === String(g.away_id);
 
               if (isScheduled) {
                 var cls = isIfNecessary ? 'if-necessary' : 'scheduled';
