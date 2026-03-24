@@ -2573,13 +2573,30 @@
               "awayTeamId": "2270",
               "homeTeamName": "Utica Jr Comets",
               "awayTeamName": "Boston Junior Bruins",
-              "homeWins": 0,
+              "homeWins": 2,
               "awayWins": 0,
-              "status": "not_started",
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-22",
+                  "homeScore": 6,
+                  "awayScore": 1,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-23",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             },
@@ -2592,12 +2609,29 @@
               "homeTeamName": "Boston Jr. Rangers",
               "awayTeamName": "Worcester Railers JHC",
               "homeWins": 0,
-              "awayWins": 0,
-              "status": "not_started",
+              "awayWins": 2,
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-21",
+                  "homeScore": 2,
+                  "awayScore": 6,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-23",
+                  "homeScore": 3,
+                  "awayScore": 6,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             }
@@ -2649,13 +2683,30 @@
               "awayTeamId": "121",
               "homeTeamName": "South Shore Kings",
               "awayTeamName": "Thunder Hockey Club",
-              "homeWins": 0,
+              "homeWins": 2,
               "awayWins": 0,
-              "status": "not_started",
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-21",
+                  "homeScore": 5,
+                  "awayScore": 1,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-22",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             },
@@ -2667,13 +2718,30 @@
               "awayTeamId": "113",
               "homeTeamName": "Islanders Hockey Club",
               "awayTeamName": "Northern Cyclones",
-              "homeWins": 0,
-              "awayWins": 0,
-              "status": "not_started",
+              "homeWins": 1,
+              "awayWins": 1,
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-21",
+                  "homeScore": 3,
+                  "awayScore": 6,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-22",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             }
@@ -2725,13 +2793,30 @@
               "awayTeamId": "2328",
               "homeTeamName": "Lewiston MAINEiacs",
               "awayTeamName": "CT Chiefs North",
-              "homeWins": 0,
+              "homeWins": 2,
               "awayWins": 0,
-              "status": "not_started",
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-21",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-23",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             },
@@ -2739,17 +2824,34 @@
               "matchupId": "r0-m1",
               "homeSeed": 2,
               "awaySeed": 3,
-              "homeTeamId": "2273",
-              "awayTeamId": "2274",
-              "homeTeamName": "Universel Quebec",
-              "awayTeamName": "Woodstock NB Slammers",
-              "homeWins": 0,
+              "homeTeamId": "2274",
+              "awayTeamId": "2273",
+              "homeTeamName": "Woodstock Slammers",
+              "awayTeamName": "Universel Quebec",
+              "homeWins": 2,
               "awayWins": 0,
-              "status": "not_started",
+              "status": "in_progress",
               "winnerId": null,
               "winnerSeed": null,
               "winnerName": null,
-              "games": [],
+              "games": [
+                {
+                  "gameNum": 1,
+                  "date": "2026-03-21",
+                  "homeScore": 4,
+                  "awayScore": 3,
+                  "location": null,
+                  "status": "final"
+                },
+                {
+                  "gameNum": 2,
+                  "date": "2026-03-22",
+                  "homeScore": 3,
+                  "awayScore": 2,
+                  "location": null,
+                  "status": "final"
+                }
+              ],
               "overrideWinner": null,
               "note": null
             }

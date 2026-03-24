@@ -319,6 +319,232 @@
       color: #999;
     }
     .hidden { display: none; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid #c91417;
+      width: fit-content;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      background: #fff;
+      color: #c91417;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mode-toggle button.active {
+      background: #c91417;
+      color: #fff;
+    }
+    .mode-toggle button:not(.active):hover {
+      background: #fdf0f0;
+    }
+
+    /* Playoff Picture */
+    .pp-loading {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+      font-size: 0.95rem;
+    }
+    .pp-section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin: 1.5rem 0 0.75rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #c91417;
+    }
+    .pp-section-title:first-child { margin-top: 0; }
+    .pp-game-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.6rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .pp-game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+    .pp-game-teams {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .pp-game-meta {
+      font-size: 0.75rem;
+      color: #999;
+    }
+    .pp-game-division {
+      font-size: 0.72rem;
+      color: #888;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .pp-outcome-toggles {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .pp-outcome-btn {
+      padding: 0.35rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pp-outcome-btn:hover {
+      border-color: #c91417;
+      color: #c91417;
+    }
+    .pp-outcome-btn.selected {
+      background: #c91417;
+      border-color: #c91417;
+      color: #fff;
+    }
+    .pp-outcome-btn.selected-ot {
+      background: #e67e22;
+      border-color: #e67e22;
+      color: #fff;
+    }
+    .pp-ot-picker {
+      display: flex;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+      align-items: center;
+    }
+    .pp-ot-picker span {
+      font-size: 0.75rem;
+      color: #888;
+      font-weight: 600;
+    }
+
+    /* Standings tables */
+    .pp-division-block {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      overflow-x: auto;
+    }
+    .pp-division-block h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #c91417;
+      text-transform: uppercase;
+    }
+    .pp-standings-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .pp-standings-table th {
+      text-align: left;
+      padding: 0.3rem 0.4rem;
+      font-weight: 700;
+      color: #888;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid #e0e0e0;
+      white-space: nowrap;
+    }
+    .pp-standings-table th.num { text-align: center; }
+    .pp-standings-table td {
+      padding: 0.35rem 0.4rem;
+      border-bottom: 1px solid #f0f0f0;
+      white-space: nowrap;
+    }
+    .pp-standings-table td.num { text-align: center; }
+    .pp-standings-table tr.cutline td {
+      border-bottom: 3px solid #c91417;
+    }
+    .pp-standings-table tr.below-cutline td {
+      color: #aaa;
+    }
+    .pp-movement {
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-block;
+      min-width: 1.2em;
+      text-align: center;
+    }
+    .pp-movement.up { color: #2ecc71; }
+    .pp-movement.down { color: #e74c3c; }
+    .pp-pts-delta {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #2ecc71;
+      margin-left: 0.2rem;
+    }
+    .pp-no-games {
+      padding: 1.5rem;
+      text-align: center;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    .pp-standings-table tr.ineligible td {
+      color: #bbb;
+      font-style: italic;
+    }
+    .pp-ineligible-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      background: #999;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      vertical-align: middle;
+    }
+    .pp-game-card.has-ineligible {
+      border-left: 3px solid #ccc;
+      opacity: 0.7;
+    }
+    .pp-game-card.has-ineligible .pp-game-division::after {
+      content: ' • INVOLVES INELIGIBLE TEAM';
+      color: #999;
+      font-weight: 400;
+      font-size: 0.68rem;
+    }
+    .pp-reset-btn {
+      padding: 0.4rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #6c757d;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+    .pp-reset-btn:hover { background: #5a6268; }
   </style>
 </head>
 <body>
@@ -337,21 +563,37 @@
 
   <!-- Dashboard -->
   <div id="dashboard" class="container hidden">
-    <div class="controls">
-      <select id="leagueSelect" onchange="onLeagueChange()">
-        <option value="Premier">Premier</option>
-        <option value="Elite">Elite</option>
-        <option value="NCDC">NCDC</option>
-      </select>
-      <select id="divisionSelect" onchange="onDivisionChange()"></select>
-      <button class="action-btn secondary" onclick="doRefresh()">Force Refresh</button>
-      <button class="action-btn secondary" onclick="doLogout()">Logout</button>
+    <div class="mode-toggle" id="modeToggle">
+      <button class="active" onclick="switchMode('bracket')">Bracket Management</button>
+      <button onclick="switchMode('playoff')">Playoff Picture</button>
     </div>
 
-    <div id="bracketView"></div>
+    <div id="bracketModeView">
+      <div class="controls">
+        <select id="leagueSelect" onchange="onLeagueChange()">
+          <option value="Premier">Premier</option>
+          <option value="Elite">Elite</option>
+          <option value="NCDC">NCDC</option>
+        </select>
+        <select id="divisionSelect" onchange="onDivisionChange()"></select>
+        <button class="action-btn secondary" onclick="doRefresh()">Force Refresh</button>
+        <button class="action-btn secondary" onclick="doLogout()">Logout</button>
+      </div>
 
-    <div class="status-bar">
-      Last updated: <span id="lastUpdatedTime">—</span>
+      <div id="bracketView"></div>
+
+      <div class="status-bar">
+        Last updated: <span id="lastUpdatedTime">—</span>
+      </div>
+    </div>
+
+    <div id="playoffPictureView" class="hidden">
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+        <button class="action-btn secondary" onclick="loadPlayoffPicture()">Refresh Data</button>
+        <button class="pp-reset-btn" onclick="resetScenarios()">Reset All Scenarios</button>
+        <button class="action-btn secondary" onclick="doLogout()" style="margin-left:auto;">Logout</button>
+      </div>
+      <div id="ppContent"><div class="pp-loading">Loading NCDC playoff picture...</div></div>
     </div>
   </div>
 
@@ -741,6 +983,477 @@
       var msg = document.getElementById('schedSaveMsg_' + roundIdx);
       msg.style.display = 'inline';
       setTimeout(function() { msg.style.display = 'none'; }, 2000);
+    }
+
+    // ---- Mode Toggle ----
+    var currentMode = 'bracket';
+    var ppDataLoaded = false;
+    var ppStandings = null; // parsed per-division standings
+    var ppGames = null;     // unplayed games
+    var ppOutcomes = {};    // gameId -> { winner: 'home'|'away', type: 'REG'|'OT'|'SO' }
+
+    var NCDC_QUALIFY = {
+      'Atlantic': 5,
+      'New England Central': 4,
+      'New England East': 4,
+      'New England North': 4,
+      'Mountain': 4,
+    };
+    var PP_DIVISIONS = Object.keys(NCDC_QUALIFY);
+
+    // Teams declared ineligible for NCDC playoffs
+    var INELIGIBLE_TEAMS = ['New England Wolves', 'CT Chiefs North'];
+
+    function switchMode(mode) {
+      currentMode = mode;
+      var btns = document.querySelectorAll('#modeToggle button');
+      btns[0].className = mode === 'bracket' ? 'active' : '';
+      btns[1].className = mode === 'playoff' ? 'active' : '';
+      document.getElementById('bracketModeView').className = mode === 'bracket' ? '' : 'hidden';
+      document.getElementById('playoffPictureView').className = mode === 'playoff' ? '' : 'hidden';
+      if (mode === 'playoff' && !ppDataLoaded) {
+        loadPlayoffPicture();
+      }
+    }
+
+    async function loadPlayoffPicture() {
+      var ppEl = document.getElementById('ppContent');
+      ppEl.innerHTML = '<div class="pp-loading">Loading NCDC standings & schedule...</div>';
+      try {
+        var results = await Promise.all([
+          fetch(API_BASE + '/api/standings?league_id=1').then(function(r) { return r.json(); }),
+          fetch(API_BASE + '/api/games?league_id=1&stat_class=1').then(function(r) { return r.json(); }),
+        ]);
+        var rawStandings = results[0];
+        var rawGames = results[1];
+
+        // Parse standings into per-division arrays
+        ppStandings = parseStandings(rawStandings);
+        // Parse games — find unplayed (scheduled) ones
+        ppGames = parseUnplayedGames(rawGames);
+
+        ppDataLoaded = true;
+        ppOutcomes = {};
+        renderPlayoffPicture();
+      } catch(e) {
+        ppEl.innerHTML = '<div class="pp-loading" style="color:#c91417;">Error loading data: ' + e.message + '</div>';
+        console.error('Playoff picture load error:', e);
+      }
+    }
+
+    function parseStandings(data) {
+      var result = {};
+      var leagues = data && data.leagues;
+      if (!leagues || leagues.length === 0) {
+        leagues = Array.isArray(data) ? data : [];
+      }
+      if (leagues.length === 0) return result;
+
+      var league = leagues[0];
+      var levels = league.levels || [];
+      for (var li = 0; li < levels.length; li++) {
+        var confs = levels[li].conferences || [];
+        for (var ci = 0; ci < confs.length; ci++) {
+          var conf = confs[ci];
+          var divName = (conf.name || conf.conf_name || '').trim();
+          if (PP_DIVISIONS.indexOf(divName) === -1) continue;
+          var teams = (conf.teams || []).map(function(t) {
+            var regWins = parseInt(t.wins) || 0;
+            var otWins = parseInt(t.otwins) || 0;
+            var row = regWins + otWins; // ROW = regulation + OT wins (excludes SO wins)
+            var teamName = (t.team_name || t.name || '').trim();
+            return {
+              teamId: t.id || t.team_id,
+              teamName: teamName,
+              gp: parseInt(t.games_played) || 0,
+              w: parseInt(t.total_wins) || 0,
+              l: parseInt(t.losses) || 0,
+              otl: parseInt(t.otlosses) || 0,
+              sol: parseInt(t.so_losses) || 0,
+              pts: parseInt(t.pts) || 0,
+              row: row,
+              ineligible: INELIGIBLE_TEAMS.indexOf(teamName) !== -1,
+            };
+          });
+          result[divName] = teams;
+        }
+      }
+      return result;
+    }
+
+    function parseUnplayedGames(games) {
+      if (!Array.isArray(games)) return [];
+      // Build team-to-division map from standings
+      var teamDivMap = {};
+      if (ppStandings) {
+        for (var div in ppStandings) {
+          for (var i = 0; i < ppStandings[div].length; i++) {
+            teamDivMap[String(ppStandings[div][i].teamId)] = div;
+          }
+        }
+      }
+      return games.filter(function(g) {
+        var s = (g.game_status || '').toUpperCase();
+        return s === 'NOT STARTED' || s === 'SCHEDULED';
+      }).map(function(g) {
+        var homeId = g.home_id || g.home_team_id;
+        var awayId = g.away_id || g.away_team_id;
+        return {
+          gameId: g.game_id || g.gameid,
+          homeTeam: (g.home_team || '').trim(),
+          homeTeamId: homeId,
+          awayTeam: (g.away_team || '').trim(),
+          awayTeamId: awayId,
+          date: g.date || g.game_date || '',
+          time: g.time || g.game_time || '',
+          location: g.location || g.facility || '',
+          division: teamDivMap[String(homeId)] || teamDivMap[String(awayId)] || '',
+        };
+      }).sort(function(a, b) {
+        if (a.date < b.date) return -1;
+        if (a.date > b.date) return 1;
+        if (a.time < b.time) return -1;
+        if (a.time > b.time) return 1;
+        return 0;
+      });
+    }
+
+    function recalculateStandings(baseStandings, outcomes) {
+      // Deep clone base standings
+      var result = {};
+      for (var div in baseStandings) {
+        result[div] = baseStandings[div].map(function(t) {
+          return { teamId: t.teamId, teamName: t.teamName, gp: t.gp, w: t.w, l: t.l, otl: t.otl, sol: t.sol, pts: t.pts, row: t.row, ineligible: t.ineligible };
+        });
+      }
+
+      // Build team lookup across all divisions
+      var teamLookup = {};
+      for (var div in result) {
+        for (var i = 0; i < result[div].length; i++) {
+          var t = result[div][i];
+          teamLookup[String(t.teamId)] = t;
+        }
+      }
+
+      // Apply outcomes
+      for (var gameId in outcomes) {
+        var outcome = outcomes[gameId];
+        var game = findGameById(gameId);
+        if (!game) continue;
+
+        var winnerTeamId = outcome.winner === 'home' ? String(game.homeTeamId) : String(game.awayTeamId);
+        var loserTeamId = outcome.winner === 'home' ? String(game.awayTeamId) : String(game.homeTeamId);
+        var winnerTeam = teamLookup[winnerTeamId];
+        var loserTeam = teamLookup[loserTeamId];
+
+        if (winnerTeam) {
+          winnerTeam.gp += 1;
+          winnerTeam.w += 1;
+          winnerTeam.pts += 2;
+          if (outcome.type === 'REG') winnerTeam.row += 1;
+        }
+        if (loserTeam) {
+          loserTeam.gp += 1;
+          if (outcome.type === 'REG') {
+            loserTeam.l += 1;
+            // REG loss = 0 points
+          } else if (outcome.type === 'OT') {
+            loserTeam.otl += 1;
+            loserTeam.pts += 1;
+          } else if (outcome.type === 'SO') {
+            loserTeam.sol += 1;
+            loserTeam.pts += 1;
+          }
+        }
+      }
+
+      // Sort each division
+      for (var div in result) {
+        sortStandings(result[div]);
+      }
+
+      return result;
+    }
+
+    function sortStandings(teams) {
+      teams.sort(function(a, b) {
+        // PTS% descending
+        var pctA = a.gp > 0 ? a.pts / (a.gp * 2) : 0;
+        var pctB = b.gp > 0 ? b.pts / (b.gp * 2) : 0;
+        if (pctB !== pctA) return pctB - pctA;
+        // ROW descending
+        if (b.row !== a.row) return b.row - a.row;
+        // Fewer losses
+        if (a.l !== b.l) return a.l - b.l;
+        // PTS descending
+        return b.pts - a.pts;
+      });
+    }
+
+    function findGameById(gameId) {
+      if (!ppGames) return null;
+      for (var i = 0; i < ppGames.length; i++) {
+        if (String(ppGames[i].gameId) === String(gameId)) return ppGames[i];
+      }
+      return null;
+    }
+
+    function getTodayStr() {
+      var d = new Date();
+      var mm = String(d.getMonth() + 1).padStart(2, '0');
+      var dd = String(d.getDate()).padStart(2, '0');
+      return d.getFullYear() + '-' + mm + '-' + dd;
+    }
+
+    function renderPlayoffPicture() {
+      var ppEl = document.getElementById('ppContent');
+      if (!ppStandings || Object.keys(ppStandings).length === 0) {
+        ppEl.innerHTML = '<div class="pp-loading">No standings data available.</div>';
+        return;
+      }
+
+      // Sort base standings for baseline ranking
+      var baseRanked = {};
+      for (var div in ppStandings) {
+        var sorted = ppStandings[div].slice();
+        sortStandings(sorted);
+        baseRanked[div] = sorted;
+      }
+
+      // Calculate scenario standings
+      var hasOutcomes = Object.keys(ppOutcomes).length > 0;
+      var scenarioStandings = hasOutcomes ? recalculateStandings(ppStandings, ppOutcomes) : baseRanked;
+
+      var html = '';
+
+      // Games section
+      var today = getTodayStr();
+      var todayGames = ppGames.filter(function(g) { return g.date === today; });
+      var upcomingGames = ppGames.filter(function(g) { return g.date > today; });
+      // Show up to next 3 days of upcoming games
+      var upcomingDates = [];
+      for (var i = 0; i < upcomingGames.length; i++) {
+        if (upcomingDates.indexOf(upcomingGames[i].date) === -1) {
+          upcomingDates.push(upcomingGames[i].date);
+          if (upcomingDates.length >= 3) break;
+        }
+      }
+      var nearGames = upcomingGames.filter(function(g) { return upcomingDates.indexOf(g.date) !== -1; });
+
+      var allDisplayGames = todayGames.concat(nearGames);
+
+      html += '<h3 class="pp-section-title">Games (' + (todayGames.length > 0 ? 'Today + Upcoming' : 'Upcoming') + ')</h3>';
+
+      if (allDisplayGames.length === 0) {
+        html += '<div class="pp-no-games">No upcoming games found.</div>';
+      } else {
+        var lastDate = '';
+        for (var i = 0; i < allDisplayGames.length; i++) {
+          var g = allDisplayGames[i];
+          if (g.date !== lastDate) {
+            var dateLabel = g.date === today ? 'Today (' + formatDate(g.date) + ')' : formatDate(g.date);
+            html += '<div style="font-weight:700;font-size:0.85rem;color:#1a1a2e;margin:0.75rem 0 0.4rem;">' + dateLabel + '</div>';
+            lastDate = g.date;
+          }
+          html += renderGameCard(g);
+        }
+      }
+
+      // Standings section
+      html += '<h3 class="pp-section-title">Division Standings' + (hasOutcomes ? ' (with scenarios)' : '') + '</h3>';
+
+      for (var di = 0; di < PP_DIVISIONS.length; di++) {
+        var div = PP_DIVISIONS[di];
+        var teams = scenarioStandings[div];
+        var baseTeams = baseRanked[div];
+        if (!teams || teams.length === 0) continue;
+
+        html += renderStandingsTable(div, teams, baseTeams, hasOutcomes);
+      }
+
+      ppEl.innerHTML = html;
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      var parts = dateStr.split('-');
+      if (parts.length === 3) {
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return months[parseInt(parts[1]) - 1] + ' ' + parseInt(parts[2]);
+      }
+      return dateStr;
+    }
+
+    function isIneligibleTeam(name) {
+      return INELIGIBLE_TEAMS.indexOf((name || '').trim()) !== -1;
+    }
+
+    function renderGameCard(game) {
+      var outcome = ppOutcomes[game.gameId];
+      var divLabel = game.division || '';
+      var hasIneligible = isIneligibleTeam(game.homeTeam) || isIneligibleTeam(game.awayTeam);
+      var html = '<div class="pp-game-card' + (hasIneligible ? ' has-ineligible' : '') + '">';
+      if (divLabel) html += '<div class="pp-game-division">' + divLabel + '</div>';
+      html += '<div class="pp-game-header">';
+      html += '<div class="pp-game-teams">' + game.homeTeam + ' vs ' + game.awayTeam + '</div>';
+      html += '<div class="pp-game-meta">' + (game.time || '') + (game.location ? ' @ ' + game.location : '') + '</div>';
+      html += '</div>';
+
+      // Outcome toggles
+      html += '<div class="pp-outcome-toggles">';
+      var gid = game.gameId;
+
+      // Home Win REG
+      var selHome = outcome && outcome.winner === 'home' && outcome.type === 'REG';
+      html += '<button class="pp-outcome-btn' + (selHome ? ' selected' : '') + '" onclick="setOutcome(\'' + gid + '\',\'home\',\'REG\')">' + abbreviateTeam(game.homeTeam) + ' (REG)</button>';
+
+      // Away Win REG
+      var selAway = outcome && outcome.winner === 'away' && outcome.type === 'REG';
+      html += '<button class="pp-outcome-btn' + (selAway ? ' selected' : '') + '" onclick="setOutcome(\'' + gid + '\',\'away\',\'REG\')">' + abbreviateTeam(game.awayTeam) + ' (REG)</button>';
+
+      // OT — Home wins
+      var selOtHome = outcome && outcome.winner === 'home' && outcome.type === 'OT';
+      html += '<button class="pp-outcome-btn' + (selOtHome ? ' selected-ot' : '') + '" onclick="setOutcome(\'' + gid + '\',\'home\',\'OT\')">' + abbreviateTeam(game.homeTeam) + ' (OT)</button>';
+
+      // OT — Away wins
+      var selOtAway = outcome && outcome.winner === 'away' && outcome.type === 'OT';
+      html += '<button class="pp-outcome-btn' + (selOtAway ? ' selected-ot' : '') + '" onclick="setOutcome(\'' + gid + '\',\'away\',\'OT\')">' + abbreviateTeam(game.awayTeam) + ' (OT)</button>';
+
+      // SO — Home wins
+      var selSoHome = outcome && outcome.winner === 'home' && outcome.type === 'SO';
+      html += '<button class="pp-outcome-btn' + (selSoHome ? ' selected-ot' : '') + '" onclick="setOutcome(\'' + gid + '\',\'home\',\'SO\')">' + abbreviateTeam(game.homeTeam) + ' (SO)</button>';
+
+      // SO — Away wins
+      var selSoAway = outcome && outcome.winner === 'away' && outcome.type === 'SO';
+      html += '<button class="pp-outcome-btn' + (selSoAway ? ' selected-ot' : '') + '" onclick="setOutcome(\'' + gid + '\',\'away\',\'SO\')">' + abbreviateTeam(game.awayTeam) + ' (SO)</button>';
+
+      html += '</div>'; // outcome-toggles
+      html += '</div>'; // game-card
+      return html;
+    }
+
+    function abbreviateTeam(name) {
+      if (!name) return '';
+      // Shorten long team names for toggle buttons
+      var words = name.split(' ');
+      if (words.length > 3) {
+        return words.slice(0, 2).join(' ');
+      }
+      return name;
+    }
+
+    function setOutcome(gameId, winner, type) {
+      var current = ppOutcomes[gameId];
+      // Toggle off if clicking the same outcome
+      if (current && current.winner === winner && current.type === type) {
+        delete ppOutcomes[gameId];
+      } else {
+        ppOutcomes[gameId] = { winner: winner, type: type };
+      }
+      renderPlayoffPicture();
+    }
+
+    function resetScenarios() {
+      ppOutcomes = {};
+      renderPlayoffPicture();
+    }
+
+    function renderStandingsTable(divName, teams, baseTeams, hasOutcomes) {
+      var qualifyCount = NCDC_QUALIFY[divName] || 4;
+
+      // Build base rank lookup
+      var baseRankMap = {};
+      if (baseTeams) {
+        for (var i = 0; i < baseTeams.length; i++) {
+          baseRankMap[String(baseTeams[i].teamId)] = i;
+        }
+      }
+
+      // Build base pts lookup
+      var basePtsMap = {};
+      if (baseTeams) {
+        for (var i = 0; i < baseTeams.length; i++) {
+          basePtsMap[String(baseTeams[i].teamId)] = baseTeams[i].pts;
+        }
+      }
+
+      // Count ineligible teams in this division
+      var ineligibleInDiv = teams.filter(function(t) { return t.ineligible; }).length;
+
+      var html = '<div class="pp-division-block">';
+      html += '<h4>' + divName + ' <span style="font-weight:400;font-size:0.75rem;color:#888;">(Top ' + qualifyCount + ' eligible qualify)</span></h4>';
+      html += '<table class="pp-standings-table">';
+      html += '<thead><tr>';
+      html += '<th class="num">#</th>';
+      if (hasOutcomes) html += '<th class="num"></th>';
+      html += '<th>Team</th>';
+      html += '<th class="num">GP</th>';
+      html += '<th class="num">W</th>';
+      html += '<th class="num">L</th>';
+      html += '<th class="num">OTL</th>';
+      html += '<th class="num">SOL</th>';
+      html += '<th class="num">PTS</th>';
+      html += '<th class="num">PTS%</th>';
+      html += '<th class="num">ROW</th>';
+      html += '</tr></thead><tbody>';
+
+      // Track eligible rank separately for cutline
+      var eligibleRank = 0;
+      for (var i = 0; i < teams.length; i++) {
+        var t = teams[i];
+        var isIneligible = t.ineligible;
+        if (!isIneligible) eligibleRank++;
+
+        // Cutline goes after the Nth eligible team
+        var isCutline = !isIneligible && eligibleRank === qualifyCount;
+        var isBelow = !isIneligible && eligibleRank > qualifyCount;
+        var cls = '';
+        if (isIneligible) cls = 'ineligible';
+        else if (isCutline) cls = 'cutline';
+        else if (isBelow) cls = 'below-cutline';
+
+        var ptsPct = t.gp > 0 ? (t.pts / (t.gp * 2)).toFixed(3) : '.000';
+        if (ptsPct.charAt(0) === '0') ptsPct = ptsPct.substring(1);
+
+        html += '<tr class="' + cls + '">';
+        html += '<td class="num">' + (i + 1) + '</td>';
+
+        if (hasOutcomes) {
+          var baseRank = baseRankMap[String(t.teamId)];
+          var movement = '';
+          if (baseRank !== undefined && baseRank !== i) {
+            var diff = baseRank - i; // positive = moved up
+            if (diff > 0) movement = '<span class="pp-movement up">&#9650;' + diff + '</span>';
+            else movement = '<span class="pp-movement down">&#9660;' + Math.abs(diff) + '</span>';
+          }
+          html += '<td class="num">' + movement + '</td>';
+        }
+
+        var ptsDelta = '';
+        if (hasOutcomes) {
+          var basePts = basePtsMap[String(t.teamId)] || 0;
+          var diff = t.pts - basePts;
+          if (diff > 0) ptsDelta = '<span class="pp-pts-delta">+' + diff + '</span>';
+        }
+
+        var nameDisplay = t.teamName;
+        if (isIneligible) nameDisplay += '<span class="pp-ineligible-badge">Ineligible</span>';
+
+        html += '<td>' + nameDisplay + '</td>';
+        html += '<td class="num">' + t.gp + '</td>';
+        html += '<td class="num">' + t.w + '</td>';
+        html += '<td class="num">' + t.l + '</td>';
+        html += '<td class="num">' + t.otl + '</td>';
+        html += '<td class="num">' + t.sol + '</td>';
+        html += '<td class="num">' + t.pts + ptsDelta + '</td>';
+        html += '<td class="num">' + ptsPct + '</td>';
+        html += '<td class="num">' + t.row + '</td>';
+        html += '</tr>';
+      }
+
+      html += '</tbody></table></div>';
+      return html;
     }
 
     // ---- Init ----

@@ -13,10 +13,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'league_id must be 1, 2, or 3' });
   }
 
+  const statClass = req.query.stat_class || '2';
+  if (!['1', '2'].includes(statClass)) {
+    return res.status(400).json({ error: 'stat_class must be 1 or 2' });
+  }
+
   try {
     const games = await getCached(
-      `games:${leagueId}`,
-      () => getSchedule(leagueId),
+      `games:${leagueId}:${statClass}`,
+      () => getSchedule(leagueId, statClass),
       900 // 15 min TTL
     );
 
