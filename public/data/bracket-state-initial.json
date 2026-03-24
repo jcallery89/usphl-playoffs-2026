@@ -2686,15 +2686,15 @@
             {
               "time": "12:45 PM",
               "rink": "Rink 3",
-              "home": "Wilkes-Barre Scranton Knights",
-              "away": "Carolina Junior Hurricanes",
+              "home": "Elite Seed #4",
+              "away": "Elite Seed #1",
               "note": "Semifinal #1"
             },
             {
               "time": "1:00 PM",
               "rink": "Rink 2",
-              "home": "Tampa Bay Juniors",
-              "away": "Northern Cyclones",
+              "home": "Elite Seed #3",
+              "away": "Elite Seed #2",
               "note": "Semifinal #2"
             }
           ]
@@ -2706,8 +2706,8 @@
             {
               "time": "11:30 AM",
               "rink": "Rink 2",
-              "home": "Northern Cyclones",
-              "away": "Carolina Junior Hurricanes",
+              "home": "Elite Seed #2",
+              "away": "Elite Seed #1",
               "note": "USPHL Elite National Championship Game"
             }
           ]
