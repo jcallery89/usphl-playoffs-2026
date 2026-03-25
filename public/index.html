@@ -258,6 +258,19 @@
     .schedule-round-label { color: #c91417; font-weight: 600; }
     /* ===== Team Logo ===== */
     .team-logo { width: 20px; height: 20px; vertical-align: middle; margin-right: 6px; object-fit: contain; }
+    /* ===== Nationals Team Cards ===== */
+    .natl-team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+    .natl-team-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: #f8f8f9; border: 1px solid #e8e8e8; border-radius: 8px; transition: border-color 0.15s; }
+    .natl-team-card:hover { border-color: #c91417; }
+    .natl-team-card-logo { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
+    .natl-team-card-info { flex: 1; min-width: 0; }
+    .natl-team-card-name { font-weight: 700; font-size: 0.88rem; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .natl-team-card-name a { color: inherit; text-decoration: none; }
+    .natl-team-card-name a:hover { color: #c91417; text-decoration: underline; }
+    .natl-team-card-meta { font-size: 0.75rem; color: #888; margin-top: 0.15rem; }
+    .natl-team-card-record { font-size: 0.82rem; color: #333; margin-top: 0.2rem; font-weight: 600; }
+    .natl-team-card-seed { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #c91417; color: #fff; font-weight: 800; font-size: 0.78rem; border-radius: 50%; flex-shrink: 0; }
+    .natl-team-card-seed.wildcard { background: #0c568c; font-size: 0.6rem; }
     /* ===== Team Link ===== */
     .team-link { color: #333; text-decoration: none; }
     .team-link:hover { text-decoration: underline; color: #c91417; }
@@ -1827,6 +1840,36 @@
     scheduleContent.innerHTML = html;
   }
 
+  // Cache for standings data fetched from API
+  var _standingsCache = {};
+
+  function fetchStandingsForLeague(leagueId, callback) {
+    if (_standingsCache[leagueId]) { callback(_standingsCache[leagueId]); return; }
+    fetch('/api/standings?league_id=' + leagueId)
+      .then(function(r) { return r.json(); })
+      .then(function(data) { _standingsCache[leagueId] = data; callback(data); })
+      .catch(function() { callback(null); });
+  }
+
+  function findTeamInStandings(standingsData, teamId) {
+    if (!standingsData || !standingsData.leagues) return null;
+    for (var li = 0; li < standingsData.leagues.length; li++) {
+      var levels = standingsData.leagues[li].levels || [];
+      for (var lv = 0; lv < levels.length; lv++) {
+        var confs = levels[lv].conferences || [];
+        for (var ci = 0; ci < confs.length; ci++) {
+          var teams = confs[ci].teams || [];
+          for (var ti = 0; ti < teams.length; ti++) {
+            if (String(teams[ti].id) === String(teamId)) {
+              return teams[ti];
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+
   function renderNationalsStandings() {
     var nat = getNationalsData();
     if (!nat) {
@@ -1835,30 +1878,70 @@
       if (qualified.length > 0) {
         standingsContent.innerHTML = renderQualifiedTeamsSection(qualified, totalDivisions, qualified.length >= totalDivisions);
       } else {
-        standingsContent.innerHTML = '<p class="placeholder-msg">Nationals standings not available yet.</p>';
+        standingsContent.innerHTML = '<p class="placeholder-msg">Nationals info not available yet.</p>';
       }
       return;
     }
 
-    var html = '<div class="schedule-info">';
-    html += '<p><strong>' + nat.name + '</strong></p>';
-    html += '<p>' + (nat.dates || '') + '</p>';
-    if (nat.location) html += '<p>' + nat.location + '</p>';
-    html += '</div>';
+    var leagueId = currentLeague === 'NCDC' ? '1' : (currentLeague === 'Premier' ? '2' : '3');
+    var leagueForMap = getLeagueForMap();
 
-    if (nat.pods) {
-      Object.keys(nat.pods).forEach(function(podName) {
-        var pod = nat.pods[podName];
-        html += '<div style="margin-top:0.75rem;"><strong style="color:#c91417;font-size:0.9rem;">' + podName + '</strong>';
-        html += '<table class="data-table" style="margin-top:0.3rem;"><thead><tr><th>Team</th></tr></thead><tbody>';
-        pod.teams.forEach(function(t) {
-          html += '<tr><td>' + t + '</td></tr>';
-        });
-        html += '</tbody></table></div>';
+    // Show loading state
+    standingsContent.innerHTML = '<p class="placeholder-msg">Loading team info...</p>';
+
+    fetchStandingsForLeague(leagueId, function(standingsData) {
+      var allSeeded = (nat.nationalSeeds || []).concat(
+        (nat.wildCards || []).map(function(wc, i) {
+          return { seed: 'WC', teamName: wc.teamName, teamId: wc.teamId, division: wc.division, pool: wc.pool };
+        })
+      );
+
+      var html = '<div class="section-title">TOURNAMENT TEAMS</div>';
+      html += '<div class="natl-team-grid">';
+
+      allSeeded.forEach(function(entry) {
+        var apiTeam = standingsData ? findTeamInStandings(standingsData, entry.teamId) : null;
+        var logoUrl = apiTeam ? apiTeam.smlogo : null;
+        var info = getTeamInfo(entry.teamName, currentLeague);
+        var profileUrl = info && info.profile_url ? info.profile_url : null;
+        // Fallback logo from team mappings
+        if (!logoUrl && info && info.logo_url) logoUrl = info.logo_url;
+
+        var seedLabel = (typeof entry.seed === 'number') ? entry.seed : entry.seed;
+        var isWildcard = entry.seed === 'WC';
+
+        html += '<div class="natl-team-card">';
+        // Seed badge
+        html += '<div class="natl-team-card-seed' + (isWildcard ? ' wildcard' : '') + '">' + seedLabel + '</div>';
+        // Logo
+        if (logoUrl) {
+          html += '<img src="' + logoUrl + '" class="natl-team-card-logo" onerror="this.style.display=\'none\'" alt="">';
+        } else {
+          html += '<div class="natl-team-card-logo"></div>';
+        }
+        // Info
+        html += '<div class="natl-team-card-info">';
+        if (profileUrl) {
+          html += '<div class="natl-team-card-name"><a href="' + profileUrl + '" target="_blank">' + entry.teamName + '</a></div>';
+        } else {
+          html += '<div class="natl-team-card-name">' + entry.teamName + '</div>';
+        }
+        // Division + Pool
+        var meta = entry.division || '';
+        if (entry.pool) meta += ' &middot; Pool ' + entry.pool;
+        html += '<div class="natl-team-card-meta">' + meta + '</div>';
+        // Record
+        if (apiTeam) {
+          var record = apiTeam.wins + '-' + apiTeam.losses + '-' + (apiTeam.otlosses || 0);
+          html += '<div class="natl-team-card-record">' + record + ' (' + apiTeam.pts + ' pts)</div>';
+        }
+        html += '</div>';
+        html += '</div>';
       });
-    }
 
-    standingsContent.innerHTML = html;
+      html += '</div>';
+      standingsContent.innerHTML = html;
+    });
   }
 
   // ===========================================================================
