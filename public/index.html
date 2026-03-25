@@ -498,7 +498,7 @@
   <header>
     <div class="header-inner">
       <img id="headerLogo" class="header-logo" src="logos/USPHL-NCDC_Dineen-Cup-Logo-2026.webp" alt="USPHL Playoffs">
-      <h1 id="mainHeading">2026 NCDC Dineen Cup Playoffs</h1>
+      <h1 id="mainHeading">2025-26 USPHL Playoffs</h1>
     </div>
     <div class="last-updated" id="lastUpdated"></div>
   </header>
@@ -2911,6 +2911,16 @@
       if (b.getAttribute("data-league") === currentLeague) b.classList.add("active");
       else b.classList.remove("active");
     });
+
+    // Update heading based on active league
+    updateHeading(currentLeague);
+
+    // Default to Nationals tab for Elite/Premier if no division specified
+    if (!divisionParam && (currentLeague === 'Elite' || currentLeague === 'Premier')) {
+      if (DIVISIONS[currentLeague].indexOf('Nationals') !== -1) {
+        currentDivision = 'Nationals';
+      }
+    }
 
     populateDivisionPills(currentLeague);
     highlightActivePill();
