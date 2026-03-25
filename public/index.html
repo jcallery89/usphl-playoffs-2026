@@ -416,12 +416,51 @@
       .header-logo { height: 80px; }
       .league-tab { padding: 0.45rem 1rem; font-size: 0.85rem; }
       .division-pills { flex-wrap: wrap; justify-content: center; }
+      .division-pill { font-size: 0.75rem; padding: 0.3rem 0.6rem; }
       table.data-table { font-size: 0.78rem; }
       table.data-table thead th, table.data-table tbody td { padding: 0.4rem 0.5rem; }
       .team-logo { width: 16px; height: 16px; margin-right: 4px; }
-      .standings-container, .bracket-container, .schedule-container { padding: 0.75rem; border-radius: 6px; }
+      .standings-container, .bracket-container, .schedule-container { padding: 0.6rem; border-radius: 6px; }
+      .section-title { font-size: 0.95rem; margin: 0.4rem 0 0.6rem; }
       .game-card-info { min-width: 65px; padding: 0.3rem 0.4rem; }
       .game-card-team { padding: 0.35rem 0.5rem; }
+
+      /* Bracket: stack rounds vertically on mobile */
+      .bracket {
+        flex-direction: column;
+        gap: 1rem;
+        overflow-x: visible;
+        padding: 0.5rem 0;
+      }
+      .round {
+        min-width: unset;
+        width: 100%;
+        gap: 0.5rem;
+      }
+      .round-title { font-size: 0.7rem; margin-bottom: 0.15rem; }
+      .round-date { font-size: 0.65rem; }
+      .matchup { padding: 0.4rem 0.6rem; }
+      .matchup-team { font-size: 0.82rem; }
+      .matchup-seed { font-size: 0.7rem; }
+      .matchup-vs { font-size: 0.6rem; }
+      .matchup-label { font-size: 0.65rem; }
+      .series-label { font-size: 0.6rem; }
+      .bracket-bye-entry { padding: 0.4rem 0.6rem; }
+      .bracket-bye-tag { font-size: 0.6rem; }
+
+      /* Dineen hero compact */
+      .dineen-hero { padding: 1.25rem 1rem; }
+      .dineen-hero-logo { max-width: 140px; }
+      .dineen-hero-title { font-size: 1.1rem; }
+      .dineen-hero-subtitle { font-size: 0.85rem; }
+      .dineen-hero-dates { font-size: 0.8rem; }
+      .dineen-section-title { font-size: 0.88rem; }
+      .dineen-section p { font-size: 0.82rem; }
+      .dineen-quote { padding: 0.75rem 1rem; }
+      .dineen-quote p { font-size: 0.82rem; }
+      .dineen-quote cite { font-size: 0.78rem; }
+      .dineen-venue { padding: 1rem; }
+
       /* Modal mobile */
       .matchup-modal-backdrop { padding: 0.75rem 0.5rem; }
       .matchup-modal { border-radius: 8px; }
@@ -429,12 +468,17 @@
       .modal-team-logo { width: 36px; height: 36px; }
       .modal-team-name { font-size: 0.78rem; }
       .modal-wins-num { font-size: 1.2rem; }
+
       /* Schedule rows: wrap to two lines on mobile */
-      .dineen-game { flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+      .dineen-schedule { max-width: 100%; }
+      .dineen-game { flex-wrap: wrap; gap: 0.25rem 0.5rem; padding: 0.5rem 0.5rem; }
       .dineen-game-num { min-width: auto; font-size: 0.85rem; }
       .dineen-game-date { min-width: auto; font-size: 0.78rem; }
-      .dineen-game-matchup { flex-basis: 100%; font-size: 0.82rem; white-space: nowrap; }
+      .dineen-game-matchup { flex-basis: 100%; font-size: 0.82rem; white-space: normal; }
       .dineen-game-note { font-size: 0.7rem; }
+
+      /* NE divisions grid single column */
+      .ne-divisions-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
   </style>
 </head>
