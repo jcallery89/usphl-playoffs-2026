@@ -58,6 +58,7 @@ async function handleGet(req, res) {
       Premier: premierGames || [],
       Elite: eliteGames || [],
       NCDC: ncdcGames || [],
+      _teamMappings: teamMappings,
     };
 
     // Sync round formats from config to fix stale format overrides in state

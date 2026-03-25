@@ -626,56 +626,32 @@
       "S_1": {
         "name": "Calgary Bandits",
         "pod": "South",
-        "gp": 35,
-        "pts": 53,
-        "row": 25,
-        "l": 7,
-        "pctg": 0.7143
+        "note": "Reseeded from pod play results (2W-0L, 13GF-1GA)"
       },
       "S_2": {
-        "name": "Southern Alberta Mustangs",
-        "pod": "South",
-        "gp": 36,
-        "pts": 39,
-        "row": 17,
-        "l": 14,
-        "pctg": 0.4722
-      },
-      "N_1": {
-        "name": "Three Hills Titans",
-        "pod": "North",
-        "gp": 31,
-        "pts": 38,
-        "row": 18,
-        "l": 11,
-        "pctg": 0.5806
-      },
-      "S_3": {
         "name": "Diamond Valley Rockies",
         "pod": "South",
-        "gp": 30,
-        "pts": 34,
-        "row": 16,
-        "l": 12,
-        "pctg": 0.5333
+        "note": "Reseeded from pod play results (1W-1L, 8GF-13GA)"
+      },
+      "N_1": {
+        "name": "OLCN Scouts",
+        "pod": "North",
+        "note": "Reseeded from pod play results (2W-0L, 19GF-11GA)"
       },
       "N_2": {
         "name": "Hanna Havoc",
         "pod": "North",
-        "gp": 29,
-        "pts": 19,
-        "row": 8,
-        "l": 18,
-        "pctg": 0.2759
+        "note": "Reseeded from pod play results (1W-1L, 16GF-15GA)"
       },
       "N_3": {
-        "name": "OLCN Scouts",
+        "name": "Three Hills Titans",
         "pod": "North",
-        "gp": 23,
-        "pts": 18,
-        "row": 8,
-        "l": 13,
-        "pctg": 0.3478
+        "note": "Reseeded from pod play results (0W-2L, 9GF-18GA)"
+      },
+      "S_3": {
+        "name": "Southern Alberta Mustangs",
+        "pod": "South",
+        "note": "Reseeded from pod play results (0W-2L, 4GA-11GA)"
       }
     }
   },
