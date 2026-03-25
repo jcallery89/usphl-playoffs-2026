@@ -935,21 +935,21 @@
         "pctg": 0.554
       },
       "5": {
-        "name": "Connecticut Junior Rangers",
-        "gp": 45,
-        "pts": 44,
-        "row": 18,
-        "l": 22,
-        "pctg": 0.489
+        "name": "Wilkes-Barre Scranton Knights",
+        "gp": 54,
+        "pts": 56,
+        "row": 25,
+        "l": 23,
+        "pctg": 0.519
       },
       "elim_6": {
-        "name": "Wilkes-Barre Scranton Knights",
+        "name": "Connecticut Junior Rangers",
         "eliminated": true,
-        "gp": 48,
-        "pts": 46,
-        "row": 14,
-        "l": 22,
-        "pctg": 0.479
+        "gp": 54,
+        "pts": 51,
+        "row": 24,
+        "l": 27,
+        "pctg": 0.472
       },
       "elim_7": {
         "name": "West Chester Wolves",
