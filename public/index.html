@@ -173,7 +173,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      flex: 1;
       min-width: 220px;
+      max-width: 320px;
       gap: 0.75rem;
     }
     .round-title {
@@ -293,7 +295,7 @@
     .game-card-score { font-weight: 700; font-size: 0.95rem; min-width: 1.2rem; text-align: right; color: #333; }
     .game-card-score.winner { color: #333; }
     .game-card-score.loser { color: #aaa; font-weight: 400; }
-    .game-card-info { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.4rem 0.6rem; min-width: 80px; border-left: 1px solid #e8e8e8; background: #fafafa; gap: 0.15rem; text-align: center; }
+    .game-card-info { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.4rem 0.6rem; min-width: 100px; width: 100px; flex-shrink: 0; border-left: 1px solid #e8e8e8; background: #fafafa; gap: 0.15rem; text-align: center; }
     .game-card-status { font-size: 0.72rem; font-weight: 600; color: #555; }
     .game-card-status.final { color: #0c568c; }
     .game-card-status.scheduled { color: #c91417; }
@@ -337,7 +339,7 @@
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.5);
       z-index: 10000;
-      display: flex; align-items: flex-start; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 2rem 1rem;
       opacity: 0; transition: opacity 0.2s ease;
       overflow-y: auto;
@@ -346,6 +348,8 @@
     .matchup-modal {
       background: #fff; border-radius: 10px;
       max-width: 520px; width: 100%;
+      max-height: calc(100vh - 4rem);
+      overflow-y: auto;
       position: relative; flex-shrink: 0;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       transform: translateY(20px); transition: transform 0.2s ease;
@@ -424,7 +428,7 @@
       .team-logo { width: 16px; height: 16px; margin-right: 4px; }
       .standings-container, .bracket-container, .schedule-container { padding: 0.6rem; border-radius: 6px; }
       .section-title { font-size: 0.95rem; margin: 0.4rem 0 0.6rem; }
-      .game-card-info { min-width: 65px; padding: 0.3rem 0.4rem; }
+      .game-card-info { min-width: 80px; width: 80px; padding: 0.3rem 0.4rem; }
       .game-card-team { padding: 0.35rem 0.5rem; }
 
       /* Bracket: stack rounds vertically on mobile */
@@ -436,6 +440,7 @@
       }
       .round {
         min-width: unset;
+        max-width: unset;
         width: 100%;
         gap: 0.5rem;
       }
@@ -464,9 +469,9 @@
       .dineen-venue { padding: 1rem; }
 
       /* Modal mobile */
-      .matchup-modal-backdrop { padding: 0.75rem 0.5rem; }
-      .matchup-modal { border-radius: 8px; }
-      .matchup-modal-body { padding: 1rem; padding-top: 0; }
+      .matchup-modal-backdrop { padding: 0.5rem; }
+      .matchup-modal { border-radius: 8px; max-height: calc(100vh - 1rem); }
+      .matchup-modal-body { padding: 0.75rem; padding-top: 0; }
       .modal-team-logo { width: 36px; height: 36px; }
       .modal-team-name { font-size: 0.78rem; }
       .modal-wins-num { font-size: 1.2rem; }
