@@ -784,7 +784,11 @@
                 "S_3",
                 "S_2"
               ]
-            ]
+            ],
+            "gameIds": {
+              "0": ["23571"],
+              "1": ["23403"]
+            }
           },
           {
             "name": "Crossover",
@@ -798,7 +802,11 @@
                 "Winner North Elim",
                 "S_1"
               ]
-            ]
+            ],
+            "gameIds": {
+              "0": ["23404"],
+              "1": ["23397"]
+            }
           },
           {
             "name": "Alberta Finals",
@@ -808,7 +816,10 @@
                 "Crossover Winner 1",
                 "Crossover Winner 2"
               ]
-            ]
+            ],
+            "gameIds": {
+              "0": ["23398", "23399", "23405"]
+            }
           }
         ]
       },
