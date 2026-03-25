@@ -217,6 +217,8 @@
     }
     .bracket-bye-entry .matchup-team { justify-content: center; }
     .bracket-bye-tag { font-size: 0.65rem; color: #0c568c; font-weight: 600; text-transform: uppercase; margin-left: 0.3rem; }
+    .bracket-status-banner { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6d4c00; display: flex; align-items: center; gap: 0.5rem; }
+    .bracket-status-banner .status-icon { font-size: 1.1rem; }
     .dineen-schedule { max-width: 700px; }
     .dineen-game { display: flex; gap: 1rem; padding: 0.6rem 0.75rem; border-bottom: 1px solid #eee; align-items: center; }
     .dineen-game-num { font-weight: 700; color: #c91417; min-width: 60px; }
@@ -1839,7 +1841,23 @@
     var rounds = format.rounds;
     var seriesFormat = format.seriesFormat || "";
     var leagueForMap = getLeagueForMap();
-    var html = '<div class="bracket">';
+    var html = '';
+
+    // Check if all matchups across all rounds are not_started
+    var allNotStarted = rounds.every(function(r) {
+      return r.matchups.every(function(m) {
+        return m.status === 'not_started' || !m.status;
+      });
+    });
+    if (allNotStarted) {
+      var bannerMsg = 'Regular season is still in progress. Playoff seedings are projected based on current standings and may change.';
+      if (divisionName === 'Mountain') {
+        bannerMsg = 'Mountain Division regular season ends March 28. Playoffs begin March 31. Seedings shown are projected and may change.';
+      }
+      html += '<div class="bracket-status-banner"><span class="status-icon">&#9432;</span> ' + bannerMsg + '</div>';
+    }
+
+    html += '<div class="bracket">';
 
     rounds.forEach(function(round, roundIdx) {
       var roundSeriesFormat = getSeriesFormat(round, seriesFormat);
