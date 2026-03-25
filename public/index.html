@@ -447,7 +447,7 @@
   <header>
     <div class="header-inner">
       <img id="headerLogo" class="header-logo" src="logos/USPHL-NCDC_Dineen-Cup-Logo-2026.webp" alt="USPHL Playoffs">
-      <h1>2025-26 USPHL Playoffs</h1>
+      <h1 id="mainHeading">2026 NCDC Dineen Cup Playoffs</h1>
     </div>
     <div class="last-updated" id="lastUpdated"></div>
   </header>
@@ -526,6 +526,15 @@
     standingsContent.innerHTML = '<div class="error-msg">' + msg + '</div>';
     bracketContent.innerHTML = '';
     scheduleContent.innerHTML = '';
+  }
+
+  function updateHeading(league) {
+    var h = document.getElementById("mainHeading");
+    if (league === "NCDC") {
+      h.textContent = "2026 NCDC Dineen Cup Playoffs";
+    } else {
+      h.textContent = "2025-26 USPHL Playoffs";
+    }
   }
 
   function updateLastUpdatedUI() {
@@ -1100,6 +1109,7 @@
       tabButtons.forEach(function(b) { b.classList.remove("active"); });
       btn.classList.add("active");
       currentLeague = league;
+      updateHeading(league);
       populateDivisionPills(league);
       currentDivision = DIVISIONS[league][0];
       highlightActivePill();
