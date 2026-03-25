@@ -1764,6 +1764,7 @@
       return;
     }
 
+    var leagueForMap = getLeagueForMap();
     var html = '<div class="dineen-schedule">';
     html += '<div class="schedule-info">';
     html += '<p><strong>' + nat.name + '</strong></p>';
@@ -1773,15 +1774,52 @@
 
     (nat.days || []).forEach(function(day) {
       html += '<div style="margin-top:1rem;">';
-      html += '<div style="font-weight:700;color:#c91417;font-size:0.9rem;margin-bottom:0.3rem;">' + day.date + ' — ' + day.label + '</div>';
+      html += '<div style="font-weight:700;color:#c91417;font-size:0.9rem;margin-bottom:0.5rem;">' + day.date + ' &mdash; ' + day.label + '</div>';
       day.games.forEach(function(g) {
-        html += '<div class="dineen-game">';
-        html += '<div class="dineen-game-date">' + g.time + ', ' + g.rink + '</div>';
-        html += '<div class="dineen-game-matchup">' + resolveNationalsLabel(nat, g.home) + ' vs. ' + resolveNationalsLabel(nat, g.away) + ' <span style="color:#888;font-size:0.75rem;font-weight:400;">(H)</span>';
-        if (g.pod) html += ' <span style="color:#999;font-size:0.8rem;">(' + g.pod + ')</span>';
+        var isFinal = g.status === 'Final';
+        var isLive = g.status === 'Live' || g.status === 'OPEN' || g.status === 'IN PROGRESS';
+        var isScheduled = !isFinal && !isLive;
+        var hasScore = g.home_score !== undefined && g.home_score !== null;
+        var homeWon = hasScore && g.home_score > g.away_score;
+        var awayWon = hasScore && g.away_score > g.home_score;
+        var homeName = resolveNationalsLabel(nat, g.home);
+        var awayName = resolveNationalsLabel(nat, g.away);
+
+        html += '<div class="game-card">';
+        html += '<div class="game-card-teams">';
+        // Home team
+        html += '<div class="game-card-team">';
+        html += '<span class="game-card-team-name' + (isFinal && homeWon ? ' winner' : '') + (isFinal && awayWon ? ' loser' : '') + '">' + teamNameHTML(homeName, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (isFinal && homeWon ? ' winner' : '') + (isFinal && awayWon ? ' loser' : '') + '">' + (hasScore ? g.home_score : '') + '</span>';
         html += '</div>';
-        if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
+        // Away team
+        html += '<div class="game-card-team">';
+        html += '<span class="game-card-team-name' + (isFinal && awayWon ? ' winner' : '') + (isFinal && homeWon ? ' loser' : '') + '">' + teamNameHTML(awayName, leagueForMap) + '</span>';
+        html += '<span class="game-card-score' + (isFinal && awayWon ? ' winner' : '') + (isFinal && homeWon ? ' loser' : '') + '">' + (hasScore ? g.away_score : '') + '</span>';
         html += '</div>';
+        html += '</div>';
+
+        // Game info sidebar
+        html += '<div class="game-card-info">';
+        if (isLive) {
+          html += '<div class="game-card-status" style="color:#c91417;font-weight:700;">LIVE</div>';
+        } else if (isFinal) {
+          var statusLabel = 'Final';
+          if (g.game_id) {
+            var gameUrl = 'https://stats.usphl.timetoscore.com/generate-scorecard.php?game_id=' + g.game_id;
+            html += '<a class="game-card-status-link" href="' + gameUrl + '" target="_blank" rel="noopener"><div class="game-card-status final">' + statusLabel + '</div></a>';
+          } else {
+            html += '<div class="game-card-status final">' + statusLabel + '</div>';
+          }
+        } else {
+          html += '<div class="game-card-status scheduled">Upcoming</div>';
+        }
+        html += '<div class="game-card-date">' + (g.time || '') + '</div>';
+        var loc = g.location || g.rink || '';
+        if (loc) html += '<div class="game-card-location">' + loc + '</div>';
+        html += '</div>';
+        html += '</div>';
+        if (g.note) html += '<div class="matchup-label" style="font-size:0.7rem;color:#c91417;margin-top:-0.25rem;margin-bottom:0.5rem;">' + g.note + '</div>';
       });
       html += '</div>';
     });
