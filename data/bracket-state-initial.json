@@ -1405,42 +1405,42 @@
           "label": "Pod Play",
           "games": [
             {
-              "time": "2:30 PM",
+              "time": "3:00 PM",
               "rink": "Rink 1",
               "home": "Fort Wayne Spacemen",
               "away": "Northern Cyclones",
               "pod": "Pool C"
             },
             {
-              "time": "2:45 PM",
+              "time": "3:15 PM",
               "rink": "Rink 2",
               "home": "Toledo Cherokee",
               "away": "Metro Jets",
               "pod": "Pool C"
             },
             {
-              "time": "3:00 PM",
+              "time": "3:30 PM",
               "rink": "Rink 3",
               "home": "Coral Springs Jr. Cats",
               "away": "Ontario Jr Reign",
               "pod": "Pool B"
             },
             {
-              "time": "5:30 PM",
+              "time": "6:00 PM",
               "rink": "Rink 1",
               "home": "Fresno Monsters",
               "away": "Hampton Roads Whalers",
               "pod": "Pool B"
             },
             {
-              "time": "5:45 PM",
+              "time": "6:15 PM",
               "rink": "Rink 2",
               "home": "West Chester Wolves",
               "away": "Minnesota Squatch",
               "pod": "Pool A"
             },
             {
-              "time": "6:00 PM",
+              "time": "6:30 PM",
               "rink": "Rink 3",
               "home": "Hawkesbury Knights",
               "away": "Vernal Oilers",
@@ -1453,42 +1453,42 @@
           "label": "Pod Play",
           "games": [
             {
-              "time": "12:30 PM",
+              "time": "1:00 PM",
               "rink": "Rink 1",
               "home": "Coral Springs Jr. Cats",
               "away": "Hampton Roads Whalers",
               "pod": "Pool B"
             },
             {
-              "time": "12:45 PM",
+              "time": "1:15 PM",
               "rink": "Rink 2",
               "home": "Fresno Monsters",
               "away": "Ontario Jr Reign",
               "pod": "Pool B"
             },
             {
-              "time": "3:30 PM",
+              "time": "4:00 PM",
               "rink": "Rink 1",
               "home": "Hawkesbury Knights",
               "away": "Minnesota Squatch",
               "pod": "Pool A"
             },
             {
-              "time": "3:45 PM",
+              "time": "4:15 PM",
               "rink": "Rink 3",
               "home": "West Chester Wolves",
               "away": "Vernal Oilers",
               "pod": "Pool A"
             },
             {
-              "time": "3:45 PM",
+              "time": "4:15 PM",
               "rink": "Rink 2",
               "home": "Toledo Cherokee",
               "away": "Northern Cyclones",
               "pod": "Pool C"
             },
             {
-              "time": "6:45 PM",
+              "time": "7:15 PM",
               "rink": "Rink 2",
               "home": "Fort Wayne Spacemen",
               "away": "Metro Jets",
@@ -1501,42 +1501,42 @@
           "label": "Final Day of Pod Play",
           "games": [
             {
-              "time": "12:00 PM",
+              "time": "12:30 PM",
               "rink": "Rink 2",
               "home": "Minnesota Squatch",
               "away": "Vernal Oilers",
               "pod": "Pool A"
             },
             {
-              "time": "12:30 PM",
+              "time": "1:00 PM",
               "rink": "Rink 1",
               "home": "Hawkesbury Knights",
               "away": "West Chester Wolves",
               "pod": "Pool A"
             },
             {
-              "time": "12:45 PM",
+              "time": "1:15 PM",
               "rink": "Rink 3",
               "home": "Toledo Cherokee",
               "away": "Fort Wayne Spacemen",
               "pod": "Pool C"
             },
             {
-              "time": "3:00 PM",
+              "time": "3:30 PM",
               "rink": "Rink 2",
               "home": "Ontario Jr Reign",
               "away": "Hampton Roads Whalers",
               "pod": "Pool B"
             },
             {
-              "time": "3:45 PM",
+              "time": "4:15 PM",
               "rink": "Rink 3",
               "home": "Fresno Monsters",
               "away": "Coral Springs Jr. Cats",
               "pod": "Pool B"
             },
             {
-              "time": "6:00 PM",
+              "time": "6:30 PM",
               "rink": "Rink 2",
               "home": "Northern Cyclones",
               "away": "Metro Jets",
@@ -1549,14 +1549,14 @@
           "label": "Semifinals",
           "games": [
             {
-              "time": "3:45 PM",
+              "time": "4:15 PM",
               "rink": "Rink 3",
               "home": "Pool B Winner",
               "away": "Pool C Winner",
               "note": "Semifinal #1"
             },
             {
-              "time": "4:00 PM",
+              "time": "4:30 PM",
               "rink": "Rink 2",
               "home": "Pool A Winner",
               "away": "Best 2nd Place",
@@ -2612,19 +2612,19 @@
           "label": "Pod Play",
           "games": [
             {
-              "time": "9:30 AM",
+              "time": "10:00 AM",
               "rink": "Rink 3",
               "home": "Montreal Knights",
               "away": "Carolina Junior Hurricanes"
             },
             {
-              "time": "11:30 AM",
+              "time": "12:00 PM",
               "rink": "Rink 1",
               "home": "Fort Wayne Spacemen",
               "away": "Wilkes-Barre Scranton Knights"
             },
             {
-              "time": "11:45 AM",
+              "time": "12:15 PM",
               "rink": "Rink 2",
               "home": "Tampa Bay Juniors",
               "away": "Northern Cyclones"
@@ -2636,19 +2636,19 @@
           "label": "Pod Play",
           "games": [
             {
-              "time": "9:30 AM",
+              "time": "10:00 AM",
               "rink": "Rink 1",
               "home": "Fort Wayne Spacemen",
               "away": "Tampa Bay Juniors"
             },
             {
-              "time": "9:45 AM",
+              "time": "10:15 AM",
               "rink": "Rink 2",
               "home": "Wilkes-Barre Scranton Knights",
               "away": "Carolina Junior Hurricanes"
             },
             {
-              "time": "1:15 PM",
+              "time": "1:45 PM",
               "rink": "Rink 3",
               "home": "Montreal Knights",
               "away": "Northern Cyclones"
@@ -2660,19 +2660,19 @@
           "label": "Final Day of Pod Play",
           "games": [
             {
-              "time": "9:00 AM",
+              "time": "9:30 AM",
               "rink": "Rink 2",
               "home": "Wilkes-Barre Scranton Knights",
               "away": "Northern Cyclones"
             },
             {
-              "time": "9:30 AM",
+              "time": "10:00 AM",
               "rink": "Rink 1",
               "home": "Montreal Knights",
               "away": "Fort Wayne Spacemen"
             },
             {
-              "time": "9:45 AM",
+              "time": "10:15 AM",
               "rink": "Rink 3",
               "home": "Tampa Bay Juniors",
               "away": "Carolina Junior Hurricanes"
@@ -2684,14 +2684,14 @@
           "label": "Semifinals",
           "games": [
             {
-              "time": "12:45 PM",
+              "time": "1:15 PM",
               "rink": "Rink 3",
               "home": "Elite Seed #4",
               "away": "Elite Seed #1",
               "note": "Semifinal #1"
             },
             {
-              "time": "1:00 PM",
+              "time": "1:30 PM",
               "rink": "Rink 2",
               "home": "Elite Seed #3",
               "away": "Elite Seed #2",
