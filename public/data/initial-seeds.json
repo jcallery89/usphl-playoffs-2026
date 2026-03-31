@@ -1105,62 +1105,62 @@
     "Mountain": {
       "1": {
         "name": "Ogden Mustangs",
-        "gp": 46,
-        "pts": 72,
-        "row": 31,
+        "gp": 54,
+        "pts": 86,
+        "row": 41,
         "l": 9,
-        "pctg": 0.783
+        "pctg": 0.796
       },
       "2": {
         "name": "Idaho Falls Spud Kings",
-        "gp": 44,
-        "pts": 68,
-        "row": 26,
-        "l": 8,
-        "pctg": 0.773
+        "gp": 54,
+        "pts": 80,
+        "row": 38,
+        "l": 12,
+        "pctg": 0.741
       },
       "3": {
         "name": "Grand Junction River Hawks",
-        "gp": 48,
-        "pts": 58,
-        "row": 22,
-        "l": 18,
-        "pctg": 0.604
+        "gp": 54,
+        "pts": 68,
+        "row": 33,
+        "l": 19,
+        "pctg": 0.630
       },
       "4": {
         "name": "Utah Outliers",
-        "gp": 46,
-        "pts": 54,
-        "row": 23,
-        "l": 16,
-        "pctg": 0.587
+        "gp": 54,
+        "pts": 63,
+        "row": 28,
+        "l": 19,
+        "pctg": 0.583
       },
       "elim_5": {
         "name": "Pueblo Bulls",
         "eliminated": true,
-        "gp": 46,
-        "pts": 45,
-        "row": 18,
-        "l": 22,
-        "pctg": 0.489
+        "gp": 54,
+        "pts": 53,
+        "row": 25,
+        "l": 26,
+        "pctg": 0.491
       },
       "elim_6": {
         "name": "Rock Springs Miners",
         "eliminated": true,
-        "gp": 46,
-        "pts": 33,
-        "row": 14,
-        "l": 28,
-        "pctg": 0.359
+        "gp": 54,
+        "pts": 37,
+        "row": 17,
+        "l": 34,
+        "pctg": 0.343
       },
       "elim_7": {
         "name": "Casper Warbirds",
         "eliminated": true,
-        "gp": 46,
-        "pts": 15,
-        "row": 4,
-        "l": 37,
-        "pctg": 0.163
+        "gp": 54,
+        "pts": 17,
+        "row": 7,
+        "l": 44,
+        "pctg": 0.157
       }
     }
   }
