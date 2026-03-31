@@ -271,6 +271,61 @@
     .natl-team-card-record { font-size: 0.82rem; color: #333; margin-top: 0.2rem; font-weight: 600; }
     .natl-team-card-seed { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #c91417; color: #fff; font-weight: 800; font-size: 0.78rem; border-radius: 50%; flex-shrink: 0; }
     .natl-team-card-seed.wildcard { background: #0c568c; font-size: 0.6rem; }
+    /* ===== Champion Banner ===== */
+    .champion-banner {
+      background: linear-gradient(135deg, #f7d354 0%, #e6a817 100%);
+      border: 2px solid #c8960f;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(200, 150, 15, 0.25);
+    }
+    .champion-banner-trophy {
+      font-size: 2.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .champion-banner-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .champion-banner-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .champion-banner-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1.2;
+    }
+    .champion-banner-subtitle {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #5a4200;
+      margin-top: 0.15rem;
+    }
+    .champion-banner-score {
+      font-size: 0.78rem;
+      color: #6d5a00;
+      margin-top: 0.25rem;
+    }
+    .game-card.championship-final {
+      border: 2px solid #e6a817;
+      background: linear-gradient(to right, #fffdf0, #fff);
+      box-shadow: 0 1px 6px rgba(200, 150, 15, 0.2);
+    }
+    @media (max-width: 600px) {
+      .champion-banner { padding: 0.75rem; gap: 0.75rem; }
+      .champion-banner-logo { width: 40px; height: 40px; }
+      .champion-banner-trophy { font-size: 1.6rem; }
+      .champion-banner-title { font-size: 0.95rem; }
+    }
     /* ===== Team Link ===== */
     .team-link { color: #333; text-decoration: none; }
     .team-link:hover { text-decoration: underline; color: #c91417; }
@@ -1002,12 +1057,15 @@
       data.ncdc.dineenCup = config['Dineen Cup'];
     } else {
       data.ncdc.dineenCup = {
-        name: "Dineen Cup Championship", dates: "Apr 22-28",
-        teams: ["Atlantic Champion", "Mountain Champion", "New England Champion", "Idaho Falls Spud Kings"],
-        format: "Modified Double Elimination",
+        name: "2026 Dineen Cup Championships", dates: "April 24-28, 2026",
+        location: "Mountain America Center, Idaho Falls, ID",
+        format: "Double Elimination",
+        formatInfo: "All games at Mountain America Center, Idaho Falls, ID. All times MDT.",
+        mountainNote: "* The Mountain Division representative in Game 1 will be either the Mountain Division Champion if the Spud Kings do not win the division championship, or the Mountain Division finalist if the host Spud Kings are the division champions.",
+        teams: ["TBD", "TBD", "TBD", "Idaho Falls Spud Kings"],
         schedule: [
-          { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "Atlantic Champion vs. Mountain*", note: "" },
-          { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "New England Champion vs. Idaho Falls Spud Kings", note: "Host auto-bid" },
+          { game: 1, date: "Apr 24", time: "2:00 PM", matchup: "TBD vs. TBD", note: "" },
+          { game: 2, date: "Apr 24", time: "7:00 PM", matchup: "TBD vs. Idaho Falls Spud Kings", note: "Autobid" },
           { game: 3, date: "Apr 25", time: "2:00 PM", matchup: "0-1 vs. 0-1", note: "Elimination" },
           { game: 4, date: "Apr 25", time: "7:00 PM", matchup: "1-0 vs. 1-0", note: "Winner advances to Final" },
           { game: 5, date: "Apr 26", time: "7:00 PM", matchup: "1-1 vs. 1-1", note: "Elimination / Winner advances to Final" },
@@ -1601,6 +1659,47 @@
     return qualified;
   }
 
+  function renderChampionBanner(nat) {
+    if (!nat || !nat.champion || !nat.champion.teamName) return '';
+    var champ = nat.champion;
+    var leagueForMap = getLeagueForMap();
+    var info = getTeamInfo(champ.teamName, leagueForMap);
+    var logoHtml = (info && info.logo_url)
+      ? '<img class="champion-banner-logo" src="' + info.logo_url + '" onerror="this.style.display=\'none\'" alt="">'
+      : '';
+    var nameHtml = champ.teamName;
+    if (info && info.profile_url) {
+      nameHtml = '<a href="' + info.profile_url + '" target="_blank" class="team-link" style="color:#1a1a2e;">' + champ.teamName + '</a>';
+    }
+    // Find championship game score
+    var scoreHtml = '';
+    var finalist = nat.finalist;
+    if (finalist && finalist.teamName) {
+      var days = nat.days || [];
+      for (var i = days.length - 1; i >= 0; i--) {
+        if (!/championship/i.test(days[i].label || '')) continue;
+        for (var j = 0; j < days[i].games.length; j++) {
+          var g = days[i].games[j];
+          if (g.status === 'Final' && g.home_score != null) {
+            var champScore = g.home === champ.teamName ? g.home_score : g.away_score;
+            var otherScore = g.home === champ.teamName ? g.away_score : g.home_score;
+            scoreHtml = '<div class="champion-banner-score">Defeated ' + finalist.teamName + ' ' + champScore + '-' + otherScore + '</div>';
+            break;
+          }
+        }
+      }
+    }
+    var leagueName = currentLeague === 'NCDC' ? 'NCDC' : currentLeague;
+    return '<div class="champion-banner">'
+      + '<div class="champion-banner-trophy">&#127942;</div>'
+      + logoHtml
+      + '<div class="champion-banner-text">'
+      + '<div class="champion-banner-title">' + nameHtml + '</div>'
+      + '<div class="champion-banner-subtitle">2026 USPHL ' + leagueName + ' National Champions</div>'
+      + scoreHtml
+      + '</div></div>';
+  }
+
   function renderNationalsBracket() {
     var nat = getNationalsData();
     var qualified = getQualifiedTeams(currentLeague);
@@ -1619,6 +1718,7 @@
     }
 
     var html = '';
+    html += renderChampionBanner(nat);
     if (nat.formatInfo) {
       html += '<div class="schedule-format-info">' + nat.formatInfo + '</div>';
     }
@@ -1779,6 +1879,7 @@
 
     var leagueForMap = getLeagueForMap();
     var html = '<div class="dineen-schedule">';
+    html += renderChampionBanner(nat);
     html += '<div class="schedule-info">';
     html += '<p><strong>' + nat.name + '</strong></p>';
     html += '<p>' + (nat.dates || '') + '</p>';
@@ -1797,8 +1898,9 @@
         var awayWon = hasScore && g.away_score > g.home_score;
         var homeName = resolveNationalsLabel(nat, g.home);
         var awayName = resolveNationalsLabel(nat, g.away);
+        var isChampionshipFinal = isFinal && /championship/i.test(day.label || '') && nat.champion;
 
-        html += '<div class="game-card">';
+        html += '<div class="game-card' + (isChampionshipFinal ? ' championship-final' : '') + '">';
         html += '<div class="game-card-teams">';
         // Home team
         html += '<div class="game-card-team">';
@@ -1896,7 +1998,8 @@
         })
       );
 
-      var html = '<div class="section-title">TOURNAMENT TEAMS</div>';
+      var html = renderChampionBanner(nat);
+      html += '<div class="section-title">TOURNAMENT TEAMS</div>';
       html += '<div class="natl-team-grid">';
 
       allSeeded.forEach(function(entry) {
