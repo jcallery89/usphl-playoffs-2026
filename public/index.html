@@ -2072,18 +2072,6 @@
     var leagueForMap = getLeagueForMap();
     var html = '';
 
-    // Show status banner for Mountain division (regular season still in progress)
-    if (divisionName === 'Mountain') {
-      var allNotStarted = rounds.every(function(r) {
-        return r.matchups.every(function(m) {
-          return m.status === 'not_started' || !m.status;
-        });
-      });
-      if (allNotStarted) {
-        html += '<div class="bracket-status-banner"><span class="status-icon">&#9432;</span> Mountain Division regular season ends March 28. Playoffs begin March 31. Seedings shown are projected and may change.</div>';
-      }
-    }
-
     html += '<div class="bracket">';
 
     rounds.forEach(function(round, roundIdx) {
