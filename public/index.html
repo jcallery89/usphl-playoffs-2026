@@ -2361,31 +2361,67 @@
       html += buildBracketHTML(div, div.playoffFormat, neDivKeys[divName]);
     });
 
-    // Conference Round Robin
-    var rr = ne.conferenceRounds.roundRobin;
-    html += '<div class="bracket-section-title">' + rr.name + ' (' + rr.dates + ')</div>';
+    // Conference Round Robin — prefer BRACKET_STATE data (has game details)
+    var neState = BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['NE Conference'];
+    var rrState = neState && neState.roundRobin;
+    var rrConfig = ne.conferenceRounds.roundRobin;
+    var rrName = (rrState && rrState.name) || rrConfig.name;
+    var rrDates = (rrState && rrState.dates) || rrConfig.dates;
+    var rrNote = (rrState && rrState.note) || rrConfig.note;
+    html += '<div class="bracket-section-title">' + rrName + ' (' + rrDates + ')</div>';
     html += '<div class="bracket"><div class="round">';
-    html += '<div class="round-title">' + rr.format + '</div>';
-    rr.matchups.forEach(function(matchup) {
-      html += '<div class="matchup"><div class="matchup-team home">' + matchup[0] + '</div>';
-      html += '<div class="matchup-vs">vs</div>';
-      html += '<div class="matchup-team away">' + matchup[1] + '</div></div>';
-    });
+    html += '<div class="round-title">Round Robin</div>';
+    if (rrState && rrState.games && rrState.games.length > 0) {
+      rrState.games.forEach(function(game) {
+        var homeName = teamNameHTML(game.home_team, 'NCDC');
+        var awayName = teamNameHTML(game.away_team, 'NCDC');
+        var homeScore = '', awayScore = '', label = '';
+        if (game.game_status === 'final') {
+          homeScore = '<span class="matchup-score">' + game.home_score + '</span>';
+          awayScore = '<span class="matchup-score">' + game.away_score + '</span>';
+          label = '<div class="matchup-label">' + (game.result_string || 'Final') + '</div>';
+        } else {
+          label = '<div class="matchup-label">' + game.date + ' — ' + game.time + '</div>';
+        }
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home"><span>' + homeName + '</span>' + homeScore + '</div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away"><span>' + awayName + '</span>' + awayScore + '</div>';
+        html += label + '</div>';
+      });
+    } else if (rrConfig.games && rrConfig.games.length > 0) {
+      rrConfig.games.forEach(function(game) {
+        var homeName = teamNameHTML(game.home_team, 'NCDC');
+        var awayName = teamNameHTML(game.away_team, 'NCDC');
+        html += '<div class="matchup">';
+        html += '<div class="matchup-team home"><span>' + homeName + '</span></div>';
+        html += '<div class="matchup-vs">vs</div>';
+        html += '<div class="matchup-team away"><span>' + awayName + '</span></div>';
+        html += '<div class="matchup-label">' + game.date + ' — ' + game.time + '</div>';
+        html += '</div>';
+      });
+    }
     html += '</div></div>';
-    if (rr.note) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + rr.note + '</div>';
+    if (rrNote) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + rrNote + '</div>';
 
     // Conference Final
-    var cf = ne.conferenceRounds.conferenceFinal;
-    html += '<div class="bracket-section-title">' + cf.name + ' (' + cf.dates + ')</div>';
+    var cfState = neState && neState.conferenceFinal;
+    var cfConfig = ne.conferenceRounds.conferenceFinal;
+    var cfName = (cfState && cfState.name) || cfConfig.name;
+    var cfDates = (cfState && cfState.dates) || cfConfig.dates;
+    var cfFormat = (cfState && cfState.format) || cfConfig.format;
+    var cfNote = (cfState && cfState.note) || cfConfig.note;
+    html += '<div class="bracket-section-title">' + cfName + ' (' + cfDates + ')</div>';
     html += '<div class="bracket"><div class="round">';
-    html += '<div class="round-title">' + cf.name + ' <span class="series-label">(' + formatSeriesLabel(cf.format) + ')</span></div>';
-    cf.matchups.forEach(function(matchup) {
-      html += '<div class="matchup"><div class="matchup-team home">' + matchup[0] + '</div>';
-      html += '<div class="matchup-vs">vs</div>';
-      html += '<div class="matchup-team away">' + matchup[1] + '</div></div>';
-    });
+    html += '<div class="round-title">' + cfName + ' <span class="series-label">(' + formatSeriesLabel(cfFormat) + ')</span></div>';
+    var cfMatchup = cfState ? cfState.matchup : null;
+    var cfTeam1 = cfMatchup ? cfMatchup.team1 : 'RR #1';
+    var cfTeam2 = cfMatchup ? cfMatchup.team2 : 'RR #2';
+    html += '<div class="matchup"><div class="matchup-team home">' + cfTeam1 + '</div>';
+    html += '<div class="matchup-vs">vs</div>';
+    html += '<div class="matchup-team away">' + cfTeam2 + '</div></div>';
     html += '</div></div>';
-    if (cf.note) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + cf.note + '</div>';
+    if (cfNote) html += '<div class="matchup-label" style="margin-top:0.25rem;">' + cfNote + '</div>';
 
     bracketContent.innerHTML = html;
   }
@@ -2759,6 +2795,44 @@
           currentDivision = tempDiv;
         }
       });
+
+      // Append Conference Round Robin games after division games
+      var neSchState2 = BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['NE Conference'];
+      var rrSch2 = (neSchState2 && neSchState2.roundRobin) || {};
+      var rrSchConfig2 = ne.conferenceRounds.roundRobin || {};
+      var rrSchGames2 = rrSch2.games || (rrSchConfig2 && rrSchConfig2.games) || [];
+      if (rrSchGames2.length > 0) {
+        html += '<div class="bracket-section-title">' + (rrSch2.name || rrSchConfig2.name || 'Conference Round Robin') + '</div>';
+        rrSchGames2.forEach(function(game) {
+          var isScheduled = game.game_status === 'scheduled' || !game.game_status;
+          var hWon = !isScheduled && game.home_score > game.away_score;
+          var aWon = !isScheduled && game.away_score > game.home_score;
+          var gUrl = (game.game_id && !isScheduled) ? 'https://stats.usphl.timetoscore.com/display-game-stats.php?game_id=' + game.game_id : '';
+          html += '<div class="game-card">';
+          html += '<div class="game-card-teams">';
+          html += '<div class="game-card-team"><span class="game-card-team-name' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + teamNameHTML(game.home_team, 'NCDC') + '</span>';
+          html += '<span class="game-card-score' + (hWon ? ' winner' : (aWon ? ' loser' : '')) + '">' + (game.home_score != null ? game.home_score : '') + '</span></div>';
+          html += '<div class="game-card-team"><span class="game-card-team-name' + (aWon ? ' winner' : (hWon ? ' loser' : '')) + '">' + teamNameHTML(game.away_team, 'NCDC') + '</span>';
+          html += '<span class="game-card-score' + (aWon ? ' winner' : (hWon ? ' loser' : '')) + '">' + (game.away_score != null ? game.away_score : '') + '</span></div>';
+          html += '</div>';
+          html += '<div class="game-card-info">';
+          if (gUrl) {
+            html += '<a class="game-card-status-link" href="' + gUrl + '" target="_blank" rel="noopener"><div class="game-card-status final">' + (game.result_string || 'Final') + '</div></a>';
+          } else {
+            html += '<div class="game-card-status">Upcoming</div>';
+          }
+          html += '<div class="game-card-date">' + (game.date || '').replace(/^2026-/, '') + ' ' + (game.time || '') + '</div>';
+          html += '</div></div>';
+        });
+      }
+
+      // Conference Final placeholder
+      var cfSch2 = (neSchState2 && neSchState2.conferenceFinal) || {};
+      var cfSchConfig2 = ne.conferenceRounds.conferenceFinal || {};
+      html += '<div class="bracket-section-title">' + (cfSch2.name || cfSchConfig2.name || 'Conference Final') + '</div>';
+      html += '<div class="schedule-info"><p>Dates: ' + (cfSch2.dates || cfSchConfig2.dates) + '</p>';
+      html += '<p>Format: ' + (cfSch2.format || cfSchConfig2.format) + ' &mdash; Top 2 from Round Robin</p></div>';
+
       scheduleContent.innerHTML = html;
       return;
     }
@@ -2783,23 +2857,56 @@
     });
     html += '</tbody></table>';
 
-    var rr = ne.conferenceRounds.roundRobin;
-    html += '<div class="bracket-section-title">' + rr.name + '</div>';
-    html += '<div class="schedule-info"><p>Dates: ' + rr.dates + '</p>';
-    html += '<p>Format: ' + rr.format + ' &mdash; 3 division winners</p>';
-    if (rr.note) html += '<p>' + rr.note + '</p>';
+    // Round Robin schedule — prefer BRACKET_STATE data
+    var neSchState = BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['NE Conference'];
+    var rrSch = (neSchState && neSchState.roundRobin) || {};
+    var rrSchConfig = ne.conferenceRounds.roundRobin;
+    var rrSchGames = rrSch.games || (rrSchConfig && rrSchConfig.games) || [];
+    html += '<div class="bracket-section-title">' + (rrSch.name || rrSchConfig.name) + '</div>';
+    html += '<div class="schedule-info"><p>Dates: ' + (rrSch.dates || rrSchConfig.dates) + '</p>';
+    html += '<p>Format: Round Robin &mdash; 3 division winners</p>';
+    var rrSchNote = rrSch.note || rrSchConfig.note;
+    if (rrSchNote) html += '<p>' + rrSchNote + '</p>';
     html += '</div>';
-    html += '<table class="data-table"><thead><tr><th>Game</th><th>Matchup</th></tr></thead><tbody>';
-    rr.matchups.forEach(function(matchup, idx) {
-      html += '<tr><td>Game ' + (idx + 1) + '</td><td>' + matchup[0] + ' vs ' + matchup[1] + '</td></tr>';
-    });
-    html += '</tbody></table>';
+    if (rrSchGames.length > 0) {
+      rrSchGames.forEach(function(game) {
+        var homeLink = teamNameHTML(game.home_team, 'NCDC');
+        var awayLink = teamNameHTML(game.away_team, 'NCDC');
+        html += '<div class="game-row">';
+        html += '<div class="game-card">';
+        html += '<div class="game-card-teams">';
+        html += '<div class="game-card-team home"><span class="team-logo-wrap"></span>' + homeLink + '</div>';
+        if (game.game_status === 'final' && game.home_score != null) {
+          html += '<div class="game-card-score">' + game.home_score + '</div>';
+        }
+        html += '</div>';
+        html += '<div class="game-card-teams">';
+        html += '<div class="game-card-team away"><span class="team-logo-wrap"></span>' + awayLink + '</div>';
+        if (game.game_status === 'final' && game.away_score != null) {
+          html += '<div class="game-card-score">' + game.away_score + '</div>';
+        }
+        html += '</div>';
+        html += '<div class="game-card-meta">';
+        if (game.game_status === 'final') {
+          html += '<div class="game-card-status final">' + (game.result_string || 'Final') + '</div>';
+        } else {
+          html += '<div class="game-card-status">Upcoming</div>';
+        }
+        html += '<div class="game-card-date">' + (game.date || '').replace(/^2026-/, '') + ' ' + (game.time || '') + '</div>';
+        html += '<div class="game-card-location">' + (game.location || '') + '</div>';
+        html += '</div></div></div>';
+      });
+    } else {
+      html += '<p class="placeholder-msg">No games scheduled yet</p>';
+    }
 
-    var cf = ne.conferenceRounds.conferenceFinal;
-    html += '<div class="bracket-section-title">' + cf.name + '</div>';
-    html += '<div class="schedule-info"><p>Dates: ' + cf.dates + '</p>';
-    html += '<p>Format: ' + cf.format + ' &mdash; Top 2 from Round Robin</p>';
-    if (cf.note) html += '<p>' + cf.note + '</p>';
+    var cfSch = (neSchState && neSchState.conferenceFinal) || {};
+    var cfSchConfig = ne.conferenceRounds.conferenceFinal;
+    html += '<div class="bracket-section-title">' + (cfSch.name || cfSchConfig.name) + '</div>';
+    html += '<div class="schedule-info"><p>Dates: ' + (cfSch.dates || cfSchConfig.dates) + '</p>';
+    html += '<p>Format: ' + (cfSch.format || cfSchConfig.format) + ' &mdash; Top 2 from Round Robin</p>';
+    var cfSchNote = cfSch.note || cfSchConfig.note;
+    if (cfSchNote) html += '<p>' + cfSchNote + '</p>';
     html += '</div>';
 
     scheduleContent.innerHTML = html;

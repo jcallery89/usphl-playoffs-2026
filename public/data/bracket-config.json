@@ -1507,21 +1507,40 @@
           "name": "Conference Round Robin",
           "dates": "Apr 9-11",
           "format": "Round Robin",
-          "matchups": [
-            [
-              "South Shore Kings",
-              "Lewiston MAINEiacs"
-            ],
-            [
-              "Utica Jr Comets",
-              "Lewiston MAINEiacs"
-            ],
-            [
-              "South Shore Kings",
-              "Utica Jr Comets"
-            ]
-          ],
-          "note": "Hosted by #1 seed"
+          "note": "Hosted by South Shore Kings (NE East #1 seed)",
+          "location": "Foxboro Rink 1",
+          "games": [
+            {
+              "game_id": "23620",
+              "date": "2026-04-09",
+              "time": "04:00 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "120",
+              "away_id": "2278",
+              "home_team": "South Shore Kings",
+              "away_team": "Lewiston MAINEiacs"
+            },
+            {
+              "game_id": "23621",
+              "date": "2026-04-10",
+              "time": "06:30 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "123",
+              "away_id": "2278",
+              "home_team": "Utica Jr Comets",
+              "away_team": "Lewiston MAINEiacs"
+            },
+            {
+              "game_id": "23622",
+              "date": "2026-04-11",
+              "time": "06:30 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "120",
+              "away_id": "123",
+              "home_team": "South Shore Kings",
+              "away_team": "Utica Jr Comets"
+            }
+          ]
         },
         "conferenceFinal": {
           "name": "Conference Final",
