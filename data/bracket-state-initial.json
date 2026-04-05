@@ -6003,12 +6003,12 @@
               "awayTeamId": "126",
               "homeTeamName": "Utica Jr Comets",
               "awayTeamName": "Worcester Railers JHC",
-              "homeWins": 1,
+              "homeWins": 3,
               "awayWins": 1,
-              "status": "in_progress",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
+              "status": "complete",
+              "winnerId": "123",
+              "winnerSeed": 1,
+              "winnerName": "Utica Jr Comets",
               "games": [
                 {
                   "game_id": "23527",
@@ -6051,11 +6051,11 @@
                   "away_id": "123",
                   "home_team": "Worcester Railers JHC",
                   "away_team": "Utica Jr Comets",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 3,
+                  "away_score": 6,
+                  "result_string": "Final",
+                  "winner_id": "123",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6067,11 +6067,11 @@
                   "away_id": "123",
                   "home_team": "Worcester Railers JHC",
                   "away_team": "Utica Jr Comets",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 0,
+                  "away_score": 1,
+                  "result_string": "Final",
+                  "winner_id": "123",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6088,12 +6088,12 @@
                   "result_string": null,
                   "winner_id": null,
                   "game_status": "scheduled",
-                  "if_necessary": false
+                  "if_necessary": true
                 }
               ],
               "overrideWinner": null,
               "note": null,
-              "seriesSummary": "Tied 1-1"
+              "seriesSummary": "Utica Jr Comets wins 3-1"
             }
           ]
         }
@@ -6293,12 +6293,12 @@
               "awayTeamId": "110",
               "homeTeamName": "South Shore Kings",
               "awayTeamName": "Islanders Hockey Club",
-              "homeWins": 2,
+              "homeWins": 3,
               "awayWins": 0,
-              "status": "in_progress",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
+              "status": "complete",
+              "winnerId": "120",
+              "winnerSeed": 1,
+              "winnerName": "South Shore Kings",
               "games": [
                 {
                   "game_id": "23600",
@@ -6341,11 +6341,11 @@
                   "away_id": "120",
                   "home_team": "Islanders Hockey Club",
                   "away_team": "South Shore Kings",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 2,
+                  "away_score": 5,
+                  "result_string": "Final",
+                  "winner_id": "120",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6362,7 +6362,7 @@
                   "result_string": null,
                   "winner_id": null,
                   "game_status": "scheduled",
-                  "if_necessary": false
+                  "if_necessary": true
                 },
                 {
                   "game_id": "23602",
@@ -6378,12 +6378,12 @@
                   "result_string": null,
                   "winner_id": null,
                   "game_status": "scheduled",
-                  "if_necessary": false
+                  "if_necessary": true
                 }
               ],
               "overrideWinner": null,
               "note": null,
-              "seriesSummary": "South Shore Kings leads 2-0"
+              "seriesSummary": "South Shore Kings wins 3-0"
             }
           ]
         }
@@ -6551,12 +6551,12 @@
               "awayTeamId": "2274",
               "homeTeamName": "Lewiston MAINEiacs",
               "awayTeamName": "Woodstock Slammers",
-              "homeWins": 1,
-              "awayWins": 0,
-              "status": "in_progress",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
+              "homeWins": 3,
+              "awayWins": 1,
+              "status": "complete",
+              "winnerId": "2278",
+              "winnerSeed": 1,
+              "winnerName": "Lewiston MAINEiacs",
               "games": [
                 {
                   "game_id": "23603",
@@ -6583,11 +6583,11 @@
                   "away_id": "2278",
                   "home_team": "Woodstock Slammers",
                   "away_team": "Lewiston MAINEiacs",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 2,
+                  "away_score": 1,
+                  "result_string": "Final",
+                  "winner_id": "2274",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6599,11 +6599,11 @@
                   "away_id": "2278",
                   "home_team": "Woodstock Slammers",
                   "away_team": "Lewiston MAINEiacs",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 1,
+                  "away_score": 3,
+                  "result_string": "Final",
+                  "winner_id": "2278",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6615,11 +6615,11 @@
                   "away_id": "2274",
                   "home_team": "Lewiston MAINEiacs",
                   "away_team": "Woodstock Slammers",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 4,
+                  "away_score": 2,
+                  "result_string": "Final",
+                  "winner_id": "2278",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -6636,12 +6636,12 @@
                   "result_string": null,
                   "winner_id": null,
                   "game_status": "scheduled",
-                  "if_necessary": false
+                  "if_necessary": true
                 }
               ],
               "overrideWinner": null,
               "note": null,
-              "seriesSummary": "Lewiston MAINEiacs leads 1-0"
+              "seriesSummary": "Lewiston MAINEiacs wins 3-1"
             }
           ]
         }
@@ -6655,25 +6655,37 @@
         "note": "Hosted by #1 seed",
         "matchups": [
           {
-            "team1": "Div1 Winner",
-            "team2": "Div3 Winner",
+            "game_id": "23620",
+            "date": "2026-04-09",
+            "team1": "South Shore Kings",
+            "team1Id": "120",
+            "team2": "Lewiston MAINEiacs",
+            "team2Id": "2278",
             "team1Score": null,
             "team2Score": null,
-            "status": "upcoming"
+            "status": "scheduled"
           },
           {
-            "team1": "Div3 Winner",
-            "team2": "Div2 Winner",
+            "game_id": "23621",
+            "date": "2026-04-10",
+            "team1": "Utica Jr Comets",
+            "team1Id": "123",
+            "team2": "Lewiston MAINEiacs",
+            "team2Id": "2278",
             "team1Score": null,
             "team2Score": null,
-            "status": "upcoming"
+            "status": "scheduled"
           },
           {
-            "team1": "Div2 Winner",
-            "team2": "Div1 Winner",
+            "game_id": "23622",
+            "date": "2026-04-11",
+            "team1": "South Shore Kings",
+            "team1Id": "120",
+            "team2": "Utica Jr Comets",
+            "team2Id": "123",
             "team1Score": null,
             "team2Score": null,
-            "status": "upcoming"
+            "status": "scheduled"
           }
         ],
         "standings": []
