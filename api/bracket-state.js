@@ -79,7 +79,7 @@ async function handleGet(req, res) {
       delete bracketState._autoAdvanced;
     }
 
-    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=30, stale-while-revalidate=60');
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=300, stale-while-revalidate=600');
     return res.status(200).json(bracketState);
   } catch (err) {
     console.error('Bracket state GET error:', err);

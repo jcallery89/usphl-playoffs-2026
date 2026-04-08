@@ -669,19 +669,17 @@
   async function loadData() {
     showLoading(true);
     try {
-      // Cache-bust static files so iframe/CDN doesn't serve stale data
-      var cacheBust = '_cb=' + Date.now();
       // Load team mappings, initial seeds, bracket config, and bracket state in parallel
       var results = await Promise.all([
-        fetch(API_BASE + '/data/team-mappings.json?' + cacheBust).then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/initial-seeds.json?' + cacheBust).then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/bracket-config.json?' + cacheBust).then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/api/bracket-state?' + cacheBust).then(function(r){
+        fetch(API_BASE + '/data/team-mappings.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/initial-seeds.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/bracket-config.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/api/bracket-state').then(function(r){
           if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
           return r.json();
         }).catch(function(e){
           console.warn('bracket-state API not available, trying static fallback:', e.message);
-          return fetch(API_BASE + '/data/bracket-state-initial.json?' + cacheBust).then(function(r){ return r.json(); }).catch(function(){ return null; });
+          return fetch(API_BASE + '/data/bracket-state-initial.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
         })
       ]);
 
@@ -1236,6 +1234,8 @@
       currentDivision = DIVISIONS[league][0];
       highlightActivePill();
       renderAll();
+      // Restart or stop polling based on whether league is finished
+      startAutoRefresh();
     });
   });
 
@@ -3160,8 +3160,13 @@
   // ===========================================================================
   var refreshInterval = null;
 
+  // Finished leagues don't need live polling
+  var FINISHED_LEAGUES = ['Elite', 'Premier'];
+
   function startAutoRefresh() {
     if (refreshInterval) clearInterval(refreshInterval);
+    // Don't poll if viewing a finished league
+    if (FINISHED_LEAGUES.indexOf(currentLeague) !== -1) return;
     // In cross-origin iframes, document.hidden may not reflect parent page
     // visibility accurately, so always refresh regardless
     refreshInterval = setInterval(function() {
@@ -3171,7 +3176,7 @@
 
   async function refreshGameData() {
     try {
-      var resp = await fetch(API_BASE + '/api/bracket-state?_cb=' + Date.now());
+      var resp = await fetch(API_BASE + '/api/bracket-state');
       if (!resp.ok) return;
       var newState = await resp.json();
       BRACKET_STATE = newState;
