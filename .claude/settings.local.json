@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(html|js\\)$\")",
+      "Bash(xargs grep:*)",
+      "Bash(node -e \":*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(gh api:*)",
+      "Bash(npx vercel:*)",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/bracket-state\")",
+      "Bash(curl -s -X POST \"https://usphl-playoffs-2026.vercel.app/api/refresh\")",
+      "Bash(node -e ':*)",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/update-scores\")",
+      "Bash(curl -sv \"https://usphl-playoffs-2026.vercel.app/api/update-scores\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/refresh\" -X POST)"
+    ]
+  }
+}
