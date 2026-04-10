@@ -16,7 +16,8 @@
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updateScores\")",
       "Bash(curl -s \"https://usphl-playoffs-2026-mskduzpxy-jcallery89s-projects.vercel.app/api/updateScores\")",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/reinit\")",
-      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updatescores\")"
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updatescores\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/scores\")"
     ]
   }
 }
