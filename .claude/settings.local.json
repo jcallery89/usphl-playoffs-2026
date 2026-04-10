@@ -12,7 +12,11 @@
       "Bash(node -e ':*)",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/update-scores\")",
       "Bash(curl -sv \"https://usphl-playoffs-2026.vercel.app/api/update-scores\")",
-      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/refresh\" -X POST)"
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/refresh\" -X POST)",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updateScores\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026-mskduzpxy-jcallery89s-projects.vercel.app/api/updateScores\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/reinit\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updatescores\")"
     ]
   }
 }
