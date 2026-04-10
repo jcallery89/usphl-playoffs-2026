@@ -1518,7 +1518,12 @@
               "home_id": "120",
               "away_id": "2278",
               "home_team": "South Shore Kings",
-              "away_team": "Lewiston MAINEiacs"
+              "away_team": "Lewiston MAINEiacs",
+              "home_score": 4,
+              "away_score": 1,
+              "result_string": "Final",
+              "winner_id": "120",
+              "game_status": "final"
             },
             {
               "game_id": "23621",
