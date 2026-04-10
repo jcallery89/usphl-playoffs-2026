@@ -4,10 +4,6 @@
   "functions": {
     "api/*.js": {
       "memory": 256,
-      "maxDuration": 10
-    },
-    "api/scores.js": {
-      "memory": 256,
       "maxDuration": 30
     }
   },
