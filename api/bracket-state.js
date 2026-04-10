@@ -14,6 +14,19 @@ const teamMappings = JSON.parse(
 );
 
 const BRACKET_KEY = 'bracket-state';
+const SCORES_KEY = 'game-scores';
+
+async function enrichWithScores(games) {
+  const scoresMap = await kvGet(SCORES_KEY);
+  if (!scoresMap || typeof scoresMap !== 'object') return games;
+  return games.map(g => {
+    const scores = scoresMap[String(g.game_id)];
+    if (scores && !g.home_goals) {
+      return { ...g, home_goals: scores.home_goals, away_goals: scores.away_goals };
+    }
+    return g;
+  });
+}
 
 async function verifyAdmin(req) {
   const token = (req.headers.authorization || '').replace('Bearer ', '');
@@ -54,10 +67,13 @@ async function handleGet(req, res) {
       getCached('games:1', () => getSchedule('1'), 900),
     ]);
 
+    // Enrich NCDC games with cached GameCenter scores
+    const enrichedNcdc = await enrichWithScores(ncdcGames || []);
+
     const allGames = {
       Premier: premierGames || [],
       Elite: eliteGames || [],
-      NCDC: ncdcGames || [],
+      NCDC: enrichedNcdc,
       _teamMappings: teamMappings,
     };
 
