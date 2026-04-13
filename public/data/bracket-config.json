@@ -1505,7 +1505,7 @@
       "conferenceRounds": {
         "roundRobin": {
           "name": "Conference Round Robin",
-          "dates": "Apr 9-11",
+          "dates": "Apr 9-10",
           "format": "Round Robin",
           "note": "Hosted by South Shore Kings (NE East #1 seed)",
           "location": "Foxboro Rink 1",
@@ -1533,17 +1533,12 @@
               "home_id": "123",
               "away_id": "2278",
               "home_team": "Utica Jr Comets",
-              "away_team": "Lewiston MAINEiacs"
-            },
-            {
-              "game_id": "23622",
-              "date": "2026-04-11",
-              "time": "06:30 PM",
-              "location": "Foxboro Rink 1",
-              "home_id": "120",
-              "away_id": "123",
-              "home_team": "South Shore Kings",
-              "away_team": "Utica Jr Comets"
+              "away_team": "Lewiston MAINEiacs",
+              "home_score": 4,
+              "away_score": 1,
+              "result_string": "Final",
+              "winner_id": "123",
+              "game_status": "final"
             }
           ]
         },
@@ -1551,13 +1546,39 @@
           "name": "Conference Final",
           "dates": "Apr 14-16",
           "format": "Bo3",
-          "matchups": [
-            [
-              "RR #1",
-              "RR #2"
-            ]
-          ],
-          "note": "Hosted by #1 seed"
+          "note": "Hosted by South Shore Kings",
+          "games": [
+            {
+              "game_id": "23622",
+              "date": "2026-04-14",
+              "time": "03:00 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "120",
+              "away_id": "123",
+              "home_team": "South Shore Kings",
+              "away_team": "Utica Jr Comets"
+            },
+            {
+              "game_id": "23638",
+              "date": "2026-04-15",
+              "time": "03:00 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "120",
+              "away_id": "123",
+              "home_team": "South Shore Kings",
+              "away_team": "Utica Jr Comets"
+            },
+            {
+              "game_id": "23639",
+              "date": "2026-04-16",
+              "time": "03:00 PM",
+              "location": "Foxboro Rink 1",
+              "home_id": "120",
+              "away_id": "123",
+              "home_team": "South Shore Kings",
+              "away_team": "Utica Jr Comets"
+            }
+          ]
         }
       }
     },

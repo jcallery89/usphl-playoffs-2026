@@ -19,12 +19,13 @@ export default async function handler(req, res) {
     for (const [division, divState] of Object.entries(ncdcState)) {
       if (division === 'Dineen Cup') continue;
 
-      // NE Conference round robin
+      // NE Conference round robin + conference final
       if (division === 'NE Conference') {
         const rrGames = divState?.roundRobin?.games || [];
-        for (const game of rrGames) {
+        const cfGames = divState?.conferenceFinal?.games || [];
+        for (const game of [...rrGames, ...cfGames]) {
           if (game.game_id && game.game_status !== 'final') {
-            gamesToFetch.push({ game, division, type: 'ne_rr' });
+            gamesToFetch.push({ game, division, type: 'ne_conf' });
           }
         }
         continue;

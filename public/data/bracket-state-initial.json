@@ -6731,10 +6731,11 @@
     "NE Conference": {
       "roundRobin": {
         "name": "Conference Round Robin",
-        "dates": "Apr 9-11",
+        "dates": "Apr 9-10",
         "format": "Round Robin",
-        "note": "Hosted by #1 seed",
-        "matchups": [
+        "note": "Hosted by South Shore Kings (NE East #1 seed)",
+        "location": "Foxboro Rink 1",
+        "games": [
           {
             "game_id": "23620",
             "date": "2026-04-09",
@@ -6759,16 +6760,29 @@
             "away_id": "2278",
             "home_team": "Utica Jr Comets",
             "away_team": "Lewiston MAINEiacs",
-            "home_score": null,
-            "away_score": null,
-            "result_string": null,
-            "winner_id": null,
-            "game_status": "scheduled"
-          },
+            "home_score": 4,
+            "away_score": 1,
+            "result_string": "Final",
+            "winner_id": "123",
+            "game_status": "final"
+          }
+        ],
+        "standings": [
+          { "team": "South Shore Kings", "teamId": "120", "w": 1, "l": 0, "gf": 4, "ga": 1 },
+          { "team": "Utica Jr Comets", "teamId": "123", "w": 1, "l": 0, "gf": 4, "ga": 1 },
+          { "team": "Lewiston MAINEiacs", "teamId": "2278", "w": 0, "l": 2, "gf": 2, "ga": 8 }
+        ]
+      },
+      "conferenceFinal": {
+        "name": "Conference Final",
+        "dates": "Apr 14-16",
+        "format": "Bo3",
+        "note": "Hosted by South Shore Kings",
+        "games": [
           {
             "game_id": "23622",
-            "date": "2026-04-11",
-            "time": "06:30 PM",
+            "date": "2026-04-14",
+            "time": "03:00 PM",
             "location": "Foxboro Rink 1",
             "home_id": "120",
             "away_id": "123",
@@ -6779,22 +6793,39 @@
             "result_string": null,
             "winner_id": null,
             "game_status": "scheduled"
+          },
+          {
+            "game_id": "23638",
+            "date": "2026-04-15",
+            "time": "03:00 PM",
+            "location": "Foxboro Rink 1",
+            "home_id": "120",
+            "away_id": "123",
+            "home_team": "South Shore Kings",
+            "away_team": "Utica Jr Comets",
+            "home_score": null,
+            "away_score": null,
+            "result_string": null,
+            "winner_id": null,
+            "game_status": "scheduled"
+          },
+          {
+            "game_id": "23639",
+            "date": "2026-04-16",
+            "time": "03:00 PM",
+            "location": "Foxboro Rink 1",
+            "home_id": "120",
+            "away_id": "123",
+            "home_team": "South Shore Kings",
+            "away_team": "Utica Jr Comets",
+            "home_score": null,
+            "away_score": null,
+            "result_string": null,
+            "winner_id": null,
+            "game_status": "scheduled",
+            "if_necessary": true
           }
-        ],
-        "standings": []
-      },
-      "conferenceFinal": {
-        "name": "Conference Final",
-        "dates": "Apr 14-16",
-        "format": "Bo3",
-        "note": "Hosted by #1 seed",
-        "matchup": {
-          "team1": "RR #1",
-          "team2": "RR #2",
-          "team1Score": null,
-          "team2Score": null,
-          "status": "upcoming"
-        }
+        ]
       }
     },
     "Mountain": {
