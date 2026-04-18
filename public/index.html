@@ -2471,11 +2471,16 @@
         var parts = g.matchup.split(' vs');
         var home = (parts[0] || '').trim();
         var away = (parts[1] || '').trim().replace(/^\.?\s*/, '');
+        // Render logos via teamNameHTML for real team names;
+        // record placeholders like "0-1" or "Winner G1" pass through unchanged
+        var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home) || /^(\d+-\d+|Winner |Loser )/i.test(away);
+        var homeHTML = isRecord ? home : teamNameHTML(home, 'NCDC');
+        var awayHTML = isRecord ? away : teamNameHTML(away, 'NCDC');
         var isIfNecessary = (g.note || '').toLowerCase().indexOf('if necessary') !== -1;
         html += '<div class="matchup"' + (isIfNecessary ? ' style="opacity:0.6;"' : '') + '>';
-        html += '<div class="matchup-team home"><span>' + home + '</span></div>';
+        html += '<div class="matchup-team home"><span>' + homeHTML + '</span></div>';
         html += '<div class="matchup-vs">vs</div>';
-        html += '<div class="matchup-team away"><span>' + away + '</span></div>';
+        html += '<div class="matchup-team away"><span>' + awayHTML + '</span></div>';
         html += '<div class="matchup-label">Game ' + g.game + ' — ' + g.time;
         if (g.note) html += ' (' + g.note + ')';
         html += '</div>';
@@ -2735,10 +2740,17 @@
     html += '<p>Format: Double Elimination</p>';
     html += '</div>';
     (dc.schedule || []).forEach(function(g) {
+      var parts = g.matchup.split(' vs');
+      var home = (parts[0] || '').trim();
+      var away = (parts[1] || '').trim().replace(/^\.?\s*/, '');
+      var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home) || /^(\d+-\d+|Winner |Loser )/i.test(away);
+      var matchupHTML = isRecord
+        ? g.matchup
+        : (teamNameHTML(home, 'NCDC') + ' <span class="dineen-vs">vs.</span> ' + teamNameHTML(away, 'NCDC'));
       html += '<div class="dineen-game">';
       html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
       html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
-      html += '<div class="dineen-game-matchup">' + g.matchup + '</div>';
+      html += '<div class="dineen-game-matchup">' + matchupHTML + '</div>';
       if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
       html += '</div>';
     });
