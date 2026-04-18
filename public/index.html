@@ -3301,6 +3301,13 @@
       }
     }
 
+    // Default to Dineen Cup Finals tab for NCDC if no division specified
+    if (!divisionParam && currentLeague === 'NCDC') {
+      if (DIVISIONS[currentLeague].indexOf('Dineen Cup Finals') !== -1) {
+        currentDivision = 'Dineen Cup Finals';
+      }
+    }
+
     populateDivisionPills(currentLeague);
     highlightActivePill();
     loadData().then(function() {
