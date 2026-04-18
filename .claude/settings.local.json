@@ -18,7 +18,11 @@
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/reinit\")",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/updatescores\")",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/scores\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__find",
+      "mcp__Claude_in_Chrome__computer"
     ]
   }
 }
