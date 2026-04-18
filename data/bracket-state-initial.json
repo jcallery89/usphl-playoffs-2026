@@ -5827,12 +5827,12 @@
               "awayTeamId": "111",
               "homeTeamName": "P.A.L. Junior Islanders",
               "awayTeamName": "Jersey Hitmen",
-              "homeWins": 0,
+              "homeWins": 3,
               "awayWins": 0,
-              "status": "scheduled",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
+              "status": "complete",
+              "winnerId": "115",
+              "winnerSeed": 1,
+              "winnerName": "P.A.L. Junior Islanders",
               "games": [
                 {
                   "game_id": "23626",
@@ -5843,11 +5843,11 @@
                   "away_id": "111",
                   "home_team": "P.A.L. Junior Islanders",
                   "away_team": "Jersey Hitmen",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 3,
+                  "away_score": 2,
+                  "result_string": "Final/OT",
+                  "winner_id": "115",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -5859,11 +5859,11 @@
                   "away_id": "111",
                   "home_team": "P.A.L. Junior Islanders",
                   "away_team": "Jersey Hitmen",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 3,
+                  "away_score": 0,
+                  "result_string": "Final",
+                  "winner_id": "115",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -5875,11 +5875,11 @@
                   "away_id": "115",
                   "home_team": "Jersey Hitmen",
                   "away_team": "P.A.L. Junior Islanders",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 1,
+                  "away_score": 4,
+                  "result_string": "Final",
+                  "winner_id": "115",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -5896,7 +5896,7 @@
                   "result_string": null,
                   "winner_id": null,
                   "game_status": "scheduled",
-                  "if_necessary": false
+                  "if_necessary": true
                 },
                 {
                   "game_id": "23630",
@@ -5916,7 +5916,8 @@
                 }
               ],
               "overrideWinner": null,
-              "note": null
+              "note": null,
+              "seriesSummary": "P.A.L. Junior Islanders wins 3-0"
             }
           ]
         }
@@ -6788,11 +6789,11 @@
             "away_id": "123",
             "home_team": "South Shore Kings",
             "away_team": "Utica Jr Comets",
-            "home_score": null,
-            "away_score": null,
-            "result_string": null,
-            "winner_id": null,
-            "game_status": "scheduled"
+            "home_score": 4,
+            "away_score": 0,
+            "result_string": "Final",
+            "winner_id": "120",
+            "game_status": "final"
           },
           {
             "game_id": "23638",
@@ -6803,11 +6804,11 @@
             "away_id": "123",
             "home_team": "South Shore Kings",
             "away_team": "Utica Jr Comets",
-            "home_score": null,
-            "away_score": null,
-            "result_string": null,
-            "winner_id": null,
-            "game_status": "scheduled"
+            "home_score": 4,
+            "away_score": 2,
+            "result_string": "Final",
+            "winner_id": "120",
+            "game_status": "final"
           },
           {
             "game_id": "23639",
@@ -7006,12 +7007,12 @@
               "awayTeamId": "122",
               "homeTeamName": "Grand Junction River Hawks",
               "awayTeamName": "Utah Outliers",
-              "homeWins": 0,
-              "awayWins": 0,
-              "status": "scheduled",
-              "winnerId": null,
-              "winnerSeed": null,
-              "winnerName": null,
+              "homeWins": 3,
+              "awayWins": 2,
+              "status": "complete",
+              "winnerId": "2272",
+              "winnerSeed": 3,
+              "winnerName": "Grand Junction River Hawks",
               "games": [
                 {
                   "game_id": "23623",
@@ -7022,11 +7023,11 @@
                   "away_id": "122",
                   "home_team": "Grand Junction River Hawks",
                   "away_team": "Utah Outliers",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 5,
+                  "away_score": 3,
+                  "result_string": "Final",
+                  "winner_id": "2272",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -7038,11 +7039,11 @@
                   "away_id": "122",
                   "home_team": "Grand Junction River Hawks",
                   "away_team": "Utah Outliers",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 2,
+                  "away_score": 1,
+                  "result_string": "Final/OT",
+                  "winner_id": "2272",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -7054,11 +7055,11 @@
                   "away_id": "2272",
                   "home_team": "Utah Outliers",
                   "away_team": "Grand Junction River Hawks",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 5,
+                  "away_score": 4,
+                  "result_string": "Final",
+                  "winner_id": "122",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
@@ -7070,33 +7071,33 @@
                   "away_id": "2272",
                   "home_team": "Utah Outliers",
                   "away_team": "Grand Junction River Hawks",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 5,
+                  "away_score": 4,
+                  "result_string": "Final/OT",
+                  "winner_id": "122",
+                  "game_status": "final",
                   "if_necessary": false
                 },
                 {
                   "game_id": "23625",
                   "date": "2026-04-17",
-                  "time": "12:00 PM",
+                  "time": "07:30 PM",
                   "location": "River City Sportplex",
                   "home_id": "2272",
                   "away_id": "122",
                   "home_team": "Grand Junction River Hawks",
                   "away_team": "Utah Outliers",
-                  "home_score": null,
-                  "away_score": null,
-                  "result_string": null,
-                  "winner_id": null,
-                  "game_status": "scheduled",
+                  "home_score": 2,
+                  "away_score": 1,
+                  "result_string": "Final",
+                  "winner_id": "2272",
+                  "game_status": "final",
                   "if_necessary": true
                 }
               ],
               "overrideWinner": null,
               "note": null,
-              "seriesSummary": "Tied 0-0"
+              "seriesSummary": "Grand Junction River Hawks wins 3-2"
             }
           ]
         }
