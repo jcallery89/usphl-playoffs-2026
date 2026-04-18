@@ -227,6 +227,17 @@
     .dineen-game-date { color: #777; min-width: 140px; font-size: 0.85rem; }
     .dineen-game-matchup { flex: 1; font-size: 0.9rem; color: #333; }
     .dineen-game-note { font-size: 0.75rem; color: #999; font-style: italic; }
+    .ticket-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.35rem 0.85rem; background: #c91417; color: #fff !important;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.03em;
+      text-decoration: none !important; border-radius: 4px;
+      transition: background 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+    .ticket-btn:hover { background: #a30f12; transform: translateY(-1px); }
+    .ticket-btn::before { content: "\01F39F"; font-size: 0.95rem; }
     /* ===== Dineen Cup Finals Page ===== */
     .dineen-hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; padding: 2rem 1.5rem; border-radius: 10px; text-align: center; margin-bottom: 1.5rem; border-bottom: 4px solid #c91417; }
     .dineen-hero-logo { max-width: 200px; height: auto; margin-bottom: 1rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
@@ -551,6 +562,7 @@
       .dineen-game-date { min-width: auto; font-size: 0.78rem; }
       .dineen-game-matchup { flex-basis: 100%; font-size: 0.82rem; white-space: normal; }
       .dineen-game-note { font-size: 0.7rem; }
+      .ticket-btn { font-size: 0.72rem; padding: 0.3rem 0.65rem; flex-basis: 100%; justify-content: center; margin-top: 0.25rem; }
 
       /* NE divisions grid single column */
       .ne-divisions-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -2739,6 +2751,7 @@
     if (dc.timezone) html += '<p>All times ' + dc.timezone + '</p>';
     html += '<p>Format: Double Elimination</p>';
     html += '</div>';
+    var ticketUrl = 'https://www.ticketmaster.com/idaho-falls-spud-kings-tickets/artist/2925092';
     (dc.schedule || []).forEach(function(g) {
       var parts = g.matchup.split(' vs');
       var home = (parts[0] || '').trim();
@@ -2752,6 +2765,7 @@
       html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
       html += '<div class="dineen-game-matchup">' + matchupHTML + '</div>';
       if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
+      html += '<a class="ticket-btn" href="' + ticketUrl + '" target="_blank" rel="noopener">Buy Tickets</a>';
       html += '</div>';
     });
     if (dc.mountainNote) {
