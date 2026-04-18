@@ -1649,7 +1649,7 @@
           "game_id": "23633",
           "date": "Apr 25",
           "time": "2:00 PM",
-          "matchup": "Loser G1 vs. Loser G2",
+          "matchup": "0-1 vs. 0-1",
           "note": "Elimination"
         },
         {
@@ -1657,7 +1657,7 @@
           "game_id": "23634",
           "date": "Apr 25",
           "time": "7:00 PM",
-          "matchup": "Winner G1 vs. Winner G2",
+          "matchup": "1-0 vs. 1-0",
           "note": "Winner advances to Final"
         },
         {
@@ -1665,7 +1665,7 @@
           "game_id": "23635",
           "date": "Apr 26",
           "time": "7:00 PM",
-          "matchup": "Winner G3 vs. Loser G4",
+          "matchup": "1-1 vs. 1-1",
           "note": "Elimination / Winner advances to Final"
         },
         {
@@ -1673,7 +1673,7 @@
           "game_id": "23636",
           "date": "Apr 27",
           "time": "7:00 PM",
-          "matchup": "Winner G4 vs. Winner G5",
+          "matchup": "2-1 vs. 2-0",
           "note": "Final #1"
         },
         {
@@ -1681,7 +1681,7 @@
           "game_id": "23637",
           "date": "Apr 28",
           "time": "7:00 PM",
-          "matchup": "Winner G6 vs. Loser G6",
+          "matchup": "3-1 vs. 2-1",
           "note": "Final #2, if necessary"
         }
       ]
