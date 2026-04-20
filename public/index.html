@@ -233,23 +233,30 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .dc-game-header {
-      display: flex; align-items: center; gap: 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: "ident note btn";
+      gap: 0.5rem 1rem;
+      align-items: center;
       padding: 0.85rem 1.25rem;
       background: #0c568c;
       color: #fff;
     }
-    .dc-game-ident { display: flex; flex-direction: column; gap: 0.1rem; flex: 1; min-width: 0; }
+    .dc-game-ident { grid-area: ident; display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
     .dc-game-num {
       font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
       font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase;
+      line-height: 1.1;
     }
-    .dc-game-date { font-size: 0.82rem; color: rgba(255,255,255,0.85); }
+    .dc-game-date { font-size: 0.82rem; color: rgba(255,255,255,0.85); white-space: nowrap; }
     .dc-game-note {
+      grid-area: note; justify-self: center;
       background: rgba(255,255,255,0.15); color: #fff;
-      padding: 0.28rem 0.7rem; border-radius: 3px;
+      padding: 0.32rem 0.75rem; border-radius: 3px;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      text-align: center; line-height: 1.3;
     }
-    .dc-game-header .ticket-btn { background: #fff; color: #c91417 !important; }
+    .dc-game-header .ticket-btn { grid-area: btn; background: #fff; color: #c91417 !important; }
     .dc-game-header .ticket-btn:hover { background: #f5f5f5; }
 
     /* TBD rows (record-based) */
@@ -730,9 +737,17 @@
 
       /* Schedule rows: wrap to two lines on mobile */
       .dineen-schedule { max-width: 100%; }
-      .dc-game-header { flex-wrap: wrap; gap: 0.5rem 0.75rem; padding: 0.75rem 1rem; }
+      .dc-game-header {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "ident btn"
+          "note  note";
+        gap: 0.6rem 0.75rem;
+        padding: 0.75rem 1rem;
+      }
+      .dc-game-note { justify-self: start; white-space: normal; }
       .dc-game-num { font-size: 1rem; }
-      .dc-game-date { font-size: 0.78rem; }
+      .dc-game-date { font-size: 0.78rem; white-space: normal; }
       .dc-game-header .ticket-btn { font-size: 0.72rem; padding: 0.35rem 0.7rem; }
       .dc-game-teams { grid-template-columns: 1fr; }
       .dc-game-vs { padding: 0.6rem; font-size: 1.05rem; border-left: none; border-right: none; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
