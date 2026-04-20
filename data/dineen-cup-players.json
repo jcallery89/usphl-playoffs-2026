@@ -1,0 +1,146 @@
+{
+  "P.A.L. Junior Islanders": {
+    "skaters": [
+      {
+        "name": "Shawn Swavely",
+        "position": "A",
+        "jersey": "22",
+        "goals": 21,
+        "assists": 28,
+        "points": 49,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/18399.jpg"
+      },
+      {
+        "name": "Billy Collins",
+        "position": "F",
+        "jersey": "21",
+        "goals": 21,
+        "assists": 20,
+        "points": 41,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/216a04aebb77ff61a8a4332545ed0298ea8dad41df09c89d5555f570210205a1.png"
+      }
+    ],
+    "goalies": [
+      {
+        "name": "Stephen Amaro",
+        "jersey": "1",
+        "wins": 3,
+        "losses": 2,
+        "gaa": "1.89",
+        "savePct": ".948",
+        "shutouts": 1,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/41035e6da69dae2bb1e41f28e96095e8f28763c17d96c2b66874b48f54f759a8.png"
+      }
+    ]
+  },
+  "South Shore Kings": {
+    "skaters": [
+      {
+        "name": "Eli Heinze",
+        "position": "F",
+        "jersey": "23",
+        "goals": 26,
+        "assists": 27,
+        "points": 53,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/a8b7744a842c9f043b2a94b04ce8a50024936a5f761cad80b315b60a6c98441e.jpeg"
+      },
+      {
+        "name": "Jake Kavanagh",
+        "position": "C",
+        "jersey": "91",
+        "goals": 18,
+        "assists": 32,
+        "points": 50,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/325b83852d8493818c3e900aeed13732e67478f960a3e9b219082dd1d2ca8596.jpeg"
+      }
+    ],
+    "goalies": [
+      {
+        "name": "Patrick Mueller",
+        "jersey": "30",
+        "wins": 27,
+        "losses": 6,
+        "gaa": "1.77",
+        "savePct": ".929",
+        "shutouts": 7,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/e0549733d19ec21968565ffde32dcbfa7e68a5bcacc7780ce291fd41273d0052.jpeg"
+      }
+    ]
+  },
+  "Grand Junction River Hawks": {
+    "skaters": [
+      {
+        "name": "Kasper Pohjala",
+        "position": "F",
+        "jersey": "14",
+        "goals": 15,
+        "assists": 43,
+        "points": 58,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/282e3769ae059819388ea42c4ab663dee462bb87290cd27a3df668e81d5f29b0.png"
+      },
+      {
+        "name": "Sami Kallionkieli",
+        "position": "F",
+        "jersey": "19",
+        "goals": 20,
+        "assists": 32,
+        "points": 52,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/fc0cda1932bc029bc8d6c07220b05467a3960f0b02773107c87a5eb532a8ba1b.png"
+      }
+    ],
+    "goalies": [
+      {
+        "name": "Simon Zille",
+        "jersey": "1",
+        "wins": 16,
+        "losses": 8,
+        "gaa": "1.85",
+        "savePct": ".943",
+        "shutouts": 1,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/85fc4ffb84f2813df6aff8e328d6330e93ec8cdb0c6b28e0b801888bf7e3c3dd.png"
+      }
+    ]
+  },
+  "Idaho Falls Spud Kings": {
+    "skaters": [
+      {
+        "name": "Daniel Macleish",
+        "position": "C",
+        "jersey": "15",
+        "goals": 21,
+        "assists": 31,
+        "points": 52,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/c10b8cba0b2cafb0b299ee813ac33ff28cf16cf631ac84fed46ec578428d1bc7.jpeg"
+      },
+      {
+        "name": "Caleb Lepitre",
+        "position": "F",
+        "jersey": "29",
+        "goals": 14,
+        "assists": 33,
+        "points": 47,
+        "plusminus": 0,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/41debfd4411158926ecfa44506131df98710bc9ba7c7ee48f142a8e5f9b0b0f9.jpeg"
+      }
+    ],
+    "goalies": [
+      {
+        "name": "Devin Degenstein",
+        "jersey": "1",
+        "wins": 25,
+        "losses": 7,
+        "gaa": "2.28",
+        "savePct": ".923",
+        "shutouts": 5,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/0dbe73f874c172d009413df81db2fb910b667109f858cb932ddda08b81a63d04.jpeg"
+      }
+    ]
+  }
+}
