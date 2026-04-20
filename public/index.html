@@ -222,25 +222,60 @@
     .bracket-status-banner { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 0.6rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: #6d4c00; display: flex; align-items: center; gap: 0.5rem; }
     .bracket-status-banner .status-icon { font-size: 1.1rem; }
     .dineen-schedule { max-width: 700px; }
-    .dineen-game { display: flex; gap: 1rem; padding: 0.6rem 0.75rem; border-bottom: 1px solid #eee; align-items: center; }
-    .dineen-game-num { font-weight: 700; color: #c91417; min-width: 60px; }
-    .dineen-game-date { color: #777; min-width: 140px; font-size: 0.85rem; }
-    .dineen-game-matchup { flex: 1; font-size: 0.9rem; color: #333; }
-    .dineen-game-note { font-size: 0.75rem; color: #999; font-style: italic; }
+    .dineen-schedule { display: flex; flex-direction: column; gap: 0.5rem; }
+    .dineen-game {
+      display: grid;
+      grid-template-columns: 90px 170px 1fr auto;
+      gap: 1.25rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      background: #fff;
+      align-items: center;
+      transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .dineen-game:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-color: #c91417; }
+    .dineen-game-num {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      color: #c91417; font-size: 1.15rem; text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .dineen-game-date {
+      display: flex; flex-direction: column; gap: 0.15rem;
+      color: #333; font-size: 0.88rem; line-height: 1.35;
+    }
+    .dineen-game-date .game-day { font-weight: 600; }
+    .dineen-game-date .game-time { color: #777; font-size: 0.82rem; }
+    .dineen-game-matchup {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 0.4rem 0.6rem; font-size: 0.95rem; color: #222; line-height: 1.4;
+    }
+    .dineen-game-matchup .dineen-vs { color: #999; font-style: italic; font-size: 0.85rem; }
+    .dineen-game-note {
+      display: inline-block;
+      font-size: 0.72rem; color: #0c568c; font-style: normal; font-weight: 600;
+      background: #e8eef5; padding: 0.2rem 0.55rem; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      margin-left: 0.5rem;
+    }
     .dineen-seed {
-      display: inline-block; min-width: 1.6rem; padding: 0.1rem 0.35rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.9rem; height: 1.55rem; padding: 0 0.4rem;
       background: #0c568c; color: #fff; border-radius: 3px;
       font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.75rem; text-align: center; margin-right: 0.35rem;
+      font-size: 0.8rem; letter-spacing: 0.02em;
       vertical-align: middle;
     }
     .dineen-schedule-intro {
       background: #f8f9fa; border-left: 4px solid #c91417;
-      padding: 1rem 1.25rem; margin-bottom: 1rem; border-radius: 4px;
+      padding: 1.15rem 1.35rem; margin-bottom: 1.25rem; border-radius: 4px;
     }
-    .dineen-schedule-intro p { margin: 0 0 0.5rem; font-size: 0.9rem; color: #333; line-height: 1.5; }
+    .dineen-schedule-intro p { margin: 0 0 0.75rem; font-size: 0.92rem; color: #333; line-height: 1.6; }
     .dineen-schedule-intro p:last-child { margin-bottom: 0; }
-    .dineen-schedule-intro .dineen-flow { font-size: 0.82rem; color: #555; padding-top: 0.5rem; border-top: 1px solid #e5e5e5; }
+    .dineen-schedule-intro .dineen-flow {
+      font-size: 0.85rem; color: #555; padding-top: 0.75rem;
+      border-top: 1px solid #e5e5e5; line-height: 1.8;
+    }
     .dineen-overview { background: #fff; }
     .dineen-overview-header {
       text-align: center; padding: 1.25rem 0 1rem; border-bottom: 2px solid #c91417; margin-bottom: 1.25rem;
@@ -612,12 +647,17 @@
 
       /* Schedule rows: wrap to two lines on mobile */
       .dineen-schedule { max-width: 100%; }
-      .dineen-game { flex-wrap: wrap; gap: 0.25rem 0.5rem; padding: 0.5rem 0.5rem; }
-      .dineen-game-num { min-width: auto; font-size: 0.85rem; }
-      .dineen-game-date { min-width: auto; font-size: 0.78rem; }
-      .dineen-game-matchup { flex-basis: 100%; font-size: 0.82rem; white-space: normal; }
-      .dineen-game-note { font-size: 0.7rem; }
-      .ticket-btn { font-size: 0.72rem; padding: 0.3rem 0.65rem; flex-basis: 100%; justify-content: center; margin-top: 0.25rem; }
+      .dineen-game {
+        grid-template-columns: 1fr auto;
+        gap: 0.5rem 0.75rem;
+        padding: 0.85rem 1rem;
+      }
+      .dineen-game-num { font-size: 1rem; }
+      .dineen-game-date { font-size: 0.82rem; grid-column: 2; text-align: right; }
+      .dineen-game-date .game-time { font-size: 0.78rem; }
+      .dineen-game-matchup { grid-column: 1 / -1; font-size: 0.88rem; }
+      .dineen-game-note { font-size: 0.68rem; margin-left: 0; margin-top: 0.25rem; }
+      .ticket-btn { grid-column: 1 / -1; font-size: 0.75rem; padding: 0.4rem 0.65rem; justify-content: center; margin-top: 0.35rem; }
 
       /* NE divisions grid single column */
       .ne-divisions-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -2839,11 +2879,13 @@
       var matchupHTML = isRecord
         ? g.matchup
         : (seedPrefix(home) + teamNameHTML(home, 'NCDC') + ' <span class="dineen-vs">vs.</span> ' + seedPrefix(away) + teamNameHTML(away, 'NCDC'));
+      var noteHTML = g.note ? '<span class="dineen-game-note">' + g.note + '</span>' : '';
       html += '<div class="dineen-game">';
       html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
-      html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
-      html += '<div class="dineen-game-matchup">' + matchupHTML + '</div>';
-      if (g.note) html += '<div class="dineen-game-note">' + g.note + '</div>';
+      html += '<div class="dineen-game-date"><span class="game-day">' + g.date + '</span>';
+      if (g.time) html += '<span class="game-time">' + g.time + '</span>';
+      html += '</div>';
+      html += '<div class="dineen-game-matchup">' + matchupHTML + noteHTML + '</div>';
       html += '<a class="ticket-btn" href="' + ticketUrl + '" target="_blank" rel="noopener">Buy Tickets</a>';
       html += '</div>';
     });
