@@ -1740,11 +1740,21 @@
     // Participants
     html += '<div class="dineen-section">';
     html += '<h3 class="dineen-section-title">Championship Participants</h3>';
-    html += '<table class="data-table"><thead><tr><th>#</th><th>Entry</th><th>Notes</th></tr></thead><tbody>';
-    dc.teams.forEach(function(entry, idx) {
-      var note = (entry === "Idaho Falls Spud Kings") ? "Host auto-bid" : "Conference/Division champion";
-      html += '<tr><td>' + (idx + 1) + '</td><td>' + teamNameHTML(entry, leagueForMap) + '</td>';
-      html += '<td style="color:#888;font-size:0.85rem;">' + note + '</td></tr>';
+    html += '<table class="data-table"><thead><tr><th>Seed</th><th>Team</th><th>Qualification</th></tr></thead><tbody>';
+    var participants = (dc.teams || []).slice().sort(function(a, b) {
+      var sa = (typeof a === 'object' && a.seed) || 99;
+      var sb = (typeof b === 'object' && b.seed) || 99;
+      return sa - sb;
+    });
+    participants.forEach(function(entry, idx) {
+      var name = (typeof entry === 'string') ? entry : (entry.name || entry.teamName || '');
+      var seed = (typeof entry === 'object') ? entry.seed : null;
+      var qual = (typeof entry === 'object' && entry.qualification)
+        ? entry.qualification
+        : (name === 'Idaho Falls Spud Kings' ? 'Host auto-bid' : 'Conference/Division champion');
+      if (!name || /Champion$/.test(name)) return;
+      html += '<tr><td>' + (seed ? '#' + seed : (idx + 1)) + '</td><td>' + teamNameHTML(name, leagueForMap) + '</td>';
+      html += '<td style="color:#888;font-size:0.85rem;">' + qual + '</td></tr>';
     });
     html += '</tbody></table>';
     html += '</div>';

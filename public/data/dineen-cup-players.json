@@ -24,14 +24,14 @@
     ],
     "goalies": [
       {
-        "name": "Stephen Amaro",
-        "jersey": "1",
-        "wins": 3,
-        "losses": 2,
-        "gaa": "1.89",
-        "savePct": ".948",
-        "shutouts": 1,
-        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/player-media/41035e6da69dae2bb1e41f28e96095e8f28763c17d96c2b66874b48f54f759a8.png"
+        "name": "Ethan Ramonetti",
+        "jersey": "30",
+        "wins": 29,
+        "losses": 10,
+        "gaa": "1.84",
+        "savePct": ".940",
+        "shutouts": 5,
+        "image": "https://d3bll69iq5agq8.cloudfront.net/usphl/headshots/4281.jpg"
       }
     ]
   },
