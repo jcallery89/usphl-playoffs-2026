@@ -3,7 +3,7 @@
     "skaters": [
       {
         "name": "Shawn Swavely",
-        "position": "C",
+        "position": "F",
         "jersey": "22",
         "goals": 21,
         "assists": 28,
@@ -13,7 +13,7 @@
       },
       {
         "name": "Billy Collins",
-        "position": "C",
+        "position": "F",
         "jersey": "21",
         "goals": 21,
         "assists": 20,
@@ -39,7 +39,7 @@
     "skaters": [
       {
         "name": "Eli Heinze",
-        "position": "C",
+        "position": "F",
         "jersey": "23",
         "goals": 26,
         "assists": 27,
@@ -49,7 +49,7 @@
       },
       {
         "name": "Jake Kavanagh",
-        "position": "C",
+        "position": "F",
         "jersey": "91",
         "goals": 18,
         "assists": 32,
