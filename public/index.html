@@ -2536,11 +2536,17 @@
     // Participating teams with seeds
     html += '<div class="dineen-teams-title">Participating Teams</div>';
     html += '<div class="dineen-teams">';
-    (dc.teams || []).forEach(function(t) {
-      var name = t.name || t.teamName || (typeof t === 'string' ? t : '');
-      var seed = t.seed || '';
-      var qual = t.qualification || '';
-      if (!name || name === 'TBD') return;
+    // Sort by seed so they appear #1 → #4
+    var sortedTeams = (dc.teams || []).slice().sort(function(a, b) {
+      var sa = (typeof a === 'object' && a.seed) || 99;
+      var sb = (typeof b === 'object' && b.seed) || 99;
+      return sa - sb;
+    });
+    sortedTeams.forEach(function(t) {
+      var name = (typeof t === 'string') ? t : (t.name || t.teamName || '');
+      var seed = (typeof t === 'object') ? t.seed : '';
+      var qual = (typeof t === 'object') ? (t.qualification || '') : '';
+      if (!name || name === 'TBD' || /Champion$/.test(name)) return;
       html += '<div class="dineen-team-card">';
       if (seed) html += '<div class="dineen-team-seed">#' + seed + '</div>';
       html += '<div class="dineen-team-body">';
@@ -2798,8 +2804,9 @@
     // Build seed lookup map from teams array
     var seedMap = {};
     (dc.teams || []).forEach(function(t) {
-      if (typeof t === 'object' && t.name && t.seed) {
-        seedMap[t.name] = t.seed;
+      if (typeof t === 'object' && t.seed) {
+        var name = t.name || t.teamName;
+        if (name) seedMap[name] = t.seed;
       }
     });
 
