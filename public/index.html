@@ -863,19 +863,21 @@
   async function loadData() {
     showLoading(true);
     try {
+      // Cache-bust each load so static JSON refreshes beyond the CDN's long TTL
+      var cb = '?v=' + Date.now();
       // Load team mappings, initial seeds, bracket config, and bracket state in parallel
       var results = await Promise.all([
-        fetch(API_BASE + '/data/team-mappings.json').then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/initial-seeds.json').then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/data/bracket-config.json').then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/team-mappings.json' + cb).then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/initial-seeds.json' + cb).then(function(r){ return r.json(); }),
+        fetch(API_BASE + '/data/bracket-config.json' + cb).then(function(r){ return r.json(); }),
         fetch(API_BASE + '/api/bracket-state').then(function(r){
           if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
           return r.json();
         }).catch(function(e){
           console.warn('bracket-state API not available, trying static fallback:', e.message);
-          return fetch(API_BASE + '/data/bracket-state-initial.json').then(function(r){ return r.json(); }).catch(function(){ return null; });
+          return fetch(API_BASE + '/data/bracket-state-initial.json' + cb).then(function(r){ return r.json(); }).catch(function(){ return null; });
         }),
-        fetch(API_BASE + '/data/dineen-cup-players.json').then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+        fetch(API_BASE + '/data/dineen-cup-players.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
       ]);
 
       TEAM_MAPPINGS = results[0];
