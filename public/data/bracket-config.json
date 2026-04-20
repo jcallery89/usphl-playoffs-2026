@@ -1622,10 +1622,10 @@
       "formatInfo": "All games at Mountain America Center, Idaho Falls, ID. All times MDT.",
       "mountainNote": "* The Mountain Division representative in Game 1 will be either the Mountain Division Champion if the Spud Kings do not win the division championship, or the Mountain Division finalist if the host Spud Kings are the division champions.",
       "teams": [
-        "P.A.L. Junior Islanders",
-        "South Shore Kings",
-        "Grand Junction River Hawks",
-        "Idaho Falls Spud Kings"
+        { "seed": 1, "name": "P.A.L. Junior Islanders", "qualification": "Atlantic Division Champion" },
+        { "seed": 2, "name": "South Shore Kings", "qualification": "New England Conference Champion" },
+        { "seed": 3, "name": "Grand Junction River Hawks", "qualification": "Mountain Division Champion" },
+        { "seed": 4, "name": "Idaho Falls Spud Kings", "qualification": "Host — Automatic Bid" }
       ],
       "schedule": [
         {

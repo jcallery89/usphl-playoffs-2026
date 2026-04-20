@@ -227,6 +227,61 @@
     .dineen-game-date { color: #777; min-width: 140px; font-size: 0.85rem; }
     .dineen-game-matchup { flex: 1; font-size: 0.9rem; color: #333; }
     .dineen-game-note { font-size: 0.75rem; color: #999; font-style: italic; }
+    .dineen-seed {
+      display: inline-block; min-width: 1.6rem; padding: 0.1rem 0.35rem;
+      background: #0c568c; color: #fff; border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.75rem; text-align: center; margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .dineen-schedule-intro {
+      background: #f8f9fa; border-left: 4px solid #c91417;
+      padding: 1rem 1.25rem; margin-bottom: 1rem; border-radius: 4px;
+    }
+    .dineen-schedule-intro p { margin: 0 0 0.5rem; font-size: 0.9rem; color: #333; line-height: 1.5; }
+    .dineen-schedule-intro p:last-child { margin-bottom: 0; }
+    .dineen-schedule-intro .dineen-flow { font-size: 0.82rem; color: #555; padding-top: 0.5rem; border-top: 1px solid #e5e5e5; }
+    .dineen-overview { background: #fff; }
+    .dineen-overview-header {
+      text-align: center; padding: 1.25rem 0 1rem; border-bottom: 2px solid #c91417; margin-bottom: 1.25rem;
+    }
+    .dineen-overview-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.5rem; color: #0c568c; text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .dineen-overview-meta { color: #555; font-size: 0.95rem; margin-top: 0.2rem; }
+    .dineen-format {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: #f8f9fa; border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+    }
+    .dineen-format-badge {
+      background: #c91417; color: #fff; font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem; border-radius: 3px; flex-shrink: 0;
+    }
+    .dineen-format-body { font-size: 0.9rem; color: #333; line-height: 1.55; }
+    .dineen-teams-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.05rem; color: #c91417; text-transform: uppercase; letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .dineen-teams {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .dineen-team-card {
+      display: flex; align-items: center; gap: 0.85rem;
+      background: #fff; border: 1px solid #e5e5e5; border-left: 4px solid #0c568c;
+      padding: 0.85rem 1rem; border-radius: 4px;
+    }
+    .dineen-team-seed {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1.4rem; color: #0c568c; min-width: 2rem; text-align: center;
+    }
+    .dineen-team-body { flex: 1; min-width: 0; }
+    .dineen-team-name { font-weight: 600; color: #222; font-size: 0.95rem; }
+    .dineen-team-qual { font-size: 0.78rem; color: #777; margin-top: 0.15rem; }
+    .dineen-note { font-size: 0.8rem; color: #666; font-style: italic; padding: 0.75rem 1rem; background: #fdfbe8; border-left: 3px solid #d4a017; border-radius: 3px; }
     .ticket-btn {
       display: inline-flex; align-items: center; gap: 0.35rem;
       padding: 0.35rem 0.85rem; background: #c91417; color: #fff !important;
@@ -2460,53 +2515,48 @@
     var dc = (BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['Dineen Cup']) || LEAGUE_DATA.ncdc.dineenCup;
     var html = '';
 
-    // Format info
-    if (dc.formatInfo) {
-      html += '<div class="schedule-format-info">' + dc.formatInfo + '</div>';
-    }
+    // Tournament info card
+    html += '<div class="dineen-overview">';
+    html += '<div class="dineen-overview-header">';
+    html += '<div class="dineen-overview-title">' + (dc.name || '2026 Dineen Cup Championships') + '</div>';
+    if (dc.dates) html += '<div class="dineen-overview-meta">' + dc.dates + '</div>';
+    if (dc.location) html += '<div class="dineen-overview-meta">' + dc.location + '</div>';
+    html += '</div>';
 
-    html += '<div class="bracket">';
+    // Format explanation
+    html += '<div class="dineen-format">';
+    html += '<div class="dineen-format-badge">Format</div>';
+    html += '<div class="dineen-format-body">';
+    html += '<strong>Double Elimination &mdash; 4 Teams.</strong> ';
+    html += 'Each team remains in contention until they have lost twice. ';
+    html += 'The tournament opens with two first-round games, winners meet in the winners bracket, losers meet in an elimination game. ';
+    html += 'Teams continue until one remains undefeated or emerges from the elimination bracket to win back-to-back finals.';
+    html += '</div></div>';
 
-    // Group games into rounds for visual bracket display
-    var rounds = [
-      { title: 'Opening Round — Apr 24', games: [0, 1] },
-      { title: 'Day 2 — Apr 25', games: [2, 3] },
-      { title: 'Day 3 — Apr 26', games: [4] },
-      { title: 'Finals — Apr 27–28', games: [5, 6] },
-    ];
-
-    rounds.forEach(function(round) {
-      html += '<div class="round"><div class="round-title">' + round.title + '</div>';
-      round.games.forEach(function(gi) {
-        var g = dc.schedule[gi];
-        if (!g) return;
-        var parts = g.matchup.split(' vs');
-        var home = (parts[0] || '').trim();
-        var away = (parts[1] || '').trim().replace(/^\.?\s*/, '');
-        // Render logos via teamNameHTML for real team names;
-        // record placeholders like "0-1" or "Winner G1" pass through unchanged
-        var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home) || /^(\d+-\d+|Winner |Loser )/i.test(away);
-        var homeHTML = isRecord ? home : teamNameHTML(home, 'NCDC');
-        var awayHTML = isRecord ? away : teamNameHTML(away, 'NCDC');
-        var isIfNecessary = (g.note || '').toLowerCase().indexOf('if necessary') !== -1;
-        html += '<div class="matchup"' + (isIfNecessary ? ' style="opacity:0.6;"' : '') + '>';
-        html += '<div class="matchup-team home"><span>' + homeHTML + '</span></div>';
-        html += '<div class="matchup-vs">vs</div>';
-        html += '<div class="matchup-team away"><span>' + awayHTML + '</span></div>';
-        html += '<div class="matchup-label">Game ' + g.game + ' — ' + g.time;
-        if (g.note) html += ' (' + g.note + ')';
-        html += '</div>';
-        html += '</div>';
-      });
+    // Participating teams with seeds
+    html += '<div class="dineen-teams-title">Participating Teams</div>';
+    html += '<div class="dineen-teams">';
+    (dc.teams || []).forEach(function(t) {
+      var name = t.name || t.teamName || (typeof t === 'string' ? t : '');
+      var seed = t.seed || '';
+      var qual = t.qualification || '';
+      if (!name || name === 'TBD') return;
+      html += '<div class="dineen-team-card">';
+      if (seed) html += '<div class="dineen-team-seed">#' + seed + '</div>';
+      html += '<div class="dineen-team-body">';
+      html += '<div class="dineen-team-name">' + teamNameHTML(name, 'NCDC') + '</div>';
+      if (qual) html += '<div class="dineen-team-qual">' + qual + '</div>';
+      html += '</div>';
       html += '</div>';
     });
-
     html += '</div>';
 
     // Mountain note
     if (dc.mountainNote) {
-      html += '<div class="round-schedule-note" style="margin-top:0.75rem;">' + dc.mountainNote + '</div>';
+      html += '<div class="dineen-note">' + dc.mountainNote + '</div>';
     }
+
+    html += '</div>';
 
     bracketContent.innerHTML = html;
   }
@@ -2744,13 +2794,35 @@
 
   function renderDineenSchedule() {
     var dc = (BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['Dineen Cup']) || LEAGUE_DATA.ncdc.dineenCup;
+
+    // Build seed lookup map from teams array
+    var seedMap = {};
+    (dc.teams || []).forEach(function(t) {
+      if (typeof t === 'object' && t.name && t.seed) {
+        seedMap[t.name] = t.seed;
+      }
+    });
+
+    function seedPrefix(teamName) {
+      var s = seedMap[teamName];
+      return s ? '<span class="dineen-seed">#' + s + '</span> ' : '';
+    }
+
     var html = '<div class="dineen-schedule">';
-    html += '<div class="schedule-info">';
-    html += '<p><strong>' + dc.name + '</strong> &mdash; ' + (dc.dates || '') + '</p>';
-    if (dc.location) html += '<p>' + dc.location + '</p>';
-    if (dc.timezone) html += '<p>All times ' + dc.timezone + '</p>';
-    html += '<p>Format: Double Elimination</p>';
+
+    // Format explanation card
+    html += '<div class="dineen-schedule-intro">';
+    html += '<p><strong>Double Elimination Format &mdash; 4 Teams.</strong> Every team keeps playing until they have lost twice. ';
+    html += 'The tournament progresses through a winners bracket and a losers (elimination) bracket, culminating in a winner-take-all Final. ';
+    html += 'If the team emerging from the losers bracket wins Final #1, a second Final is played the following day.</p>';
+    html += '<p class="dineen-flow">';
+    html += '<strong>Apr 24:</strong> Two opening-round games &nbsp;•&nbsp; ';
+    html += '<strong>Apr 25:</strong> Losers play elimination / Winners play for Final berth &nbsp;•&nbsp; ';
+    html += '<strong>Apr 26:</strong> Losers-bracket survivor vs. Winners-bracket loser for second Final berth &nbsp;•&nbsp; ';
+    html += '<strong>Apr 27&ndash;28:</strong> Championship Final(s)';
+    html += '</p>';
     html += '</div>';
+
     var ticketUrl = 'https://www.ticketmaster.com/idaho-falls-spud-kings-tickets/artist/2925092';
     (dc.schedule || []).forEach(function(g) {
       var parts = g.matchup.split(' vs');
@@ -2759,7 +2831,7 @@
       var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home) || /^(\d+-\d+|Winner |Loser )/i.test(away);
       var matchupHTML = isRecord
         ? g.matchup
-        : (teamNameHTML(home, 'NCDC') + ' <span class="dineen-vs">vs.</span> ' + teamNameHTML(away, 'NCDC'));
+        : (seedPrefix(home) + teamNameHTML(home, 'NCDC') + ' <span class="dineen-vs">vs.</span> ' + seedPrefix(away) + teamNameHTML(away, 'NCDC'));
       html += '<div class="dineen-game">';
       html += '<div class="dineen-game-num">Game ' + g.game + '</div>';
       html += '<div class="dineen-game-date">' + g.date + (g.time ? ', ' + g.time : '') + '</div>';
