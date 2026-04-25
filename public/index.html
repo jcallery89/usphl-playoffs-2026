@@ -365,6 +365,10 @@
       font-size: 0.78rem; color: #666;
     }
     .dct-player-stats strong { color: #0c568c; font-weight: 700; }
+    .dct-noscorers {
+      font-size: 0.8rem; color: #999; font-style: italic;
+      padding: 0.4rem 0;
+    }
     .dineen-seed {
       display: inline-flex; align-items: center; justify-content: center;
       min-width: 1.9rem; height: 1.55rem; padding: 0 0.4rem;
@@ -834,6 +838,7 @@
   let LEAGUE_DATA = null;
   let BRACKET_STATE = null;
   let DINEEN_PLAYERS = {};
+  let DINEEN_GAME_STATS = {};
   let TEAM_MAP = {};
   let TEAM_MAPPINGS = null;
   let INITIAL_SEEDS = null;
@@ -910,7 +915,8 @@
           console.warn('bracket-state API not available, trying static fallback:', e.message);
           return fetch(API_BASE + '/data/bracket-state-initial.json' + cb).then(function(r){ return r.json(); }).catch(function(){ return null; });
         }),
-        fetch(API_BASE + '/data/dineen-cup-players.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
+        fetch(API_BASE + '/data/dineen-cup-players.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
+        fetch(API_BASE + '/data/dineen-cup-game-stats.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; })
       ]);
 
       TEAM_MAPPINGS = results[0];
@@ -918,6 +924,7 @@
       BRACKET_CONFIG = results[2];
       BRACKET_STATE = results[3];
       DINEEN_PLAYERS = results[4] || {};
+      DINEEN_GAME_STATS = results[5] || {};
 
       // Build team map for logo/link lookups
       buildTeamMap();
@@ -2995,9 +3002,13 @@
       var profileUrl = info && info.profile_url ? info.profile_url : '';
       var seed = seedMap[teamName];
       var qual = qualMap[teamName] || '';
-      var data = DINEEN_PLAYERS[teamName] || {};
-      var skaters = data.skaters || [];
-      var goalies = data.goalies || [];
+
+      // Decide data source: per-game stats (if final) vs season averages
+      var useGameStats = opts.isFinal && opts.gameStats;
+      var seasonData = DINEEN_PLAYERS[teamName] || {};
+      var skaters = useGameStats ? (opts.gameStats.scorers || []) : (seasonData.skaters || []);
+      var gameGoalie = useGameStats ? opts.gameStats.goalie : null;
+      var seasonGoalies = !useGameStats ? (seasonData.goalies || []) : [];
 
       var stateClass = '';
       if (opts.isFinal) stateClass = opts.isWinner ? ' dct-team-winner' : ' dct-team-loser';
@@ -3017,11 +3028,14 @@
       }
       html += '</div>';
 
-      // Players
-      if (skaters.length || goalies.length) {
+      // Players (game stats or season stats)
+      if (skaters.length || gameGoalie || seasonGoalies.length) {
         html += '<div class="dct-players">';
+
+        // Scorers
         if (skaters.length) {
-          html += '<div class="dct-players-label">Top Scorers</div>';
+          var scorerLabel = useGameStats ? 'Game Scorers' : 'Top Scorers';
+          html += '<div class="dct-players-label">' + scorerLabel + '</div>';
           skaters.forEach(function(p) {
             var img = p.image ? '<img class="dct-ph" src="' + p.image + '" onerror="this.style.display=\'none\'" alt="">' : '<div class="dct-ph-placeholder"></div>';
             html += '<div class="dct-player">';
@@ -3031,10 +3045,28 @@
             html += '<div class="dct-player-stats"><span><strong>' + p.goals + '</strong>G</span><span><strong>' + p.assists + '</strong>A</span><span><strong>' + p.points + '</strong>P</span></div>';
             html += '</div></div>';
           });
+        } else if (useGameStats) {
+          html += '<div class="dct-players-label">Game Scorers</div>';
+          html += '<div class="dct-noscorers">No goals scored</div>';
         }
-        if (goalies.length) {
+
+        // Goalie — game stats version
+        if (useGameStats && gameGoalie) {
           html += '<div class="dct-players-label">Goalie</div>';
-          goalies.forEach(function(p) {
+          var gImg = gameGoalie.image ? '<img class="dct-ph" src="' + gameGoalie.image + '" onerror="this.style.display=\'none\'" alt="">' : '<div class="dct-ph-placeholder"></div>';
+          html += '<div class="dct-player">';
+          html += gImg;
+          html += '<div class="dct-player-info">';
+          html += '<div class="dct-player-name">' + (gameGoalie.jersey ? '<span class="dct-jersey">#' + gameGoalie.jersey + '</span>' : '') + gameGoalie.name + '<span class="dct-pos">G</span></div>';
+          html += '<div class="dct-player-stats">';
+          html += '<span><strong>' + gameGoalie.saves + '</strong>/' + gameGoalie.shotsAgainst + ' SV</span>';
+          html += '<span><strong>' + gameGoalie.goalsAgainst + '</strong>GA</span>';
+          html += '<span><strong>' + gameGoalie.savePct + '</strong> SV%</span>';
+          html += '</div>';
+          html += '</div></div>';
+        } else if (seasonGoalies.length) {
+          html += '<div class="dct-players-label">Goalie</div>';
+          seasonGoalies.forEach(function(p) {
             var img = p.image ? '<img class="dct-ph" src="' + p.image + '" onerror="this.style.display=\'none\'" alt="">' : '<div class="dct-ph-placeholder"></div>';
             html += '<div class="dct-player">';
             html += img;
@@ -3103,10 +3135,14 @@
         html += '<div class="dc-game-tbd-label">Matchup determined by prior results</div>';
         html += '</div>';
       } else {
+        // Look up per-game stats by game_id (only used when isFinal)
+        var gameStats = (isFinal && g.game_id) ? DINEEN_GAME_STATS[String(g.game_id)] : null;
+        var homeStats = gameStats ? gameStats.home : null;
+        var awayStats = gameStats ? gameStats.away : null;
         html += '<div class="dc-game-teams">';
-        html += renderTeamBlock(home, { isFinal: isFinal, isWinner: homeIsWinner, score: isFinal ? homeScore : null });
+        html += renderTeamBlock(home, { isFinal: isFinal, isWinner: homeIsWinner, score: isFinal ? homeScore : null, gameStats: homeStats });
         html += '<div class="dc-game-vs">VS</div>';
-        html += renderTeamBlock(away, { isFinal: isFinal, isWinner: awayIsWinner, score: isFinal ? awayScore : null });
+        html += renderTeamBlock(away, { isFinal: isFinal, isWinner: awayIsWinner, score: isFinal ? awayScore : null, gameStats: awayStats });
         html += '</div>';
       }
 
