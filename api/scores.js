@@ -17,7 +17,16 @@ export default async function handler(req, res) {
 
     // Walk NCDC divisions for games needing scores
     for (const [division, divState] of Object.entries(ncdcState)) {
-      if (division === 'Dineen Cup') continue;
+      // Dineen Cup uses a flat schedule array
+      if (division === 'Dineen Cup') {
+        const dcGames = divState?.schedule || [];
+        for (const game of dcGames) {
+          if (game.game_id && game.game_status !== 'final') {
+            gamesToFetch.push({ game, division, type: 'dineen' });
+          }
+        }
+        continue;
+      }
 
       // NE Conference round robin + conference final
       if (division === 'NE Conference') {
@@ -78,15 +87,24 @@ export default async function handler(req, res) {
         else if (otCount === 2) resultString = 'Final/OT2';
         else if (otCount > 2) resultString = 'Final/OT' + otCount;
 
+        // Use GameCenter team IDs/names if not already on the game
+        const gcHomeId = gc?.game_info?.home_id ? String(gc.game_info.home_id) : null;
+        const gcAwayId = gc?.game_info?.away_id ? String(gc.game_info.away_id) : null;
+        const gcHomeName = gc?.game_info?.home_name || null;
+        const gcAwayName = gc?.game_info?.away_name || null;
         const winnerId = homeScore > awayScore
-          ? String(game.home_id)
-          : String(game.away_id);
+          ? (game.home_id ? String(game.home_id) : gcHomeId)
+          : (game.away_id ? String(game.away_id) : gcAwayId);
+        const winnerName = homeScore > awayScore
+          ? (game.home_team || gcHomeName)
+          : (game.away_team || gcAwayName);
 
         // Update game in bracket state
         game.home_score = homeScore;
         game.away_score = awayScore;
         game.result_string = resultString;
         game.winner_id = winnerId;
+        if (winnerName) game.winner = winnerName;
         game.game_status = 'final';
 
         // Store in scores map for schedule API enrichment

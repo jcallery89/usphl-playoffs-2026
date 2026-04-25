@@ -1634,6 +1634,13 @@
           "date": "Apr 24",
           "time": "2:00 PM",
           "matchup": "P.A.L. Junior Islanders vs. Grand Junction River Hawks",
+          "home_team": "P.A.L. Junior Islanders",
+          "away_team": "Grand Junction River Hawks",
+          "home_score": 1,
+          "away_score": 2,
+          "result_string": "Final/OT2",
+          "winner": "Grand Junction River Hawks",
+          "game_status": "final",
           "note": ""
         },
         {
@@ -1642,6 +1649,13 @@
           "date": "Apr 24",
           "time": "7:00 PM",
           "matchup": "South Shore Kings vs. Idaho Falls Spud Kings",
+          "home_team": "South Shore Kings",
+          "away_team": "Idaho Falls Spud Kings",
+          "home_score": 4,
+          "away_score": 5,
+          "result_string": "Final",
+          "winner": "Idaho Falls Spud Kings",
+          "game_status": "final",
           "note": "Autobid"
         },
         {
@@ -1649,7 +1663,9 @@
           "game_id": "23633",
           "date": "Apr 25",
           "time": "2:00 PM",
-          "matchup": "0-1 vs. 0-1",
+          "matchup": "South Shore Kings vs. P.A.L. Junior Islanders",
+          "home_team": "South Shore Kings",
+          "away_team": "P.A.L. Junior Islanders",
           "note": "Elimination"
         },
         {
@@ -1657,7 +1673,9 @@
           "game_id": "23634",
           "date": "Apr 25",
           "time": "7:00 PM",
-          "matchup": "1-0 vs. 1-0",
+          "matchup": "Grand Junction River Hawks vs. Idaho Falls Spud Kings",
+          "home_team": "Grand Junction River Hawks",
+          "away_team": "Idaho Falls Spud Kings",
           "note": "Winner advances to Final"
         },
         {

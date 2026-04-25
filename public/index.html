@@ -288,12 +288,29 @@
       border-left: 1px solid #eee; border-right: 1px solid #eee;
       letter-spacing: 0.05em;
     }
-    .dct-team { display: flex; flex-direction: column; }
+    .dct-team { display: flex; flex-direction: column; transition: opacity 0.2s ease; }
+    .dct-team-loser { opacity: 0.55; }
+    .dct-team-winner .dct-name { color: #0c568c; }
     .dct-header {
       display: flex; align-items: center; gap: 0.85rem;
       padding: 1rem 1.25rem;
       border-bottom: 1px solid #f0f0f0;
     }
+    .dct-score {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 2.25rem; color: #888; line-height: 1;
+      flex-shrink: 0; padding-left: 0.5rem;
+    }
+    .dct-score-winner { color: #c91417; }
+    .dc-final-badge {
+      grid-area: btn;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.35rem 0.85rem; background: rgba(255,255,255,0.95); color: #0c568c;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase;
+      border-radius: 4px; white-space: nowrap;
+    }
+    .dc-game-final .dc-game-header { background: #1a1a1a; }
     .dct-logo { width: 44px; height: 44px; object-fit: contain; flex-shrink: 0; }
     .dct-identity { flex: 1; min-width: 0; }
     .dct-seed {
@@ -754,6 +771,7 @@
       .dct-header { padding: 0.85rem 1rem; }
       .dct-logo { width: 36px; height: 36px; }
       .dct-name { font-size: 1rem; }
+      .dct-score { font-size: 1.85rem; }
       .dct-players { padding: 0.6rem 1rem 0.85rem; }
       .dct-ph, .dct-ph-placeholder { width: 32px; height: 32px; }
       .dct-player-name { font-size: 0.82rem; }
@@ -2969,7 +2987,8 @@
       }
     });
 
-    function renderTeamBlock(teamName) {
+    function renderTeamBlock(teamName, opts) {
+      opts = opts || {};
       if (!teamName) return '';
       var info = getTeamInfo(teamName, 'NCDC');
       var logoUrl = info && info.logo_url ? info.logo_url : '';
@@ -2980,7 +2999,10 @@
       var skaters = data.skaters || [];
       var goalies = data.goalies || [];
 
-      var html = '<div class="dct-team">';
+      var stateClass = '';
+      if (opts.isFinal) stateClass = opts.isWinner ? ' dct-team-winner' : ' dct-team-loser';
+
+      var html = '<div class="dct-team' + stateClass + '">';
       // Header
       html += '<div class="dct-header">';
       if (logoUrl) html += '<img class="dct-logo" src="' + logoUrl + '" onerror="this.style.display=\'none\'" alt="">';
@@ -2989,7 +3011,11 @@
       var nameHTML = profileUrl ? '<a href="' + profileUrl + '" target="_blank" rel="noopener">' + teamName + '</a>' : teamName;
       html += '<div class="dct-name">' + nameHTML + '</div>';
       if (qual) html += '<div class="dct-qual">' + qual + '</div>';
-      html += '</div></div>';
+      html += '</div>';
+      if (opts.score != null) {
+        html += '<div class="dct-score' + (opts.isWinner ? ' dct-score-winner' : '') + '">' + opts.score + '</div>';
+      }
+      html += '</div>';
 
       // Players
       if (skaters.length || goalies.length) {
@@ -3041,22 +3067,36 @@
 
     var ticketUrl = 'https://www.ticketmaster.com/idaho-falls-spud-kings-tickets/artist/2925092';
     (dc.schedule || []).forEach(function(g) {
-      var parts = g.matchup.split(' vs');
-      var home = (parts[0] || '').trim();
-      var away = (parts[1] || '').trim().replace(/^\.?\s*/, '');
-      var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home) || /^(\d+-\d+|Winner |Loser )/i.test(away);
+      // Prefer explicit team fields, fall back to parsing the matchup string
+      var home = g.home_team;
+      var away = g.away_team;
+      if (!home || !away) {
+        var parts = (g.matchup || '').split(' vs');
+        home = home || (parts[0] || '').trim();
+        away = away || (parts[1] || '').trim().replace(/^\.?\s*/, '');
+      }
+      var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home || '') || /^(\d+-\d+|Winner |Loser )/i.test(away || '');
+      var isFinal = g.game_status === 'final';
+      var homeScore = g.home_score;
+      var awayScore = g.away_score;
+      var homeIsWinner = isFinal && homeScore > awayScore;
+      var awayIsWinner = isFinal && awayScore > homeScore;
 
-      html += '<article class="dc-game-card">';
+      html += '<article class="dc-game-card' + (isFinal ? ' dc-game-final' : '') + '">';
 
-      // Card header: game number, date/time, note
+      // Card header: game number, date/time, note, and either Final badge or Buy Tickets
       html += '<header class="dc-game-header">';
       html += '<div class="dc-game-ident"><span class="dc-game-num">Game ' + g.game + '</span>';
       html += '<span class="dc-game-date">' + g.date + (g.time ? ' &bull; ' + g.time : '') + '</span></div>';
       if (g.note) html += '<span class="dc-game-note">' + g.note + '</span>';
-      html += '<a class="ticket-btn" href="' + ticketUrl + '" target="_blank" rel="noopener">Buy Tickets</a>';
+      if (isFinal) {
+        html += '<span class="dc-final-badge">' + (g.result_string || 'Final') + '</span>';
+      } else {
+        html += '<a class="ticket-btn" href="' + ticketUrl + '" target="_blank" rel="noopener">Buy Tickets</a>';
+      }
       html += '</header>';
 
-      // Body: teams + players for known matchups, or record placeholder
+      // Body
       if (isRecord) {
         html += '<div class="dc-game-tbd">';
         html += '<div class="dc-game-tbd-records">' + g.matchup + '</div>';
@@ -3064,9 +3104,9 @@
         html += '</div>';
       } else {
         html += '<div class="dc-game-teams">';
-        html += renderTeamBlock(home);
+        html += renderTeamBlock(home, { isFinal: isFinal, isWinner: homeIsWinner, score: isFinal ? homeScore : null });
         html += '<div class="dc-game-vs">VS</div>';
-        html += renderTeamBlock(away);
+        html += renderTeamBlock(away, { isFinal: isFinal, isWinner: awayIsWinner, score: isFinal ? awayScore : null });
         html += '</div>';
       }
 
