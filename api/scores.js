@@ -71,8 +71,13 @@ export default async function handler(req, res) {
       // Dineen Cup uses a flat schedule array
       if (division === 'Dineen Cup') {
         const dcGames = divState?.schedule || [];
+        const existingStats = (await kvGet(DINEEN_STATS_KEY)) || {};
         for (const game of dcGames) {
-          if (game.game_id && game.game_status !== 'final') {
+          if (!game.game_id) continue;
+          // Process if not yet final, OR if final but missing stats
+          const needsScore = game.game_status !== 'final';
+          const needsStats = !existingStats[String(game.game_id)];
+          if (needsScore || needsStats) {
             gamesToFetch.push({ game, division, type: 'dineen' });
           }
         }
