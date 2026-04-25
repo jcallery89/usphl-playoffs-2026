@@ -4,6 +4,57 @@ import { getGameCenter } from '../lib/timetoscore.js';
 const NCDC_LEAGUE_ID = '1';
 const BRACKET_KEY = 'bracket-state';
 const SCORES_KEY = 'game-scores';
+const DINEEN_STATS_KEY = 'dineen-game-stats';
+
+function toiToSeconds(toi) {
+  if (!toi) return 0;
+  const [m, s] = String(toi).split(':').map(Number);
+  return (m || 0) * 60 + (s || 0);
+}
+
+function extractTeamGameStats(skaters, goalies) {
+  const scorers = (skaters || [])
+    .filter(p => parseInt(p.goals || 0) > 0 || parseInt(p.assists || 0) > 0)
+    .map(p => ({
+      name: p.name,
+      jersey: p.jersey,
+      position: 'F',
+      goals: parseInt(p.goals || 0),
+      assists: parseInt(p.assists || 0),
+      points: parseInt(p.goals || 0) + parseInt(p.assists || 0),
+      plusminus: parseInt(p.plusminus || 0),
+      image: p.player_image || null,
+    }))
+    .sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      if (b.goals !== a.goals) return b.goals - a.goals;
+      return b.plusminus - a.plusminus;
+    })
+    .slice(0, 3);
+
+  const goalie = (goalies || [])
+    .map(g => ({ ...g, _toi: toiToSeconds(g.toi) }))
+    .sort((a, b) => b._toi - a._toi)
+    .slice(0, 1)
+    .map(g => {
+      const sa = parseInt(g.shots_against || 0);
+      const ga = parseInt(g.goals_against || 0);
+      const saves = parseInt(g.saves || 0) || (sa - ga);
+      const svPct = sa > 0 ? (saves / sa).toFixed(3).replace(/^0/, '') : '.000';
+      return {
+        name: g.name,
+        jersey: g.jersey,
+        saves,
+        shotsAgainst: sa,
+        goalsAgainst: ga,
+        savePct: svPct,
+        toi: g.toi || '',
+        image: g.player_image || null,
+      };
+    })[0] || null;
+
+  return { scorers, goalie };
+}
 
 export default async function handler(req, res) {
   try {
@@ -59,9 +110,10 @@ export default async function handler(req, res) {
 
     // Fetch scores via GameCenter (cached 1hr per game)
     const scoresMap = (await kvGet(SCORES_KEY)) || {};
+    const dineenStatsMap = (await kvGet(DINEEN_STATS_KEY)) || {};
     let updated = 0;
 
-    for (const { game } of gamesToFetch) {
+    for (const { game, type } of gamesToFetch) {
       try {
         const gc = await getCached(
           `gc:${game.game_id}`,
@@ -117,6 +169,16 @@ export default async function handler(req, res) {
           winner_id: winnerId,
         };
 
+        // For Dineen Cup games, extract per-game scorers + goalie stats
+        if (type === 'dineen') {
+          dineenStatsMap[String(game.game_id)] = {
+            home_team: gcHomeName,
+            away_team: gcAwayName,
+            home: extractTeamGameStats(gc.live?.home_skaters, gc.live?.home_goalies),
+            away: extractTeamGameStats(gc.live?.away_skaters, gc.live?.away_goalies),
+          };
+        }
+
         updated++;
       } catch (err) {
         console.warn(`Failed to fetch score for game ${game.game_id}:`, err.message);
@@ -128,6 +190,7 @@ export default async function handler(req, res) {
       bracketState._updatedBy = 'update-scores';
       await kvSet(BRACKET_KEY, bracketState);
       await kvSet(SCORES_KEY, scoresMap);
+      await kvSet(DINEEN_STATS_KEY, dineenStatsMap);
     }
 
     return res.status(200).json({ ok: true, updated, total: gamesToFetch.length });
