@@ -948,10 +948,71 @@
       isLoading = false;
       showLoading(false);
       renderAll();
+
+      // Smart auto-trigger: if any Dineen Cup game whose start time has passed
+      // is still marked scheduled, fire /api/scores in the background. Once
+      // it returns, if anything updated, refresh the page data.
+      maybeTriggerScoreUpdate();
     } catch(err) {
       console.error('Failed to load data:', err);
       showError('Unable to load playoff data. Please refresh the page.');
     }
+  }
+
+  // Fire /api/scores in the background if any Dineen Cup game's date has
+  // passed but it's still marked scheduled. Reload data on success.
+  function maybeTriggerScoreUpdate() {
+    try {
+      var dc = BRACKET_STATE && BRACKET_STATE.NCDC && BRACKET_STATE.NCDC['Dineen Cup'];
+      var schedule = (dc && dc.schedule) || [];
+      var now = new Date();
+      // sessionStorage throttle: don't re-fire within the same browser tab
+      // for at least 60 seconds.
+      var lastFired = parseInt(sessionStorage.getItem('lastScoreUpdate') || '0', 10);
+      if (now.getTime() - lastFired < 60000) return;
+
+      var hasPending = schedule.some(function(g) {
+        if (g.game_status === 'final') return false;
+        if (!g.date) return false;
+        // Parse "Apr 24" or "Apr 25" + time as roughly local; if start time
+        // has passed by ~3hrs (game probably done), trigger update.
+        var parsed = parseDcDate(g.date, g.time);
+        if (!parsed) return false;
+        return now.getTime() - parsed.getTime() > 3 * 60 * 60 * 1000;
+      });
+      if (!hasPending) return;
+
+      sessionStorage.setItem('lastScoreUpdate', String(now.getTime()));
+      fetch(API_BASE + '/api/scores').then(function(r){ return r.ok ? r.json() : null; }).then(function(res){
+        if (res && res.updated > 0) {
+          // Re-fetch fresh data and re-render with new scores
+          loadData();
+        }
+      }).catch(function() { /* silent */ });
+    } catch(e) { /* silent */ }
+  }
+
+  function parseDcDate(dateStr, timeStr) {
+    // dateStr like "Apr 24", timeStr like "2:00 PM"
+    var months = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
+    var m = dateStr && dateStr.match(/^(\w{3})\s+(\d+)$/);
+    if (!m) return null;
+    var month = months[m[1]];
+    if (month == null) return null;
+    var day = parseInt(m[2], 10);
+    var year = (new Date()).getFullYear();
+    var hours = 12, mins = 0;
+    if (timeStr) {
+      var t = timeStr.match(/^(\d+):(\d+)\s*(AM|PM)?/i);
+      if (t) {
+        hours = parseInt(t[1], 10);
+        mins = parseInt(t[2], 10);
+        var ampm = (t[3] || '').toUpperCase();
+        if (ampm === 'PM' && hours < 12) hours += 12;
+        if (ampm === 'AM' && hours === 12) hours = 0;
+      }
+    }
+    return new Date(year, month, day, hours, mins);
   }
 
   // ===========================================================================

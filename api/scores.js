@@ -5,6 +5,9 @@ const NCDC_LEAGUE_ID = '1';
 const BRACKET_KEY = 'bracket-state';
 const SCORES_KEY = 'game-scores';
 const DINEEN_STATS_KEY = 'dineen-game-stats';
+const RUN_LOCK_KEY = 'scores-last-run';
+// Don't re-process if we ran in the last N seconds (server-side throttle)
+const RUN_THROTTLE_SECONDS = 60;
 
 function toiToSeconds(toi) {
   if (!toi) return 0;
@@ -58,6 +61,22 @@ function extractTeamGameStats(skaters, goalies) {
 
 export default async function handler(req, res) {
   try {
+    // Server-side throttle: skip if we ran very recently. Cron and explicit
+    // ?force=1 calls bypass the throttle.
+    const force = req.query?.force === '1';
+    if (!force) {
+      const lastRun = await kvGet(RUN_LOCK_KEY);
+      if (lastRun && Date.now() - lastRun < RUN_THROTTLE_SECONDS * 1000) {
+        return res.status(200).json({
+          ok: true,
+          updated: 0,
+          throttled: true,
+          message: `Last run was ${Math.round((Date.now() - lastRun) / 1000)}s ago`,
+        });
+      }
+    }
+    await kvSet(RUN_LOCK_KEY, Date.now());
+
     const bracketState = await kvGet(BRACKET_KEY);
     if (!bracketState) {
       return res.status(200).json({ ok: true, updated: 0, message: 'No bracket state in KV' });
