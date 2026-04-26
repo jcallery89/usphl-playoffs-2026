@@ -291,6 +291,18 @@
     .dct-team { display: flex; flex-direction: column; transition: opacity 0.2s ease; }
     .dct-team-loser { opacity: 0.55; }
     .dct-team-winner .dct-name { color: #0c568c; }
+    .dct-team-tbd .dct-header { padding: 1.5rem 1.25rem; }
+    .dct-tbd-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #f0f0f0; color: #999; border-radius: 50%;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem; font-weight: 700;
+    }
+    .dct-tbd-label {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      color: #999; font-size: 0.72rem; letter-spacing: 0.08em;
+    }
     .dct-header {
       display: flex; align-items: center; gap: 0.85rem;
       padding: 1rem 1.25rem;
@@ -3061,6 +3073,18 @@
       }
     });
 
+    function renderTbdBlock(label) {
+      // Used when one side of a known-partial matchup is still TBD (e.g. "Loser G4")
+      return '<div class="dct-team dct-team-tbd">'
+        + '<div class="dct-header">'
+        + '<div class="dct-tbd-icon">?</div>'
+        + '<div class="dct-identity">'
+        + '<div class="dct-tbd-label">TBD</div>'
+        + '<div class="dct-name">' + label + '</div>'
+        + '<div class="dct-qual">Determined by prior results</div>'
+        + '</div></div></div>';
+    }
+
     function renderTeamBlock(teamName, opts) {
       opts = opts || {};
       if (!teamName) return '';
@@ -3164,6 +3188,31 @@
     html += '</p>';
     html += '</div>';
 
+    // Build a quick lookup for completed games' winners/losers and pending matchup info.
+    // Double-elim dependency map: which prior game's winner/loser feeds each side of a future game.
+    var GAME_DEPS = {
+      3: { home: { type: 'loser', game: 1 }, away: { type: 'loser', game: 2 } },
+      4: { home: { type: 'winner', game: 1 }, away: { type: 'winner', game: 2 } },
+      5: { home: { type: 'winner', game: 3 }, away: { type: 'loser', game: 4 } },
+      6: { home: { type: 'winner', game: 4 }, away: { type: 'winner', game: 5 } },
+      7: { home: { type: 'loser', game: 6 }, away: { type: 'winner', game: 6 } }
+    };
+    var gameLookup = {};
+    (dc.schedule || []).forEach(function(g) { gameLookup[g.game] = g; });
+    function getGameOutcome(gameNum, type) {
+      var g = gameLookup[gameNum];
+      if (!g || g.game_status !== 'final') return null;
+      if (g.home_score == null || g.away_score == null) return null;
+      var homeWon = g.home_score > g.away_score;
+      var winner = homeWon ? g.home_team : g.away_team;
+      var loser = homeWon ? g.away_team : g.home_team;
+      return type === 'winner' ? winner : loser;
+    }
+    function depLabel(dep) {
+      // e.g. { type: 'winner', game: 4 } -> "Winner G4"
+      return (dep.type === 'winner' ? 'Winner' : 'Loser') + ' G' + dep.game;
+    }
+
     var ticketUrl = 'https://www.ticketmaster.com/idaho-falls-spud-kings-tickets/artist/2925092';
     (dc.schedule || []).forEach(function(g) {
       // Prefer explicit team fields, fall back to parsing the matchup string
@@ -3174,7 +3223,24 @@
         home = home || (parts[0] || '').trim();
         away = away || (parts[1] || '').trim().replace(/^\.?\s*/, '');
       }
-      var isRecord = /^(\d+-\d+|Winner |Loser )/i.test(home || '') || /^(\d+-\d+|Winner |Loser )/i.test(away || '');
+      // Resolve placeholder home/away from prior game outcomes when available.
+      var resolvedHome = null, resolvedAway = null;
+      var deps = GAME_DEPS[g.game];
+      if (deps) {
+        if (!g.home_team || /^(\d+-\d+|Winner |Loser )/i.test(home || '')) {
+          resolvedHome = getGameOutcome(deps.home.game, deps.home.type);
+          if (resolvedHome) home = resolvedHome;
+          else home = depLabel(deps.home);
+        }
+        if (!g.away_team || /^(\d+-\d+|Winner |Loser )/i.test(away || '')) {
+          resolvedAway = getGameOutcome(deps.away.game, deps.away.type);
+          if (resolvedAway) away = resolvedAway;
+          else away = depLabel(deps.away);
+        }
+      }
+      var homeIsRecord = /^(\d+-\d+|Winner |Loser )/i.test(home || '');
+      var awayIsRecord = /^(\d+-\d+|Winner |Loser )/i.test(away || '');
+      var isRecord = homeIsRecord && awayIsRecord; // only fully unresolved if BOTH unknown
       var isFinal = g.game_status === 'final';
       var homeScore = g.home_score;
       var awayScore = g.away_score;
@@ -3197,6 +3263,7 @@
 
       // Body
       if (isRecord) {
+        // Both teams unknown — show records placeholder
         html += '<div class="dc-game-tbd">';
         html += '<div class="dc-game-tbd-records">' + g.matchup + '</div>';
         html += '<div class="dc-game-tbd-label">Matchup determined by prior results</div>';
@@ -3207,9 +3274,17 @@
         var homeStats = gameStats ? gameStats.home : null;
         var awayStats = gameStats ? gameStats.away : null;
         html += '<div class="dc-game-teams">';
-        html += renderTeamBlock(home, { isFinal: isFinal, isWinner: homeIsWinner, score: isFinal ? homeScore : null, gameStats: homeStats });
+        if (homeIsRecord) {
+          html += renderTbdBlock(home);
+        } else {
+          html += renderTeamBlock(home, { isFinal: isFinal, isWinner: homeIsWinner, score: isFinal ? homeScore : null, gameStats: homeStats });
+        }
         html += '<div class="dc-game-vs">VS</div>';
-        html += renderTeamBlock(away, { isFinal: isFinal, isWinner: awayIsWinner, score: isFinal ? awayScore : null, gameStats: awayStats });
+        if (awayIsRecord) {
+          html += renderTbdBlock(away);
+        } else {
+          html += renderTeamBlock(away, { isFinal: isFinal, isWinner: awayIsWinner, score: isFinal ? awayScore : null, gameStats: awayStats });
+        }
         html += '</div>';
       }
 
