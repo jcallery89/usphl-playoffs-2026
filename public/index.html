@@ -908,7 +908,7 @@
         fetch(API_BASE + '/data/team-mappings.json' + cb).then(function(r){ return r.json(); }),
         fetch(API_BASE + '/data/initial-seeds.json' + cb).then(function(r){ return r.json(); }),
         fetch(API_BASE + '/data/bracket-config.json' + cb).then(function(r){ return r.json(); }),
-        fetch(API_BASE + '/api/bracket-state').then(function(r){
+        fetch(API_BASE + '/api/bracket-state' + cb).then(function(r){
           if (!r.ok) throw new Error('bracket-state API returned ' + r.status);
           return r.json();
         }).catch(function(e){
@@ -917,7 +917,7 @@
         }),
         fetch(API_BASE + '/data/dineen-cup-players.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; }),
         // Live per-game stats from KV — falls back to static file if KV is empty
-        fetch(API_BASE + '/api/dineen-stats').then(function(r){ return r.ok ? r.json() : null; }).then(function(live){
+        fetch(API_BASE + '/api/dineen-stats' + cb).then(function(r){ return r.ok ? r.json() : null; }).then(function(live){
           if (live && Object.keys(live).length > 0) return live;
           return fetch(API_BASE + '/data/dineen-cup-game-stats.json' + cb).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
         }).catch(function(){
