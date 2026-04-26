@@ -1,4 +1,4 @@
-import { kvGet, kvSet, getCached } from '../lib/cache.js';
+import { kvGet, kvSet } from '../lib/cache.js';
 import { getGameCenter } from '../lib/timetoscore.js';
 
 const NCDC_LEAGUE_ID = '1';
@@ -120,14 +120,19 @@ export default async function handler(req, res) {
 
     for (const { game, type } of gamesToFetch) {
       try {
-        const gc = await getCached(
-          `gc:${game.game_id}`,
-          () => getGameCenter(NCDC_LEAGUE_ID, game.game_id),
-          3600
-        );
-
-        const status = (gc?.game_info?.status || '').toUpperCase();
-        if (status !== 'FINAL' && !status.startsWith('FINAL')) continue;
+        // Try the cache first; if cached entry shows the game already final, trust it.
+        // Otherwise fetch fresh (the game may have just finished).
+        let gc = await kvGet(`gc:${game.game_id}`);
+        let status = (gc?.game_info?.status || '').toUpperCase();
+        if (!status.startsWith('FINAL')) {
+          gc = await getGameCenter(NCDC_LEAGUE_ID, game.game_id);
+          status = (gc?.game_info?.status || '').toUpperCase();
+          // Cache only after the game is final (results don't change)
+          if (status.startsWith('FINAL')) {
+            await kvSet(`gc:${game.game_id}`, gc).catch(() => {});
+          }
+        }
+        if (!status.startsWith('FINAL')) continue;
 
         const goals = gc?.live?.goal_summary;
         if (!goals) continue;
