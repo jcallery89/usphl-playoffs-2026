@@ -25,7 +25,9 @@
       "mcp__Claude_in_Chrome__computer",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/dineen-stats\")",
       "Bash(node -e \"import\\('./api/scores.js'\\).then\\(\\(\\) => console.log\\('OK'\\)\\).catch\\(e => console.error\\(e.message\\)\\);\")",
-      "mcp__Claude_in_Chrome__javascript_tool"
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/scores?force=1\")",
+      "Bash(node -e \"import\\('./api/scores.js'\\).then\\(\\(\\) => console.log\\('OK'\\)\\);\")"
     ]
   }
 }

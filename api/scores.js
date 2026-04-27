@@ -93,10 +93,11 @@ export default async function handler(req, res) {
         const existingStats = (await kvGet(DINEEN_STATS_KEY)) || {};
         for (const game of dcGames) {
           if (!game.game_id) continue;
-          // Process if not yet final, OR if final but missing stats
+          // Process if not yet final, missing stats, or missing team info
           const needsScore = game.game_status !== 'final';
           const needsStats = !existingStats[String(game.game_id)];
-          if (needsScore || needsStats) {
+          const needsTeams = !game.home_team || !game.away_team;
+          if (needsScore || needsStats || needsTeams) {
             gamesToFetch.push({ game, division, type: 'dineen' });
           }
         }
@@ -187,6 +188,11 @@ export default async function handler(req, res) {
         game.winner_id = winnerId;
         if (winnerName) game.winner = winnerName;
         game.game_status = 'final';
+        // Backfill team info from GameCenter for placeholder games (Games 5-7)
+        if (!game.home_team && gcHomeName) game.home_team = gcHomeName;
+        if (!game.away_team && gcAwayName) game.away_team = gcAwayName;
+        if (!game.home_id && gcHomeId) game.home_id = gcHomeId;
+        if (!game.away_id && gcAwayId) game.away_id = gcAwayId;
 
         // Store in scores map for schedule API enrichment
         scoresMap[String(game.game_id)] = {
