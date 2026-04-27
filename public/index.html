@@ -248,7 +248,7 @@
       font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase;
       line-height: 1.1;
     }
-    .dc-game-date { font-size: 0.82rem; color: rgba(255,255,255,0.85); white-space: nowrap; }
+    .dc-game-date { font-size: 0.82rem; color: rgba(255,255,255,0.85); }
     .dc-game-note {
       grid-area: note; justify-self: center;
       background: rgba(255,255,255,0.15); color: #fff;
@@ -1002,6 +1002,35 @@
         }
       }).catch(function() { /* silent */ });
     } catch(e) { /* silent */ }
+  }
+
+  // Convert a Mountain Time clock string (e.g. "7:00 PM") to its Eastern
+  // Time equivalent (e.g. "9:00 PM"). Mountain Time is always 2 hours
+  // behind Eastern Time. Returns the formatted ET string or empty string.
+  function mtToEt(timeStr) {
+    if (!timeStr) return '';
+    var m = String(timeStr).match(/^\s*(\d{1,2}):(\d{2})\s*(AM|PM)?\s*$/i);
+    if (!m) return '';
+    var hours = parseInt(m[1], 10);
+    var mins = parseInt(m[2], 10);
+    var ampm = (m[3] || '').toUpperCase();
+    if (ampm === 'PM' && hours < 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+    // Add 2 hours for Mountain -> Eastern offset
+    hours = (hours + 2) % 24;
+    var newAmpm = hours >= 12 ? 'PM' : 'AM';
+    var displayH = hours % 12;
+    if (displayH === 0) displayH = 12;
+    var displayM = mins < 10 ? '0' + mins : String(mins);
+    return displayH + ':' + displayM + ' ' + newAmpm;
+  }
+
+  // Format a schedule game's time as "2:00 PM MT • 4:00 PM ET"
+  function formatGameTime(timeStr) {
+    if (!timeStr) return '';
+    var et = mtToEt(timeStr);
+    if (!et) return timeStr;
+    return timeStr + ' MT &nbsp;•&nbsp; ' + et + ' ET';
   }
 
   function parseDcDate(dateStr, timeStr) {
@@ -3181,6 +3210,7 @@
     html += 'The tournament has a winners bracket and a losers (elimination) bracket. ';
     html += 'The winners-bracket champion enters Final #1 with no losses; the losers-bracket survivor enters with one loss. ';
     html += 'If the losers-bracket team wins Final #1, both teams have one loss each &mdash; so a Final #2 is played the next day to crown the champion.</p>';
+    html += '<p style="margin-top:0.5rem;font-size:0.85rem;color:#666;"><strong>Venue:</strong> Mountain America Center, Idaho Falls, ID. Times shown in Mountain Time (MT) and Eastern Time (ET).</p>';
     html += '<p class="dineen-flow">';
     html += '<strong>Apr 24:</strong> Two opening-round games &nbsp;•&nbsp; ';
     html += '<strong>Apr 25:</strong> Losers play elimination / Winners play for Final berth &nbsp;•&nbsp; ';
@@ -3253,7 +3283,7 @@
       // Card header: game number, date/time, note, and either Final badge or Buy Tickets
       html += '<header class="dc-game-header">';
       html += '<div class="dc-game-ident"><span class="dc-game-num">Game ' + g.game + '</span>';
-      html += '<span class="dc-game-date">' + g.date + (g.time ? ' &bull; ' + g.time : '') + '</span></div>';
+      html += '<span class="dc-game-date">' + g.date + (g.time ? ' &bull; ' + formatGameTime(g.time) : '') + '</span></div>';
       if (g.note) html += '<span class="dc-game-note">' + g.note + '</span>';
       if (isFinal) {
         html += '<span class="dc-final-badge">' + (g.result_string || 'Final') + '</span>';
