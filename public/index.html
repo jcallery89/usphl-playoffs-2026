@@ -128,7 +128,12 @@
       .champion-banner { padding: 0 0.5rem; }
       .champion-banner-inner { grid-template-columns: 1fr; }
       .champion-banner-text { padding: 1.5rem 1.5rem 1.25rem; order: 2; }
-      .champion-banner-image { order: 1; min-height: 220px; max-height: 320px; }
+      .champion-banner-image { order: 1; min-height: 0; aspect-ratio: auto; background: #f8f9fa; }
+      .champion-banner-image img {
+        width: 100%; height: auto;
+        object-fit: contain;
+        display: block;
+      }
       .champion-headline { font-size: 1.85rem; }
       .champion-tagline { font-size: 0.88rem; }
       .champion-eyebrow { font-size: 0.7rem; padding: 0.32rem 0.7rem; margin-bottom: 0.65rem; }
