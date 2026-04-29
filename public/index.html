@@ -114,6 +114,43 @@
       color: rgba(255, 255, 255, 0.92);
       max-width: 36rem;
     }
+    .champion-recap {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 215, 0, 0.35);
+    }
+    .recap-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #FFD700; margin-bottom: 0.85rem;
+    }
+    .recap-game { margin-bottom: 0.9rem; }
+    .recap-game:last-child { margin-bottom: 0; }
+    .recap-game-head {
+      display: flex; align-items: baseline; flex-wrap: wrap;
+      gap: 0.35rem 0.85rem; margin-bottom: 0.3rem;
+    }
+    .recap-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255, 215, 0, 0.95);
+      background: rgba(255, 215, 0, 0.12);
+      padding: 0.2rem 0.55rem; border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .recap-score {
+      font-size: 0.92rem; color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .recap-score strong { color: #FFD700; font-weight: 700; }
+    .recap-body {
+      margin: 0;
+      font-size: 0.88rem; line-height: 1.55;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .recap-body strong { color: #fff; font-weight: 600; }
     .champion-banner-image {
       position: relative; z-index: 1;
       overflow: hidden;
@@ -137,6 +174,11 @@
       .champion-headline { font-size: 1.85rem; }
       .champion-tagline { font-size: 0.88rem; }
       .champion-eyebrow { font-size: 0.7rem; padding: 0.32rem 0.7rem; margin-bottom: 0.65rem; }
+      .champion-recap { margin-top: 1.25rem; padding-top: 1rem; }
+      .recap-title { font-size: 0.72rem; margin-bottom: 0.7rem; }
+      .recap-label { font-size: 0.68rem; }
+      .recap-score { font-size: 0.85rem; }
+      .recap-body { font-size: 0.82rem; }
     }
 
     /* ===== League Tabs ===== */
@@ -905,6 +947,24 @@
         <div class="champion-eyebrow">2026 NCDC Dineen Cup Champions</div>
         <h2 class="champion-headline">Congratulations,<br>South Shore Kings!</h2>
         <p class="champion-tagline">South Shore Kings reclaim the Dineen Cup with a thrilling Game 7 overtime win — capping a remarkable run through the losers bracket to reach the title.</p>
+
+        <div class="champion-recap">
+          <div class="recap-title">Championship Series Recap</div>
+          <div class="recap-game">
+            <div class="recap-game-head">
+              <span class="recap-label">Final #1 &middot; Apr 27</span>
+              <span class="recap-score"><strong>Kings 3</strong>, River Hawks 1</span>
+            </div>
+            <p class="recap-body">Forward <strong>Brendan Keaveney</strong> (1G, 2A) led the charge as the Kings stayed alive and forced a deciding Game 7. Goals from <strong>Corwith Simmers</strong> and <strong>Jake Kavanagh</strong> backed a 21-save night from <strong>Patrick Mueller</strong>.</p>
+          </div>
+          <div class="recap-game">
+            <div class="recap-game-head">
+              <span class="recap-label">Final #2 &middot; Apr 28 &middot; OT</span>
+              <span class="recap-score"><strong>Kings 1</strong>, River Hawks 0 (OT)</span>
+            </div>
+            <p class="recap-body"><strong>Jake Kavanagh</strong>'s overtime winner clinched the championship behind a flawless 18-save shutout from <strong>Patrick Mueller</strong>. <strong>William Cavanagh</strong> earned the lone assist on the title-winning goal.</p>
+          </div>
+        </div>
       </div>
       <div class="champion-banner-image">
         <img src="http://usphl.com/wp-content/uploads/2026/04/SSK_2026-Dineen-Cup-Champs.jpg"
