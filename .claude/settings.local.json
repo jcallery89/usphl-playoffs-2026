@@ -27,7 +27,12 @@
       "Bash(node -e \"import\\('./api/scores.js'\\).then\\(\\(\\) => console.log\\('OK'\\)\\).catch\\(e => console.error\\(e.message\\)\\);\")",
       "mcp__Claude_in_Chrome__javascript_tool",
       "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/scores?force=1\")",
-      "Bash(node -e \"import\\('./api/scores.js'\\).then\\(\\(\\) => console.log\\('OK'\\)\\);\")"
+      "Bash(node -e \"import\\('./api/scores.js'\\).then\\(\\(\\) => console.log\\('OK'\\)\\);\")",
+      "Bash(cat \"C:\\\\\\\\Users\\\\\\\\Jamie\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\claude\\\\\\\\P--Claude-USPHL-usphl-playoffs-2026\\\\\\\\63f69474-d89b-44b2-be41-75a49bf8c948\\\\\\\\tasks\\\\\\\\b9da3cc2m.output\")",
+      "Bash(curl -s \"https://usphl-playoffs-2026.vercel.app/api/bracket-state?v=$\\(date +%s\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

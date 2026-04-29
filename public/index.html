@@ -54,6 +54,86 @@
       margin: 0 auto;
       padding: 0 1rem;
     }
+
+    /* ===== Championship Banner ===== */
+    .champion-banner {
+      max-width: 1200px;
+      margin: 1.25rem auto 0.5rem;
+      padding: 0 1rem;
+    }
+    .champion-banner-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0;
+      background: linear-gradient(135deg, #0c568c 0%, #0a3f6b 60%, #082c4d 100%);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(12, 86, 140, 0.25), 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .champion-banner-inner::before {
+      content: ""; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 30%, rgba(255, 215, 0, 0.18) 0%, transparent 35%),
+        radial-gradient(circle at 85% 70%, rgba(201, 20, 23, 0.22) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .champion-banner-text {
+      position: relative; z-index: 1;
+      padding: 2rem 2.25rem;
+      display: flex; flex-direction: column; justify-content: center;
+      color: #fff;
+    }
+    .champion-eyebrow {
+      display: inline-block; align-self: flex-start;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #0c2540;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 2px 6px rgba(255, 165, 0, 0.35);
+    }
+    .champion-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.85rem;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .champion-tagline {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 36rem;
+    }
+    .champion-banner-image {
+      position: relative; z-index: 1;
+      overflow: hidden;
+      min-height: 260px;
+    }
+    .champion-banner-image img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+    @media (max-width: 720px) {
+      .champion-banner { padding: 0 0.5rem; }
+      .champion-banner-inner { grid-template-columns: 1fr; }
+      .champion-banner-text { padding: 1.5rem 1.5rem 1.25rem; order: 2; }
+      .champion-banner-image { order: 1; min-height: 220px; max-height: 320px; }
+      .champion-headline { font-size: 1.85rem; }
+      .champion-tagline { font-size: 0.88rem; }
+      .champion-eyebrow { font-size: 0.7rem; padding: 0.32rem 0.7rem; margin-bottom: 0.65rem; }
+    }
+
     /* ===== League Tabs ===== */
     .league-tabs {
       display: flex;
@@ -812,6 +892,23 @@
     </div>
     <div class="last-updated" id="lastUpdated"></div>
   </header>
+
+  <!-- Championship Banner -->
+  <section class="champion-banner" aria-label="2026 Dineen Cup Champions">
+    <div class="champion-banner-inner">
+      <div class="champion-banner-text">
+        <div class="champion-eyebrow">2026 NCDC Dineen Cup Champions</div>
+        <h2 class="champion-headline">Congratulations,<br>South Shore Kings!</h2>
+        <p class="champion-tagline">South Shore Kings reclaim the Dineen Cup with a thrilling Game 7 overtime win — capping a remarkable run through the losers bracket to reach the title.</p>
+      </div>
+      <div class="champion-banner-image">
+        <img src="http://usphl.com/wp-content/uploads/2026/04/SSK_2026-Dineen-Cup-Champs.jpg"
+             alt="South Shore Kings — 2026 Dineen Cup Champions"
+             loading="eager">
+      </div>
+    </div>
+  </section>
+
   <div class="content-wrap">
     <nav class="league-tabs">
       <button class="league-tab active" data-league="NCDC">NCDC</button>
